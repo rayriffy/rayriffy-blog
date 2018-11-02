@@ -1,16 +1,18 @@
 .cover {
   padding-bottom: 25px;
 }
+
 @media (min-width: 768px) {
   .cover {
-      padding-top: 50px;
-      padding-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
+
 @media (min-width: 960px) {
   .cover {
-      padding-top: 70px;
-      padding-bottom: 70px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 }
 
@@ -22,6 +24,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 @media (max-width: 767px) {
   .header {
     height: 80px;
