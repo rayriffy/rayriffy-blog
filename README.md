@@ -1,9 +1,43 @@
-# gatsby-starter-blog
-Gatsby starter for creating a blog
+rayriffy-blog
+=============
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+All *new* Riffy Blog based on GatsbyJS generator.
 
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
+Demo
+----
 
-## Running in development
-`gatsby develop`
+https://blog.rayriffy.com
+
+Requirements
+------------
+
+- Node LTS
+
+Installation
+------------
+
+```sh
+$ npm install
+$ npm run dev
+```
+
+or just use yarn
+
+```sh
+$ yarn
+$ yarn dev
+```
+
+Contributing
+------------
+
+We welcome all contributions by sending PR to this repository.
+
+Need Help ?
+-----------
+
+If you need help with anything, here're following methods:
+
+#### Create an Issue
+
+If you have something you want to discuss in detail, or have hit an issue which you believe others will also have in deployment or development of the system, [opening an issue](https://github.com/rayriffy/rayriffy-blog/issues) is the best way to get help. It creates a permanent resource for others wishing to contribute to conversation.
