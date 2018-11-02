@@ -16,7 +16,6 @@
     "gatsby-plugin-sharp": "^2.0.6",
     "gatsby-plugin-typography": "^2.2.0",
     "gatsby-remark-copy-linked-files": "^2.0.5",
-    "gatsby-remark-embed-youtube": "^0.0.7",
     "gatsby-remark-images": "^2.0.4",
     "gatsby-remark-prismjs": "^3.0.0",
     "gatsby-remark-responsive-iframe": "^2.0.6",
@@ -32,8 +31,7 @@
     "react-typography": "^0.16.13",
     "typeface-merriweather": "0.0.43",
     "typeface-montserrat": "0.0.43",
-    "typography": "^0.16.17",
-    "typography-theme-wordpress-2016": "^0.15.10"
+    "typography": "^0.16.17"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
@@ -59,7 +57,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "deploy": "gatsby build --prefix-paths && firebase deploy",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   }
 }

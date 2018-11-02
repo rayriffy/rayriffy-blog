@@ -20,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
+                    subtitle
                   }
                 }
               }
@@ -28,6 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
         `
       ).then(result => {
         if (result.errors) {
+          console.log('ERROR QL')
           console.log(result.errors)
           reject(result.errors)
         }

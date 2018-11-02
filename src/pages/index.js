@@ -3,9 +3,9 @@ import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import Bio from '../components/Bio'
 import Layout from '../components/layout'
 import { rhythm } from '../utils/typography'
+import Style from '../components/theme.module.css'
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,6 +15,7 @@ class BlogIndex extends React.Component {
       'props.data.site.siteMetadata.description'
     )
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    console.log(posts)
 
     return (
       <Layout location={this.props.location}>
@@ -23,22 +24,28 @@ class BlogIndex extends React.Component {
           meta={[{ name: 'description', content: siteDescription }]}
           title={siteTitle}
         />
-        <Bio />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
+          const img_url = 'https://storage.rayriffy.com'+node.fields.slug+'banner.jpg'
           return (
-            <div key={node.fields.slug}>
-              <h3
+            <div key={node.fields.slug} className={[Style.article]}>
+              <div className={Style.articleteaser + ' ' + Style.displayblock}>
+                <Link to={node.fields.slug}><img src={img_url} /></Link>
+              </div>
+              <h1
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
+                className={Style.articletitle}
               >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                <Link style={{ textDecoration: 'none', color: '#000000', boxShadow: 'none' }} to={node.fields.slug}>
                   {title}
                 </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+              </h1>
+              <div className={Style.articlemeta}>
+                Written by Phumrapee Limpianchop {node.frontmatter.date}
+              </div>
+              <p className={Style.articlesubtitle}>{node.frontmatter.subtitle}</p>
             </div>
           )
         })}
@@ -67,6 +74,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title
+            subtitle
           }
         }
       }

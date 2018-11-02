@@ -1,0 +1,224 @@
+p {
+  color: #6f6f6f
+}
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.justify {
+  text-align: justify;
+}
+
+/* ==== GRID SYSTEM ==== */
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px 70px;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+}
+
+.row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+
+.col1,
+.col2,
+.col3,
+.col4,
+.col5,
+.col6,
+.col7,
+.col8,
+.col9,
+.col10,
+.col11,
+.col12 {
+  width: 96%;
+}
+
+.col1sm {
+  width: 4.33%;
+}
+
+.col2sm {
+  width: 12.66%;
+}
+
+.col3sm {
+  width: 21%;
+}
+
+.col4sm {
+  width: 29.33%;
+}
+
+.col5sm {
+  width: 37.66%;
+}
+
+.col6sm {
+  width: 46%;
+}
+
+.col7sm {
+  width: 54.33%;
+}
+
+.col8sm {
+  width: 62.66%;
+}
+
+.col9sm {
+  width: 71%;
+}
+
+.col10sm {
+  width: 79.33%;
+}
+
+.col11sm {
+  width: 87.66%;
+}
+
+.col12sm {
+  width: 96%;
+}
+
+.row::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.hiddensm {
+  display: none;
+}
+
+@media only screen and (min-width: 33.75em) {  /* 540px */
+  .container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 45em) {  /* 720px */
+  .col1 {
+    width: 4.33%;
+  }
+
+  .col2 {
+    width: 12.66%;
+  }
+
+  .col3 {
+    width: 21%;
+  }
+
+  .col4 {
+    width: 29.33%;
+  }
+
+  .col5 {
+    width: 37.66%;
+  }
+
+  .col6 {
+    width: 46%;
+  }
+
+  .col7 {
+    width: 54.33%;
+  }
+
+  .col8 {
+    width: 62.66%;
+  }
+
+  .col9 {
+    width: 71%;
+  }
+
+  .col10 {
+    width: 79.33%;
+  }
+
+  .col11 {
+    width: 87.66%;
+  }
+
+  .col12 {
+    width: 96%;
+  }
+
+  .hiddensm {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 60em) { /* 960px */
+  .container {
+    width: 66.67%;
+    max-width: 60rem;
+  }
+}
+
+.article {
+  background: #fff;
+  margin-top: 45px;
+  padding: 70px;
+}
+.articleteaser {
+  margin: -70px -70px 70px -70px;
+}
+@media (max-width: 768px) {
+  .article {
+    margin-top: 25px;
+    padding: 40px;
+  }
+  .articleteaser {
+    margin: -40px -40px 40px -40px;
+  }
+}
+.displayblock {
+  display: block !important;
+}
+.articletitle {
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: 400;
+  text-transform: none;
+}
+.articletitle > a {
+  color: #536a90;
+  text-decoration: none;
+  cursor: pointer;
+}
+.articlesubtitle {
+  font-style: normal;
+  font-size: 101%;
+  font-weight: 400;
+}
+.articlemeta {
+  color: #A5A5A5;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
