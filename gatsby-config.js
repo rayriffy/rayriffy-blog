@@ -66,5 +66,6 @@ module.exports = {
         omitGoogleFont: true,
       },
     },
+    'gatsby-plugin-webpack-bundle-analyzer',
   ],
 }
