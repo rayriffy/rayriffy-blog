@@ -25,6 +25,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          "gatsby-remark-embed-spotify",
           "gatsby-remark-embed-video",
           {
             resolve: "gatsby-remark-embed-gist",
