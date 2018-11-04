@@ -18,6 +18,14 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          "gatsby-remark-embed-video",
+          {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              username: 'rayriffy',
+              includeDefaultCss: true,
+            }
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {

@@ -11,20 +11,21 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const siteDescription = post.excerpt
+    const siteDescription = post.frontmatter.subtitle
     const { previous, next } = this.props.pageContext
-    const img_url = 'https://storage.rayriffy.com'+post.fields.slug+'banner.jpg'
+    const imgUrl = 'https://storage.rayriffy.com' + post.fields.slug + 'banner.jpg'
+    const blogUrl = 'https://blog.rayriffy.com' + post.fields.slug
 
     return (
       <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
+          meta={[{ name: 'description', content: siteDescription }, { name: 'og:url', content: blogUrl }, { name: 'og:type', content: 'article' }, { name: 'og:title', content: post.frontmatter.title }, { name: 'og:description', content: siteDescription }, { name: 'og:image', content: imgUrl }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
         />
         <div className={[Style.article]}>
           <div className={Style.articleteaser + ' ' + Style.displayblock}>
-            <img src={img_url} />
+            <img src={imgUrl} />
           </div>
           <h1
             style={{
@@ -55,17 +56,17 @@ class BlogPostTemplate extends React.Component {
           >
             <li>
               {
-                previous &&
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
+                next &&
+                <Link to={next.fields.slug} rel="next">
+                  PREVIOUS: {next.frontmatter.title}
                 </Link>
               }
             </li>
             <li>
               {
-                next &&
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
+                previous &&
+                <Link to={previous.fields.slug} rel="prev">
+                  NEXT: {previous.frontmatter.title}
                 </Link>
               }
             </li>
@@ -88,13 +89,13 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt
       html
       fields {
         slug
       }
       frontmatter {
         title
+        subtitle
         date(formatString: "MMMM DD, YYYY")
       }
     }
