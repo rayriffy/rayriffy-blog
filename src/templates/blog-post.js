@@ -13,19 +13,18 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const siteDescription = post.frontmatter.subtitle
     const { previous, next } = this.props.pageContext
-    const imgUrl = 'https://storage.rayriffy.com' + post.fields.slug + 'banner.jpg'
-    const blogUrl = 'https://blog.rayriffy.com' + post.fields.slug
+    const blogUrl = get(this, 'props.data.site.siteMetadata.siteUrl') + post.fields.slug
 
     return (
       <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }, { name: 'og:url', content: blogUrl }, { name: 'og:type', content: 'article' }, { name: 'og:title', content: post.frontmatter.title }, { name: 'og:description', content: siteDescription }, { name: 'og:image', content: imgUrl }]}
+          meta={[{ name: 'description', content: siteDescription }, { name: 'og:url', content: blogUrl }, { name: 'og:type', content: 'article' }, { name: 'og:title', content: post.frontmatter.title }, { name: 'og:description', content: siteDescription }, { name: 'og:image', content: post.frontmatter.banner }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
         />
         <div className={[Style.article]}>
           <div className={Style.articleteaser + ' ' + Style.displayblock}>
-            <img src={imgUrl} />
+            <img src={post.frontmatter.banner} />
           </div>
           <h1
             style={{
@@ -96,6 +95,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        banner
         date(formatString: "MMMM DD, YYYY")
       }
     }
