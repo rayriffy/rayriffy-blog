@@ -4,6 +4,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/layout'
+import Footer from '../components/footer'
 import { rhythm } from '../utils/typography'
 import Style from '../components/theme.module.css'
 
@@ -65,6 +66,7 @@ class BlogIndex extends React.Component {
           ))
         }
         </ul>
+        <Footer />
       </Layout>
     )
   }
