@@ -33,9 +33,26 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        // Create blog posts pages.
         const posts = result.data.allMarkdownRemark.edges;
 
+        // Create blog lists pages.
+        const postsPerPage = 5;
+        const numPages = Math.ceil(posts.length / postsPerPage);
+
+        _.times(numPages, i => {
+          createPage({
+            path: i === 0 ? `/` : `/pages/${i + 1}`,
+            component: path.resolve('./src/templates/blog-list.js'),
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,
+              currentPage: i + 1
+            },
+          });
+        });
+
+        // Create blog posts pages.
         _.each(posts, (post, index) => {
           const previous = index === posts.length - 1 ? null : posts[index + 1].node;
           const next = index === 0 ? null : posts[index - 1].node;

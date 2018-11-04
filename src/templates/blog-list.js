@@ -15,6 +15,7 @@ class BlogIndex extends React.Component {
       'props.data.site.siteMetadata.description'
     )
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const { currentPage, numPages } = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
@@ -48,6 +49,22 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
+        <ul className={Style.pagination}>
+        {
+          Array.from({ length: numPages }, (_, i) => (
+            <li
+              key={`pagination-number${i + 1}`}
+              className={i + 1 === currentPage ? Style.active : ''}
+            >
+              <Link 
+                to={`/${i === 0 ? '' : 'pages/' + (i + 1)}`}
+              >
+                {i + 1}
+              </Link>
+            </li>
+          ))
+        }
+        </ul>
       </Layout>
     )
   }
@@ -56,16 +73,17 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  query blogPageQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
       edges {
         node {
+          excerpt
           fields {
             slug
           }
