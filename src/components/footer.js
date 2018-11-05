@@ -9,11 +9,11 @@ class Template extends React.Component {
     const imgUrl = 'https://s.w.org/images/core/emoji/2.4/svg/2764.svg'
     const faceUrl = 'https://facebook.com/rayriffy'
     return (
-      <p>
+      <div className={footerStyle.footer}>
         <center>
           Made with <img src={imgUrl} className={footerStyle.image} /> by <Link to={faceUrl}>RayRiffy</Link>
         </center>
-      </p>
+      </div>
     )
   }
 }
