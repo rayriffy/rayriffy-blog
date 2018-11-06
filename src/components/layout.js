@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import { rhythm, scale } from '../utils/typography'
-import headStyle from '../components/head.module.css'
-import Style from '../components/theme.module.css'
+import Footer from './footer'
+import headStyle from './head.module.css'
+import Style from './theme.module.css'
 
 class Template extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class Template extends React.Component {
           {header}
           {children}
         </div>
+        <Footer />
       </div>
     )
   }
