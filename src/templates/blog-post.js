@@ -43,33 +43,26 @@ class BlogPostTemplate extends React.Component {
               marginBottom: rhythm(1),
             }}
           />
-
-          <ul
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'space-between',
-              listStyle: 'none',
-              padding: 0,
-            }}
-          >
-            <li>
-              {
-                next &&
-                <Link to={next.fields.slug} rel="next">
-                  PREVIOUS: {next.frontmatter.title}
-                </Link>
-              }
-            </li>
-            <li>
+          <div className={Style.navpost}>
+            <div className={Style.navcontainer}>
               {
                 previous &&
                 <Link to={previous.fields.slug} rel="prev">
-                  NEXT: {previous.frontmatter.title}
+                  <span className={Style.navmeta}>PREVIOUS</span>
+                  <span className={Style.navtitle}>{previous.frontmatter.title}</span>
                 </Link>
               }
-            </li>
-          </ul>
+            </div>
+            <div className={Style.navcontainer}>
+              {
+                next &&
+                <Link to={next.fields.slug} rel="next">
+                  <span className={Style.navmeta}>NEXT</span>
+                  <span className={Style.navtitle}>{next.frontmatter.title}</span>
+                </Link>
+              }
+            </div>
+          </div>
         </div>
       </Layout>
     )
