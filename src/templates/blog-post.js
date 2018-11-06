@@ -26,16 +26,18 @@ class BlogPostTemplate extends React.Component {
           <div className={Style.articleteaser + ' ' + Style.displayblock}>
             <img src={post.frontmatter.banner} />
           </div>
-          <h1
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-            className={Style.articletitle}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <div className={Style.articlemeta}>
-            Written by Phumrapee Limpianchop on {post.frontmatter.date}
+          <div className={Style.articlecontent}>
+            <h1
+              style={{
+                marginBottom: rhythm(1 / 4),
+              }}
+              className={Style.articletitle}
+            >
+              {post.frontmatter.title}
+            </h1>
+            <div className={Style.articlemeta}>
+              Written by Phumrapee Limpianchop on {post.frontmatter.date}
+            </div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr

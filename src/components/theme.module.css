@@ -84,7 +84,11 @@ pre {
 }
 
 .articleteaser {
-  margin: -70px -70px 70px -70px;
+  margin: -70px -70px -70px -70px;
+}
+
+.articlecontent {
+  margin-top: 80px;
 }
 
 @media (max-width: 768px) {
@@ -94,7 +98,11 @@ pre {
   }
 
   .articleteaser {
-    margin: -40px -40px 40px -40px;
+    margin: -40px -40px -40px -40px;
+  }
+
+  .articlecontent {
+    margin-top: 50px;
   }
 }
 
@@ -128,6 +136,7 @@ pre {
   margin-bottom: 25px;
   margin-top: 25px;
 }
+
 .pagination {
   padding: 0;
   list-style: none;
