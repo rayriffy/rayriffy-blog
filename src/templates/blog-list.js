@@ -43,7 +43,7 @@ class BlogIndex extends React.Component {
                   </Link>
                 </h1>
                 <div className={Style.articlemeta}>
-                  Written by Phumrapee Limpianchop {node.frontmatter.date}
+                  Written by Phumrapee Limpianchop on {node.frontmatter.date}
                 </div>
                 <p className={Style.articlesubtitle}>{node.frontmatter.subtitle}</p>
               </div>
