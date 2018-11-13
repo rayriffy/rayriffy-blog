@@ -21,7 +21,7 @@ p {
 pre {
   padding: 30px;
   background: #fff;
-  font: 12px / 18px Consolas,monospace,serif;
+  font: 12px / 18px Consolas, monospace, serif;
   color: #6f6f6f;
   -moz-tab-size: 4;
   tab-size: 4;
@@ -30,7 +30,7 @@ pre {
   border-radius: 3px;
 }
 
-:not(pre) > code {
+:not(pre)>code {
   font-size: 12px;
   color: #f0615c;
   white-space: nowrap;
