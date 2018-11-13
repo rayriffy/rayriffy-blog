@@ -28,6 +28,11 @@ $ yarn
 $ yarn dev
 ```
 
+Creating Articles
+-----------------
+
+You can create articles by using Markdown language. I provided you an example articles [here](src/pages/blog/13/index.md). Good Luck
+
 Contributing
 ------------
 
