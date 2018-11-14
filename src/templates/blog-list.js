@@ -10,10 +10,8 @@ import Style from '../components/theme.module.css'
 class BlogIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const siteDescription = get(
-      this,
-      'props.data.site.siteMetadata.description'
-    )
+    const siteUrl = get(this, 'props.data.site.siteMetadata.siteUrl')
+    const siteDescription = get(this, 'props.data.site.siteMetadata.description')
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
     const { currentPage, numPages } = this.props.pageContext
 
@@ -21,7 +19,56 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
+          meta={[
+            {
+              name: 'description',
+              content: siteDescription
+            },
+            {
+              name: 'og:url',
+              content: siteUrl
+            },
+            {
+              name: 'og:type',
+              content: 'article'
+            },
+            {
+              name: 'og:title',
+              content: siteTitle
+            },
+            {
+              name: 'og:description',
+              content: siteDescription
+            },
+            {
+              name: 'og:image',
+              content: 'https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/DEF_IMG.jpg?alt=media'
+            },
+            {
+              name: 'twitter:card',
+              content: 'summary_large_image'
+            },
+            {
+              name: 'twitter:site',
+              content: '@rayriffy'
+            },
+            {
+              name: 'twitter:creator',
+              content: '@rayriffy'
+            },
+            {
+              name: 'twitter:title',
+              content: siteTitle
+            },
+            {
+              name: 'twitter:description',
+              content: siteDescription
+            },
+            {
+              name: 'twitter:image',
+              content: 'https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/DEF_IMG.jpg?alt=media'
+            },
+          ]}
           title={siteTitle}
         />
         {posts.map(({ node }) => {

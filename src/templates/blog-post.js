@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Link,graphql } from 'gatsby'
 import get from 'lodash/get'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
@@ -19,7 +20,56 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }, { name: 'og:url', content: blogUrl }, { name: 'og:type', content: 'article' }, { name: 'og:title', content: post.frontmatter.title }, { name: 'og:description', content: siteDescription }, { name: 'og:image', content: post.frontmatter.banner }]}
+          meta={[
+            {
+              name: 'description',
+              content: siteDescription
+            },
+            {
+              name: 'og:url',
+              content: blogUrl
+            },
+            {
+              name: 'og:type',
+              content: 'article'
+            },
+            {
+              name: 'og:title',
+              content: post.frontmatter.title
+            },
+            {
+              name: 'og:description',
+              content: siteDescription
+            },
+            {
+              name: 'og:image',
+              content: post.frontmatter.banner
+            },
+            {
+              name: 'twitter:card',
+              content: 'summary_large_image'
+            },
+            {
+              name: 'twitter:site',
+              content: '@rayriffy'
+            },
+            {
+              name: 'twitter:creator',
+              content: '@rayriffy'
+            },
+            {
+              name: 'twitter:title',
+              content: post.frontmatter.title
+            },
+            {
+              name: 'twitter:description',
+              content: siteDescription
+            },
+            {
+              name: 'twitter:image',
+              content: post.frontmatter.banner
+            },
+          ]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
         />
         <div className={[Style.article]}>
