@@ -1,29 +1,49 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Style from './theme.module.css'
+import cardStyle from './blog-card.module.css'
 
 class Template extends React.Component {
   render() {
     const { children } = this.props
+    let banner,title 
+    if (this.props.link === true) {
+      banner = (
+        <Link to={this.props.slug}><img src={this.props.banner} /></Link>
+      )
+      title = (
+        <Link style={{ textDecoration: 'none', color: '#000000', boxShadow: 'none' }} to={this.props.slug}>
+          {this.props.title}
+        </Link>
+      )
+    }
+    else {
+      banner = (
+        <img src={this.props.banner} alt='banner' />
+      )
+      title = (
+        this.props.title
+      )
+    }
     return (
-      <div key={this.props.slug} className={[Style.article]}>
-        <div className={[Style.articleteaser, Style.displayblock].join(' ')}>
-          <Link to={this.props.slug}><img src={this.props.banner} /></Link>
+      <div key={this.props.slug} className={[cardStyle.card]}>
+        <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>
+          {banner}
         </div>
-        <div className={Style.articlecontent}>
-          <h1 className={Style.articletitle}>
-            <Link style={{ textDecoration: 'none', color: '#000000', boxShadow: 'none' }} to={this.props.slug}>
-              {this.props.title}
-            </Link>
+        <div className={cardStyle.content}>
+          <h1 className={cardStyle.title}>
+            {title}
           </h1>
-          <div className={Style.articlemeta}>
+          <div className={cardStyle.meta}>
             Written by Phumrapee Limpianchop on {this.props.date}
           </div>
-          <p className={Style.articlesubtitle}>{this.props.subtitle}</p>
+          {
+            this.props.subtitle &&
+            <p className={cardStyle.subtitle}>{this.props.subtitle}</p>
+          }
         </div>
         {children}
-      </div>   
+      </div>
     )
   }
 }

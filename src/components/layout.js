@@ -1,22 +1,21 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { rhythm, scale } from '../utils/typography'
 import Footer from './footer'
-import headerStyle from './head.module.css'
-import Style from './theme.module.css'
+
+import layoutStyle from './layout.module.css'
 
 class Template extends React.Component {
   render() {
     const { children } = this.props
     let header = (
-      <div className={[headerStyle.header]}>
+      <div className={[layoutStyle.header]}>
         <Link to={'/'}><img src="/img/LOGO-C-min.png" /></Link>
       </div>
     )
     return (
-      <div className={headerStyle.cover}>
-        <div className={[Style.container]}>
+      <div className={layoutStyle.cover}>
+        <div className={[layoutStyle.container]}>
           {header}
           {children}
         </div>

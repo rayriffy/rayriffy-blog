@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/layout'
-import Style from '../components/theme.module.css'
 
 import Card from '../components/blog-card'
+import Pagination from '../components/pagination'
 
 class BlogIndex extends React.Component {
   render() {
@@ -80,25 +79,14 @@ class BlogIndex extends React.Component {
               title={node.frontmatter.title}
               date={node.frontmatter.date}
               subtitle={node.frontmatter.subtitle}
+              link={true}
             />
           )
         })}
-        <ul className={Style.pagination}>
-        {
-          Array.from({ length: numPages }, (_, i) => (
-            <li
-              key={`pagination-number${i + 1}`}
-              className={i + 1 === currentPage ? Style.active : ''}
-            >
-              <Link 
-                to={`/${i === 0 ? '' : 'pages/' + (i + 1)}`}
-              >
-                {i + 1}
-              </Link>
-            </li>
-          ))
-        }
-        </ul>
+        <Pagination
+          numPages={numPages}
+          currentPage={currentPage}
+        />
       </Layout>
     )
   }

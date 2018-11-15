@@ -1,0 +1,56 @@
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px 70px;
+}
+
+.header {
+  height: 150px;
+  margin-bottom: 35px;
+  width: 150px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover {
+  padding-bottom: 25px;
+}
+
+@media only screen and (min-width: 540px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .cover {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    height: 80px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 80px;
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .container {
+    width: 66.67%;
+    max-width: 60rem;
+  }
+
+  .cover {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}

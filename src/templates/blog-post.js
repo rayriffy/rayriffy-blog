@@ -1,13 +1,16 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link,graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
-import Style from '../components/theme.module.css'
 import Navigation from '../components/navigation'
+import NavigationContainer from '../components/navigation-container'
+import NavigationItem from '../components/navigation-item'
+
+import Card from '../components/blog-card'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -73,47 +76,43 @@ class BlogPostTemplate extends React.Component {
           ]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
         />
-        <div className={[Style.article]}>
-          <div className={[Style.articleteaser, Style.displayblock].join(' ')}>
-            <img src={post.frontmatter.banner} />
-          </div>
-          <div className={Style.articlecontent}>
-            <h1 className={Style.articletitle}>
-              {post.frontmatter.title}
-            </h1>
-            <div className={Style.articlemeta}>
-              Written by Phumrapee Limpianchop on {post.frontmatter.date}
-            </div>
-          </div>
+        <Card
+          slug={post.fields.slug}
+          banner={post.frontmatter.banner}
+          title={post.frontmatter.title}
+          date={post.frontmatter.date}
+          subtitle={post.frontmatter.subtitle}
+          link={false}
+        >
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr
             style={{
               marginBottom: rhythm(1),
             }}
           />
-          <div className={Style.navpost}>
-            <div className={Style.navcontainer}>
+          <Navigation>
+            <NavigationContainer>
               {
                 previous &&
-                <Navigation
+                <NavigationItem
                   slug={previous.fields.slug}
                   meta='previous'
                   title={previous.frontmatter.title}
                 />
               }
-            </div>
-            <div className={Style.navcontainer}>
+            </NavigationContainer>
+            <NavigationContainer>
               {
                 next &&
-                <Navigation
+                <NavigationItem
                   slug={next.fields.slug}
                   meta='next'
                   title={next.frontmatter.title}
                 />
               }
-            </div>
-          </div>
-        </div>
+            </NavigationContainer>
+          </Navigation>
+        </Card>
       </Layout>
     )
   }
