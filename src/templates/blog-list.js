@@ -4,8 +4,9 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/layout'
-import { rhythm } from '../utils/typography'
 import Style from '../components/theme.module.css'
+
+import Card from '../components/blog-card'
 
 class BlogIndex extends React.Component {
   render() {
@@ -72,29 +73,14 @@ class BlogIndex extends React.Component {
           title={siteTitle}
         />
         {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
-            <div key={node.fields.slug} className={[Style.article]}>
-              <div className={Style.articleteaser + ' ' + Style.displayblock}>
-                <Link to={node.fields.slug}><img src={node.frontmatter.banner} /></Link>
-              </div>
-              <div className={Style.articlecontent}>
-                <h1
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                  className={Style.articletitle}
-                >
-                  <Link style={{ textDecoration: 'none', color: '#000000', boxShadow: 'none' }} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </h1>
-                <div className={Style.articlemeta}>
-                  Written by Phumrapee Limpianchop on {node.frontmatter.date}
-                </div>
-                <p className={Style.articlesubtitle}>{node.frontmatter.subtitle}</p>
-              </div>
-            </div>
+            <Card
+              slug={node.fields.slug}
+              banner={node.frontmatter.banner}
+              title={node.frontmatter.title}
+              date={node.frontmatter.date}
+              subtitle={node.frontmatter.subtitle}
+            />
           )
         })}
         <ul className={Style.pagination}>

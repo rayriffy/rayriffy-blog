@@ -202,18 +202,8 @@ pre {
   margin: 30px 0 30px 0;
 }
 
-.navmeta {
-  color: #333333;
-  display: block;
-  letter-spacing: 0.04em;
-}
-
 .navcontainer {
   width: 50%;
   display: inline-table;
   margin: 20px 0;
-}
-
-.navtitle {
-  display: block;
 }

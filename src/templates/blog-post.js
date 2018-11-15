@@ -7,6 +7,7 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
 import Style from '../components/theme.module.css'
+import Navigation from '../components/navigation'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -73,16 +74,11 @@ class BlogPostTemplate extends React.Component {
           title={`${post.frontmatter.title} | ${siteTitle}`}
         />
         <div className={[Style.article]}>
-          <div className={Style.articleteaser + ' ' + Style.displayblock}>
+          <div className={[Style.articleteaser, Style.displayblock].join(' ')}>
             <img src={post.frontmatter.banner} />
           </div>
           <div className={Style.articlecontent}>
-            <h1
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-              className={Style.articletitle}
-            >
+            <h1 className={Style.articletitle}>
               {post.frontmatter.title}
             </h1>
             <div className={Style.articlemeta}>
@@ -99,19 +95,21 @@ class BlogPostTemplate extends React.Component {
             <div className={Style.navcontainer}>
               {
                 previous &&
-                <Link to={previous.fields.slug} rel="prev">
-                  <span className={Style.navmeta}>PREVIOUS</span>
-                  <span className={Style.navtitle}>{previous.frontmatter.title}</span>
-                </Link>
+                <Navigation
+                  slug={previous.fields.slug}
+                  meta='previous'
+                  title={previous.frontmatter.title}
+                />
               }
             </div>
             <div className={Style.navcontainer}>
               {
                 next &&
-                <Link to={next.fields.slug} rel="next">
-                  <span className={Style.navmeta}>NEXT</span>
-                  <span className={Style.navtitle}>{next.frontmatter.title}</span>
-                </Link>
+                <Navigation
+                  slug={next.fields.slug}
+                  meta='next'
+                  title={next.frontmatter.title}
+                />
               }
             </div>
           </div>
