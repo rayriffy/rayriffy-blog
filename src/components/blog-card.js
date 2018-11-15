@@ -34,9 +34,12 @@ class Template extends React.Component {
           <h1 className={cardStyle.title}>
             {title}
           </h1>
-          <div className={cardStyle.meta}>
-            Written by Phumrapee Limpianchop on {this.props.date}
-          </div>
+          {
+            this.props.date &&
+            <div className={cardStyle.meta}>
+              Written by Phumrapee Limpianchop on {this.props.date}
+            </div>
+          }
           {
             this.props.subtitle &&
             <p className={cardStyle.subtitle}>{this.props.subtitle}</p>
