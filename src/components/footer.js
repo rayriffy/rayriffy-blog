@@ -11,7 +11,7 @@ class Template extends React.Component {
     return (
       <div className={footerStyle.footer}>
         <center>
-          Made with <img src={imgUrl} className={footerStyle.image} /> by <Link to={faceUrl}>RayRiffy</Link>
+          Made with <img src={imgUrl} className={footerStyle.image} alt='love' /> by <Link to={faceUrl}>RayRiffy</Link>
         </center>
       </div>
     )
