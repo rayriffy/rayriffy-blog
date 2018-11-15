@@ -9,7 +9,7 @@ class Template extends React.Component {
     let banner,title 
     if (this.props.link === true) {
       banner = (
-        <Link to={this.props.slug}><img src={this.props.banner} /></Link>
+        <Link to={this.props.slug}><img src={this.props.banner} alt='banner' /></Link>
       )
       title = (
         <Link style={{ textDecoration: 'none', color: '#000000', boxShadow: 'none' }} to={this.props.slug}>

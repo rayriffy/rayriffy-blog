@@ -57,6 +57,7 @@ pre {
 
 @media (max-width: 768px) {
   .card {
+    background: #fff;
     margin-top: 25px;
     padding: 40px;
   }
