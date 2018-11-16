@@ -17,7 +17,7 @@ class BlogIndex extends React.Component {
     const { currentPage, numPages } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location}>
+      <Layout location={this.props.location} logo={this.props.data.logo.childImageSharp.fluid}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           meta={[
@@ -129,6 +129,20 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    logo: file(relativePath: { eq: "logo.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 150, quality: 100) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
         }
       }
     }

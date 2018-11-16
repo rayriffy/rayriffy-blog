@@ -19,6 +19,15 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
+        ignore: [`**/\.*`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets`,
+        name: 'assets',
+        ignore: [`**/\.*`],
       },
     },
     {
@@ -68,7 +77,7 @@ module.exports = {
         background_color: `#f5f5f5`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/LOGO-C-min.png`,
+        icon: `src/assets/logo.png`,
       },
     },
     `gatsby-plugin-offline`,
