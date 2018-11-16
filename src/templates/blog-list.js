@@ -115,7 +115,7 @@ export const pageQuery = graphql`
             subtitle
             banner {
               childImageSharp {
-                fluid(maxWidth: 960, quality: 80) {
+                fluid(maxWidth: 1000, quality: 100) {
                   base64
                   tracedSVG
                   aspectRatio
