@@ -39,6 +39,20 @@ pre {
   border-radius: 3px;
 }
 
+.card {
+  background: #fff;
+  margin-top: 25px;
+  padding: 40px;
+}
+
+.teaser {
+  margin: -40px -40px -40px -40px;
+}
+
+.content {
+  margin-top: 80px;
+}
+
 @media only screen and (min-width: 960px) {
   .card {
     background: #fff;
@@ -51,23 +65,7 @@ pre {
   }
 
   .content {
-    margin-top: 80px;
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    background: #fff;
-    margin-top: 25px;
-    padding: 40px;
-  }
-
-  .teaser {
-    margin: -40px -40px -40px -40px;
-  }
-
-  .content {
-    margin-top: 50px;
+    margin-top: 110px;
   }
 }
 

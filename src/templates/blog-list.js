@@ -75,7 +75,7 @@ class BlogIndex extends React.Component {
           return (
             <Card
               slug={node.fields.slug}
-              banner={node.frontmatter.banner}
+              banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
               subtitle={node.frontmatter.subtitle}
@@ -113,7 +113,20 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             subtitle
-            banner
+            banner {
+              childImageSharp {
+                fluid(maxWidth: 960, quality: 80) {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                }
+              }
+            }
           }
         }
       }

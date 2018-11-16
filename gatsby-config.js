@@ -40,6 +40,7 @@ module.exports = {
               maxWidth: 1000,
               linkImagesToOriginal: true,
               sizeByPixelDensity: true,
+              withWebp: true,
             },
           },
           'gatsby-remark-responsive-iframe',

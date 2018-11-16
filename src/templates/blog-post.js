@@ -78,7 +78,7 @@ class BlogPostTemplate extends React.Component {
         />
         <Card
           slug={post.fields.slug}
-          banner={post.frontmatter.banner}
+          banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
           subtitle={post.frontmatter.subtitle}
@@ -137,8 +137,21 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
-        banner
         date(formatString: "MMMM DD, YYYY")
+        banner {
+          childImageSharp {
+            fluid(maxWidth: 960, quality: 100) {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
       }
     }
   }

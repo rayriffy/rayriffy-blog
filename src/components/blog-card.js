@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import Img from 'gatsby-image'
+
 import cardStyle from './blog-card.module.css'
 
 class Template extends React.Component {
@@ -9,7 +11,11 @@ class Template extends React.Component {
     let banner,title 
     if (this.props.link === true) {
       banner = (
-        <Link to={this.props.slug}><img src={this.props.banner} alt='banner' /></Link>
+        <Link to={this.props.slug}>
+          <Img
+            fluid={this.props.banner}
+          />
+        </Link>
       )
       title = (
         <Link style={{ textDecoration: 'none', color: '#000000', boxShadow: 'none' }} to={this.props.slug}>
@@ -19,7 +25,9 @@ class Template extends React.Component {
     }
     else {
       banner = (
-        <img src={this.props.banner} alt='banner' />
+        <Img
+          fluid={this.props.banner}
+        />
       )
       title = (
         this.props.title

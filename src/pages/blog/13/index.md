@@ -1,7 +1,7 @@
 ---
 title: Music Review - Halozy
 subtitle: บล็อกนี้ก็จะมารีวิววง Dojin Circle ที่ฟังเพลงเขาจนติดหูมาได้เกือบเดือนนึงแล้วนั่นก็คือ Halozy นั่นเอง
-banner: https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/blog%2F13%2Fbanner.jpg?alt=media
+banner: ./banner.jpg
 date: "2018-11-07T14:00:00.000Z"
 ---
 
@@ -22,12 +22,12 @@ date: "2018-11-07T14:00:00.000Z"
 
 Halozy ได้เริ่มเข้ามาในช่วงปี 2009 ในชื่อของ **"Heart and Beat Technology"** และได้ปล่อยขายอัลบั้มแรกออกมาชื่อว่า Cresendo Planet
 
-![Cresendo Planet](https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/blog%2F13%2Fcresendoplanet.jpg?alt=media)
+![Cresendo Planet](./cresendoplanet.jpg)
 
 
 ในเวลาที่เขียนบล็อกนี้ Halozy มีอัลบั้มทั้งหมด 29 อัลบั้ม ซึ่งอัลบั้มที่ปล่อยออกมาล่าสุดคือ High Tension Toho 2
 
-![ブチアゲ♂トウホウ2](https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/blog%2F13%2Fhightensiontoho2.jpg?alt=media)
+![ブチアゲ♂トウホウ2](./hightensiontoho2.jpg)
 
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/346294180&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 
@@ -63,7 +63,7 @@ Halozy นั้นก็เขียนเพลงออกมาอยู่�
  - [DiGiTAL WiNG](http://digital-wing.net/) (Electronic, Hyper Techno, Rave)
  - [A-One](http://a-one-records.com/) (Eurobeat)
 
-![DiGiTAL WING x Halozy](https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/blog%2F13%2Fdigitalwing.jpg?alt=media)
+![DiGiTAL WING x Halozy](./digitalwing.jpg)
 
 ## Supporting
 
