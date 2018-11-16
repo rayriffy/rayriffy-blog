@@ -18,6 +18,11 @@ export default class HTML extends React.Component {
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes} bgcolor="#f5f5f5">
+          <noscript>
+            For full functionality of this site it is necessary to enable JavaScript.
+            Here are the <a href="https://www.enable-javascript.com/">
+            instructions how to enable JavaScript in your web browser</a>.
+          </noscript>
           {this.props.preBodyComponents}
           <div
             key={`body`}
