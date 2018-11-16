@@ -1,8 +1,7 @@
 import React from 'react'
+import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
