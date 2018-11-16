@@ -7,6 +7,7 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
