@@ -43,7 +43,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'og:image',
-              content: 'https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/DEF_IMG.jpg?alt=media'
+              content: 'https://blog.rayriffy.com/default.jpg'
             },
             {
               name: 'twitter:card',
@@ -67,7 +67,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: 'https://firebasestorage.googleapis.com/v0/b/rayriffy-blog.appspot.com/o/DEF_IMG.jpg?alt=media'
+              content: 'https://blog.rayriffy.com/default.jpg'
             },
           ]}
           title={siteTitle}

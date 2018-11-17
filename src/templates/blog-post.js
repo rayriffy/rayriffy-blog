@@ -19,6 +19,8 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
     const blogUrl = get(this, 'props.data.site.siteMetadata.siteUrl') + post.fields.slug
 
+    console.log(post.frontmatter.banner)
+
     return (
       <Layout location={this.props.location} logo={this.props.data.logo.childImageSharp.fluid}>
         <Helmet
@@ -46,7 +48,7 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'og:image',
-              content: post.frontmatter.banner
+              content: post.frontmatter.banner.childImageSharp.fluid.src
             },
             {
               name: 'twitter:card',
@@ -70,7 +72,7 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: post.frontmatter.banner
+              content: post.frontmatter.banner.childImageSharp.fluid.src
             },
           ]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
