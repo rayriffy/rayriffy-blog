@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 
 export default class HTML extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -13,8 +14,8 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" />
-          <link href={this.props.data.site.siteMetadata.siteUrl + this.props.data.logo.childImageSharp.fluid.src} rel="shortcut icon" type="image/x-icon"></link>
-          <link href={this.props.data.site.siteMetadata.siteUrl + this.props.data.logo.childImageSharp.fluid.src} rel="apple-touch-icon-precomposed"></link>
+          <link href="/icon.png" rel="shortcut icon" type="image/x-icon"></link>
+          <link href="/icon.png" rel="apple-touch-icon-precomposed"></link>
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes} bgcolor="#f5f5f5">
@@ -44,20 +45,3 @@ HTML.propTypes = {
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
 }
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-    logo: file(relativePath: { eq: "logo.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 150, quality: 100) {
-          src
-        }
-      }
-    }
-  }
-`
