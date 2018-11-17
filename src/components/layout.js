@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import Img from 'gatsby-image'
 
@@ -11,7 +10,7 @@ import layoutStyle from './layout.module.css'
 class Template extends React.Component {
   render() {
     let devstrip = ''
-    if(process.env.deploy !== 'production') {
+    if(process.env.NODE_ENV === 'development') {
       devstrip = (
         <Dev />
       )
