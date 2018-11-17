@@ -1,5 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
@@ -9,7 +8,7 @@ import Card from '../components/blog-card'
 
 class NotFoundPage extends React.Component {
   render() {
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
       <Layout logo={this.props.data.logo.childImageSharp.fluid}>

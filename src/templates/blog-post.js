@@ -1,5 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
@@ -14,10 +13,10 @@ import Card from '../components/blog-card'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const siteTitle = this.props.data.site.siteMetadata.title
     const siteDescription = post.frontmatter.subtitle
     const { previous, next } = this.props.pageContext
-    const blogUrl = get(this, 'props.data.site.siteMetadata.siteUrl') + post.fields.slug
+    const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
 
     return (
       <Layout location={this.props.location} logo={this.props.data.logo.childImageSharp.fluid}>
@@ -25,8 +24,20 @@ class BlogPostTemplate extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           meta={[
             {
+              name: 'name',
+              content: siteTitle
+            },
+            {
               name: 'description',
               content: siteDescription
+            },
+            {
+              name: 'author',
+              content: 'Phumrapee Limpianchop'
+            },
+            {
+              name: 'image',
+              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
             },
             {
               name: 'og:url',
@@ -37,6 +48,14 @@ class BlogPostTemplate extends React.Component {
               content: 'article'
             },
             {
+              name: 'og:locale',
+              content: 'th_TH'
+            },
+            {
+              name: 'og:locale:alternate',
+              content: 'en_US'
+            },
+            {
               name: 'og:title',
               content: post.frontmatter.title
             },
@@ -45,8 +64,24 @@ class BlogPostTemplate extends React.Component {
               content: siteDescription
             },
             {
+              name: 'article:author',
+              content: 'https://facebook.com/rayriffy'
+            },
+            {
+              name: 'article:published_time',
+              content: post.frontmatter.date
+            },
+            {
               name: 'og:image',
-              content: post.frontmatter.banner
+              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+            },
+            {
+              name: 'og:image:secure_url',
+              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+            },
+            {
+              name: 'og:image:alt',
+              content: 'banner'
             },
             {
               name: 'twitter:card',
@@ -70,7 +105,11 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: post.frontmatter.banner
+              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+            },
+            {
+              name: 'google',
+              content: 'nositelinkssearchbox' 
             },
           ]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
@@ -125,6 +164,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
