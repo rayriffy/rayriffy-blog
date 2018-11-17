@@ -1,5 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
@@ -10,10 +9,10 @@ import Pagination from '../components/pagination'
 
 class BlogIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const siteUrl = get(this, 'props.data.site.siteMetadata.siteUrl')
-    const siteDescription = get(this, 'props.data.site.siteMetadata.description')
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const siteUrl = this.props.data.site.siteMetadata.siteUrl
+    const siteDescription = this.props.data.site.siteMetadata.description
+    const posts = this.props.data.allMarkdownRemark.edges
     const { currentPage, numPages } = this.props.pageContext
 
     return (
@@ -22,8 +21,20 @@ class BlogIndex extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           meta={[
             {
+              name: 'name',
+              content: siteTitle
+            },
+            {
               name: 'description',
               content: siteDescription
+            },
+            {
+              name: 'author',
+              content: 'Phumrapee Limpianchop'
+            },
+            {
+              name: 'image',
+              content: siteUrl + '/default.jpg'
             },
             {
               name: 'og:url',
@@ -32,6 +43,14 @@ class BlogIndex extends React.Component {
             {
               name: 'og:type',
               content: 'article'
+            },
+            {
+              name: 'og:locale',
+              content: 'th_TH'
+            },
+            {
+              name: 'og:locale:alternate',
+              content: 'en_US'
             },
             {
               name: 'og:title',
@@ -43,7 +62,15 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'og:image',
-              content: 'https://blog.rayriffy.com/default.jpg'
+              content: siteUrl + '/default.jpg'
+            },
+            {
+              name: 'og:image:secure_url',
+              content: siteUrl + '/default.jpg'
+            },
+            {
+              name: 'og:image:alt',
+              content: 'banner'
             },
             {
               name: 'twitter:card',
@@ -67,7 +94,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: 'https://blog.rayriffy.com/default.jpg'
+              content: siteTitle + '/default.jpg'
             },
           ]}
           title={siteTitle}
@@ -101,6 +128,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        siteUrl
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
