@@ -119,7 +119,6 @@ class BlogPostTemplate extends React.Component {
           banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
-          subtitle={post.frontmatter.subtitle}
           link={false}
         >
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
