@@ -61,6 +61,10 @@ class BlogIndex extends React.Component {
               content: siteDescription
             },
             {
+              name: 'article:author',
+              content: 'https://facebook.com/rayriffy'
+            },
+            {
               name: 'og:image',
               content: siteUrl + '/default.jpg'
             },

@@ -64,6 +64,14 @@ class BlogPostTemplate extends React.Component {
               content: siteDescription
             },
             {
+              name: 'article:author',
+              content: 'https://facebook.com/rayriffy'
+            },
+            {
+              name: 'article:published_time',
+              content: post.frontmatter.date
+            },
+            {
               name: 'og:image',
               content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
             },
