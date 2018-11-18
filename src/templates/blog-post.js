@@ -175,7 +175,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMMM, YYYY")
         banner {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
