@@ -112,7 +112,7 @@ class BlogPostTemplate extends React.Component {
               content: 'nositelinkssearchbox' 
             },
           ]}
-          title={`${post.frontmatter.title} | ${siteTitle}`}
+          title={`${post.frontmatter.title} · ${siteTitle}`}
         />
         <Card
           slug={post.fields.slug}
