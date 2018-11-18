@@ -76,7 +76,7 @@ module.exports = {
         short_name: `Riffy Blog`,
         start_url: `/`,
         background_color: `#f5f5f5`,
-        theme_color: `#663399`,
+        theme_color: `#1e88e5`,
         display: `minimal-ui`,
         icon: `src/assets/logo.png`,
       },
