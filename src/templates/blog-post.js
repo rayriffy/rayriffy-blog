@@ -33,7 +33,7 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'author',
-              content: 'Phumrapee Limpianchop'
+              content: this.props.data.site.siteMetadata.author
             },
             {
               name: 'image',
@@ -147,6 +147,7 @@ class BlogPostTemplate extends React.Component {
         </Helmet>
         <Card
           slug={post.fields.slug}
+          author={this.props.data.site.siteMetadata.author}
           banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}

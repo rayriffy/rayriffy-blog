@@ -45,7 +45,7 @@ class Template extends React.Component {
           {
             this.props.date &&
             <div className={cardStyle.meta}>
-              Written by Phumrapee Limpianchop on {this.props.date}
+              Written by {this.props.author} on {this.props.date}
             </div>
           }
           {
