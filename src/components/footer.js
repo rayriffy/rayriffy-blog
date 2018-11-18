@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
 import footerStyle from '../components/footer.module.css'
 
@@ -10,7 +9,7 @@ class Template extends React.Component {
     return (
       <div className={footerStyle.footer}>
         <center>
-          Made with <img src={imgUrl} className={footerStyle.image} alt='love' /> by <Link to={faceUrl}>RayRiffy</Link>
+          Made with <img src={imgUrl} className={footerStyle.image} alt='love' /> by <a href={faceUrl}>RayRiffy</a>
         </center>
       </div>
     )
