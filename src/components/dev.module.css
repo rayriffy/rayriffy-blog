@@ -1,11 +1,9 @@
 .container {
-  background: repeating-linear-gradient(
-    45deg,
+  background: repeating-linear-gradient(45deg,
     #fdd835,
     #fdd835 20px,
     #212121 20px,
-    #212121 40px
-  );
+    #212121 40px);
   display: block;
   height: 20px;
 }
