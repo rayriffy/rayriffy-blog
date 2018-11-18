@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 
 export default class HTML extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -14,7 +13,7 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" />
-          <link href="/icon.png" rel="shortcut icon" type="image/x-icon"></link>
+          <link href="/icon.png" rel="shortcut icon" type="image/png"></link>
           <link href="/icon.png" rel="apple-touch-icon-precomposed"></link>
           {this.props.headComponents}
         </head>
