@@ -113,7 +113,38 @@ class BlogPostTemplate extends React.Component {
             },
           ]}
           title={`${post.frontmatter.title} · ${siteTitle}`}
-        />
+        >
+          <script type="application/ld+json" data-react-helmet="true">
+            {`
+              "@context": "http://schema.org/",
+              "@type" : "Article",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "${this.props.data.site.siteMetadata.siteUrl}"
+              },
+              "name" : "${post.frontmatter.title}",
+              "headline" : "${post.frontmatter.title}",
+              "backstory" : "${post.frontmatter.subtitle}",
+              "author" : {
+                "@type" : "Person",
+                "name" : "${this.props.data.site.siteMetadata.author}"
+              },
+              "datePublished" : "${post.frontmatter.date}",
+              "dateModified" : "${post.frontmatter.date}",
+              "image" : "${this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
+              "url" : "${this.props.data.site.siteMetadata.siteUrl + post.fields.slug}",
+              "description" : "${post.frontmatter.subtitle}",
+              "publisher" : {
+                "@type" : "Organization",
+                "name" : "${this.props.data.site.siteMetadata.title}",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "${this.props.data.site.siteMetadata.siteUrl + '/icon.png'}"
+                }
+              }
+            `}
+          </script>
+        </Helmet>
         <Card
           slug={post.fields.slug}
           banner={post.frontmatter.banner.childImageSharp.fluid}
