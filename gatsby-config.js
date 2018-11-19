@@ -51,6 +51,7 @@ module.exports = {
               linkImagesToOriginal: false,
               sizeByPixelDensity: true,
               withWebp: true,
+              quality: 95
             },
           },
           'gatsby-remark-responsive-iframe',
