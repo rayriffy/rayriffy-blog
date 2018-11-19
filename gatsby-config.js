@@ -1,12 +1,39 @@
+if (process.env.GATSBY_ENV === 'production') {
+  var hostname = 'https://blog.rayriffy.com'
+}
+else if (process.env.GATSBY_ENV === 'staging') {
+  var hostname = 'https://blog-staging.rayriffy.com'
+}
+else if (process.env.GATSBY_ENV === 'development') {
+  var hostname = 'https://localhost:8000'
+}
+
 module.exports = {
   siteMetadata: {
     title: 'Riffy Blog',
     author: 'Phumrapee Limpianchop',
     description: 'A fucking simple blog',
-    siteUrl: 'https://blog.rayriffy.com',
+    siteUrl: `${hostname}`,
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => process.env.GATSBY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*', disallow: ['/pages'] }]
+          },
+          staging: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          }
+        }
+      }
+    },
     `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-sitemap`,
@@ -66,7 +93,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-85367836-2`,
+        trackingId: `${(process.env.GATSBY_ENV === 'production') ? 'UA-85367836-2' : ((process.env.GATSBY_ENV === 'staging') ? 'UA-85367836-3' : '')}`,
       },
     },
     `gatsby-plugin-feed`,

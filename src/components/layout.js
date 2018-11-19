@@ -10,7 +10,7 @@ import layoutStyle from './layout.module.css'
 class Template extends React.Component {
   render() {
     let devstrip = ''
-    if(process.env.NODE_ENV === 'development') {
+    if(process.env.GATSBY_ENV !== 'production') {
       devstrip = (
         <Dev />
       )
