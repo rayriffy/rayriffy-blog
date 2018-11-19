@@ -7,6 +7,7 @@
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "gatsby": "^2.0.19",
     "gatsby-image": "^2.0.20",
     "gatsby-paginate": "^1.0.16",
@@ -16,6 +17,7 @@
     "gatsby-plugin-netlify": "^2.0.5",
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-robots-txt": "^1.3.0",
     "gatsby-plugin-sharp": "^2.0.12",
     "gatsby-plugin-sitemap": "^2.0.2",
     "gatsby-plugin-typography": "^2.2.0",
@@ -57,13 +59,14 @@
     "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
   },
   "scripts": {
-    "dev": "gatsby develop --https",
+    "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
-    "develop": "gatsby develop --https",
+    "develop": "cross-env GATSBY_ENV=development gatsby develop --https",
     "start": "npm run develop",
-    "build": "gatsby build",
+    "build": "cross-env GATSBY_ENV=production gatsby build",
+    "build-staging": "cross-env GATSBY_ENV=staging gatsby build",
     "deploy": "gatsby build --prefix-paths",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   }
