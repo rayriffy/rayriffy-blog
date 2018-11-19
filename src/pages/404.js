@@ -19,7 +19,7 @@ class NotFoundPage extends React.Component {
         <Card
           banner={this.props.data.banner.childImageSharp.fluid}
           title='NOT FOUND'
-          subtitle='You just hit a route that doesn&#39;t exist... the sadness.'
+          subtitle='You just hit a route that doesn&#39;t exist.'
           link={false}
         />
       </Layout>
@@ -34,7 +34,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
     banner: file(relativePath: { eq: "404.jpg" }) {

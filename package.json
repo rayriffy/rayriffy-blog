@@ -19,7 +19,6 @@
     "gatsby-plugin-sharp": "^2.0.12",
     "gatsby-plugin-sitemap": "^2.0.2",
     "gatsby-plugin-typography": "^2.2.0",
-    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.3",
     "gatsby-remark-copy-linked-files": "^2.0.5",
     "gatsby-remark-embed-gist": "^1.1.3",
     "gatsby-remark-embed-spotify": "^2.0.2",
@@ -58,11 +57,11 @@
     "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
   },
   "scripts": {
-    "dev": "gatsby develop",
+    "dev": "gatsby develop --https",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --https",
     "start": "npm run develop",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths",

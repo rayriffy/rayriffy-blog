@@ -48,9 +48,10 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1000,
-              linkImagesToOriginal: true,
+              linkImagesToOriginal: false,
               sizeByPixelDensity: true,
               withWebp: true,
+              quality: 95
             },
           },
           'gatsby-remark-responsive-iframe',
@@ -90,6 +91,5 @@ module.exports = {
         omitGoogleFont: true,
       },
     },
-    'gatsby-plugin-webpack-bundle-analyzer',
   ],
 }
