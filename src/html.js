@@ -17,7 +17,7 @@ export default class HTML extends React.Component {
           <link href="/icon.png" rel="apple-touch-icon-precomposed"></link>
           {this.props.headComponents}
         </head>
-        <body {...this.props.bodyAttributes} bgcolor="#f5f5f5">
+        <body {...this.props.bodyAttributes}>
           <noscript>
             For full functionality of this site it is necessary to enable JavaScript.
             Here are the <a href="https://www.enable-javascript.com/">
