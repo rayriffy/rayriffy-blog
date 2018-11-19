@@ -30,7 +30,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'author',
-              content: 'Phumrapee Limpianchop'
+              content: this.props.data.site.siteMetadata.author
             },
             {
               name: 'image',
@@ -98,7 +98,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: siteTitle + '/default.jpg'
+              content: siteUrl + '/default.jpg'
             },
           ]}
           title={siteTitle}
