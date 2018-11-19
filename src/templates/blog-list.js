@@ -107,6 +107,7 @@ class BlogIndex extends React.Component {
           return (
             <Card
               slug={node.fields.slug}
+              author={this.props.data.site.siteMetadata.author}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
@@ -132,6 +133,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        author
         siteUrl
       }
     }

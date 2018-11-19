@@ -1,7 +1,7 @@
 {
   "name": "rayriffy-blog",
   "description": "A fucking simple blog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
@@ -65,7 +65,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && firebase deploy",
+    "deploy": "gatsby build --prefix-paths",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   }
 }

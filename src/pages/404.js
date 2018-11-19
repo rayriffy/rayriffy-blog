@@ -14,7 +14,7 @@ class NotFoundPage extends React.Component {
       <Layout logo={this.props.data.logo.childImageSharp.fluid}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          title={'Not Found | ' + siteTitle}
+          title={'Not Found · ' + siteTitle}
         />
         <Card
           banner={this.props.data.banner.childImageSharp.fluid}
