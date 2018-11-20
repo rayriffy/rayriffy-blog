@@ -12,7 +12,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000, filter: { fields: { slug: { regex: "^/blog/" } } }) {
               edges {
                 node {
                   fields {
