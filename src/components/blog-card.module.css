@@ -109,9 +109,20 @@ pre {
   position: relative;
   text-transform: uppercase;
   z-index: 2;
+  font-size: 26px;
 }
 
 .featuredbanner {
-  margin-top: -28px;
+  margin-top: -44px;
   z-index: 1;
+}
+
+@media only screen and (max-width: 540px) {
+  .featuredslug {
+    font-size: 14px;
+  }
+  
+  .featuredbanner {
+    margin-top: -24px;
+  }
 }
