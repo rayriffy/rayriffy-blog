@@ -3,6 +3,7 @@ title: ติดตั้ง LEMP Stack และเพิ่มความเ�
 subtitle: สอนติดตั้ง LEMP Stack และ NGINX PageSpeed Module
 banner: banner.jpg
 date: "2018-05-01T05:37:00.000Z"
+status: published
 ---
 
 ใน Tutorial นี้จะสอนอยู่ 2 อย่าง

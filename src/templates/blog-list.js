@@ -128,7 +128,7 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query blogPageQuery($skip: Int!, $limit: Int!) {
+  query blogPageQuery($skip: Int!, $limit: Int!, $status: String!) {
     site {
       siteMetadata {
         title
@@ -137,7 +137,7 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip, filter: { fields: { slug: { regex: "^/blog/" } } , frontmatter: { status: { ne: $status } } }) {
       edges {
         node {
           excerpt
@@ -148,6 +148,7 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             subtitle
+            status
             banner {
               childImageSharp {
                 fluid(maxWidth: 1000, quality: 100) {

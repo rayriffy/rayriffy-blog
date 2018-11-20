@@ -12,7 +12,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000, filter: { fields: { slug: { regex: "^/blog/" } } }) {
+            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
               edges {
                 node {
                   fields {
@@ -21,12 +21,24 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     title
                     subtitle
+                    status
                   }
                 }
               }
             }
           }
         `
+      ).then(result => {
+        if (process.env.GATSBY_ENV === 'production' || process.env.GATSBY_ENV === 'staging') {
+          var filteredresult = {data: {allMarkdownRemark: {edges: null}}}
+          filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(a => a.node.frontmatter.status === 'published')
+        }
+        else if (process.env.GATSBY_ENV === 'development') {
+          var filteredresult = result
+        }
+        return filteredresult
+      }
+
       ).then(result => {
         if (result.errors) {
           console.log(result.errors)
@@ -40,12 +52,21 @@ exports.createPages = ({ graphql, actions }) => {
         const numPages = Math.ceil(posts.length / postsPerPage);
 
         _.times(numPages, i => {
+
+          if (process.env.GATSBY_ENV === 'production' || process.env.GATSBY_ENV === 'staging') {
+            var filter = 'draft'
+          }
+          else if (process.env.GATSBY_ENV === 'development') {
+            var filter = ''
+          }
+
           createPage({
             path: i === 0 ? `/` : `/pages/${i + 1}`,
             component: path.resolve('./src/templates/blog-list.js'),
             context: {
               limit: postsPerPage,
               skip: i * postsPerPage,
+              status: filter,
               numPages,
               currentPage: i + 1
             },

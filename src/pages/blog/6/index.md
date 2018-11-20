@@ -3,6 +3,7 @@ title: เล็กแต่เก๋า ประหยัดพื้นที
 subtitle: คราวนี้ก็รู้ทั้งวิธีการใช้ Docker และวิธีการเขียน Dockerfile กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ Storage กันแล้ว
 banner: ./banner.jpg
 date: "2018-05-30T22:30:00.000Z"
+status: published
 ---
 
 คราวนี้ก็รู้ทั้ง[วิธีการใช้ Docker](https://blog.rayriffy.com/post/4) และ[วิธีการเขียน Dockerfile](https://blog.rayriffy.com/post/5) กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ **Storage** กันแล้ว
