@@ -113,6 +113,7 @@ class BlogIndex extends React.Component {
               date={node.frontmatter.date}
               subtitle={node.frontmatter.subtitle}
               featured={node.frontmatter.featured}
+              status={node.frontmatter.status}
               link={true}
             />
           )

@@ -152,6 +152,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           date={post.frontmatter.date}
           featured={post.frontmatter.featured}
+          status={post.frontmatter.status}
           link={false}
         >
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -208,6 +209,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        status
         featured
         date(formatString: "DD MMMM, YYYY")
         banner {

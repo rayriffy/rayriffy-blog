@@ -15,7 +15,7 @@ class Template extends React.Component {
           <Img
             fluid={this.props.banner}
             className={
-              this.props.featured === true &&
+              (this.props.featured || this.props.status !== 'published') &&
               cardStyle.featuredbanner
             }
           />
@@ -32,7 +32,7 @@ class Template extends React.Component {
         <Img
           fluid={this.props.banner}
           className={
-            this.props.featured === true &&
+            (this.props.featured || this.props.status !== 'published') &&
             cardStyle.featuredbanner
           }
         />
@@ -45,8 +45,12 @@ class Template extends React.Component {
       <div key={this.props.slug} className={[cardStyle.card]}>
         <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>
           {
-            this.props.featured === true &&
+            this.props.featured &&
             <span className={cardStyle.featuredslug}>featured</span>
+          }
+          {
+            this.props.status !== 'published' &&
+            <span className={cardStyle.featuredslug}>{this.props.status}</span>
           }
           {banner}
         </div>
