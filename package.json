@@ -60,6 +60,8 @@
   },
   "scripts": {
     "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
+    "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
+    "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
