@@ -151,6 +151,7 @@ class BlogPostTemplate extends React.Component {
           banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
+          featured={post.frontmatter.featured}
           link={false}
         >
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -207,6 +208,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        featured
         date(formatString: "DD MMMM, YYYY")
         banner {
           childImageSharp {

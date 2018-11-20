@@ -3,6 +3,7 @@ title: สร้างเว็บย่อลิงค์ URL ให้เร�
 subtitle: Trick ง่ายๆเพียงแค่ใช้ Netlify
 banner: ./banner.jpg
 date: "2018-11-18T17:03:00.000Z"
+featured: true
 status: published
 ---
 

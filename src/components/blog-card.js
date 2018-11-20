@@ -14,6 +14,10 @@ class Template extends React.Component {
         <Link to={this.props.slug}>
           <Img
             fluid={this.props.banner}
+            className={
+              this.props.featured === true &&
+              cardStyle.featuredbanner
+            }
           />
         </Link>
       )
@@ -27,6 +31,10 @@ class Template extends React.Component {
       banner = (
         <Img
           fluid={this.props.banner}
+          className={
+            this.props.featured === true &&
+            cardStyle.featuredbanner
+          }
         />
       )
       title = (
@@ -36,6 +44,10 @@ class Template extends React.Component {
     return (
       <div key={this.props.slug} className={[cardStyle.card]}>
         <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>
+          {
+            this.props.featured === true &&
+            <span className={cardStyle.featuredslug}>featured</span>
+          }
           {banner}
         </div>
         <div className={cardStyle.content}>

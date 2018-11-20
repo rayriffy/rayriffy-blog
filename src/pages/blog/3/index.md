@@ -3,6 +3,7 @@ title: จัดการ NGINX ได้อย่างสบายด้วย
 subtitle: ไม่มี caption คิดไม่ออก ;-;
 banner: ./banner.jpg
 date: "2018-05-06T09:30:00.000Z"
+featured: false
 status: published
 ---
 

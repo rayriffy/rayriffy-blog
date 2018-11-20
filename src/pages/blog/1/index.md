@@ -3,6 +3,7 @@ title: ใบเดียวก็เอาอยู่! มาสร้าง W
 subtitle: จะสร้างใบ SSL 1 ใบต่อ subdomain ทำไม...ใบเดียวใช้ทั้งวงเฟี้ยวกว่า
 banner: ./banner.jpg
 date: "2018-04-27T07:06:52.284Z"
+featured: false
 status: published
 ---
 

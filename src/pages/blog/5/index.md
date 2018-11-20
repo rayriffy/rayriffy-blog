@@ -3,6 +3,7 @@ title: เลือกหา Docker Images ที่ถูกใจไม่ไ�
 subtitle: มาสอนสร้าง Dockerfile ครับ ;)
 banner: ./banner.jpg
 date: "2018-05-22T23:24:53.000Z"
+featured: false
 status: published
 ---
 

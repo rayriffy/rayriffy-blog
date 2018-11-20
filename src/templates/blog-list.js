@@ -112,6 +112,7 @@ class BlogIndex extends React.Component {
               title={node.frontmatter.title}
               date={node.frontmatter.date}
               subtitle={node.frontmatter.subtitle}
+              featured={node.frontmatter.featured}
               link={true}
             />
           )
@@ -149,6 +150,7 @@ export const pageQuery = graphql`
             title
             subtitle
             status
+            featured
             banner {
               childImageSharp {
                 fluid(maxWidth: 1000, quality: 100) {
