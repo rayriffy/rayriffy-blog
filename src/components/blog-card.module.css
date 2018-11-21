@@ -100,7 +100,7 @@ pre {
   margin-top: 25px;
 }
 
-.featuredslug {
+.slug {
   background-color: #333;
   color: #fff;
   font-weight: bold;
@@ -110,20 +110,20 @@ pre {
   text-transform: uppercase;
   z-index: 2;
   font-size: 26px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
-.featuredbanner {
+.banner {
   margin-top: -44px;
   z-index: 1;
 }
 
 @media only screen and (max-width: 540px) {
-  .featuredslug {
+  .slug {
     font-size: 14px;
   }
-  
-  .featuredbanner {
+
+  .banner {
     margin-top: -24px;
   }
 }

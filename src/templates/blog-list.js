@@ -11,6 +11,7 @@ class BlogIndex extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
+    const siteAuthor = this.props.data.site.siteMetadata.author
     const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
     const { currentPage, numPages } = this.props.pageContext
@@ -30,7 +31,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'author',
-              content: this.props.data.site.siteMetadata.author
+              content: siteAuthor
             },
             {
               name: 'image',
@@ -107,7 +108,7 @@ class BlogIndex extends React.Component {
           return (
             <Card
               slug={node.fields.slug}
-              author={this.props.data.site.siteMetadata.author}
+              author={siteAuthor}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
