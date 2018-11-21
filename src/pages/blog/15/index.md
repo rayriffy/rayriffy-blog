@@ -83,23 +83,17 @@ Rating: 12+
 
 Asa เป็นผู้หญิงที่มีบุคลิกที่สดใสและอบอุ่น
 
-เธอจะเป็นคนที่จะเงอะงะ และโง่นิดๆ แต่ถึงจะเป็นแบบนั้น แต่ว่าแต่ละอย่างก็มักจะมีค่าน่าสนใจหน่อย
-
-เธอเป็นคนที่เข้าหาได้กับทุกคน และพยายามช่วยเหลืออยู่ตลอด
+เธอจะเป็นคนที่จะเงอะงะ และโง่นิดๆ แต่ถึงจะเป็นแบบนั้น แต่ว่าแต่ละอย่างก็มักจะมีค่าให้น่าสนใจหน่อย แล้วเธอก็เป็นคนที่สามารถเข้าหาได้กับทุกคน และพยายามช่วยเหลืออยู่ตลอด
 
 เธอเป็นแฝดกับ Yoru Kazato และพวกเขาก็ให้ใช้ฐานลับของพวกเขาเป็นโรงจอดสำหรับเครื่องบิน Glider ...มาถึงจุดนี้แล้วคงสงสัยว่าเครื่องบิน Glider ถูกเก็บไว้ที่ชุมนุมในโรงเรียน แล้วทำไมต้องมาไว้ที่ฐานลับนี้ด้วยบอกได้เลยว่า... Spoilers!
 
 ## Yoru Kazato
 
-Rather indifferent about others, and a bit of a nihilist. 
-A cool personality, with her head up in the clouds.
-She tries not to get close to others 
-but is emotionally attached to her twin sister Asa.
-Because she is a genius and does not like 
-doing pointless things, 
-she is rather pessimistic in regards to the Soaring Club.
-Her grandfather is the chairman of 
-the school which Aoi and the others attend.
+คนนี้ค่อนข้างจะต่างจากคนอื่นหน่อย (แถมไปทาง Negative นิดๆด้วย) เธอคจะไม่พยายามจะอยู่กับคนอื่นด้วยมากนัก แต่มีลักษณะที่ผูกพันธ์กับแฝดของเธอ Asa
+
+ตัวเธอฉลาดมาก แต่เวลาทำออกมาไม่ค่อยเห็นมากเท่าไหร่ เพราะส่วนใหญ่ที่ทำไปมันดูแบบ... pointless
+
+เธอค่อนข้างจะมองเห็น Soaring Club ไปทางแง่ร้ายซะมากกว่า แล้วบวกกับว่าปู่ของเธอเป็นประธานของโรงเรียนที่ Aoi เข้าเรียนอยู่ด้วยอีก GG
 
 ## แสง และสี
 

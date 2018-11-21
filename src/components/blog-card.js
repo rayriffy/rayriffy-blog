@@ -8,7 +8,7 @@ import cardStyle from './blog-card.module.css'
 class Template extends React.Component {
   render() {
     const { children } = this.props
-    let banner,title 
+    let banner, title
     if (this.props.link === true) {
       banner = (
         <Link to={this.props.slug}>
@@ -59,7 +59,7 @@ class Template extends React.Component {
             {title}
           </h1>
           {
-            this.props.date &&
+            (this.props.date && this.props.author) &&
             <div className={cardStyle.meta}>
               Written by {this.props.author} on {this.props.date}
             </div>
