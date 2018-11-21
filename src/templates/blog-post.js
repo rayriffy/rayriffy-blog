@@ -103,7 +103,7 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:description',
-              content: siteDescription
+              content: blogDescription
             },
             {
               name: 'twitter:image',
