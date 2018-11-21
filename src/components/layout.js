@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
 import Img from 'gatsby-image'
 
@@ -23,8 +23,30 @@ class Template extends React.Component {
           <div className={[layoutStyle.container]}>
             <div className={[layoutStyle.header]}>
               <Link to={'/'}>
-                <Img
-                  fluid={this.props.logo}
+                <StaticQuery
+                  query={graphql`
+                    query LogoQuery {
+                      logo: file(relativePath: { eq: "logo.png" }) {
+                        childImageSharp {
+                          fluid(maxWidth: 150, quality: 100) {
+                            base64
+                            tracedSVG
+                            aspectRatio
+                            src
+                            srcSet
+                            srcWebp
+                            srcSetWebp
+                            sizes
+                          }
+                        }
+                      }
+                    }
+                  `}
+                  render={data => (
+                    <Img
+                      fluid={data.logo.childImageSharp.fluid}
+                    />
+                  )}
                 />
               </Link>
             </div>
