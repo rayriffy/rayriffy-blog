@@ -20,8 +20,6 @@ class BlogPostTemplate extends React.Component {
     const blogDescription = post.frontmatter.subtitle
     const author = this.props.data.authorsJson
 
-    console.log(author)
-
     return (
       <Layout location={this.props.location}>
         <Helmet
