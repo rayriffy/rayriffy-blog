@@ -11,12 +11,13 @@ class BlogIndex extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
+    const siteAuthor = this.props.data.site.siteMetadata.author
     const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
     const { currentPage, numPages } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location} logo={this.props.data.logo.childImageSharp.fluid}>
+      <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           meta={[
@@ -30,7 +31,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'author',
-              content: this.props.data.site.siteMetadata.author
+              content: siteAuthor
             },
             {
               name: 'image',
@@ -104,14 +105,23 @@ class BlogIndex extends React.Component {
           title={siteTitle}
         />
         {posts.map(({ node }) => {
+          var author = null
+          this.props.data.allAuthorsJson.edges.forEach((authorJson) => {
+            if(authorJson.node.user === node.frontmatter.author) {
+              author = authorJson.node
+              return;
+            }
+          })
           return (
             <Card
               slug={node.fields.slug}
-              author={this.props.data.site.siteMetadata.author}
+              author={author.name}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
               subtitle={node.frontmatter.subtitle}
+              featured={node.frontmatter.featured}
+              status={node.frontmatter.status}
               link={true}
             />
           )
@@ -128,7 +138,7 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query blogPageQuery($skip: Int!, $limit: Int!) {
+  query blogPageQuery($skip: Int!, $limit: Int!, $status: String!) {
     site {
       siteMetadata {
         title
@@ -137,7 +147,7 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip, filter: { fields: { slug: { regex: "^/blog/" } } , frontmatter: { status: { ne: $status } } }) {
       edges {
         node {
           excerpt
@@ -148,6 +158,9 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             subtitle
+            status
+            featured
+            author
             banner {
               childImageSharp {
                 fluid(maxWidth: 1000, quality: 100) {
@@ -166,17 +179,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    logo: file(relativePath: { eq: "logo.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 150, quality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
+    allAuthorsJson {
+      edges {
+        node {
+          user
+          name
         }
       }
     }

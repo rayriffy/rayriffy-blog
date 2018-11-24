@@ -2,7 +2,10 @@
 title: เพิ่มความสะดวกสบายให้กับชีวิต (?) Sync notification, file เกือบทุกอย่างกับ Windows 10
 subtitle: Sync แม่งทุกอย่าง!!!!!
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-09-06T02:00:00.000Z"
+featured: false
+status: published
 ---
 
 สวัสดีครับทุกคนนนนน วันนี้จะมาแชร์ประสบการณ์การ Cross-platform ระหว่าง Android กับ Windows 10 กันนะครับ

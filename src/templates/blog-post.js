@@ -13,31 +13,33 @@ import Card from '../components/blog-card'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const siteDescription = post.frontmatter.subtitle
     const { previous, next } = this.props.pageContext
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
+    const blogDescription = post.frontmatter.subtitle
+    const author = this.props.data.authorsJson
 
     return (
-      <Layout location={this.props.location} logo={this.props.data.logo.childImageSharp.fluid}>
+      <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           meta={[
             {
               name: 'name',
-              content: siteTitle
+              content: post.frontmatter.title + '·' + siteTitle
             },
             {
               name: 'description',
-              content: siteDescription
+              content: blogDescription
             },
             {
               name: 'author',
-              content: this.props.data.site.siteMetadata.author
+              content: author.name
             },
             {
               name: 'image',
-              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
             },
             {
               name: 'og:url',
@@ -61,11 +63,11 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'og:description',
-              content: siteDescription
+              content: blogDescription
             },
             {
               name: 'article:author',
-              content: 'https://facebook.com/rayriffy'
+              content: author.facebook
             },
             {
               name: 'article:published_time',
@@ -73,11 +75,11 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'og:image',
-              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
             },
             {
               name: 'og:image:secure_url',
-              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
             },
             {
               name: 'og:image:alt',
@@ -89,11 +91,11 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:site',
-              content: '@rayriffy'
+              content: author.twitter
             },
             {
               name: 'twitter:creator',
-              content: '@rayriffy'
+              content: author.twitter
             },
             {
               name: 'twitter:title',
@@ -101,11 +103,11 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:description',
-              content: siteDescription
+              content: blogDescription
             },
             {
               name: 'twitter:image',
-              content: this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
             },
             {
               name: 'google',
@@ -120,26 +122,26 @@ class BlogPostTemplate extends React.Component {
               "@type" : "Article",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "${this.props.data.site.siteMetadata.siteUrl}"
+                "@id": "${siteUrl}"
               },
               "name" : "${post.frontmatter.title}",
               "headline" : "${post.frontmatter.title}",
               "backstory" : "${post.frontmatter.subtitle}",
               "author" : {
                 "@type" : "Person",
-                "name" : "${this.props.data.site.siteMetadata.author}"
+                "name" : "${author.name}"
               },
               "datePublished" : "${post.frontmatter.date}",
               "dateModified" : "${post.frontmatter.date}",
-              "image" : "${this.props.data.site.siteMetadata.siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
-              "url" : "${this.props.data.site.siteMetadata.siteUrl + post.fields.slug}",
+              "image" : "${siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
+              "url" : "${siteUrl + post.fields.slug}",
               "description" : "${post.frontmatter.subtitle}",
               "publisher" : {
                 "@type" : "Organization",
-                "name" : "${this.props.data.site.siteMetadata.title}",
+                "name" : "${siteTitle}",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "${this.props.data.site.siteMetadata.siteUrl + '/icon.png'}"
+                  "url": "${siteUrl + '/icon.png'}"
                 }
               }
             `}
@@ -147,10 +149,12 @@ class BlogPostTemplate extends React.Component {
         </Helmet>
         <Card
           slug={post.fields.slug}
-          author={this.props.data.site.siteMetadata.author}
+          author={author.name}
           banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
+          featured={post.frontmatter.featured}
+          status={post.frontmatter.status}
           link={false}
         >
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -190,7 +194,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $author: String!) {
     site {
       siteMetadata {
         title
@@ -207,6 +211,8 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        status
+        featured
         date(formatString: "DD MMMM, YYYY")
         banner {
           childImageSharp {
@@ -224,19 +230,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    logo: file(relativePath: { eq: "logo.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 150, quality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
-        }
-      }
+    authorsJson(user: { eq: $author }) {
+      name
+      twitter
+      facebook
     }
   }
 `

@@ -2,7 +2,10 @@
 title: มาทำเว็บยุ่งๆ ให้สวยงามด้วย Docker กันครับ
 subtitle: Standalone ---> Dockerized
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-09-20T02:00:00.000Z"
+featured: false
+status: published
 ---
 
 สวัสดีครับทุกคน วันนี้จะมาเล่าประสบการณ์การ renovate เว็บ rayriffy.com จากเดิมที่เป็น standalone กลายมาเป็น Docker กันนะครับ

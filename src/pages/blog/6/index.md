@@ -2,7 +2,10 @@
 title: เล็กแต่เก๋า ประหยัดพื้นที่ด้วยการปรับปรุง Docker Image ให้มีขนาดเล็กลง
 subtitle: คราวนี้ก็รู้ทั้งวิธีการใช้ Docker และวิธีการเขียน Dockerfile กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ Storage กันแล้ว
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-05-30T22:30:00.000Z"
+featured: false
+status: published
 ---
 
 คราวนี้ก็รู้ทั้ง[วิธีการใช้ Docker](https://blog.rayriffy.com/post/4) และ[วิธีการเขียน Dockerfile](https://blog.rayriffy.com/post/5) กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ **Storage** กันแล้ว

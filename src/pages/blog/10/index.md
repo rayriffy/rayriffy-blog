@@ -2,7 +2,10 @@
 title: The Stupid Hackathon Thailand 2 ที่มา Epic กว่าปีที่แล้ว
 subtitle: สร้างสิ่งของเพี้ยนๆ ที่ไม่มีใครต้องการ และทำไอเดียบ้าๆ บอๆ ให้กลายเป็นจริง! งาน Hackathon แบบกี๊คๆ ที่ไม่จำกัดไอเดีย ไม่เน้นฝั่งธุรกิจ แต่เน้นความสนุกสำหรับนักพัฒนาแบบเพียวๆ!!
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-08-29T02:23:00.000Z"
+featured: false
+status: published
 ---
 
 เมื่อวันเสาร์-อาทิตย์~~ที่แล้ว~~ของเดือนที่แล้ว ได้มีโอกาสไปปั่นโค๊ดข้ามคืนในงาน [The Stupid Hackathon Thailand #2](https://www.facebook.com/StupidHackTH/) มา ซึ่งเป็น Hackathon อันที่ 2 ของชีวิต (ถ้านับตั้งแต่ PWA Hackathon 2017 อ่ะนะ) และเป็น **Hackathon แรก**ในชีวิตเลยที่ออกไปค้างคืนที่งาน

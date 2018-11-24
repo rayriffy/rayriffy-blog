@@ -2,7 +2,10 @@
 title: ใบเดียวก็เอาอยู่! มาสร้าง Wildcard Certificate SSL ด้วย Let's Encrypt กัน!
 subtitle: จะสร้างใบ SSL 1 ใบต่อ subdomain ทำไม...ใบเดียวใช้ทั้งวงเฟี้ยวกว่า
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-04-27T07:06:52.284Z"
+featured: false
+status: published
 ---
 
 [Let's Encrypt](https://letsencrypt.org/) เป็นหนึ่งในบริการที่สามารถสร้างใบรับรองความปลอดภัย SSL ได้ฟรี และในไม่กี่เดือนที่ผ่านมานี้ทาง Let's Encrypt ก็ได้ให้บริการสร้างใบรับรอง SSL แบบ Wildcard Certificate ทำให้ผู้ใช้งานไม่จำเป็นที่จะต้องมานั่งสร้างใบ SSL 1 ใบต่อ 1 sub-domain แต่สามารถที่จะใช้ Wildcard Certificate สร้างใบ SSL มาเพียงแค่ใบเดียว แต่ก็ใช้งานกับวง sub-domain  ทั้งหมดได้ โดยในบทความนี้จะมาสอนทุกคนสร้างใบรับรอง Wildcard Certificate SSL กันด้วย Let's Encrypt นะครับ

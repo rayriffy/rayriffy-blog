@@ -1,7 +1,7 @@
 {
   "name": "rayriffy-blog",
   "description": "A fucking simple blog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
@@ -30,6 +30,7 @@
     "gatsby-remark-responsive-iframe": "^2.0.6",
     "gatsby-remark-smartypants": "^2.0.5",
     "gatsby-source-filesystem": "^2.0.2",
+    "gatsby-transformer-json": "^2.1.5",
     "gatsby-transformer-remark": "^2.1.6",
     "gatsby-transformer-sharp": "^2.1.3",
     "lodash": "^4.17.11",
@@ -60,6 +61,8 @@
   },
   "scripts": {
     "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
+    "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
+    "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",

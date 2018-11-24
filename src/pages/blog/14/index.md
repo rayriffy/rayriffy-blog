@@ -2,7 +2,10 @@
 title: สร้างเว็บย่อลิงค์ URL ให้เร็วกว่าวิ่ง 4x100
 subtitle: Trick ง่ายๆเพียงแค่ใช้ Netlify
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-11-18T17:03:00.000Z"
+featured: false
+status: published
 ---
 
 ## เกริ่นเรื่อง

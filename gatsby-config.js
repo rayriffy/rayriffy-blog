@@ -17,6 +17,13 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/assets/database`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {

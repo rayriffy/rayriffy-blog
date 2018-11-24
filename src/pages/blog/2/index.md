@@ -1,8 +1,11 @@
 ---
 title: ติดตั้ง LEMP Stack และเพิ่มความเร็วของเว็บไซต์ของคุณด้วย NGINX PageSpeed Module
 subtitle: สอนติดตั้ง LEMP Stack และ NGINX PageSpeed Module
-banner: banner.jpg
+banner: ./banner.jpg
+author: rayriffy
 date: "2018-05-01T05:37:00.000Z"
+featured: false
+status: published
 ---
 
 ใน Tutorial นี้จะสอนอยู่ 2 อย่าง

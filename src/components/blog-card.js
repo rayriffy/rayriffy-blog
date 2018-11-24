@@ -8,12 +8,16 @@ import cardStyle from './blog-card.module.css'
 class Template extends React.Component {
   render() {
     const { children } = this.props
-    let banner,title 
+    let banner, title
     if (this.props.link === true) {
       banner = (
         <Link to={this.props.slug}>
           <Img
             fluid={this.props.banner}
+            className={
+              (this.props.featured || this.props.status !== 'published') &&
+              cardStyle.banner
+            }
           />
         </Link>
       )
@@ -27,6 +31,10 @@ class Template extends React.Component {
       banner = (
         <Img
           fluid={this.props.banner}
+          className={
+            (this.props.featured || this.props.status !== 'published') &&
+            cardStyle.banner
+          }
         />
       )
       title = (
@@ -36,6 +44,14 @@ class Template extends React.Component {
     return (
       <div key={this.props.slug} className={[cardStyle.card]}>
         <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>
+          {
+            this.props.featured &&
+            <span className={cardStyle.slug}>featured</span>
+          }
+          {
+            this.props.status !== 'published' &&
+            <span className={cardStyle.slug}>{this.props.status}</span>
+          }
           {banner}
         </div>
         <div className={cardStyle.content}>
@@ -43,7 +59,7 @@ class Template extends React.Component {
             {title}
           </h1>
           {
-            this.props.date &&
+            (this.props.date && this.props.author) &&
             <div className={cardStyle.meta}>
               Written by {this.props.author} on {this.props.date}
             </div>
