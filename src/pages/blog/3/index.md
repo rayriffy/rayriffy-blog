@@ -2,6 +2,7 @@
 title: จัดการ NGINX ได้อย่างสบายด้วยการแยกส่วน config อย่างเป็นระบบ
 subtitle: ไม่มี caption คิดไม่ออก ;-;
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-05-06T09:30:00.000Z"
 featured: false
 status: published

@@ -22,6 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
                     title
                     subtitle
                     status
+                    author
                   }
                 }
               }
@@ -82,6 +83,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: post.node.fields.slug,
             component: blogPost,
             context: {
+              author: post.node.frontmatter.author,
               slug: post.node.fields.slug,
               previous,
               next,

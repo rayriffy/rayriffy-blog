@@ -2,6 +2,7 @@
 title: Music Review - Halozy
 subtitle: บล็อกนี้ก็จะมารีวิววง Dojin Circle ที่ฟังเพลงเขาจนติดหูมาได้เกือบเดือนนึงแล้วนั่นก็คือ Halozy นั่นเอง
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-11-07T14:00:00.000Z"
 featured: false
 status: published

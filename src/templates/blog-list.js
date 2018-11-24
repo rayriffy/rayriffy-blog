@@ -105,10 +105,16 @@ class BlogIndex extends React.Component {
           title={siteTitle}
         />
         {posts.map(({ node }) => {
+          var author = null
+          this.props.data.allAuthorsJson.edges.forEach((authorJson) => {
+            if(authorJson.node.user === node.frontmatter.author) {
+              author = authorJson.node
+            }
+          })
           return (
             <Card
               slug={node.fields.slug}
-              author={siteAuthor}
+              author={author.name}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
@@ -153,6 +159,7 @@ export const pageQuery = graphql`
             subtitle
             status
             featured
+            author
             banner {
               childImageSharp {
                 fluid(maxWidth: 1000, quality: 100) {
@@ -168,6 +175,14 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    allAuthorsJson {
+      edges {
+        node {
+          user
+          name
         }
       }
     }

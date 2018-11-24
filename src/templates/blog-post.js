@@ -16,9 +16,11 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
-    const siteAuthor = this.props.data.site.siteMetadata.author
     const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
     const blogDescription = post.frontmatter.subtitle
+    const author = this.props.data.authorsJson
+
+    console.log(author)
 
     return (
       <Layout location={this.props.location}>
@@ -35,7 +37,7 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'author',
-              content: siteAuthor
+              content: author.name
             },
             {
               name: 'image',
@@ -67,7 +69,7 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'article:author',
-              content: 'https://facebook.com/rayriffy'
+              content: author.facebook
             },
             {
               name: 'article:published_time',
@@ -91,11 +93,11 @@ class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:site',
-              content: '@rayriffy'
+              content: author.twitter
             },
             {
               name: 'twitter:creator',
-              content: '@rayriffy'
+              content: author.twitter
             },
             {
               name: 'twitter:title',
@@ -129,7 +131,7 @@ class BlogPostTemplate extends React.Component {
               "backstory" : "${post.frontmatter.subtitle}",
               "author" : {
                 "@type" : "Person",
-                "name" : "${siteAuthor}"
+                "name" : "${author.name}"
               },
               "datePublished" : "${post.frontmatter.date}",
               "dateModified" : "${post.frontmatter.date}",
@@ -149,7 +151,7 @@ class BlogPostTemplate extends React.Component {
         </Helmet>
         <Card
           slug={post.fields.slug}
-          author={siteAuthor}
+          author={author.name}
           banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
@@ -194,7 +196,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $author: String!) {
     site {
       siteMetadata {
         title
@@ -229,6 +231,11 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    authorsJson(user: { eq: $author }) {
+      name
+      twitter
+      facebook
     }
   }
 `

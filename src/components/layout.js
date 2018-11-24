@@ -18,7 +18,7 @@ class Template extends React.Component {
     const { children } = this.props
     return (
       <div className={layoutStyle.page}>
-      {devstrip}
+        {devstrip}
         <div className={layoutStyle.cover}>
           <div className={[layoutStyle.container]}>
             <div className={[layoutStyle.header]}>

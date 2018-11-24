@@ -2,6 +2,7 @@
 title: The Stupid Hackathon Thailand 2 ที่มา Epic กว่าปีที่แล้ว
 subtitle: สร้างสิ่งของเพี้ยนๆ ที่ไม่มีใครต้องการ และทำไอเดียบ้าๆ บอๆ ให้กลายเป็นจริง! งาน Hackathon แบบกี๊คๆ ที่ไม่จำกัดไอเดีย ไม่เน้นฝั่งธุรกิจ แต่เน้นความสนุกสำหรับนักพัฒนาแบบเพียวๆ!!
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-08-29T02:23:00.000Z"
 featured: false
 status: published

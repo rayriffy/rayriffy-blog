@@ -2,6 +2,7 @@
 title: เลือกหา Docker Images ที่ถูกใจไม่ได้? เขียน Dockerfile เองเลยสิ
 subtitle: มาสอนสร้าง Dockerfile ครับ ;)
 banner: ./banner.jpg
+author: rayriffy
 date: "2018-05-22T23:24:53.000Z"
 featured: false
 status: published
