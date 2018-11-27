@@ -5,20 +5,14 @@ import pagStyle from './pagination.module.css'
 
 class Template extends React.Component {
   render() {
-    if (this.props.numPages < 5) {
+    if(this.props.currentPage > this.props.numPages) {
+      var pageslen = 5
+      var startfrom = (this.props.numPages - 5 > 0) ? this.props.numPages - 5 : 0
+    }
+    else {
       var pageslen = this.props.numPages
       var startfrom = 0
     }
-    else {
-      var pageslen = 5
-      var startfrom = this.props.currentPage - 3
-    }
-    if(this.props.currentPage > this.props.numPages) {
-      var pageslen = 5
-      var startfrom = this.props.numPages - 5
-    }
-    if (startfrom < 0)
-      var startfrom = 0
     return (
       <ul className={pagStyle.pagination}>
       {
