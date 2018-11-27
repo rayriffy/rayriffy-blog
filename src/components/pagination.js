@@ -5,18 +5,32 @@ import pagStyle from './pagination.module.css'
 
 class Template extends React.Component {
   render() {
+    if (this.props.numPages < 5) {
+      var pageslen = this.props.numPages
+      var startfrom = 0
+    }
+    else {
+      var pageslen = 5
+      var startfrom = this.props.currentPage - 3
+    }
+    if (startfrom < 0)
+      var startfrom = 0
+    if(this.props.currentPage + 2 > this.props.numPages) {
+      var pageslen = 5
+      var startfrom = this.props.numPages - 5
+    }
     return (
       <ul className={pagStyle.pagination}>
       {
-        Array.from({ length: this.props.numPages }, (_, i) => (
+        Array.from({ length: pageslen }, (_, i) => (
           <li
             key={`pagination-number${i + 1}`}
-            className={i + 1 === this.props.currentPage ? pagStyle.active : ''}
+            className={startfrom + i + 1 === this.props.currentPage ? pagStyle.active : ''}
           >
             <Link 
-              to={`/${i === 0 ? '' : 'pages/' + (i + 1)}`}
+              to={`/${startfrom + i === 0 ? '' : 'pages/' + (startfrom + i + 1)}`}
             >
-              {i + 1}
+              {startfrom + i + 1}
             </Link>
           </li>
         ))
