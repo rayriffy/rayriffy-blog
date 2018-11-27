@@ -13,12 +13,12 @@ class Template extends React.Component {
       var pageslen = 5
       var startfrom = this.props.currentPage - 3
     }
-    if (startfrom < 0)
-      var startfrom = 0
-    if(this.props.currentPage + 2 > this.props.numPages) {
+    if(this.props.currentPage > this.props.numPages) {
       var pageslen = 5
       var startfrom = this.props.numPages - 5
     }
+    if (startfrom < 0)
+      var startfrom = 0
     return (
       <ul className={pagStyle.pagination}>
       {
