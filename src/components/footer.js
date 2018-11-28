@@ -1,6 +1,6 @@
 import React from 'react'
 
-import footerStyle from '../components/footer.module.css'
+import footerStyle from './footer.module.css'
 
 class Template extends React.Component {
   render() {

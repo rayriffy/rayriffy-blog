@@ -1,6 +1,6 @@
 import React from 'react'
 
-import devStyle from '../components/dev.module.css'
+import devStyle from './dev.module.css'
 
 class Template extends React.Component {
   render() {
