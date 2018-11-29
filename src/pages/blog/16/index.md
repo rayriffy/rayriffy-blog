@@ -1,11 +1,11 @@
 ---
 title: Stack ร้อยล้าน ราคา Host 0 บาท!!!
-subtitle: เราจะมาอธิบายให้ฟังว่าจะทำ serverless แบบฟรีๆยังไง
+subtitle: เราจะมาอธิบายให้ฟังว่าจะทำ serverless แบบฟรีๆกันยังไง
 banner: ./banner.jpg
 author: rayriffy
 date: "2018-11-29T01:57:15.000Z"
-featured: false
-status: draft
+featured: true
+status: published
 ---
 
 สวัสดีครับ ตามหัวเรื่องเลยนะครับ ผมจะมาอธิบายการแปลง stack ทั้งหมดบน [rayriffy.com](https://rayriffy.com) ให้ hosting ได้ฟรีๆแบบไม่เสียเงินสักกะบาท (ไม่รวมค่า domain)
