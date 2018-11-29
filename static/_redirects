@@ -1,1 +1,2 @@
 https://rayriffy-blog.netlify.com/* https://blog.rayriffy.com/:splat 301!
+https://blog.rayriffy.com/post/* https://blog.rayriffy.com/blog/:splat 301!

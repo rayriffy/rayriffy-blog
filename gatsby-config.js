@@ -12,7 +12,7 @@ module.exports = {
   siteMetadata: {
     title: 'Riffy Blog',
     author: 'Phumrapee Limpianchop',
-    description: 'A fucking simple blog',
+    description: 'A blog made by nerds',
     siteUrl: `${hostname}`,
   },
   pathPrefix: '/',
