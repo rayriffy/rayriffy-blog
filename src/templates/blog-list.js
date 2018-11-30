@@ -103,7 +103,17 @@ class BlogIndex extends React.Component {
             },
           ]}
           title={siteTitle}
-        />
+        >
+          <script type="application/ld+json" data-react-helmet="true">
+            {`
+              {
+                "@context": "http://schema.org/",
+                "@type" : "Website",
+                "url" : "${siteUrl}"
+              }
+            `}
+          </script>
+        </Helmet>
         {posts.map(({ node }) => {
           var author = null
           this.props.data.allAuthorsJson.edges.forEach((authorJson) => {
