@@ -14,10 +14,7 @@ class Template extends React.Component {
         <Link to={this.props.slug}>
           <Img
             fluid={this.props.banner}
-            className={
-              (this.props.featured || this.props.status !== 'published') &&
-              cardStyle.banner
-            }
+            className={cardStyle.banner}
           />
         </Link>
       )
@@ -31,10 +28,7 @@ class Template extends React.Component {
       banner = (
         <Img
           fluid={this.props.banner}
-          className={
-            (this.props.featured || this.props.status !== 'published') &&
-            cardStyle.banner
-          }
+          className={cardStyle.banner}
         />
       )
       title = (
