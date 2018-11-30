@@ -118,30 +118,32 @@ class BlogPostTemplate extends React.Component {
         >
           <script type="application/ld+json" data-react-helmet="true">
             {`
-              "@context": "http://schema.org/",
-              "@type" : "Article",
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "${siteUrl}"
-              },
-              "name" : "${post.frontmatter.title}",
-              "headline" : "${post.frontmatter.title}",
-              "backstory" : "${post.frontmatter.subtitle}",
-              "author" : {
-                "@type" : "Person",
-                "name" : "${author.name}"
-              },
-              "datePublished" : "${post.frontmatter.date}",
-              "dateModified" : "${post.frontmatter.date}",
-              "image" : "${siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
-              "url" : "${siteUrl + post.fields.slug}",
-              "description" : "${post.frontmatter.subtitle}",
-              "publisher" : {
-                "@type" : "Organization",
-                "name" : "${siteTitle}",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "${siteUrl + '/icon.png'}"
+              {
+                "@context": "http://schema.org/",
+                "@type" : "Article",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "${siteUrl}"
+                },
+                "name" : "${post.frontmatter.title}",
+                "headline" : "${post.frontmatter.title}",
+                "backstory" : "${post.frontmatter.subtitle}",
+                "author" : {
+                  "@type" : "Person",
+                  "name" : "${author.name}"
+                },
+                "datePublished" : "${post.frontmatter.date}",
+                "dateModified" : "${post.frontmatter.date}",
+                "image" : "${siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
+                "url" : "${siteUrl + post.fields.slug}",
+                "description" : "${post.frontmatter.subtitle}",
+                "publisher" : {
+                  "@type" : "Organization",
+                  "name" : "${siteTitle}",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "${siteUrl + '/icon.png'}"
+                  }
                 }
               }
             `}
