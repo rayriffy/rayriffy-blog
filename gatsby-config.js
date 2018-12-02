@@ -17,6 +17,7 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    `gatsby-plugin-netlify-cache`,
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -45,6 +46,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
+        headers: {
+          "/*": [
+            "Access-Control-Allow-Origin: https://*.rayriffy.com"
+          ],
+        },
         output: `/sitemap.xml`,
         exclude: ["/pages/*"],
       }
