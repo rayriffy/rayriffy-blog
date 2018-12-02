@@ -94,7 +94,7 @@ exports.createPages = ({ graphql, actions }) => {
               {
                 "name": post.node.frontmatter.title,
                 "desc": post.node.frontmatter.subtitle,
-                "urls": siteUrl + post.node.fields.slug
+                "slug": siteUrl + post.node.fields.slug
               }
             )
           }
