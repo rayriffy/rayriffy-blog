@@ -119,7 +119,7 @@ class BlogIndex extends React.Component {
           this.props.data.allAuthorsJson.edges.forEach((authorJson) => {
             if(authorJson.node.user === node.frontmatter.author) {
               author = authorJson.node
-              return;
+              return
             }
           })
           return (
