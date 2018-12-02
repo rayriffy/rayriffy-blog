@@ -42,15 +42,19 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-netlify`,
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {
-          "/*": [
+          "/feed.json": [
             "Access-Control-Allow-Origin: https://*.rayriffy.com"
           ],
         },
+      }
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
         output: `/sitemap.xml`,
         exclude: ["/pages/*"],
       }
