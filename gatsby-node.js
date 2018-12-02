@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const Promise = require('bluebird')
-const fs = require('fs');
+const fs = require('fs')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
@@ -54,11 +54,11 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        const posts = result.data.allMarkdownRemark.edges;
+        const posts = result.data.allMarkdownRemark.edges
 
         // Create blog lists pages.
-        const postsPerPage = 5;
-        const numPages = Math.ceil(posts.length / postsPerPage);
+        const postsPerPage = 5
+        const numPages = Math.ceil(posts.length / postsPerPage)
 
         _.times(numPages, i => {
 
@@ -79,8 +79,8 @@ exports.createPages = ({ graphql, actions }) => {
               numPages,
               currentPage: i + 1
             },
-          });
-        });
+          })
+        })
 
         // Create blog posts pages.
         var count = 0
