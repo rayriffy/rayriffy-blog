@@ -47,7 +47,7 @@ module.exports = {
       options: {
         headers: {
           "/feed.json": [
-            "Access-Control-Allow-Origin: https://rayriffy.com,https://*.rayriffy.com"
+            "Access-Control-Allow-Origin: *"
           ],
         },
       }
