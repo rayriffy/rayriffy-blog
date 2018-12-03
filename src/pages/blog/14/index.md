@@ -5,6 +5,7 @@ banner: ./banner.jpg
 author: rayriffy
 date: "2018-11-18T17:03:00.000Z"
 featured: false
+type: blog
 status: published
 ---
 
