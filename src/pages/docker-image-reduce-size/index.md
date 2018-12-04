@@ -9,7 +9,7 @@ type: blog
 status: published
 ---
 
-คราวนี้ก็รู้ทั้ง[วิธีการใช้ Docker](https://blog.rayriffy.com/post/4) และ[วิธีการเขียน Dockerfile](https://blog.rayriffy.com/post/5) กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ **Storage** กันแล้ว
+คราวนี้ก็รู้ทั้ง[วิธีการใช้ Docker](https://blog.rayriffy.com/docker-beginner-guide) และ[วิธีการเขียน Dockerfile](https://blog.rayriffy.com/dockerfile-guide) กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ **Storage** กันแล้ว
 
 ก็สำหรับคนที่กำลังเขียน *Dockerfile* สำหรับ Application ทั้งของตัวเอง หรือว่าจะเป็นสำหรับบริษัทก็จะพบปัญหาเดียวกันว่า...
 
