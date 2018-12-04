@@ -1,2 +1,19 @@
 https://rayriffy-blog.netlify.com/* https://blog.rayriffy.com/:splat 301!
 https://blog.rayriffy.com/post/* https://blog.rayriffy.com/blog/:splat 301!
+
+https://blog.rayriffy.com/blog/1 https://blog.rayriffy.com/wildcard-ssl-lets-encrypt 301!
+https://blog.rayriffy.com/blog/2 https://blog.rayriffy.com/lemp-nginx-pagespeed 301!
+https://blog.rayriffy.com/blog/3 https://blog.rayriffy.com/nginx-modular-config 301!
+https://blog.rayriffy.com/blog/4 https://blog.rayriffy.com/docker-beginner-guide 301!
+https://blog.rayriffy.com/blog/5 https://blog.rayriffy.com/dockerfile-guide 301!
+https://blog.rayriffy.com/blog/6 https://blog.rayriffy.com/docker-image-reduce-size 301!
+https://blog.rayriffy.com/blog/7 https://blog.rayriffy.com/3yrs-mwit 301!
+https://blog.rayriffy.com/blog/8 https://blog.rayriffy.com/vocaloid-101 301!
+https://blog.rayriffy.com/blog/9 https://blog.rayriffy.com/vscode-c 301!
+https://blog.rayriffy.com/blog/10 https://blog.rayriffy.com/review-the-stupid-hackathon-th-2 301!
+https://blog.rayriffy.com/blog/11 https://blog.rayriffy.com/sync-mobile-windows10 301!
+https://blog.rayriffy.com/blog/12 https://blog.rayriffy.com/dockerized-web 301!
+https://blog.rayriffy.com/blog/13 https://blog.rayriffy.com/review-halozy 301!
+https://blog.rayriffy.com/blog/14 https://blog.rayriffy.com/custom-url-shortener 301!
+https://blog.rayriffy.com/blog/15 https://blog.rayriffy.com/review-if-my-heart-had-wings 301!
+https://blog.rayriffy.com/blog/16 https://blog.rayriffy.com/free-hosting-stack 301!

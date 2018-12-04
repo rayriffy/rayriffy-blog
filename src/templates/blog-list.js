@@ -157,7 +157,7 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip, filter: { fields: { slug: { regex: "^/blog/" } } , frontmatter: { status: { ne: $status } } }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip, filter: { frontmatter: { status: { ne: $status }, type: { eq: "blog" } } }) {
       edges {
         node {
           excerpt
