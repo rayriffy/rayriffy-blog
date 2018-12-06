@@ -23,31 +23,7 @@ class Template extends React.Component {
           <div className={[layoutStyle.container]}>
             <div className={[layoutStyle.header]}>
               <Link to={'/'}>
-                <StaticQuery
-                  query={graphql`
-                    query LogoQuery {
-                      logo: file(relativePath: { eq: "logo.png" }) {
-                        childImageSharp {
-                          fluid(maxWidth: 150, quality: 100) {
-                            base64
-                            tracedSVG
-                            aspectRatio
-                            src
-                            srcSet
-                            srcWebp
-                            srcSetWebp
-                            sizes
-                          }
-                        }
-                      }
-                    }
-                  `}
-                  render={data => (
-                    <Img
-                      fluid={data.logo.childImageSharp.fluid}
-                    />
-                  )}
-                />
+                <img src="/header.png" />
               </Link>
             </div>
             {children}
