@@ -4,7 +4,6 @@ os:
   - linux
 
 node_js:
-  - "node"
   - "lts/*"
   - "8"
 
