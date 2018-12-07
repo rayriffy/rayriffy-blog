@@ -80,7 +80,7 @@ module.exports = {
       options: {
         plugins: [
           "gatsby-remark-embed-spotify",
-          "gatsby-remark-embed-video",
+          "riffy-gjs-embeded-video",
           {
             resolve: "gatsby-remark-embed-gist",
             options: {

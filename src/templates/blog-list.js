@@ -125,7 +125,7 @@ class BlogIndex extends React.Component {
           return (
             <Card
               slug={node.fields.slug}
-              author={author.name}
+              author={author}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
@@ -194,6 +194,7 @@ export const pageQuery = graphql`
         node {
           user
           name
+          facebook
         }
       }
     }
