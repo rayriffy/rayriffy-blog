@@ -9,4 +9,6 @@ type: blog
 status: draft
 ---
 
+> Banner Credit [pixiv](https://www.pixiv.net/member_illust.php?mode=medium&illust_id=52048973)
+
 `niconico: sm19165284`
