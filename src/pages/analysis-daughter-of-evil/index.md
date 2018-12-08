@@ -80,3 +80,11 @@ status: draft
 > "โอ้ว! ได้เวลาของว่างแล้วสิ"
 
 และแล้วเจ้าหญิงก็ได้ถูกประหารลง แล้วทุกอย่างก็จบลงอย่างดี....รึเปล่า?
+
+## Analysis
+
+เพลงนี้จะเป็นเพลงแรกใน Series ของ [Story of Evil](http://vocaloid.wikia.com/wiki/Story_of_Evil) จะมีเพลงอยู่ทั้งหมด 7 เพลงด้วยกัน โดยผู้แต่งก็คือ [Akuno-P](http://mothy.blog39.fc2.com/)
+
+ในเพลงนี้จะอธิบายเรื่องราวโดยคร่าวๆของการปกครองอันแสนโหดร้ายของ**เจ้าหญิง Riliane Lucifen d'Autriche**
+
+แต่ที่น่าสนใจคือเรื่องราวบางส่วนจากเพลงนี้เชื่อมต่อกับ Series [Seven Deadly Sins](http://vocaloid.wikia.com/wiki/Seven_Deadly_Sins) ด้วย!
