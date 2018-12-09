@@ -9,7 +9,7 @@ class Template extends React.Component {
     return (
       <div className={footerStyle.footer}>
         <center>
-          Made with <img src={imgUrl} className={footerStyle.image} alt='love' /> by <a href={faceUrl}>RayRiffy</a>
+          This site built with <img src={imgUrl} className={footerStyle.image} alt='love' /> by <a href={faceUrl} target="_blank">RayRiffy</a>
         </center>
       </div>
     )
