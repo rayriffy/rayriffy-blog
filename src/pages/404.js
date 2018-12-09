@@ -19,7 +19,7 @@ class NotFoundPage extends React.Component {
         <Card
           banner={this.props.data.banner.childImageSharp.fluid}
           title='NOT FOUND'
-          subtitle='Whoops! Looks like you You&#39;re living off the edge of space.'
+          subtitle='Whoops! Looks like you&#39;re living off the edge of space.'
           link={false}
         >
         <a href="/">Back to home</a>
