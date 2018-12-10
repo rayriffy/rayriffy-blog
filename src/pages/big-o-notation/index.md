@@ -145,7 +145,7 @@ function merge (left, right) {
       indexLeft++
     } else {
       result.push(right[indexRight])
-      indexRight++
+      indexRight++ 
     }
   }
 
@@ -205,9 +205,10 @@ function fib (n) {
 
 ตัวอย่างที่เห็นชัดสัสๆก็จะเป็นลูปซ้อนเยอะๆรันนานๆ
 
-```c
-void facRuntime (int n) {
-  for (int i = 0 ; i < n ; i++) {
+```javascript
+function facRuntime (n) {
+  var i
+  for (i = 0 ; i < n ; i++) {
     facRuntime (n - 1);
   }
 }
@@ -227,18 +228,18 @@ void facRuntime (int n) {
 
 1. ถ้ามี *Nested Loop* ให้เอา Big O แต่ละ Loop **มาคูณ**กัน
 2. ถ้าเป็น *Loop ที่อยู่ในระดับเดียวกัน* ให้เอา Big O **มาบวก**กัน
-3. พอรวมเสร็จแล้วจะมี Big O ให้ดูอยู่หลายอัน ให้ดูแค่ **ตัวที่แย่ที่สุด** เพราะตามที่เคยบอก ในเรื่อง Big O Notation เราจะสนใจแค่ Wrost Case เท่านั้น สมมุติว่าได้มาเป็น `O(n^3) + O(1) + O(n log n)` เราจะได้ Big O มาเป็น `O(n^3)` ถ้าไม่รู้จะตัดอะไรก็ย้อนไปดูกราฟซะ!!!
-4. Big O ไหนเป็น *constant* ให้ช่างแม่ง Why? ย้อนไปดูข้อ 3
+3. พอรวมเสร็จแล้วจะมี Big O ให้ดูอยู่หลายอัน ให้ดูแค่ **ตัวที่แย่ที่สุด** เพราะตามที่เคยบอก ในเรื่อง Big O Notation เราจะสนใจแค่ Wrost Case เท่านั้น สมมุติว่าได้มาเป็น `O(n^2) + O(n) + O(n log n)` เราจะได้ Big O มาเป็น `O(n^2)` ถ้าไม่รู้จะตัดอะไรก็ย้อนไปดูกราฟซะ!!!
+4. Big O ไหนเป็น *constant* ให้ช่างแม่ง
 5. คำสั่ง conditional เช่น *if, switch หรือ operator* ถือว่าเป็น **constant**
 6. ถ้ามีการเรียก *function* ให้**คำนวณ Big O ใน function**เพิ่มด้วย
 
 ### ตัวอย่างที่ 1
 
 ```
-for(j=1; j<=n; j++) {
-  for(k=1; k<=n; k++) {
+for (j = 1 ; j <= n ; j++) {
+  for(k = 1 ; k <= n ; k++) {
     c[j][k] = 1;
-    for(l=1; l<=n; l++) {
+    for(l = 1 ; l <= n ; l++) {
       c[j][k] = c[j][k] * b[l][k];
     }
   }
@@ -250,8 +251,8 @@ for(j=1; j<=n; j++) {
 ### ตัวอย่างที่ 2
 
 ```
-for(int i = 0; i < n; i++) {
-  for(int j = 1; j <= n; j *= 2) {
+for (int i = 0 ; i < n ; i++) {
+  for(int j = 1 ; j <= n ; j *= 2) {
     // do constant algorithm
   }
 }
