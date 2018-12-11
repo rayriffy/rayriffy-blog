@@ -4,7 +4,7 @@ subtitle: เราจะมาอธิบายให้ฟังว่าจ�
 banner: ./banner.jpg
 author: rayriffy
 date: "2018-11-29T01:57:15.000Z"
-featured: true
+featured: false
 type: blog
 status: published
 ---
