@@ -3,10 +3,10 @@ title: เข้าใจ Big O Notation แบบไฟลุกตีนไห
 subtitle: เจอคนใช้ลูป for 5 ชั้นเข้าไปนี่ปวดหัวเลย
 banner: ./banner.jpg
 author: rayriffy
-date: "2018-12-21T04:30:00.000Z"
+date: "2018-12-11T03:40:00.000Z"
 featured: false
 type: blog
-status: draft
+status: published
 ---
 
 Big O Notation เป็นหนึ่งในความรู้ที่สำคัญมากใน Computer Science นิยามของมันก็ง่ายแสนง่าย นั่นก็คือ...
