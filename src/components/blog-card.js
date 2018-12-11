@@ -55,7 +55,7 @@ class Template extends React.Component {
           {
             (this.props.date && this.props.author) &&
             <div className={cardStyle.meta}>
-              Written by {this.props.author} on {this.props.date}
+              Written by <a href={this.props.author.facebook} target="_blank">{this.props.author.name}</a> on {this.props.date}
             </div>
           }
           {

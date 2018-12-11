@@ -14,7 +14,9 @@ h6 {
   margin: 35px 0 25px 0;
 }
 
-p {
+p,
+ol,
+table {
   color: #6f6f6f
 }
 
@@ -94,10 +96,14 @@ pre {
 
 .meta {
   color: #A5A5A5;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 20px;
   margin-bottom: 25px;
   margin-top: 25px;
+}
+
+.meta>a {
+  color: #757575;
 }
 
 .slug {

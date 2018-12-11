@@ -151,7 +151,7 @@ class BlogPostTemplate extends React.Component {
         </Helmet>
         <Card
           slug={post.fields.slug}
-          author={author.name}
+          author={author}
           banner={post.frontmatter.banner.childImageSharp.fluid}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
