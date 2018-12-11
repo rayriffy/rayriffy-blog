@@ -4,7 +4,7 @@ subtitle: เจอคนใช้ลูป for 5 ชั้นเข้าไป
 banner: ./banner.jpg
 author: rayriffy
 date: "2018-12-11T03:40:00.000Z"
-featured: false
+featured: true
 type: blog
 status: published
 ---
