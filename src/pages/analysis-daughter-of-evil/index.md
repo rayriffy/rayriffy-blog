@@ -2,7 +2,7 @@
 title: Music Analysis - Daughter of Evil
 subtitle: บทเริ่มต้นของ Story of Evil กับอาณาจักรที่ปกครองด้วยเจ้าหญิงอายุ 14 ปี
 banner: ./banner.jpg
-author: rayriffy
+author: SiriuSStarS
 date: "2018-12-14T04:30:00.000Z"
 featured: false
 type: blog
@@ -85,6 +85,8 @@ status: draft
 
 เพลงนี้จะเป็นเพลงแรกใน Series ของ [Story of Evil](http://vocaloid.wikia.com/wiki/Story_of_Evil) จะมีเพลงอยู่ทั้งหมด 7 เพลงด้วยกัน โดยผู้แต่งก็คือ [Akuno-P](http://mothy.blog39.fc2.com/)
 
-ในเพลงนี้จะอธิบายเรื่องราวโดยคร่าวๆของการปกครองอันแสนโหดร้ายของ**เจ้าหญิง Riliane Lucifen d'Autriche**
+ในเพลงนี้จะอธิบายเรื่องราวโดยคร่าวๆของการปกครองอันแสนโหดร้ายของ**เจ้าหญิง Riliane Lucifen d'Autriche** (เรียกสั้นๆว่า Riliane ก็ได้)
 
 แต่ที่น่าสนใจคือเรื่องราวบางส่วนจากเพลงนี้เชื่อมต่อกับ Series [Seven Deadly Sins](http://vocaloid.wikia.com/wiki/Seven_Deadly_Sins) ด้วย!
+
+ตัวเนื้อเรื่องเองนั้นถ้าอ่านดูดีๆมันจะใกล้เคียงกับ[เหตุการณ์ปฏิวัติฝรั่งเศส](https://en.wikipedia.org/wiki/French_Revolution) อยู่ระดับนึง ก็ไม่รู้ว่าตัวเพลงได้ไอเดียมาจากอันนี้รึเปล่า
