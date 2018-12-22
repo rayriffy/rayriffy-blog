@@ -16,7 +16,6 @@ export default class TagTemplate extends React.Component {
     const posts = this.props.data.allMarkdownRemark.edges
     const categoryName = this.props.data.categoriesJson.name
     const categoryDescription = this.props.data.categoriesJson.desc
-    // const { category } = this.props.pageContext
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -24,11 +23,11 @@ export default class TagTemplate extends React.Component {
           meta={[
             {
               name: 'name',
-              content: siteTitle
+              content: categoryName
             },
             {
               name: 'description',
-              content: siteDescription
+              content: categoryDescription
             },
             {
               name: 'author',
@@ -92,11 +91,11 @@ export default class TagTemplate extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: siteTitle
+              content: categoryName
             },
             {
               name: 'twitter:description',
-              content: siteDescription
+              content: categoryDescription
             },
             {
               name: 'twitter:image',

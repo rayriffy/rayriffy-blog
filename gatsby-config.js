@@ -78,7 +78,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-categories",
       options: {
-        templatePath: `${__dirname}/src/templates/blog-category.js`,
+        templatePath: `${__dirname}/src/templates/category.js`,
       }
     },
     {
