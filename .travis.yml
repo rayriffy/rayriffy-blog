@@ -8,5 +8,5 @@ node_js:
   - "8"
 
 script:
-  - npm install
-  - npm run lint
+  - yarn install
+  - yarn run lint
