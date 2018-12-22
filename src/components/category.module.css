@@ -1,0 +1,12 @@
+.container {
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.subtitle {
+  color: #6f6f6f;
+  font-size: 18px;
+}
