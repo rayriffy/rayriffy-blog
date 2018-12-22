@@ -225,5 +225,5 @@ CategoryTemplate.propTypes = {
       desc: PropTypes.string,
     }),
   }),
-  location: PropTypes.string,
+  location: PropTypes.object,
 }

@@ -71,7 +71,7 @@ Template.propTypes = {
     twitter: PropTypes.string,
   }),
   banner: PropTypes.object,
-  children: PropTypes.array,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   date: PropTypes.string,
   featured: PropTypes.bool,
   link: PropTypes.bool,

@@ -258,5 +258,5 @@ BlogPostTemplate.propTypes = {
     next: PropTypes.object,
     previous: PropTypes.object,
   }),
-  location: PropTypes.string,
+  location: PropTypes.object,
 }

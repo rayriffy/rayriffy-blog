@@ -225,5 +225,5 @@ BlogIndex.propTypes = {
     currentPage: PropTypes.number,
     numPages: PropTypes.number,
   }),
-  location: PropTypes.string,
+  location: PropTypes.object,
 }

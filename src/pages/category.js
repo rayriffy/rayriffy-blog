@@ -345,5 +345,5 @@ CategoryList.propTypes = {
       edges: PropTypes.array,
     }),
   }),
-  location: PropTypes.string,
+  location: PropTypes.object,
 }

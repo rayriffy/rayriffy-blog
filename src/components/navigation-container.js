@@ -13,5 +13,5 @@ class Template extends React.Component {
 export default Template
 
 Template.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 }
