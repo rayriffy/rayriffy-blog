@@ -2,6 +2,7 @@
 title: มาหัดลองใช้งาน Docker กันเถอะ
 subtitle: เข้าใจว่าวางหลายๆ Application ในที่เดียวมันปวดหัว ให้ Docker ช่วยท่านเอง
 banner: ./banner.jpg
+category: tutorial
 author: rayriffy
 date: "2018-05-16T22:30:00.000Z"
 featured: false

@@ -2,6 +2,7 @@
 title: Review - Actions on Google Hackathon Thailand
 subtitle: ทีมมาไม่เต็มร้อยทุกคน แต่ดันได้รางวัลเฉย
 banner: ./banner.jpg
+category: review
 author: rayriffy
 date: "2018-12-21T10:02:00.000Z"
 featured: false

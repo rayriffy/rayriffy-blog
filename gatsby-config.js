@@ -31,7 +31,7 @@ module.exports = {
         resolveEnv: () => process.env.GATSBY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*', disallow: ['/pages'] }]
+            policy: [{ userAgent: '*', disallow: ['/pages','/category'] }]
           },
           staging: {
             policy: [{ userAgent: '*', disallow: ['/'] }]
@@ -56,7 +56,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        exclude: ["/pages/*"],
+        exclude: ["/pages/*", "/category", "/category/*"],
       }
     },
     {
@@ -74,6 +74,12 @@ module.exports = {
         name: 'assets',
         ignore: [`**/\.*`],
       },
+    },
+    {
+      resolve: "gatsby-plugin-categories",
+      options: {
+        templatePath: `${__dirname}/src/templates/category.js`,
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,

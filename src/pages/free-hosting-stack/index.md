@@ -2,6 +2,7 @@
 title: Stack ร้อยล้าน ราคา Host 0 บาท!!!
 subtitle: เราจะมาอธิบายให้ฟังว่าจะทำ serverless แบบฟรีๆกันยังไง
 banner: ./banner.jpg
+category: tutorial
 author: rayriffy
 date: "2018-11-29T01:57:15.000Z"
 featured: false

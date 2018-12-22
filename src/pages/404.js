@@ -11,7 +11,7 @@ class NotFoundPage extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
-      <Layout logo={this.props.data.logo.childImageSharp.fluid}>
+      <Layout>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           title={'Not Found · ' + siteTitle}
@@ -41,20 +41,6 @@ export const pageQuery = graphql`
     banner: file(relativePath: { eq: "404.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000, quality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
-        }
-      }
-    }
-    logo: file(relativePath: { eq: "logo.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 150, quality: 100) {
           base64
           tracedSVG
           aspectRatio

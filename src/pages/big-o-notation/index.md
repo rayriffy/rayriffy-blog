@@ -2,6 +2,7 @@
 title: เข้าใจ Big O Notation แบบไฟลุกตีนไหม้
 subtitle: เจอคนใช้ลูป for 5 ชั้นเข้าไปนี่ปวดหัวเลย
 banner: ./banner.jpg
+category: programming
 author: rayriffy
 date: "2018-12-11T03:40:00.000Z"
 featured: true
