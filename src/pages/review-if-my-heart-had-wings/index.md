@@ -2,6 +2,7 @@
 title: Novel Review - If My Heart Had Wings
 subtitle: Extend the little wings which fly in this sky highly 
 banner: ./banner.jpg
+category: review
 author: rayriffy
 date: "2018-11-24T04:03:00.000Z"
 featured: false

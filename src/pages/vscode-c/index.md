@@ -2,6 +2,7 @@
 title: เบื่อเขียน C/C++ บน CodeBlocks มั้ย? ย้ายค่ายมาใช้ VS Code กัน~
 subtitle: ย้ายค่ายมา VS Code ภายใน 10 นาทีนี้รับไปเลยฟรี! ความ Universal ที่ไม่ได้เขียนได้แค่ C/C++
 banner: ./banner.jpg
+category: tutorial
 author: rayriffy
 date: "2018-06-27T00:30:00.000Z"
 featured: false

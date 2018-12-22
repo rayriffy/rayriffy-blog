@@ -2,6 +2,7 @@
 title: เพิ่มความสะดวกสบายให้กับชีวิต (?) Sync notification, file เกือบทุกอย่างกับ Windows 10
 subtitle: Sync แม่งทุกอย่าง!!!!!
 banner: ./banner.jpg
+category: tutorial
 author: rayriffy
 date: "2018-09-06T02:00:00.000Z"
 featured: false
