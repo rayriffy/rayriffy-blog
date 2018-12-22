@@ -31,7 +31,7 @@ module.exports = {
         resolveEnv: () => process.env.GATSBY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*', disallow: ['/pages'] }]
+            policy: [{ userAgent: '*', disallow: ['/pages','/category'] }]
           },
           staging: {
             policy: [{ userAgent: '*', disallow: ['/'] }]
@@ -56,7 +56,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        exclude: ["/pages/*"],
+        exclude: ["/pages/*", "/category", "/category/*"],
       }
     },
     {
