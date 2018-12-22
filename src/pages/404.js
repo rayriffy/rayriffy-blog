@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 
@@ -13,16 +14,15 @@ class NotFoundPage extends React.Component {
     return (
       <Layout>
         <Helmet
-          htmlAttributes={{ lang: 'en' }}
+          htmlAttributes={{lang: 'en'}}
           title={'Not Found · ' + siteTitle}
         />
         <Card
           banner={this.props.data.banner.childImageSharp.fluid}
-          title='NOT FOUND'
-          subtitle='Whoops! Looks like you&#39;re lost in the woods...with Cirno.'
-          link={false}
-        >
-        <a href="/">Back to home</a>
+          title="NOT FOUND"
+          subtitle="Whoops! Looks like you&#39;re lost in the woods...with Cirno."
+          link={false}>
+          <a href="/">Back to home</a>
         </Card>
       </Layout>
     )
@@ -38,7 +38,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    banner: file(relativePath: { eq: "404.jpg" }) {
+    banner: file(relativePath: {eq: "404.jpg"}) {
       childImageSharp {
         fluid(maxWidth: 1000, quality: 100) {
           base64
@@ -54,3 +54,14 @@ export const pageQuery = graphql`
     }
   }
 `
+
+NotFoundPage.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+    banner: PropTypes.object,
+  }),
+}

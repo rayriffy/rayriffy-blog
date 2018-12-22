@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import categoryStyle from './category.module.css'
 
@@ -14,3 +15,8 @@ class Template extends React.Component {
 }
 
 export default Template
+
+Template.propTypes = {
+  name: PropTypes.string,
+  desc: PropTypes.string,
+}

@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class HTML extends React.Component {
   render() {
@@ -12,22 +12,28 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" />
-          <link href="/icon.png" rel="shortcut icon" type="image/png"></link>
-          <link href="/icon.png" rel="apple-touch-icon-precomposed"></link>
+          <link
+            href="https://fonts.googleapis.com/css?family=Kanit"
+            rel="stylesheet"
+          />
+          <link href="/icon.png" rel="shortcut icon" type="image/png" />
+          <link href="/icon.png" rel="apple-touch-icon-precomposed" />
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>
           <noscript>
-            For full functionality of this site it is necessary to enable JavaScript.
-            Here are the <a href="https://www.enable-javascript.com/">
-            instructions how to enable JavaScript in your web browser</a>.
+            For full functionality of this site it is necessary to enable
+            JavaScript. Here are the
+            <a href="https://www.enable-javascript.com/">
+              instructions how to enable JavaScript in your web browser
+            </a>
+            .
           </noscript>
           {this.props.preBodyComponents}
           <div
             key={`body`}
             id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
+            dangerouslySetInnerHTML={{__html: this.props.body}}
           />
           {this.props.postBodyComponents}
         </body>

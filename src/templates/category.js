@@ -1,109 +1,108 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
 import Category from '../components/category'
 
-export default class TagTemplate extends React.Component {
+export default class CategoryTemplate extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
     const categoryName = this.props.data.categoriesJson.name
     const categoryDescription = this.props.data.categoriesJson.desc
     return (
       <Layout location={this.props.location}>
         <Helmet
-          htmlAttributes={{ lang: 'en' }}
+          htmlAttributes={{lang: 'en'}}
           meta={[
             {
               name: 'name',
-              content: categoryName
+              content: categoryName,
             },
             {
               name: 'description',
-              content: categoryDescription
+              content: categoryDescription,
             },
             {
               name: 'author',
-              content: siteAuthor
+              content: siteAuthor,
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg'
+              content: siteUrl + '/default.jpg',
             },
             {
               name: 'og:url',
-              content: siteUrl
+              content: siteUrl,
             },
             {
               name: 'og:type',
-              content: 'article'
+              content: 'article',
             },
             {
               name: 'og:locale',
-              content: 'th_TH'
+              content: 'th_TH',
             },
             {
               name: 'og:locale:alternate',
-              content: 'en_US'
+              content: 'en_US',
             },
             {
               name: 'og:title',
-              content: categoryName
+              content: categoryName,
             },
             {
               name: 'og:description',
-              content: categoryDescription
+              content: categoryDescription,
             },
             {
               name: 'article:author',
-              content: 'https://facebook.com/rayriffy'
+              content: 'https://facebook.com/rayriffy',
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg'
+              content: siteUrl + '/default.jpg',
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg'
+              content: siteUrl + '/default.jpg',
             },
             {
               name: 'og:image:alt',
-              content: 'banner'
+              content: 'banner',
             },
             {
               name: 'twitter:card',
-              content: 'summary_large_image'
+              content: 'summary_large_image',
             },
             {
               name: 'twitter:site',
-              content: '@rayriffy'
+              content: '@rayriffy',
             },
             {
               name: 'twitter:creator',
-              content: '@rayriffy'
+              content: '@rayriffy',
             },
             {
               name: 'twitter:title',
-              content: categoryName
+              content: categoryName,
             },
             {
               name: 'twitter:description',
-              content: categoryDescription
+              content: categoryDescription,
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg'
+              content: siteUrl + '/default.jpg',
             },
           ]}
-          title={`${categoryName} · ${siteTitle}`}
-        >
+          title={`${categoryName} · ${siteTitle}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -114,20 +113,18 @@ export default class TagTemplate extends React.Component {
             `}
           </script>
         </Helmet>
-        <Category
-          name={categoryName}
-          desc={categoryDescription}
-        />
-        {posts.map(({ node }) => {
+        <Category name={categoryName} desc={categoryDescription} />
+        {posts.map(({node}) => {
           var author = null
-          this.props.data.allAuthorsJson.edges.forEach((authorJson) => {
-            if(authorJson.node.user === node.frontmatter.author) {
+          this.props.data.allAuthorsJson.edges.forEach(authorJson => {
+            if (authorJson.node.user === node.frontmatter.author) {
               author = authorJson.node
-              return
+              return true
             }
           })
           return (
             <Card
+              key={node.fields.slug}
               slug={node.fields.slug}
               author={author}
               banner={node.frontmatter.banner.childImageSharp.fluid}
@@ -141,7 +138,7 @@ export default class TagTemplate extends React.Component {
           )
         })}
       </Layout>
-    );
+    )
   }
 }
 
@@ -155,7 +152,10 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, filter: { frontmatter: { category: { eq: $category } } }) {
+    allMarkdownRemark(
+      sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {category: {eq: $category}}}
+    ) {
       totalCount
       edges {
         node {
@@ -197,9 +197,33 @@ export const pageQuery = graphql`
         }
       }
     }
-    categoriesJson(key: { eq: $category }) {
+    categoriesJson(key: {eq: $category}) {
       name
       desc
     }
   }
-`;
+`
+
+CategoryTemplate.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        author: PropTypes.string,
+        description: PropTypes.string,
+        title: PropTypes.string,
+        siteUrl: PropTypes.string,
+      }),
+    }),
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
+    allAuthorsJson: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
+    categoriesJson: PropTypes.shape({
+      name: PropTypes.string,
+      desc: PropTypes.string,
+    }),
+  }),
+  location: PropTypes.string,
+}

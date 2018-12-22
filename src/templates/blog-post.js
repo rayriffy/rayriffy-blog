@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 
 import Layout from '../components/layout'
-import { rhythm, scale } from '../utils/typography'
+import {rhythm} from '../utils/typography'
 import Navigation from '../components/navigation'
 import NavigationContainer from '../components/navigation-container'
 import NavigationItem from '../components/navigation-item'
@@ -13,7 +14,7 @@ import Card from '../components/blog-card'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const { previous, next } = this.props.pageContext
+    const {previous, next} = this.props.pageContext
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
@@ -23,99 +24,102 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <Helmet
-          htmlAttributes={{ lang: 'en' }}
+          htmlAttributes={{lang: 'en'}}
           meta={[
             {
               name: 'name',
-              content: post.frontmatter.title + '·' + siteTitle
+              content: post.frontmatter.title + '·' + siteTitle,
             },
             {
               name: 'description',
-              content: blogDescription
+              content: blogDescription,
             },
             {
               name: 'author',
-              content: author.name
+              content: author.name,
             },
             {
               name: 'image',
-              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
               name: 'og:url',
-              content: blogUrl
+              content: blogUrl,
             },
             {
               name: 'og:type',
-              content: 'article'
+              content: 'article',
             },
             {
               name: 'og:locale',
-              content: 'th_TH'
+              content: 'th_TH',
             },
             {
               name: 'og:locale:alternate',
-              content: 'en_US'
+              content: 'en_US',
             },
             {
               name: 'og:title',
-              content: post.frontmatter.title
+              content: post.frontmatter.title,
             },
             {
               name: 'og:description',
-              content: blogDescription
+              content: blogDescription,
             },
             {
               name: 'article:author',
-              content: author.facebook
+              content: author.facebook,
             },
             {
               name: 'article:published_time',
-              content: post.frontmatter.date
+              content: post.frontmatter.date,
             },
             {
               name: 'og:image',
-              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
               name: 'og:image:alt',
-              content: 'banner'
+              content: 'banner',
             },
             {
               name: 'twitter:card',
-              content: 'summary_large_image'
+              content: 'summary_large_image',
             },
             {
               name: 'twitter:site',
-              content: author.twitter
+              content: author.twitter,
             },
             {
               name: 'twitter:creator',
-              content: author.twitter
+              content: author.twitter,
             },
             {
               name: 'twitter:title',
-              content: post.frontmatter.title
+              content: post.frontmatter.title,
             },
             {
               name: 'twitter:description',
-              content: blogDescription
+              content: blogDescription,
             },
             {
               name: 'twitter:image',
-              content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
               name: 'google',
-              content: 'nositelinkssearchbox' 
+              content: 'nositelinkssearchbox',
             },
           ]}
-          title={`${post.frontmatter.title} · ${siteTitle}`}
-        >
+          title={`${post.frontmatter.title} · ${siteTitle}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -134,7 +138,8 @@ class BlogPostTemplate extends React.Component {
                 },
                 "datePublished" : "${post.frontmatter.date}",
                 "dateModified" : "${post.frontmatter.date}",
-                "image" : "${siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
+                "image" : "${siteUrl +
+                  post.frontmatter.banner.childImageSharp.fluid.src}",
                 "url" : "${siteUrl + post.fields.slug}",
                 "description" : "${post.frontmatter.subtitle}",
                 "publisher" : {
@@ -157,9 +162,8 @@ class BlogPostTemplate extends React.Component {
           date={post.frontmatter.date}
           featured={post.frontmatter.featured}
           status={post.frontmatter.status}
-          link={false}
-        >
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          link={false}>
+          <div dangerouslySetInnerHTML={{__html: post.html}} />
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -167,24 +171,22 @@ class BlogPostTemplate extends React.Component {
           />
           <Navigation>
             <NavigationContainer>
-              {
-                previous &&
+              {previous && (
                 <NavigationItem
                   slug={previous.fields.slug}
-                  meta='previous'
+                  meta="previous"
                   title={previous.frontmatter.title}
                 />
-              }
+              )}
             </NavigationContainer>
             <NavigationContainer>
-              {
-                next &&
+              {next && (
                 <NavigationItem
                   slug={next.fields.slug}
-                  meta='next'
+                  meta="next"
                   title={next.frontmatter.title}
                 />
-              }
+              )}
             </NavigationContainer>
           </Navigation>
         </Card>
@@ -204,7 +206,7 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
       id
       html
       fields {
@@ -232,10 +234,29 @@ export const pageQuery = graphql`
         }
       }
     }
-    authorsJson(user: { eq: $author }) {
+    authorsJson(user: {eq: $author}) {
       name
       twitter
       facebook
     }
   }
 `
+
+BlogPostTemplate.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        author: PropTypes.string,
+        title: PropTypes.string,
+        siteUrl: PropTypes.string,
+      }),
+    }),
+    markdownRemark: PropTypes.object,
+    authorsJson: PropTypes.object,
+  }),
+  pageContext: PropTypes.shape({
+    next: PropTypes.object,
+    previous: PropTypes.object,
+  }),
+  location: PropTypes.string,
+}

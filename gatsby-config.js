@@ -1,11 +1,11 @@
+var hostname
+
 if (process.env.GATSBY_ENV === 'production') {
-  var hostname = 'https://blog.rayriffy.com'
-}
-else if (process.env.GATSBY_ENV === 'staging') {
-  var hostname = 'https://blog-staging.rayriffy.com'
-}
-else if (process.env.GATSBY_ENV === 'development') {
-  var hostname = 'https://localhost:8000'
+  hostname = 'https://blog.rayriffy.com'
+} else if (process.env.GATSBY_ENV === 'staging') {
+  hostname = 'https://blog-staging.rayriffy.com'
+} else if (process.env.GATSBY_ENV === 'development') {
+  hostname = 'https://localhost:8000'
 }
 
 module.exports = {
@@ -31,40 +31,38 @@ module.exports = {
         resolveEnv: () => process.env.GATSBY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*', disallow: ['/pages','/category'] }]
+            policy: [{userAgent: '*', disallow: ['/pages', '/category']}],
           },
           staging: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
+            policy: [{userAgent: '*', disallow: ['/']}],
           },
           development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
-          }
-        }
-      }
+            policy: [{userAgent: '*', disallow: ['/']}],
+          },
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {
-          "/feed.json": [
-            "Access-Control-Allow-Origin: *"
-          ],
+          '/feed.json': ['Access-Control-Allow-Origin: *'],
         },
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        exclude: ["/pages/*", "/category", "/category/*"],
-      }
+        exclude: ['/pages/*', '/category', '/category/*'],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
-        ignore: [`**/\.*`],
+        ignore: [`**/.*`],
       },
     },
     {
@@ -72,27 +70,27 @@ module.exports = {
       options: {
         path: `${__dirname}/src/assets`,
         name: 'assets',
-        ignore: [`**/\.*`],
+        ignore: [`**/.*`],
       },
     },
     {
-      resolve: "gatsby-plugin-categories",
+      resolve: 'gatsby-plugin-categories',
       options: {
         templatePath: `${__dirname}/src/templates/category.js`,
-      }
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          "gatsby-remark-embed-spotify",
-          "riffy-gjs-embeded-video",
+          'gatsby-remark-embed-spotify',
+          'riffy-gjs-embeded-video',
           {
-            resolve: "gatsby-remark-embed-gist",
+            resolve: 'gatsby-remark-embed-gist',
             options: {
               username: 'rayriffy',
               includeDefaultCss: true,
-            }
+            },
           },
           {
             resolve: `gatsby-remark-images`,
@@ -101,7 +99,7 @@ module.exports = {
               linkImagesToOriginal: false,
               sizeByPixelDensity: true,
               withWebp: true,
-              quality: 95
+              quality: 95,
             },
           },
           'gatsby-remark-responsive-iframe',
@@ -116,7 +114,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `${(process.env.GATSBY_ENV === 'production') ? 'UA-85367836-2' : ((process.env.GATSBY_ENV === 'staging') ? 'UA-85367836-3' : '')}`,
+        trackingId: `${
+          process.env.GATSBY_ENV === 'production'
+            ? 'UA-85367836-2'
+            : process.env.GATSBY_ENV === 'staging'
+            ? 'UA-85367836-3'
+            : ''
+        }`,
       },
     },
     `gatsby-plugin-feed`,
