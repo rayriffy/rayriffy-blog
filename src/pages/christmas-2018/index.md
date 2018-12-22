@@ -4,10 +4,10 @@ subtitle: Hashire sori yo~
 banner: ./banner.jpg
 category: misc
 author: rayriffy
-date: "2018-12-24T17:00:00.000Z"
+date: "2018-12-22T17:00:00.000Z"
 featured: false
 type: blog
-status: draft
+status: published
 ---
 
 `youtube: efdN69QscAg`
