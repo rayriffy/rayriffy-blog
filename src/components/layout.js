@@ -20,7 +20,7 @@ class Template extends React.Component {
           <div className={[layoutStyle.container]}>
             <div className={[layoutStyle.header]}>
               <Link to={'/'}>
-                <img src="/header.png" />
+                <img alt="logo" src="/header.png" />
               </Link>
             </div>
             {children}
