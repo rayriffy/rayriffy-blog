@@ -55,11 +55,11 @@ export default class TagTemplate extends React.Component {
             },
             {
               name: 'og:title',
-              content: siteTitle
+              content: categoryName
             },
             {
               name: 'og:description',
-              content: siteDescription
+              content: categoryDescription
             },
             {
               name: 'article:author',
