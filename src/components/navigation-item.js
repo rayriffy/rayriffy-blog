@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import {Link} from 'gatsby'
 
 import navitemStyle from './navigation-item.module.css'
 
@@ -15,3 +16,9 @@ class Template extends React.Component {
 }
 
 export default Template
+
+Template.propTypes = {
+  meta: PropTypes.string,
+  slug: PropTypes.string,
+  title: PropTypes.string,
+}
