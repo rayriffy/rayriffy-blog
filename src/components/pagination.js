@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
-import pagStyle from './pagination.module.css'
+import paginationStyle from './pagination.module.css'
 
 class Template extends React.Component {
   render() {
@@ -24,13 +24,13 @@ class Template extends React.Component {
       startFrom = 0
     }
     return (
-      <ul className={pagStyle.pagination}>
+      <ul className={paginationStyle.pagination}>
         {Array.from({length: pagesLen}, (_, i) => (
           <li
             key={`pagination-number${i + 1}`}
             className={
               startFrom + i + 1 === this.props.currentPage
-                ? pagStyle.active
+                ? paginationStyle.active
                 : ''
             }>
             <Link

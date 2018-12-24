@@ -4,6 +4,8 @@ import {Link} from 'gatsby'
 
 import Dev from './dev'
 import Footer from './footer'
+import Navbar from './navbar'
+
 import layoutStyle from './layout.module.css'
 
 class Template extends React.Component {
@@ -20,8 +22,13 @@ class Template extends React.Component {
           <div className={[layoutStyle.container]}>
             <div className={[layoutStyle.header]}>
               <Link to={'/'}>
-                <img alt="logo" src="/header.png" />
+                <img
+                  className={layoutStyle.logo}
+                  alt="logo"
+                  src="/header.png"
+                />
               </Link>
+              <Navbar />
             </div>
             {children}
           </div>
