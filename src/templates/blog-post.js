@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
+import graphql from 'gatsby'
+import rhythm from '../utils/typography'
 
 import Layout from '../components/layout'
-import {rhythm} from '../utils/typography'
+
 import Navigation from '../components/navigation'
 import NavigationContainer from '../components/navigation-container'
 import NavigationItem from '../components/navigation-item'
