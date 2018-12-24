@@ -16,6 +16,7 @@ export default class CategoryTemplate extends React.Component {
     const posts = this.props.data.allMarkdownRemark.edges
     const categoryName = this.props.data.categoriesJson.name
     const categoryDescription = this.props.data.categoriesJson.desc
+    const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -35,7 +36,7 @@ export default class CategoryTemplate extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:url',
@@ -67,11 +68,11 @@ export default class CategoryTemplate extends React.Component {
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:image:alt',
@@ -99,7 +100,7 @@ export default class CategoryTemplate extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
           ]}
           title={`${categoryName} · ${siteTitle}`}>
