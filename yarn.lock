@@ -5329,13 +5329,6 @@ gatsby-paginate@^1.0.16:
   dependencies:
     path "^0.12.7"
 
-gatsby-plugin-categories@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-categories/-/gatsby-plugin-categories-1.2.0.tgz#e42428b2478a85b50f701e758c8853c716766b47"
-  integrity sha512-qW6ZdpfcwUSi0/2WqH28JiRrkHal6kbTVRJ42OpQ6CYXIiTE+9dImIwiYJMEoriqhtBcLGKWoCUYjwrUr7Hmbw==
-  dependencies:
-    lodash "^4.17.10"
-
 gatsby-plugin-feed@^2.0.8:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.0.11.tgz#1baa33565c131415a2c971aa49adea02a08bf935"

@@ -149,7 +149,7 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allCategoriesJson {
+    allCategoriesJson(sort: {fields: [key], order: ASC}) {
       edges {
         node {
           key

@@ -36,6 +36,15 @@ exports.createPages = ({graphql, actions}) => {
                 }
               }
             }
+            allCategoriesJson {
+              edges {
+                node {
+                  key
+                  name
+                  desc
+                }
+              }
+            }
           }
         `,
       )
@@ -46,10 +55,17 @@ exports.createPages = ({graphql, actions}) => {
             process.env.GATSBY_ENV === 'production' ||
             process.env.GATSBY_ENV === 'staging'
           ) {
-            filteredresult = {data: {allMarkdownRemark: {edges: null}}}
+            filteredresult = {
+              data: {
+                allMarkdownRemark: {edges: null},
+                allCategoriesJson: {edges: null},
+              },
+            }
             filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(
               a => a.node.frontmatter.status === 'published',
             )
+            filteredresult.data.allCategoriesJson.edges =
+              result.data.allCategoriesJson.edges
           } else if (process.env.GATSBY_ENV === 'development') {
             filteredresult = result
           }
@@ -62,6 +78,7 @@ exports.createPages = ({graphql, actions}) => {
           }
 
           const posts = result.data.allMarkdownRemark.edges
+          const catrgories = result.data.allCategoriesJson.edges
 
           // Create blog lists pages.
           const postsPerPage = 5
@@ -127,6 +144,18 @@ exports.createPages = ({graphql, actions}) => {
               console.error(err)
               reject(err)
             }
+          })
+
+          // Create category page
+          var categoryPathPrefix = 'category/'
+          _.each(catrgories, (category, index) => {
+            createPage({
+              path: categoryPathPrefix + category.node.key,
+              component: path.resolve('./src/templates/category.js'),
+              context: {
+                category: category.node.key,
+              },
+            })
           })
         }),
     )
