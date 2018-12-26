@@ -152,9 +152,10 @@ export default class CategoryTemplate extends React.Component {
 
 export const pageQuery = graphql`
   query CategoryPage(
-    $skip: Int!
+    $category: String!
     $limit: Int!
-    $category: String
+    $regex: String!
+    $skip: Int!
     $status: String!
   ) {
     site {
@@ -167,7 +168,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {status: {ne: $status}, category: {eq: $category}}}
+      filter: {frontmatter: {status: {ne: $status}, category: {regex: $regex}}}
       limit: $limit
       skip: $skip
     ) {

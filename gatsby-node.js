@@ -46,7 +46,7 @@ exports.createPages = ({graphql, actions}) => {
               }
             }
             lifestyle: allMarkdownRemark(
-              filter: {frontmatter: {category: {eq: "lifestyle"}}}
+              filter: {frontmatter: {category: {regex: "/lifestyle/"}}}
             ) {
               edges {
                 node {
@@ -57,7 +57,7 @@ exports.createPages = ({graphql, actions}) => {
               }
             }
             misc: allMarkdownRemark(
-              filter: {frontmatter: {category: {eq: "misc"}}}
+              filter: {frontmatter: {category: {regex: "/misc/"}}}
             ) {
               edges {
                 node {
@@ -68,7 +68,7 @@ exports.createPages = ({graphql, actions}) => {
               }
             }
             music: allMarkdownRemark(
-              filter: {frontmatter: {category: {eq: "music"}}}
+              filter: {frontmatter: {category: {regex: "/music/"}}}
             ) {
               edges {
                 node {
@@ -79,7 +79,7 @@ exports.createPages = ({graphql, actions}) => {
               }
             }
             programming: allMarkdownRemark(
-              filter: {frontmatter: {category: {eq: "programming"}}}
+              filter: {frontmatter: {category: {regex: "/programming/"}}}
             ) {
               edges {
                 node {
@@ -90,7 +90,7 @@ exports.createPages = ({graphql, actions}) => {
               }
             }
             review: allMarkdownRemark(
-              filter: {frontmatter: {category: {eq: "review"}}}
+              filter: {frontmatter: {category: {regex: "/review/"}}}
             ) {
               edges {
                 node {
@@ -101,7 +101,7 @@ exports.createPages = ({graphql, actions}) => {
               }
             }
             tutorial: allMarkdownRemark(
-              filter: {frontmatter: {category: {eq: "tutorial"}}}
+              filter: {frontmatter: {category: {regex: "/tutorial/"}}}
             ) {
               edges {
                 node {
@@ -136,8 +136,6 @@ exports.createPages = ({graphql, actions}) => {
             filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(
               a => a.node.frontmatter.status === 'published',
             )
-            filteredresult.data.allCategoriesJson.edges =
-              result.data.allCategoriesJson.edges
             filteredresult.data.lifestyle.edges = result.data.lifestyle.edges.filter(
               a => a.node.frontmatter.status === 'published',
             )
@@ -156,6 +154,8 @@ exports.createPages = ({graphql, actions}) => {
             filteredresult.data.tutorial.edges = result.data.tutorial.edges.filter(
               a => a.node.frontmatter.status === 'published',
             )
+            filteredresult.data.allCategoriesJson.edges =
+              result.data.allCategoriesJson.edges
           } else if (process.env.GATSBY_ENV === 'development') {
             filteredresult = result
           }
@@ -242,19 +242,19 @@ exports.createPages = ({graphql, actions}) => {
             var totalCount = result.data[category.node.key].edges.length
             var numCategoryPages = Math.ceil(totalCount / postsPerPage)
             var pathPrefix = categoryPathPrefix + category.node.key
-            console.log(category.node.key + ' > ' + numCategoryPages)
             _.times(numCategoryPages, i => {
               createPage({
                 path: i === 0 ? pathPrefix : pathPrefix + `/pages/${i + 1}`,
                 component: path.resolve('./src/templates/category.js'),
                 context: {
-                  pathPrefix,
+                  category: category.node.key,
+                  currentPage: i + 1,
                   limit: postsPerPage,
+                  numPages: numCategoryPages,
+                  pathPrefix,
+                  regex: '/' + category.node.key + '/',
                   skip: i * postsPerPage,
                   status: filter,
-                  category: category.node.key,
-                  numPages: numCategoryPages,
-                  currentPage: i + 1,
                 },
               })
             })
