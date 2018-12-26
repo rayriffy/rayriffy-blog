@@ -35,7 +35,9 @@ class Template extends React.Component {
             }>
             <Link
               to={`/${
-                startFrom + i === 0 ? '' : 'pages/' + (startFrom + i + 1)
+                startFrom + i === 0
+                  ? this.props.pathPrefix
+                  : this.props.pathPrefix + '/pages/' + (startFrom + i + 1)
               }`}>
               {startFrom + i + 1}
             </Link>
@@ -51,4 +53,5 @@ export default Template
 Template.propTypes = {
   numPages: PropTypes.number,
   currentPage: PropTypes.number,
+  pathPrefix: PropTypes.string,
 }

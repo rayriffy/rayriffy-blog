@@ -45,6 +45,72 @@ exports.createPages = ({graphql, actions}) => {
                 }
               }
             }
+            lifestyle: allMarkdownRemark(
+              filter: {frontmatter: {category: {eq: "lifestyle"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
+            misc: allMarkdownRemark(
+              filter: {frontmatter: {category: {eq: "misc"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
+            music: allMarkdownRemark(
+              filter: {frontmatter: {category: {eq: "music"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
+            programming: allMarkdownRemark(
+              filter: {frontmatter: {category: {eq: "programming"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
+            review: allMarkdownRemark(
+              filter: {frontmatter: {category: {eq: "review"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
+            tutorial: allMarkdownRemark(
+              filter: {frontmatter: {category: {eq: "tutorial"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
           }
         `,
       )
@@ -59,6 +125,12 @@ exports.createPages = ({graphql, actions}) => {
               data: {
                 allMarkdownRemark: {edges: null},
                 allCategoriesJson: {edges: null},
+                lifestyle: {edges: null},
+                misc: {edges: null},
+                music: {edges: null},
+                programming: {edges: null},
+                review: {edges: null},
+                tutorial: {edges: null},
               },
             }
             filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(
@@ -66,6 +138,24 @@ exports.createPages = ({graphql, actions}) => {
             )
             filteredresult.data.allCategoriesJson.edges =
               result.data.allCategoriesJson.edges
+            filteredresult.data.lifestyle.edges = result.data.lifestyle.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.misc.edges = result.data.misc.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.music.edges = result.data.music.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.programming.edges = result.data.programming.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.review.edges = result.data.review.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.tutorial.edges = result.data.tutorial.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
           } else if (process.env.GATSBY_ENV === 'development') {
             filteredresult = result
           }
@@ -80,21 +170,21 @@ exports.createPages = ({graphql, actions}) => {
           const posts = result.data.allMarkdownRemark.edges
           const catrgories = result.data.allCategoriesJson.edges
 
-          // Create blog lists pages.
+          var filter
           const postsPerPage = 5
+          if (
+            process.env.GATSBY_ENV === 'production' ||
+            process.env.GATSBY_ENV === 'staging'
+          ) {
+            filter = 'draft'
+          } else if (process.env.GATSBY_ENV === 'development') {
+            filter = ''
+          }
+
+          // Create blog lists pages.
           const numPages = Math.ceil(posts.length / postsPerPage)
 
           _.times(numPages, i => {
-            var filter
-            if (
-              process.env.GATSBY_ENV === 'production' ||
-              process.env.GATSBY_ENV === 'staging'
-            ) {
-              filter = 'draft'
-            } else if (process.env.GATSBY_ENV === 'development') {
-              filter = ''
-            }
-
             createPage({
               path: i === 0 ? `/` : `/pages/${i + 1}`,
               component: path.resolve('./src/templates/blog-list.js'),
@@ -146,15 +236,27 @@ exports.createPages = ({graphql, actions}) => {
             }
           })
 
-          // Create category page
+          // Create category pages
           var categoryPathPrefix = 'category/'
           _.each(catrgories, (category, index) => {
-            createPage({
-              path: categoryPathPrefix + category.node.key,
-              component: path.resolve('./src/templates/category.js'),
-              context: {
-                category: category.node.key,
-              },
+            var totalCount = result.data[category.node.key].edges.length
+            var numCategoryPages = Math.ceil(totalCount / postsPerPage)
+            var pathPrefix = categoryPathPrefix + category.node.key
+            console.log(category.node.key + ' > ' + numCategoryPages)
+            _.times(numCategoryPages, i => {
+              createPage({
+                path: i === 0 ? pathPrefix : pathPrefix + `/pages/${i + 1}`,
+                component: path.resolve('./src/templates/category.js'),
+                context: {
+                  pathPrefix,
+                  limit: postsPerPage,
+                  skip: i * postsPerPage,
+                  status: filter,
+                  category: category.node.key,
+                  numPages: numCategoryPages,
+                  currentPage: i + 1,
+                },
+              })
             })
           })
         }),
