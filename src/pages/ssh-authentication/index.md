@@ -2,8 +2,9 @@
 title: เสริมความปลอดภัยให้กับ Server ด้วย SSH Authentication
 subtitle: คิดว่าใช้ Password based แล้วปลอดภัยจริงดิ เอาจริง!?
 banner: ./banner.jpg
+category: tutorial
 author: rayriffy
-date: "2018-12-25T04:30:00.000Z"
+date: "2018-12-28T03:00:00.000Z"
 featured: false
 type: blog
 status: draft
@@ -104,7 +105,7 @@ $ sudo systemctl reload sshd
 
 ถ้ายังตั้งค่าไม่เป็นอีกก็ตามนี้เลยล่ะกัน
 
-บนคอมเราให้เปิดไฟล์ .ssh/config
+บนคอมเราให้เปิดไฟล์ `.ssh/config`
 
 ```
 $ vim ~/.ssh/config

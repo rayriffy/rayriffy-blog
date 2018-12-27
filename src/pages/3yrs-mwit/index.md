@@ -2,6 +2,7 @@
 title: 3 ปี มหิดลวิทยานุสรณ์
 subtitle: ครบ 3 ปีไปนานแล้ว แต่พึ่งมาเขียน ถถถถถถ...แต่อีกคนนี่ล่อไป 4 ปีแล้วนะ
 banner: ./banner.jpg
+category: lifestyle
 author: rayriffy
 date: "2018-06-12T22:00:00.000Z"
 featured: false

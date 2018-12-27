@@ -2,6 +2,7 @@
 title: Music Analysis - Daughter of Evil & Servant of Evil
 subtitle: เจ้าหญิงทรราช กับ ข้ารับใช้ผู้ซื่อสัตย์
 banner: ./banner.jpg
+category: music
 author: SiriuSStarS
 date: "2018-12-24T04:30:00.000Z"
 featured: false

@@ -2,6 +2,7 @@
 title: Review - Apple Watch Series 4
 subtitle: หลังใส่มาได้สัปดาห์กว่าๆแล้ว จะมาคุยกันว่ามันเจ๋งขนาดไหน
 banner: ./banner.jpg
+category: review
 author: rayriffy
 date: "2018-12-06T03:00:00.000Z"
 featured: false

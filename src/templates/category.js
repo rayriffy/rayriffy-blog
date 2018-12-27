@@ -6,17 +6,19 @@ import {graphql} from 'gatsby'
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
+import Category from '../components/category'
 import Pagination from '../components/pagination'
 
-class BlogIndex extends React.Component {
+export default class CategoryTemplate extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
-    const {currentPage, numPages} = this.props.pageContext
-
+    const categoryName = this.props.data.categoriesJson.name
+    const categoryDescription = this.props.data.categoriesJson.desc
+    const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
+    const {currentPage, numPages, pathPrefix} = this.props.pageContext
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -24,11 +26,11 @@ class BlogIndex extends React.Component {
           meta={[
             {
               name: 'name',
-              content: siteTitle,
+              content: categoryName,
             },
             {
               name: 'description',
-              content: siteDescription,
+              content: categoryDescription,
             },
             {
               name: 'author',
@@ -36,7 +38,7 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:url',
@@ -56,11 +58,11 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'og:title',
-              content: siteTitle,
+              content: categoryName,
             },
             {
               name: 'og:description',
-              content: siteDescription,
+              content: categoryDescription,
             },
             {
               name: 'article:author',
@@ -68,11 +70,11 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:image:alt',
@@ -92,18 +94,18 @@ class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: siteTitle,
+              content: categoryName,
             },
             {
               name: 'twitter:description',
-              content: siteDescription,
+              content: categoryDescription,
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
           ]}
-          title={siteTitle}>
+          title={`${categoryName} · ${siteTitle}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -114,6 +116,7 @@ class BlogIndex extends React.Component {
             `}
           </script>
         </Helmet>
+        <Category name={categoryName} desc={categoryDescription} />
         {posts.map(({node}) => {
           var author = null
           this.props.data.allAuthorsJson.edges.forEach(authorJson => {
@@ -140,17 +143,21 @@ class BlogIndex extends React.Component {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix=""
+          pathPrefix={pathPrefix}
         />
       </Layout>
     )
   }
 }
 
-export default BlogIndex
-
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!, $status: String!) {
+  query CategoryPage(
+    $category: String!
+    $limit: Int!
+    $regex: String!
+    $skip: Int!
+    $status: String!
+  ) {
     site {
       siteMetadata {
         title
@@ -161,10 +168,11 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {status: {ne: $status}, category: {regex: $regex}}}
       limit: $limit
       skip: $skip
-      filter: {frontmatter: {status: {ne: $status}, type: {eq: "blog"}}}
     ) {
+      totalCount
       edges {
         node {
           excerpt
@@ -205,10 +213,14 @@ export const pageQuery = graphql`
         }
       }
     }
+    categoriesJson(key: {eq: $category}) {
+      name
+      desc
+    }
   }
 `
 
-BlogIndex.propTypes = {
+CategoryTemplate.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
@@ -224,10 +236,15 @@ BlogIndex.propTypes = {
     allAuthorsJson: PropTypes.shape({
       edges: PropTypes.array,
     }),
+    categoriesJson: PropTypes.shape({
+      name: PropTypes.string,
+      desc: PropTypes.string,
+    }),
   }),
   pageContext: PropTypes.shape({
     currentPage: PropTypes.number,
     numPages: PropTypes.number,
+    pathPrefix: PropTypes.string,
   }),
   location: PropTypes.object,
 }

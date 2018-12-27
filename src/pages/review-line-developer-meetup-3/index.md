@@ -2,6 +2,7 @@
 title: Review - LINE Developer Meetup 3
 subtitle: เมื่อวานนี้พึ่งไปงานมาเลยจะมารีวิว เล่าสู่กันฟัง
 banner: ./banner.jpg
+category: review
 author: rayriffy
 date: "2018-12-14T03:00:00.000Z"
 featured: false

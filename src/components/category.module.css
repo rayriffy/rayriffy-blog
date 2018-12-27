@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.title {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.subtitle {
+  color: #6f6f6f;
+  font-size: 18px;
+}
