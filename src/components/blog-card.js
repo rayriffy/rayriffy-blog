@@ -71,7 +71,11 @@ BlogCardTemplate.propTypes = {
     twitter: PropTypes.string,
   }),
   banner: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   date: PropTypes.string,
   featured: PropTypes.bool,
   link: PropTypes.bool,
