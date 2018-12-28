@@ -4444,10 +4444,10 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint@^5.10.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.10.0.tgz#24adcbe92bf5eb1fc2d2f2b1eebe0c5e0713903a"
-  integrity sha512-HpqzC+BHULKlnPwWae9MaVZ5AXJKpkxCVXQHrFaRw3hbDj26V/9ArYM4Rr/SQ8pi6qUPLXSSXC4RBJlyq2Z2OQ==
+eslint@^5.11.1:
+  version "5.11.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.11.1.tgz#8deda83db9f354bf9d3f53f9677af7e0e13eadda"
+  integrity sha512-gOKhM8JwlFOc2acbOrkYR05NW8M6DCMSvfcJiBB5NDxRE1gv8kbvxKaC9u69e6ZGEMWXcswA/7eKR229cEIpvg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.5.3"
@@ -5278,10 +5278,10 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gatsby-cli@^2.4.7:
-  version "2.4.7"
-  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.4.7.tgz#f5821ca550f894d182435f0ee1e6a6875bd1064f"
-  integrity sha512-yVRmYI2nY0D/P2vlD6TwwUsP3KyMKMfs0VqTo9ZrsO+feYfELh6O4gULLbPsE6bl/pwFy8YncRYS5zfH1PVoFg==
+gatsby-cli@^2.4.8:
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.4.8.tgz#6f02e5076e1710aade0ad8e7524b1ec2cf2ee76f"
+  integrity sha512-YmS+eYSInI+E9/NrZ3p9Z0WWHIojbnei/ZpD9GhbtVFNDfl9qvv3reK05GekoAwQzLw5cMkiw7ur6WosqqCiHg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -5328,13 +5328,6 @@ gatsby-paginate@^1.0.16:
   integrity sha512-X0eZu2JrDrS1leUdu7CrdJWARGD0EFJwyhoD93W7n+DcD3ugqPS84faBOJeNJkJxwcPPJCMTt1Bm9+FiTpMBrQ==
   dependencies:
     path "^0.12.7"
-
-gatsby-plugin-categories@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-categories/-/gatsby-plugin-categories-1.2.0.tgz#e42428b2478a85b50f701e758c8853c716766b47"
-  integrity sha512-qW6ZdpfcwUSi0/2WqH28JiRrkHal6kbTVRJ42OpQ6CYXIiTE+9dImIwiYJMEoriqhtBcLGKWoCUYjwrUr7Hmbw==
-  dependencies:
-    lodash "^4.17.10"
 
 gatsby-plugin-feed@^2.0.8:
   version "2.0.11"
@@ -5611,10 +5604,10 @@ gatsby-transformer-sharp@^2.1.3:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.75:
-  version "2.0.75"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.75.tgz#33fdf97d0cd95740b76ccc4e364a06bc0294a72f"
-  integrity sha512-jDsLjXHoczGbmvwqDgGCeAl9R94u0iW2a9nzyRGkJLHufonhahmGVqFBeTDaPq/3KDqqi8lUK/4P0FhJty2qCQ==
+gatsby@^2.0.77:
+  version "2.0.77"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.77.tgz#5bfb447fcba2087182c96bd1650f87303c3c274a"
+  integrity sha512-Ge4rOTTwjXYwsEErx3U7AOfRALa3cwBOZg1SyZu1bNmLS6cgImcu3Mht27eD08DawRNmEtRg2GMFSKB/KuPAcg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -5668,7 +5661,7 @@ gatsby@^2.0.75:
     friendly-errors-webpack-plugin "^1.6.1"
     fs-exists-cached "1.0.0"
     fs-extra "^5.0.0"
-    gatsby-cli "^2.4.7"
+    gatsby-cli "^2.4.8"
     gatsby-link "^2.0.7"
     gatsby-plugin-page-creator "^2.0.5"
     gatsby-react-router-scroll "^2.0.2"

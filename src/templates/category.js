@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
 import Category from '../components/category'
+import Pagination from '../components/pagination'
 
 export default class CategoryTemplate extends React.Component {
   render() {
@@ -17,6 +18,7 @@ export default class CategoryTemplate extends React.Component {
     const categoryName = this.props.data.categoriesJson.name
     const categoryDescription = this.props.data.categoriesJson.desc
     const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
+    const {currentPage, numPages, pathPrefix} = this.props.pageContext
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -138,13 +140,24 @@ export default class CategoryTemplate extends React.Component {
             />
           )
         })}
+        <Pagination
+          numPages={numPages}
+          currentPage={currentPage}
+          pathPrefix={pathPrefix}
+        />
       </Layout>
     )
   }
 }
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query CategoryPage(
+    $category: String!
+    $limit: Int!
+    $regex: String!
+    $skip: Int!
+    $status: String!
+  ) {
     site {
       siteMetadata {
         title
@@ -155,7 +168,9 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {category: {eq: $category}}}
+      filter: {frontmatter: {status: {ne: $status}, category: {regex: $regex}}}
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       edges {
@@ -225,6 +240,11 @@ CategoryTemplate.propTypes = {
       name: PropTypes.string,
       desc: PropTypes.string,
     }),
+  }),
+  pageContext: PropTypes.shape({
+    currentPage: PropTypes.number,
+    numPages: PropTypes.number,
+    pathPrefix: PropTypes.string,
   }),
   location: PropTypes.object,
 }

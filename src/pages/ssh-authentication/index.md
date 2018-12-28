@@ -4,10 +4,10 @@ subtitle: คิดว่าใช้ Password based แล้วปลอดภ
 banner: ./banner.jpg
 category: tutorial
 author: rayriffy
-date: "2018-12-25T04:30:00.000Z"
+date: "2018-12-28T05:00:00.000Z"
 featured: false
 type: blog
-status: draft
+status: published
 ---
 
 น่าจะเคยมีประสบการณืกันบ้างแหล่ เวลาเข้า SSH ของตัวเองแล้วเจอไรแบบ `You got 1112 failed login attempts since your last login` ถ้าเจอแบบนี้ก็คือมีคนกำลัง Brute Force หารหัสผ่านที่ถูกอยู่ซึ่งจะเจอตอนไหนก็ต้องมานั่งลุ้นกันเอาอีก ดังนั้นเราจะมานำเสนอวิธีการ Login เข้า SSH อีกวิธีนึงที่ปลอดภัยกว่านั่นก็คือ SSH Authentication นั่นเอง
