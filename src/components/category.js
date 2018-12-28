@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import categoryStyle from './category.module.css'
 
-class Template extends React.Component {
+class CategoryTemplate extends React.Component {
   render() {
     return (
       <div className={categoryStyle.container}>
@@ -14,9 +14,9 @@ class Template extends React.Component {
   }
 }
 
-export default Template
+export default CategoryTemplate
 
-Template.propTypes = {
+CategoryTemplate.propTypes = {
   name: PropTypes.string,
   desc: PropTypes.string,
 }

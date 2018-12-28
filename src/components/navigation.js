@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 
 import navigationStyle from './navigation.module.css'
 
-class Template extends React.Component {
+class NavigationTemplate extends React.Component {
   render() {
     const {children} = this.props
     return <div className={navigationStyle.navpost}>{children}</div>
   }
 }
 
-export default Template
+export default NavigationTemplate
 
-Template.propTypes = {
+NavigationTemplate.propTypes = {
   children: PropTypes.array,
 }
