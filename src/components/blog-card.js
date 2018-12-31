@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 
 import cardStyle from './blog-card.module.css'
 
-class Template extends React.Component {
+class BlogCardTemplate extends React.Component {
   render() {
     const {children} = this.props
     let banner, title
@@ -62,16 +62,20 @@ class Template extends React.Component {
   }
 }
 
-export default Template
+export default BlogCardTemplate
 
-Template.propTypes = {
+BlogCardTemplate.propTypes = {
   author: PropTypes.shape({
     name: PropTypes.string,
     facebook: PropTypes.string,
     twitter: PropTypes.string,
   }),
   banner: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   date: PropTypes.string,
   featured: PropTypes.bool,
   link: PropTypes.bool,

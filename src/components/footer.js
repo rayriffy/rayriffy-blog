@@ -2,7 +2,7 @@ import React from 'react'
 
 import footerStyle from './footer.module.css'
 
-class Template extends React.Component {
+class FooterTemplate extends React.Component {
   render() {
     const imgUrl = 'https://s.w.org/images/core/emoji/2.4/svg/2764.svg'
     const faceUrl = 'https://facebook.com/rayriffy'
@@ -20,4 +20,4 @@ class Template extends React.Component {
   }
 }
 
-export default Template
+export default FooterTemplate

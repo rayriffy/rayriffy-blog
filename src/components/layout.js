@@ -8,7 +8,7 @@ import Navbar from './navbar'
 
 import layoutStyle from './layout.module.css'
 
-class Template extends React.Component {
+class LayoutTemplate extends React.Component {
   render() {
     let devstrip = ''
     if (process.env.GATSBY_ENV !== 'production') {
@@ -39,8 +39,8 @@ class Template extends React.Component {
   }
 }
 
-export default Template
+export default LayoutTemplate
 
-Template.propTypes = {
+LayoutTemplate.propTypes = {
   children: PropTypes.array,
 }
