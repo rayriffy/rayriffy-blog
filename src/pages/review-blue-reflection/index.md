@@ -2,8 +2,9 @@
 title: Review - Blue Reflection
 subtitle: This is story of a girl who dances in an illusion.
 banner: ./banner.jpg
+category: review
 author: SiriuSStarS
-date: "2018-12-31T4:30:00.000Z"
+date: "2018-12-31T04:30:00.000Z"
 featured: false
 type: blog
 status: published
