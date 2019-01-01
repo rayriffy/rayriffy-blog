@@ -164,8 +164,8 @@ class BlogPostTemplate extends React.Component {
           date={post.frontmatter.date}
           featured={post.frontmatter.featured}
           status={post.frontmatter.status}
-          link={false}>
-          <div dangerouslySetInnerHTML={{__html: post.html}} />
+          link={false}
+          content={post.html}>
           <hr
             style={{
               marginBottom: rhythm(1),

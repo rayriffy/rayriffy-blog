@@ -51,7 +51,7 @@ pre {
   margin: -40px -40px -40px -40px;
 }
 
-.content {
+.header {
   margin-top: 80px;
 }
 
@@ -66,7 +66,7 @@ pre {
     margin: -70px -70px -70px -70px;
   }
 
-  .content {
+  .header {
     margin-top: 110px;
   }
 }
@@ -132,4 +132,8 @@ pre {
   .banner {
     margin-top: -25.5px;
   }
+}
+
+.content>ul>li {
+  color: #6f6f6f;
 }
