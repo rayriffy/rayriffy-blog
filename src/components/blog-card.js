@@ -38,7 +38,7 @@ class BlogCardTemplate extends React.Component {
           )}
           {banner}
         </div>
-        <div className={cardStyle.content}>
+        <div className={cardStyle.header}>
           <h1 className={cardStyle.title}>{title}</h1>
           {this.props.date && this.props.author && (
             <div className={cardStyle.meta}>
@@ -56,6 +56,12 @@ class BlogCardTemplate extends React.Component {
             <p className={cardStyle.subtitle}>{this.props.subtitle}</p>
           )}
         </div>
+        {this.props.content && (
+          <div
+            className={cardStyle.content}
+            dangerouslySetInnerHTML={{__html: this.props.content}}
+          />
+        )}
         {children}
       </div>
     )
@@ -83,4 +89,5 @@ BlogCardTemplate.propTypes = {
   status: PropTypes.string,
   subtitle: PropTypes.string,
   title: PropTypes.string,
+  content: PropTypes.string,
 }
