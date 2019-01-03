@@ -93,7 +93,7 @@ module.exports = {
               linkImagesToOriginal: false,
               sizeByPixelDensity: true,
               withWebp: true,
-              quality: 80,
+              quality: 70,
             },
           },
           'gatsby-remark-responsive-iframe',
