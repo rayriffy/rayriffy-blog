@@ -5578,10 +5578,10 @@ gatsby-transformer-json@^2.1.5:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
 
-gatsby-transformer-remark@^2.1.18:
-  version "2.1.18"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.18.tgz#fccf3b551b3165079a7245c6624718b4696ff4a2"
-  integrity sha512-GZ7Kcs0WBCydBjZgbqAv63UW8jAJ0xEkKW3p/qQhvla/f58CjbjwJLWMSaT5QkQJj2YK45tIlDOEpfoZRF7GUQ==
+gatsby-transformer-remark@^2.1.19:
+  version "2.1.19"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.19.tgz#1f18dbc0928d9fecba8163b255c6ff5c1c367698"
+  integrity sha512-iBK7/g0qop277gzC+vFnL27L3LZF+zHO/PndQkYXbWO/OIO9FTROaT+YnjaVA5WdRc0SBuhr72QqPHLbLhMg7Q==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -5615,10 +5615,10 @@ gatsby-transformer-sharp@^2.1.10:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.79:
-  version "2.0.79"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.79.tgz#6ca8a89da5259bc1cd6bfe6e730c7c5a9cd6a03d"
-  integrity sha512-kHeVp6YGwy0BwmLcxo87ZM41Fcy+Zt4rocu94IvYSDI9NGEH8hziJ/zfLSWPkJgNraRfzxc4Lzcdm0aMTTmBCg==
+gatsby@^2.0.81:
+  version "2.0.81"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.81.tgz#f617c5be23ab101870601714d0a2263affd4f86b"
+  integrity sha512-wUPeFeOXIDYpE5kpven1cNo3N+qHqCZRd4/ZPerlDhG0PnRTTXqltkxRNpQBuk7wTZivdPkIENqk86ttIe7ahQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -5731,7 +5731,7 @@ gatsby@^2.0.79:
     v8-compile-cache "^1.1.0"
     webpack "^4.12.0"
     webpack-dev-middleware "^3.0.1"
-    webpack-dev-server "^3.1.1"
+    webpack-dev-server "^3.1.14"
     webpack-hot-middleware "^2.21.0"
     webpack-merge "^4.1.0"
     webpack-stats-plugin "^0.1.5"
@@ -12608,10 +12608,10 @@ webpack-dev-middleware@3.4.0, webpack-dev-middleware@^3.0.1:
     range-parser "^1.0.3"
     webpack-log "^2.0.0"
 
-webpack-dev-server@^3.1.1:
-  version "3.1.11"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.1.11.tgz#3b698b5b32476f1f0d3d4014952fcf42ab118205"
-  integrity sha512-E/uGbO9ndXrXgNUzw+O2UrrvYY/eIw10fpJnbvJf8VOH/NWZuY3nUG7arbgB/kbkORlF/sPHxnv10tKFtKf3aA==
+webpack-dev-server@^3.1.14:
+  version "3.1.14"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.1.14.tgz#60fb229b997fc5a0a1fc6237421030180959d469"
+  integrity sha512-mGXDgz5SlTxcF3hUpfC8hrQ11yhAttuUQWf1Wmb+6zo3x6rb7b9mIfuQvAPLdfDRCGRGvakBWHdHOa0I9p/EVQ==
   dependencies:
     ansi-html "0.0.7"
     bonjour "^3.5.0"
