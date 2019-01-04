@@ -6,7 +6,7 @@ import {graphql} from 'gatsby'
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
-import Category from '../components/category'
+import Chip from '../components/chip'
 
 class CategoryList extends React.Component {
   render() {
@@ -112,10 +112,7 @@ class CategoryList extends React.Component {
             `}
           </script>
         </Helmet>
-        <Category
-          name="Category"
-          desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง"
-        />
+        <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
         {this.props.data.allCategoriesJson.edges.map(({node}) => {
           return (
             <Card
@@ -311,20 +308,6 @@ export const pageQuery = graphql`
               }
             }
           }
-        }
-      }
-    }
-    banner: file(relativePath: {eq: "404.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
         }
       }
     }
