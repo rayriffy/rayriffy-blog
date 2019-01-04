@@ -1,7 +1,7 @@
 {
   "name": "rayriffy-blog",
   "description": "The Nerdy Blogger",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
@@ -58,9 +58,14 @@
     "eslint-plugin-standard": "^4.0.0",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://rayriffy.com",
+  "homepage": "https://blog.rayriffy.com",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "gatsbyjs",
+    "react",
+    "reactjs",
+    "es6",
+    "blog"
   ],
   "license": "MIT",
   "main": "n/a",
