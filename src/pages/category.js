@@ -8,7 +8,7 @@ import Layout from '../components/layout'
 import Card from '../components/blog-card'
 import Chip from '../components/chip'
 
-class CategoryList extends React.Component {
+export default class CategoryListPage extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -133,8 +133,6 @@ class CategoryList extends React.Component {
     )
   }
 }
-
-export default CategoryList
 
 export const pageQuery = graphql`
   query categoryPageQuery {
@@ -314,7 +312,7 @@ export const pageQuery = graphql`
   }
 `
 
-CategoryList.propTypes = {
+CategoryListPage.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({

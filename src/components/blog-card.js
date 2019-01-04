@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 
 import cardStyle from './blog-card.module.css'
 
-class BlogCardTemplate extends React.Component {
+export default class BlogCardTemplate extends React.Component {
   render() {
     const {children} = this.props
     let banner, title
@@ -67,8 +67,6 @@ class BlogCardTemplate extends React.Component {
     )
   }
 }
-
-export default BlogCardTemplate
 
 BlogCardTemplate.propTypes = {
   author: PropTypes.shape({

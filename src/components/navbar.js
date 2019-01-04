@@ -2,7 +2,7 @@ import React from 'react'
 
 import navbarStyle from './navbar.module.css'
 
-class NavbarTemplate extends React.Component {
+export default class NavbarTemplate extends React.Component {
   render() {
     return (
       <nav className={navbarStyle.navbar}>
@@ -26,5 +26,3 @@ class NavbarTemplate extends React.Component {
     )
   }
 }
-
-export default NavbarTemplate

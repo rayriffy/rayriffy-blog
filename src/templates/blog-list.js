@@ -8,7 +8,7 @@ import Layout from '../components/layout'
 import Card from '../components/blog-card'
 import Pagination from '../components/pagination'
 
-class BlogIndex extends React.Component {
+export default class BlogIndex extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -146,8 +146,6 @@ class BlogIndex extends React.Component {
     )
   }
 }
-
-export default BlogIndex
 
 export const pageQuery = graphql`
   query blogPageQuery($limit: Int!, $skip: Int!, $status: String!) {

@@ -4,7 +4,7 @@ import {Link} from 'gatsby'
 
 import paginationStyle from './pagination.module.css'
 
-class PaginationTemplate extends React.Component {
+export default class PaginationTemplate extends React.Component {
   render() {
     var pagesLen
     var startFrom
@@ -47,8 +47,6 @@ class PaginationTemplate extends React.Component {
     )
   }
 }
-
-export default PaginationTemplate
 
 PaginationTemplate.propTypes = {
   numPages: PropTypes.number,

@@ -4,7 +4,7 @@ import {Link} from 'gatsby'
 
 import navigationItemStyle from './navigation-item.module.css'
 
-class NavigationItemTemplate extends React.Component {
+export default class NavigationItemTemplate extends React.Component {
   render() {
     return (
       <Link to={this.props.slug} rel={this.props.meta}>
@@ -14,8 +14,6 @@ class NavigationItemTemplate extends React.Component {
     )
   }
 }
-
-export default NavigationItemTemplate
 
 NavigationItemTemplate.propTypes = {
   meta: PropTypes.string,
