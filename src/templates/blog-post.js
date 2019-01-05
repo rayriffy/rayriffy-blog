@@ -235,6 +235,7 @@ export const pageQuery = graphql`
       }
     }
     authorsJson(user: {eq: $author}) {
+      user
       name
       twitter
       facebook
