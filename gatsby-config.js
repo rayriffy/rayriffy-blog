@@ -17,6 +17,12 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`kanit`],
+      },
+    },
     `gatsby-plugin-netlify-cache`,
     `gatsby-transformer-json`,
     {
@@ -31,7 +37,9 @@ module.exports = {
         resolveEnv: () => process.env.GATSBY_ENV,
         env: {
           production: {
-            policy: [{userAgent: '*', disallow: ['/pages', '/category']}],
+            policy: [
+              {userAgent: '*', disallow: ['/pages', '/category', '/author']},
+            ],
           },
           staging: {
             policy: [{userAgent: '*', disallow: ['/']}],
@@ -54,7 +62,13 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        exclude: ['/pages/*', '/category', '/category/*'],
+        exclude: [
+          '/pages/*',
+          '/category',
+          '/category/*',
+          '/author',
+          '/author/*',
+        ],
       },
     },
     {
