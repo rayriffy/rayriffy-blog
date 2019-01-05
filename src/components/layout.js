@@ -28,7 +28,25 @@ export default class LayoutTemplate extends React.Component {
                   src="/header.png"
                 />
               </Link>
-              <Navbar />
+              <Navbar
+                tabs={[
+                  {
+                    name: 'Home',
+                    href: '/',
+                    newtab: false,
+                  },
+                  {
+                    name: 'Category',
+                    href: '/category',
+                    newtab: false,
+                  },
+                  {
+                    name: '♪',
+                    href: 'https://l.rayriffy.com/nico',
+                    newtab: true,
+                  },
+                ]}
+              />
             </div>
             {children}
           </div>
