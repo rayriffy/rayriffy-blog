@@ -38,7 +38,7 @@ export const pageQuery = graphql`
     }
     banner: file(relativePath: {eq: "404.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
+        fluid(maxWidth: 1000, quality: 90) {
           base64
           tracedSVG
           aspectRatio

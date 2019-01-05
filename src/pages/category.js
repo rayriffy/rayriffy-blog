@@ -163,7 +163,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -189,7 +189,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -215,7 +215,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -241,7 +241,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -267,7 +267,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -293,7 +293,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
