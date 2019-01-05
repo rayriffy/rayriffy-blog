@@ -161,6 +161,8 @@ exports.createPages = ({graphql, actions}) => {
                 programming: {edges: null},
                 review: {edges: null},
                 tutorial: {edges: null},
+                rayriffy: {edges: null},
+                SiriuSStarS: {edges: null},
               },
             }
             filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(
@@ -182,6 +184,12 @@ exports.createPages = ({graphql, actions}) => {
               a => a.node.frontmatter.status === 'published',
             )
             filteredresult.data.tutorial.edges = result.data.tutorial.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.rayriffy.edges = result.data.rayriffy.edges.filter(
+              a => a.node.frontmatter.status === 'published',
+            )
+            filteredresult.data.SiriuSStarS.edges = result.data.SiriuSStarS.edges.filter(
               a => a.node.frontmatter.status === 'published',
             )
             filteredresult.data.allCategoriesJson.edges =
