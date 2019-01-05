@@ -164,8 +164,8 @@ class BlogPostTemplate extends React.Component {
           date={post.frontmatter.date}
           featured={post.frontmatter.featured}
           status={post.frontmatter.status}
-          link={false}>
-          <div dangerouslySetInnerHTML={{__html: post.html}} />
+          link={false}
+          content={post.html}>
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -222,7 +222,7 @@ export const pageQuery = graphql`
         date(formatString: "DD MMMM, YYYY")
         banner {
           childImageSharp {
-            fluid(maxWidth: 1000, quality: 100) {
+            fluid(maxWidth: 1000, quality: 90) {
               base64
               tracedSVG
               aspectRatio
