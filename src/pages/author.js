@@ -3,19 +3,19 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
+import {FaFacebook, FaTwitter} from 'react-icons/fa'
+
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
-import Pagination from '../components/pagination'
+import Chip from '../components/chip'
 
-export default class BlogIndex extends React.Component {
+export default class AuthorListPage extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
     const siteDescription = this.props.data.site.siteMetadata.description
-    const posts = this.props.data.allMarkdownRemark.edges
-    const {currentPage, numPages} = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
@@ -24,7 +24,7 @@ export default class BlogIndex extends React.Component {
           meta={[
             {
               name: 'name',
-              content: siteTitle,
+              content: 'Category ·' + siteTitle,
             },
             {
               name: 'description',
@@ -56,7 +56,7 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'og:title',
-              content: siteTitle,
+              content: 'Category ·' + siteTitle,
             },
             {
               name: 'og:description',
@@ -92,7 +92,7 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: siteTitle,
+              content: 'Category ·' + siteTitle,
             },
             {
               name: 'twitter:description',
@@ -103,7 +103,7 @@ export default class BlogIndex extends React.Component {
               content: siteUrl + '/default.jpg',
             },
           ]}
-          title={siteTitle}>
+          title={`Category · ${siteTitle}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -114,41 +114,38 @@ export default class BlogIndex extends React.Component {
             `}
           </script>
         </Helmet>
-        {posts.map(({node}) => {
-          var author = null
-          this.props.data.allAuthorsJson.edges.forEach(authorJson => {
-            if (authorJson.node.user === node.frontmatter.author) {
-              author = authorJson.node
-              return true
-            }
-          })
+        <Chip name="Authors" />
+        {this.props.data.allAuthorsJson.edges.map(({node}) => {
           return (
             <Card
-              key={node.fields.slug}
-              slug={node.fields.slug}
-              author={author}
-              banner={node.frontmatter.banner.childImageSharp.fluid}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              subtitle={node.frontmatter.subtitle}
-              featured={node.frontmatter.featured}
-              status={node.frontmatter.status}
-              link={true}
-            />
+              key={'author/' + node.user}
+              slug={'author/' + node.user}
+              banner={this.props.data[node.user].childImageSharp.fluid}
+              title={node.name}
+              status="published"
+              link={true}>
+              <FaFacebook />{' '}
+              <a href={node.facebook} rel="noopener noreferrer" target="_blank">
+                {node.facebook.split('/')[3]}
+              </a>
+              <br />
+              <FaTwitter />{' '}
+              <a
+                href={'https://twitter.com/' + node.twitter.split('@')[1]}
+                rel="noopener noreferrer"
+                target="_blank">
+                {node.twitter}
+              </a>
+            </Card>
           )
         })}
-        <Pagination
-          numPages={numPages}
-          currentPage={currentPage}
-          pathPrefix=""
-        />
       </Layout>
     )
   }
 }
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!, $status: String!) {
+  query authorPageQuery {
     site {
       siteMetadata {
         title
@@ -157,56 +154,48 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allMarkdownRemark(
-      sort: {fields: [frontmatter___date], order: DESC}
-      limit: $limit
-      skip: $skip
-      filter: {frontmatter: {status: {ne: $status}, type: {eq: "blog"}}}
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            subtitle
-            status
-            featured
-            author
-            banner {
-              childImageSharp {
-                fluid(maxWidth: 1000, quality: 90) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    allAuthorsJson {
+    allAuthorsJson(sort: {fields: [name], order: ASC}) {
       edges {
         node {
           user
           name
           facebook
+          twitter
+        }
+      }
+    }
+    rayriffy: file(relativePath: {eq: "rayriffy.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+        }
+      }
+    }
+    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
         }
       }
     }
   }
 `
 
-BlogIndex.propTypes = {
+AuthorListPage.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
@@ -216,16 +205,9 @@ BlogIndex.propTypes = {
         siteUrl: PropTypes.string,
       }),
     }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
     allAuthorsJson: PropTypes.shape({
       edges: PropTypes.array,
     }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
   }),
   location: PropTypes.object,
 }

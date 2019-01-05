@@ -6,17 +6,21 @@ import {graphql} from 'gatsby'
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
+import Chip from '../components/chip'
+import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
 
-export default class BlogIndex extends React.Component {
+export default class AuthorTemplate extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
-    const {currentPage, numPages} = this.props.pageContext
-
+    const author = this.props.data.authorsJson
+    const authorName = author.name
+    const authorDescription = 'List of blogs wriiten by ' + authorName
+    const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
+    const {currentPage, numPages, pathPrefix} = this.props.pageContext
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -24,11 +28,11 @@ export default class BlogIndex extends React.Component {
           meta={[
             {
               name: 'name',
-              content: siteTitle,
+              content: authorName,
             },
             {
               name: 'description',
-              content: siteDescription,
+              content: authorDescription,
             },
             {
               name: 'author',
@@ -36,7 +40,7 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:url',
@@ -56,23 +60,23 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'og:title',
-              content: siteTitle,
+              content: authorName,
             },
             {
               name: 'og:description',
-              content: siteDescription,
+              content: authorDescription,
             },
             {
               name: 'article:author',
-              content: 'https://facebook.com/rayriffy',
+              content: author.facebook,
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
             {
               name: 'og:image:alt',
@@ -84,26 +88,26 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:site',
-              content: '@rayriffy',
+              content: author.twitter,
             },
             {
               name: 'twitter:creator',
-              content: '@rayriffy',
+              content: author.twitter,
             },
             {
               name: 'twitter:title',
-              content: siteTitle,
+              content: authorName,
             },
             {
               name: 'twitter:description',
-              content: siteDescription,
+              content: authorDescription,
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: siteUrl + bannerUrl,
             },
           ]}
-          title={siteTitle}>
+          title={`${authorName} · ${siteTitle}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -114,19 +118,27 @@ export default class BlogIndex extends React.Component {
             `}
           </script>
         </Helmet>
+        <Chip name={authorName.split(' ')[0]} desc={authorName.split(' ')[1]} />
+        <Navbar
+          tabs={[
+            {
+              name: 'Facebook',
+              href: author.facebook,
+              newtab: true,
+            },
+            {
+              name: 'Twitter',
+              href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              newtab: true,
+            },
+          ]}
+        />
         {posts.map(({node}) => {
-          var author = null
-          this.props.data.allAuthorsJson.edges.forEach(authorJson => {
-            if (authorJson.node.user === node.frontmatter.author) {
-              author = authorJson.node
-              return true
-            }
-          })
           return (
             <Card
               key={node.fields.slug}
               slug={node.fields.slug}
-              author={author}
+              author={this.props.data.authorsJson}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
@@ -140,7 +152,7 @@ export default class BlogIndex extends React.Component {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix=""
+          pathPrefix={pathPrefix}
         />
       </Layout>
     )
@@ -148,7 +160,13 @@ export default class BlogIndex extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!, $status: String!) {
+  query AuthorPage(
+    $author: String!
+    $limit: Int!
+    $regex: String!
+    $skip: Int!
+    $status: String!
+  ) {
     site {
       siteMetadata {
         title
@@ -157,12 +175,19 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
+    authorsJson(user: {eq: $author}) {
+      user
+      name
+      facebook
+      twitter
+    }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {status: {ne: $status}, author: {regex: $regex}}}
       limit: $limit
       skip: $skip
-      filter: {frontmatter: {status: {ne: $status}, type: {eq: "blog"}}}
     ) {
+      totalCount
       edges {
         node {
           excerpt
@@ -194,19 +219,24 @@ export const pageQuery = graphql`
         }
       }
     }
-    allAuthorsJson {
-      edges {
-        node {
-          user
-          name
-          facebook
+    rayriffy: file(relativePath: {eq: "rayriffy.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          src
+        }
+      }
+    }
+    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          src
         }
       }
     }
   }
 `
 
-BlogIndex.propTypes = {
+AuthorTemplate.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
@@ -219,13 +249,16 @@ BlogIndex.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
     }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
+    authorsJson: PropTypes.shape({
+      user: PropTypes.string,
+      name: PropTypes.string,
+      desc: PropTypes.string,
     }),
   }),
   pageContext: PropTypes.shape({
     currentPage: PropTypes.number,
     numPages: PropTypes.number,
+    pathPrefix: PropTypes.string,
   }),
   location: PropTypes.object,
 }

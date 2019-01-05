@@ -7,7 +7,7 @@ import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
 
-class NotFoundPage extends React.Component {
+export default class NotFoundPage extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
 
@@ -29,8 +29,6 @@ class NotFoundPage extends React.Component {
   }
 }
 
-export default NotFoundPage
-
 export const pageQuery = graphql`
   query {
     site {
@@ -40,7 +38,7 @@ export const pageQuery = graphql`
     }
     banner: file(relativePath: {eq: "404.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
+        fluid(maxWidth: 1000, quality: 90) {
           base64
           tracedSVG
           aspectRatio
