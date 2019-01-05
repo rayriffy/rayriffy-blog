@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
 import Chip from '../components/chip'
+import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
 
 export default class AuthorTemplate extends React.Component {
@@ -117,7 +118,21 @@ export default class AuthorTemplate extends React.Component {
             `}
           </script>
         </Helmet>
-        <Chip name="Author" desc={authorName} />
+        <Chip name={authorName.split(' ')[0]} desc={authorName.split(' ')[1]} />
+        <Navbar
+          tabs={[
+            {
+              name: 'Facebook',
+              href: author.facebook,
+              newtab: true,
+            },
+            {
+              name: 'Twitter',
+              href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              newtab: true,
+            },
+          ]}
+        />
         {posts.map(({node}) => {
           return (
             <Card
