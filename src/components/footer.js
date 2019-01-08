@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Navbar from './navbar'
+
 import footerStyle from './footer.module.css'
 
 export default class FooterTemplate extends React.Component {
@@ -8,6 +10,33 @@ export default class FooterTemplate extends React.Component {
     const faceUrl = 'https://facebook.com/rayriffy'
     return (
       <div className={footerStyle.footer}>
+        <div className={footerStyle.container}>
+          <Navbar
+            align="left"
+            tabs={[
+              {
+                name: 'Home',
+                href: '/',
+                newtab: false,
+              },
+              {
+                name: 'Authors',
+                href: '/author',
+                newtab: false,
+              },
+              {
+                name: 'About Me',
+                href: 'https://cv.rayriffy.com',
+                newtab: true,
+              },
+              {
+                name: 'Contact',
+                href: 'mailto:contact@rayriffy.com',
+                newtab: false,
+              },
+            ]}
+          />
+        </div>
         <center>
           This site built with{' '}
           <img src={imgUrl} className={footerStyle.image} alt="love" /> by{' '}
