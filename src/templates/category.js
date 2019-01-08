@@ -6,7 +6,7 @@ import {graphql} from 'gatsby'
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
-import Category from '../components/category'
+import Chip from '../components/chip'
 import Pagination from '../components/pagination'
 
 export default class CategoryTemplate extends React.Component {
@@ -116,7 +116,7 @@ export default class CategoryTemplate extends React.Component {
             `}
           </script>
         </Helmet>
-        <Category name={categoryName} desc={categoryDescription} />
+        <Chip name={categoryName} desc={categoryDescription} />
         {posts.map(({node}) => {
           var author = null
           this.props.data.allAuthorsJson.edges.forEach(authorJson => {
@@ -188,7 +188,7 @@ export const pageQuery = graphql`
             author
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio

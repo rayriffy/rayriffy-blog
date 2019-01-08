@@ -13,7 +13,7 @@ import NavigationItem from '../components/navigation-item'
 
 import Card from '../components/blog-card'
 
-class BlogPostTemplate extends React.Component {
+export default class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const {previous, next} = this.props.pageContext
@@ -197,8 +197,6 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
-
 export const pageQuery = graphql`
   query BlogPostBySlug($author: String!, $slug: String!) {
     site {
@@ -237,6 +235,7 @@ export const pageQuery = graphql`
       }
     }
     authorsJson(user: {eq: $author}) {
+      user
       name
       twitter
       facebook
