@@ -1,5 +1,5 @@
 ---
-title: Review - Airpods
+title: Review - Airpods หูฟัง Wireless ที่ตอบโจทย์ด้านความสะดวกสบายในการใช้งานได้อย่างดี
 subtitle: ตอนแรกก็คิดว่าเป็นของกระจอกๆ แพงๆนะ...แต่ในเรื่องของความสะดวกสบายนี่คือสุดๆไปเลย
 banner: ./banner.jpg
 category: review
