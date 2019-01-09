@@ -13,6 +13,7 @@ export default class FooterTemplate extends React.Component {
         <div className={footerStyle.container}>
           <Navbar
             align="left"
+            keys="navFooter"
             tabs={[
               {
                 name: 'Home',

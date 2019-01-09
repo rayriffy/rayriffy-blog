@@ -121,6 +121,7 @@ export default class AuthorTemplate extends React.Component {
         <Chip name={authorName.split(' ')[0]} desc={authorName.split(' ')[1]} />
         <Navbar
           align="center"
+          keys="navAuthor"
           tabs={[
             {
               name: 'Facebook',
