@@ -5,6 +5,8 @@ import {graphql} from 'gatsby'
 
 import {rhythm} from '../utils/typography'
 
+import AdSense from 'react-adsense'
+
 import Layout from '../components/layout'
 
 import Navigation from '../components/navigation'
@@ -22,6 +24,16 @@ export default class BlogPostTemplate extends React.Component {
     const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
     const blogDescription = post.frontmatter.subtitle
     const author = this.props.data.authorsJson
+
+    let ads = (
+      <AdSense.Google
+        client="ca-pub-2837414306121160"
+        slot="7806394673"
+        style={{display: 'block'}}
+        format="auto"
+        responsive="true"
+      />
+    )
 
     return (
       <Layout location={this.props.location}>
@@ -166,6 +178,7 @@ export default class BlogPostTemplate extends React.Component {
           status={post.frontmatter.status}
           link={false}
           content={post.html}>
+          {ads}
           <hr
             style={{
               marginBottom: rhythm(1),

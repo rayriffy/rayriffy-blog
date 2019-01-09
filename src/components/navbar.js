@@ -24,7 +24,15 @@ export default class NavbarTemplate extends React.Component {
       }
     })
     return (
-      <nav className={navbarStyle.navbar}>
+      <nav
+        className={[
+          navbarStyle.navbar,
+          this.props.align === 'left'
+            ? navbarStyle.navbarleft
+            : this.props.align === 'center'
+            ? navbarStyle.navbarcenter
+            : navbarStyle.navbarright,
+        ].join(' ')}>
         <ul className={navbarStyle.nav}>{tabs}</ul>
       </nav>
     )
@@ -32,5 +40,6 @@ export default class NavbarTemplate extends React.Component {
 }
 
 NavbarTemplate.propTypes = {
+  align: PropTypes.string,
   tabs: PropTypes.array,
 }

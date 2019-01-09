@@ -38,6 +38,7 @@
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-adsense": "^0.0.6",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.2.2",
@@ -56,7 +57,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.12.2",
+    "eslint-plugin-react": "^7.12.3",
     "eslint-plugin-standard": "^4.0.0",
     "prettier": "^1.14.2"
   },
