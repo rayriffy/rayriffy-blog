@@ -25,16 +25,6 @@ export default class BlogPostTemplate extends React.Component {
     const blogDescription = post.frontmatter.subtitle
     const author = this.props.data.authorsJson
 
-    let ads = (
-      <AdSense.Google
-        client="ca-pub-2837414306121160"
-        slot="7806394673"
-        style={{display: 'block'}}
-        format="auto"
-        responsive="true"
-      />
-    )
-
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -178,7 +168,13 @@ export default class BlogPostTemplate extends React.Component {
           status={post.frontmatter.status}
           link={false}
           content={post.html}>
-          {ads}
+          <AdSense.Google
+            client="ca-pub-2837414306121160"
+            slot="7015425171"
+            style={{display: 'block'}}
+            format="auto"
+            responsive="true"
+          />
           <hr
             style={{
               marginBottom: rhythm(1),
