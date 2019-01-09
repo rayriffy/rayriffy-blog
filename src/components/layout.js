@@ -30,6 +30,7 @@ export default class LayoutTemplate extends React.Component {
               </Link>
               <Navbar
                 align="center"
+                keys="navHeader"
                 tabs={[
                   {
                     name: 'Home',

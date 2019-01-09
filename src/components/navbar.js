@@ -25,6 +25,7 @@ export default class NavbarTemplate extends React.Component {
     })
     return (
       <nav
+        key={this.props.keys}
         className={[
           navbarStyle.navbar,
           this.props.align === 'left'
@@ -41,5 +42,6 @@ export default class NavbarTemplate extends React.Component {
 
 NavbarTemplate.propTypes = {
   align: PropTypes.string,
+  keys: PropTypes.string,
   tabs: PropTypes.array,
 }
