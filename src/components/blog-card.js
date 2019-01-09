@@ -57,7 +57,7 @@ export default class BlogCardTemplate extends React.Component {
         <AdSense.Google
           client="ca-pub-2837414306121160"
           slot="7507090200"
-          style={{display: 'block'}}
+          style={{display: 'block', marginBottom: '25px'}}
           format="auto"
           responsive="true"
         />
