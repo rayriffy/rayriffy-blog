@@ -54,18 +54,20 @@ export default class BlogCardTemplate extends React.Component {
             <p className={cardStyle.subtitle}>{this.props.subtitle}</p>
           )}
         </div>
-        <AdSense.Google
-          client="ca-pub-2837414306121160"
-          slot="7507090200"
-          style={{display: 'block', marginBottom: '25px'}}
-          format="auto"
-          responsive="true"
-        />
         {this.props.content && (
-          <div
-            className={cardStyle.content}
-            dangerouslySetInnerHTML={{__html: this.props.content}}
-          />
+          <div>
+            <AdSense.Google
+              client="ca-pub-2837414306121160"
+              slot="7507090200"
+              style={{display: 'block', marginBottom: '25px'}}
+              format="auto"
+              responsive="true"
+            />
+            <div
+              className={cardStyle.content}
+              dangerouslySetInnerHTML={{__html: this.props.content}}
+            />
+          </div>
         )}
         {children}
       </div>
