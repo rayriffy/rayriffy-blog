@@ -39,7 +39,7 @@ export default class FooterTemplate extends React.Component {
           />
         </div>
         <center>
-          This site built with{' '}
+          Built with love by{' '}
           <img src={imgUrl} className={footerStyle.image} alt="love" /> by{' '}
           <a href={faceUrl} rel="noopener noreferrer" target="_blank">
             RayRiffy
