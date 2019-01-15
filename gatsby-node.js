@@ -279,7 +279,7 @@ exports.createPages = ({graphql, actions}) => {
 
           // Create category pages
           var categoryPathPrefix = 'category/'
-          _.each(catrgories, (category, index) => {
+          _.each(catrgories, category => {
             var totalCount = result.data[category.node.key].edges.length
             var numCategoryPages = Math.ceil(totalCount / postsPerPage)
             var pathPrefix = categoryPathPrefix + category.node.key
@@ -303,7 +303,7 @@ exports.createPages = ({graphql, actions}) => {
 
           // Create author pages
           var authorPathPrefix = 'author/'
-          _.each(authors, (author, index) => {
+          _.each(authors, author => {
             var totalCount = result.data[author.node.user].edges.length
             var numAuthorPages = Math.ceil(totalCount / postsPerPage)
             var pathPrefix = authorPathPrefix + author.node.user
