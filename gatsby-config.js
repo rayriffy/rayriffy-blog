@@ -144,30 +144,7 @@ module.exports = {
         icon: `src/assets/logo.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        dontCacheBustUrlsMatching: /(\.js$|\.css$|static\/)/,
-        runtimeCaching: [
-          {
-            urlPattern: /(\.css$|static\/)/,
-            handler: `cacheFirst`,
-          },
-          {
-            urlPattern: /(\.js$)/,
-            handler: `networkFirst`,
-          },
-          {
-            urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
-            handler: `staleWhileRevalidate`,
-          },
-          {
-            urlPattern: /^https?:\/\/fonts\.googleapis\.com\/css/,
-            handler: `staleWhileRevalidate`,
-          },
-        ],
-      },
-    },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',
