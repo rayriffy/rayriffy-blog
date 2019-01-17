@@ -38,14 +38,14 @@ module.exports = {
         env: {
           production: {
             policy: [
-              {userAgent: '*', disallow: ['/pages', '/category', '/author']},
+              { userAgent: '*', disallow: ['/pages', '/category', '/author'] },
             ],
           },
           staging: {
-            policy: [{userAgent: '*', disallow: ['/']}],
+            policy: [{ userAgent: '*', disallow: ['/'] }],
           },
           development: {
-            policy: [{userAgent: '*', disallow: ['/']}],
+            policy: [{ userAgent: '*', disallow: ['/'] }],
           },
         },
       },
@@ -144,7 +144,26 @@ module.exports = {
         icon: `src/assets/logo.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        dontCacheBustUrlsMatching: /(\.js$|\.css$|\/static\/)/,
+        runtimeCaching: [
+          {
+            urlPattern: /(\.js$|\.css$|\/static\/)/,
+            handler: `cacheFirst`,
+          },
+          {
+            urlPattern: /^https?:\/\/(www\.blog.rayriffy\.com|localhost:8000|localhost:9000|blog-staging\.rayriffy\.com|blog\.rayriffy\.com).*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+            handler: `staleWhileRevalidate`,
+          },
+          {
+            urlPattern: /^https?:\/\/fonts\.googleapis\.com\/css/,
+            handler: `staleWhileRevalidate`,
+          },
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',
