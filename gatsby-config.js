@@ -38,14 +38,27 @@ module.exports = {
         env: {
           production: {
             policy: [
-              { userAgent: '*', disallow: ['/pages', '/category', '/author'] },
+              {
+                userAgent: '*',
+                disallow: ['/pages', '/category', '/author'],
+              },
             ],
           },
           staging: {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
           },
           development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
           },
         },
       },
