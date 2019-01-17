@@ -1,10 +1,12 @@
+const {GATSBY_ENV = 'development'} = process.env
+
 var hostname
 
-if (process.env.GATSBY_ENV === 'production') {
+if (GATSBY_ENV === 'production') {
   hostname = 'https://blog.rayriffy.com'
-} else if (process.env.GATSBY_ENV === 'staging') {
+} else if (GATSBY_ENV === 'staging') {
   hostname = 'https://blog-staging.rayriffy.com'
-} else if (process.env.GATSBY_ENV === 'development') {
+} else if (GATSBY_ENV === 'development') {
   hostname = 'https://localhost:8000'
 }
 
@@ -34,7 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        resolveEnv: () => process.env.GATSBY_ENV,
+        resolveEnv: () => GATSBY_ENV,
         env: {
           production: {
             policy: [
@@ -136,9 +138,9 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `${
-          process.env.GATSBY_ENV === 'production'
+          GATSBY_ENV === 'production'
             ? 'UA-85367836-2'
-            : process.env.GATSBY_ENV === 'staging'
+            : GATSBY_ENV === 'staging'
             ? 'UA-85367836-3'
             : ''
         }`,

@@ -4,6 +4,8 @@ const fs = require('fs')
 const path = require('path')
 const {createFilePath} = require('gatsby-source-filesystem')
 
+const {GATSBY_ENV = 'development'} = process.env
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
@@ -146,10 +148,7 @@ exports.createPages = ({graphql, actions}) => {
         .then(result => {
           siteUrl = result.data.site.siteMetadata.siteUrl
           var filteredresult
-          if (
-            process.env.GATSBY_ENV === 'production' ||
-            process.env.GATSBY_ENV === 'staging'
-          ) {
+          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
             filteredresult = {
               data: {
                 allMarkdownRemark: {edges: null},
@@ -185,7 +184,7 @@ exports.createPages = ({graphql, actions}) => {
               result.data.allCategoriesJson.edges
             filteredresult.data.allAuthorsJson.edges =
               result.data.allAuthorsJson.edges
-          } else if (process.env.GATSBY_ENV === 'development') {
+          } else if (GATSBY_ENV === 'development') {
             filteredresult = result
           }
           return filteredresult
@@ -202,12 +201,9 @@ exports.createPages = ({graphql, actions}) => {
 
           var filter
           const postsPerPage = 5
-          if (
-            process.env.GATSBY_ENV === 'production' ||
-            process.env.GATSBY_ENV === 'staging'
-          ) {
+          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
             filter = 'draft'
-          } else if (process.env.GATSBY_ENV === 'development') {
+          } else if (GATSBY_ENV === 'development') {
             filter = ''
           }
 

@@ -11,7 +11,10 @@ import layoutStyle from './layout.module.css'
 export default class LayoutTemplate extends React.Component {
   render() {
     let devstrip = ''
-    if (process.env.GATSBY_ENV !== 'production') {
+
+    const {GATSBY_ENV = 'development'} = process.env
+
+    if (GATSBY_ENV !== 'production') {
       devstrip = <Dev />
     }
     const {children} = this.props
