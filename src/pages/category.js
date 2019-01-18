@@ -6,9 +6,9 @@ import {graphql} from 'gatsby'
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
-import Category from '../components/category'
+import Chip from '../components/chip'
 
-class CategoryList extends React.Component {
+export default class CategoryListPage extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -112,10 +112,7 @@ class CategoryList extends React.Component {
             `}
           </script>
         </Helmet>
-        <Category
-          name="Category"
-          desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง"
-        />
+        <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
         {this.props.data.allCategoriesJson.edges.map(({node}) => {
           return (
             <Card
@@ -136,8 +133,6 @@ class CategoryList extends React.Component {
     )
   }
 }
-
-export default CategoryList
 
 export const pageQuery = graphql`
   query categoryPageQuery {
@@ -168,7 +163,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -194,7 +189,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -220,7 +215,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -246,7 +241,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -272,7 +267,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -298,7 +293,7 @@ export const pageQuery = graphql`
           frontmatter {
             banner {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
                   aspectRatio
@@ -314,24 +309,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    banner: file(relativePath: {eq: "404.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
-        }
-      }
-    }
   }
 `
 
-CategoryList.propTypes = {
+CategoryListPage.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({

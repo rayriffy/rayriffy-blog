@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
+import AdSense from 'react-adsense'
 import Img from 'gatsby-image'
 
 import cardStyle from './blog-card.module.css'
 
-class BlogCardTemplate extends React.Component {
+export default class BlogCardTemplate extends React.Component {
   render() {
     const {children} = this.props
     let banner, title
@@ -43,12 +44,9 @@ class BlogCardTemplate extends React.Component {
           {this.props.date && this.props.author && (
             <div className={cardStyle.meta}>
               Written by{' '}
-              <a
-                href={this.props.author.facebook}
-                rel="noopener noreferrer"
-                target="_blank">
+              <Link to={'author/' + this.props.author.user}>
                 {this.props.author.name}
-              </a>{' '}
+              </Link>{' '}
               on {this.props.date}
             </div>
           )}
@@ -57,10 +55,19 @@ class BlogCardTemplate extends React.Component {
           )}
         </div>
         {this.props.content && (
-          <div
-            className={cardStyle.content}
-            dangerouslySetInnerHTML={{__html: this.props.content}}
-          />
+          <div>
+            <AdSense.Google
+              client="ca-pub-2837414306121160"
+              slot="7507090200"
+              style={{display: 'block', marginBottom: '25px'}}
+              format="auto"
+              responsive="true"
+            />
+            <div
+              className={cardStyle.content}
+              dangerouslySetInnerHTML={{__html: this.props.content}}
+            />
+          </div>
         )}
         {children}
       </div>
@@ -68,10 +75,9 @@ class BlogCardTemplate extends React.Component {
   }
 }
 
-export default BlogCardTemplate
-
 BlogCardTemplate.propTypes = {
   author: PropTypes.shape({
+    user: PropTypes.string,
     name: PropTypes.string,
     facebook: PropTypes.string,
     twitter: PropTypes.string,

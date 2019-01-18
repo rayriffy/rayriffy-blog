@@ -4,6 +4,8 @@ const fs = require('fs')
 const path = require('path')
 const {createFilePath} = require('gatsby-source-filesystem')
 
+const {GATSBY_ENV = 'development'} = process.env
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
@@ -42,6 +44,13 @@ exports.createPages = ({graphql, actions}) => {
                   key
                   name
                   desc
+                }
+              }
+            }
+            allAuthorsJson {
+              edges {
+                node {
+                  user
                 }
               }
             }
@@ -111,55 +120,74 @@ exports.createPages = ({graphql, actions}) => {
                 }
               }
             }
+            rayriffy: allMarkdownRemark(
+              filter: {frontmatter: {author: {regex: "/rayriffy/"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
+            SiriuSStarS: allMarkdownRemark(
+              filter: {frontmatter: {author: {regex: "/SiriuSStarS/"}}}
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    status
+                  }
+                }
+              }
+            }
           }
         `,
       )
         .then(result => {
           siteUrl = result.data.site.siteMetadata.siteUrl
-          var filteredresult
-          if (
-            process.env.GATSBY_ENV === 'production' ||
-            process.env.GATSBY_ENV === 'staging'
-          ) {
-            filteredresult = {
+          var filteredResult
+          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
+            filteredResult = {
               data: {
                 allMarkdownRemark: {edges: null},
                 allCategoriesJson: {edges: null},
+                allAuthorsJson: {edges: null},
                 lifestyle: {edges: null},
                 misc: {edges: null},
                 music: {edges: null},
                 programming: {edges: null},
                 review: {edges: null},
                 tutorial: {edges: null},
+                rayriffy: {edges: null},
+                SiriuSStarS: {edges: null},
               },
             }
-            filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.lifestyle.edges = result.data.lifestyle.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.misc.edges = result.data.misc.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.music.edges = result.data.music.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.programming.edges = result.data.programming.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.review.edges = result.data.review.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.tutorial.edges = result.data.tutorial.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.allCategoriesJson.edges =
+            const filterNode = [
+              'allMarkdownRemark',
+              'lifestyle',
+              'misc',
+              'music',
+              'programming',
+              'review',
+              'tutorial',
+              'rayriffy',
+              'SiriuSStarS',
+            ]
+            _.each(filterNode, node => {
+              filteredResult.data[node].edges = result.data[node].edges.filter(
+                edge => edge.node.frontmatter.status === 'published',
+              )
+            })
+            filteredResult.data.allCategoriesJson.edges =
               result.data.allCategoriesJson.edges
-          } else if (process.env.GATSBY_ENV === 'development') {
-            filteredresult = result
+            filteredResult.data.allAuthorsJson.edges =
+              result.data.allAuthorsJson.edges
+          } else if (GATSBY_ENV === 'development') {
+            filteredResult = result
           }
-          return filteredresult
+          return filteredResult
         })
         .then(result => {
           if (result.errors) {
@@ -169,15 +197,13 @@ exports.createPages = ({graphql, actions}) => {
 
           const posts = result.data.allMarkdownRemark.edges
           const catrgories = result.data.allCategoriesJson.edges
+          const authors = result.data.allAuthorsJson.edges
 
           var filter
           const postsPerPage = 5
-          if (
-            process.env.GATSBY_ENV === 'production' ||
-            process.env.GATSBY_ENV === 'staging'
-          ) {
+          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
             filter = 'draft'
-          } else if (process.env.GATSBY_ENV === 'development') {
+          } else if (GATSBY_ENV === 'development') {
             filter = ''
           }
 
@@ -238,7 +264,7 @@ exports.createPages = ({graphql, actions}) => {
 
           // Create category pages
           var categoryPathPrefix = 'category/'
-          _.each(catrgories, (category, index) => {
+          _.each(catrgories, category => {
             var totalCount = result.data[category.node.key].edges.length
             var numCategoryPages = Math.ceil(totalCount / postsPerPage)
             var pathPrefix = categoryPathPrefix + category.node.key
@@ -253,6 +279,30 @@ exports.createPages = ({graphql, actions}) => {
                   numPages: numCategoryPages,
                   pathPrefix,
                   regex: '/' + category.node.key + '/',
+                  skip: i * postsPerPage,
+                  status: filter,
+                },
+              })
+            })
+          })
+
+          // Create author pages
+          var authorPathPrefix = 'author/'
+          _.each(authors, author => {
+            var totalCount = result.data[author.node.user].edges.length
+            var numAuthorPages = Math.ceil(totalCount / postsPerPage)
+            var pathPrefix = authorPathPrefix + author.node.user
+            _.times(numAuthorPages, i => {
+              createPage({
+                path: i === 0 ? pathPrefix : pathPrefix + `/pages/${i + 1}`,
+                component: path.resolve('./src/templates/author.js'),
+                context: {
+                  author: author.node.user,
+                  currentPage: i + 1,
+                  limit: postsPerPage,
+                  numPages: numAuthorPages,
+                  pathPrefix,
+                  regex: '/' + author.node.user + '/',
                   skip: i * postsPerPage,
                   status: filter,
                 },

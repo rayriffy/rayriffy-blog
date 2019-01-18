@@ -76,10 +76,16 @@ pre {
 }
 
 .title {
-  font-size: 38px;
+  font-size: 36px;
   line-height: 46px;
   font-weight: 400;
   text-transform: none;
+}
+
+@media only screen and (min-width: 960px) {
+  .title {
+    font-size: 38px;
+  }
 }
 
 .title>a {
@@ -96,7 +102,7 @@ pre {
 
 .meta {
   color: #A5A5A5;
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 20px;
   margin-bottom: 25px;
   margin-top: 25px;

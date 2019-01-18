@@ -12,10 +12,6 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <link
-            href="https://fonts.googleapis.com/css?family=Kanit"
-            rel="stylesheet"
-          />
           <link href="/icon.png" rel="shortcut icon" type="image/png" />
           <link href="/icon.png" rel="apple-touch-icon-precomposed" />
           {this.props.headComponents}
@@ -37,6 +33,10 @@ export default class HTML extends React.Component {
           />
           {this.props.postBodyComponents}
         </body>
+        <script
+          async
+          src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        />
       </html>
     )
   }

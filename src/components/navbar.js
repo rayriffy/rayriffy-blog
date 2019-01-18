@@ -1,30 +1,47 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import navbarStyle from './navbar.module.css'
 
-class NavbarTemplate extends React.Component {
+export default class NavbarTemplate extends React.Component {
   render() {
-    return (
-      <nav className={navbarStyle.navbar}>
-        <ul className={navbarStyle.nav}>
+    const tabs = []
+    this.props.tabs.forEach(tab => {
+      if (tab.newtab === false) {
+        tabs.push(
           <li>
-            <a href="/">Home</a>
-          </li>
+            <a href={tab.href}>{tab.name}</a>
+          </li>,
+        )
+      } else {
+        tabs.push(
           <li>
-            <a href="/category">Category</a>
-          </li>
-          <li>
-            <a
-              href="https://l.rayriffy.com/nico"
-              rel="noopener noreferrer"
-              target="_blank">
-              ♪
+            <a href={tab.href} rel="noopener noreferrer" target="_blank">
+              {tab.name}
             </a>
-          </li>
-        </ul>
+          </li>,
+        )
+      }
+    })
+    return (
+      <nav
+        key={this.props.keys}
+        className={[
+          navbarStyle.navbar,
+          this.props.align === 'left'
+            ? navbarStyle.navbarleft
+            : this.props.align === 'center'
+            ? navbarStyle.navbarcenter
+            : navbarStyle.navbarright,
+        ].join(' ')}>
+        <ul className={navbarStyle.nav}>{tabs}</ul>
       </nav>
     )
   }
 }
 
-export default NavbarTemplate
+NavbarTemplate.propTypes = {
+  align: PropTypes.string,
+  keys: PropTypes.string,
+  tabs: PropTypes.array,
+}

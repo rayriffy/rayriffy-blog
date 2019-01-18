@@ -5,6 +5,8 @@ import {graphql} from 'gatsby'
 
 import {rhythm} from '../utils/typography'
 
+import AdSense from 'react-adsense'
+
 import Layout from '../components/layout'
 
 import Navigation from '../components/navigation'
@@ -13,7 +15,7 @@ import NavigationItem from '../components/navigation-item'
 
 import Card from '../components/blog-card'
 
-class BlogPostTemplate extends React.Component {
+export default class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const {previous, next} = this.props.pageContext
@@ -166,6 +168,13 @@ class BlogPostTemplate extends React.Component {
           status={post.frontmatter.status}
           link={false}
           content={post.html}>
+          <AdSense.Google
+            client="ca-pub-2837414306121160"
+            slot="7015425171"
+            style={{display: 'block'}}
+            format="auto"
+            responsive="true"
+          />
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -196,8 +205,6 @@ class BlogPostTemplate extends React.Component {
     )
   }
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($author: String!, $slug: String!) {
@@ -237,6 +244,7 @@ export const pageQuery = graphql`
       }
     }
     authorsJson(user: {eq: $author}) {
+      user
       name
       twitter
       facebook

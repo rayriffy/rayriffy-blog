@@ -1,10 +1,12 @@
+const {GATSBY_ENV = 'development'} = process.env
+
 var hostname
 
-if (process.env.GATSBY_ENV === 'production') {
+if (GATSBY_ENV === 'production') {
   hostname = 'https://blog.rayriffy.com'
-} else if (process.env.GATSBY_ENV === 'staging') {
+} else if (GATSBY_ENV === 'staging') {
   hostname = 'https://blog-staging.rayriffy.com'
-} else if (process.env.GATSBY_ENV === 'development') {
+} else if (GATSBY_ENV === 'development') {
   hostname = 'https://localhost:8000'
 }
 
@@ -17,6 +19,12 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`kanit`],
+      },
+    },
     `gatsby-plugin-netlify-cache`,
     `gatsby-transformer-json`,
     {
@@ -28,16 +36,31 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        resolveEnv: () => process.env.GATSBY_ENV,
+        resolveEnv: () => GATSBY_ENV,
         env: {
           production: {
-            policy: [{userAgent: '*', disallow: ['/pages', '/category']}],
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/pages', '/category', '/author'],
+              },
+            ],
           },
           staging: {
-            policy: [{userAgent: '*', disallow: ['/']}],
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
           },
           development: {
-            policy: [{userAgent: '*', disallow: ['/']}],
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
           },
         },
       },
@@ -54,7 +77,13 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        exclude: ['/pages/*', '/category', '/category/*'],
+        exclude: [
+          '/pages/*',
+          '/category',
+          '/category/*',
+          '/author',
+          '/author/*',
+        ],
       },
     },
     {
@@ -109,9 +138,9 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `${
-          process.env.GATSBY_ENV === 'production'
+          GATSBY_ENV === 'production'
             ? 'UA-85367836-2'
-            : process.env.GATSBY_ENV === 'staging'
+            : GATSBY_ENV === 'staging'
             ? 'UA-85367836-3'
             : ''
         }`,
@@ -133,18 +162,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        dontCacheBustUrlsMatching: /(\.js$|\.css$|static\/)/,
+        dontCacheBustUrlsMatching: /(\.js$|\.css$|\/static\/)/,
         runtimeCaching: [
           {
-            urlPattern: /(\.css$|static\/)/,
+            urlPattern: /(\.js$|\.css$|\/static\/)/,
             handler: `cacheFirst`,
           },
           {
-            urlPattern: /(\.js$)/,
-            handler: `networkFirst`,
-          },
-          {
-            urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+            urlPattern: /^https?:\/\/(www\.blog.rayriffy\.com|localhost:8000|localhost:9000|blog-staging\.rayriffy\.com|blog\.rayriffy\.com).*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
             handler: `staleWhileRevalidate`,
           },
           {

@@ -17,6 +17,21 @@
   clear: both
 }
 
+.navbarleft {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbarcenter {
+  display: flex;
+  justify-content: center;
+}
+
+.navbarright {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .nav {
   margin: 0;
   padding: 0;
