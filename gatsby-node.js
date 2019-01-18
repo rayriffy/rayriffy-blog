@@ -147,9 +147,9 @@ exports.createPages = ({graphql, actions}) => {
       )
         .then(result => {
           siteUrl = result.data.site.siteMetadata.siteUrl
-          var filteredresult
+          var filteredResult
           if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
-            filteredresult = {
+            filteredResult = {
               data: {
                 allMarkdownRemark: {edges: null},
                 allCategoriesJson: {edges: null},
@@ -176,18 +176,18 @@ exports.createPages = ({graphql, actions}) => {
               'SiriuSStarS',
             ]
             _.each(filterNode, node => {
-              filteredresult.data[node].edges = result.data[node].edges.filter(
+              filteredResult.data[node].edges = result.data[node].edges.filter(
                 edge => edge.node.frontmatter.status === 'published',
               )
             })
-            filteredresult.data.allCategoriesJson.edges =
+            filteredResult.data.allCategoriesJson.edges =
               result.data.allCategoriesJson.edges
-            filteredresult.data.allAuthorsJson.edges =
+            filteredResult.data.allAuthorsJson.edges =
               result.data.allAuthorsJson.edges
           } else if (GATSBY_ENV === 'development') {
-            filteredresult = result
+            filteredResult = result
           }
-          return filteredresult
+          return filteredResult
         })
         .then(result => {
           if (result.errors) {
