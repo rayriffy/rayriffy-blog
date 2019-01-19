@@ -4,6 +4,8 @@ const fs = require('fs')
 const path = require('path')
 const {createFilePath} = require('gatsby-source-filesystem')
 
+const {GATSBY_ENV = 'development'} = process.env
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
@@ -145,12 +147,9 @@ exports.createPages = ({graphql, actions}) => {
       )
         .then(result => {
           siteUrl = result.data.site.siteMetadata.siteUrl
-          var filteredresult
-          if (
-            process.env.GATSBY_ENV === 'production' ||
-            process.env.GATSBY_ENV === 'staging'
-          ) {
-            filteredresult = {
+          var filteredResult
+          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
+            filteredResult = {
               data: {
                 allMarkdownRemark: {edges: null},
                 allCategoriesJson: {edges: null},
@@ -165,41 +164,30 @@ exports.createPages = ({graphql, actions}) => {
                 SiriuSStarS: {edges: null},
               },
             }
-            filteredresult.data.allMarkdownRemark.edges = result.data.allMarkdownRemark.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.lifestyle.edges = result.data.lifestyle.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.misc.edges = result.data.misc.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.music.edges = result.data.music.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.programming.edges = result.data.programming.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.review.edges = result.data.review.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.tutorial.edges = result.data.tutorial.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.rayriffy.edges = result.data.rayriffy.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.SiriuSStarS.edges = result.data.SiriuSStarS.edges.filter(
-              a => a.node.frontmatter.status === 'published',
-            )
-            filteredresult.data.allCategoriesJson.edges =
+            const filterNode = [
+              'allMarkdownRemark',
+              'lifestyle',
+              'misc',
+              'music',
+              'programming',
+              'review',
+              'tutorial',
+              'rayriffy',
+              'SiriuSStarS',
+            ]
+            _.each(filterNode, node => {
+              filteredResult.data[node].edges = result.data[node].edges.filter(
+                edge => edge.node.frontmatter.status === 'published',
+              )
+            })
+            filteredResult.data.allCategoriesJson.edges =
               result.data.allCategoriesJson.edges
-            filteredresult.data.allAuthorsJson.edges =
+            filteredResult.data.allAuthorsJson.edges =
               result.data.allAuthorsJson.edges
-          } else if (process.env.GATSBY_ENV === 'development') {
-            filteredresult = result
+          } else if (GATSBY_ENV === 'development') {
+            filteredResult = result
           }
-          return filteredresult
+          return filteredResult
         })
         .then(result => {
           if (result.errors) {
@@ -213,12 +201,9 @@ exports.createPages = ({graphql, actions}) => {
 
           var filter
           const postsPerPage = 5
-          if (
-            process.env.GATSBY_ENV === 'production' ||
-            process.env.GATSBY_ENV === 'staging'
-          ) {
+          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
             filter = 'draft'
-          } else if (process.env.GATSBY_ENV === 'development') {
+          } else if (GATSBY_ENV === 'development') {
             filter = ''
           }
 

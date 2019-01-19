@@ -10,14 +10,17 @@ import layoutStyle from './layout.module.css'
 
 export default class LayoutTemplate extends React.Component {
   render() {
-    let devstrip = ''
-    if (process.env.GATSBY_ENV !== 'production') {
-      devstrip = <Dev />
+    let devStrip = ''
+
+    const {GATSBY_ENV = 'development'} = process.env
+
+    if (GATSBY_ENV !== 'production') {
+      devStrip = <Dev />
     }
     const {children} = this.props
     return (
       <div className={layoutStyle.page}>
-        {devstrip}
+        {devStrip}
         <div className={layoutStyle.cover}>
           <div className={[layoutStyle.container]}>
             <div className={[layoutStyle.header]}>
