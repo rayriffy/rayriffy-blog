@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
-import AdSense from 'react-adsense'
 import Img from 'gatsby-image'
 
 import cardStyle from './blog-card.module.css'
@@ -55,19 +54,10 @@ export default class BlogCardTemplate extends React.Component {
           )}
         </div>
         {this.props.content && (
-          <div>
-            <AdSense.Google
-              client="ca-pub-2837414306121160"
-              slot="7507090200"
-              style={{display: 'block', marginBottom: '25px'}}
-              format="auto"
-              responsive="true"
-            />
-            <div
-              className={cardStyle.content}
-              dangerouslySetInnerHTML={{__html: this.props.content}}
-            />
-          </div>
+          <div
+            className={cardStyle.content}
+            dangerouslySetInnerHTML={{__html: this.props.content}}
+          />
         )}
         {children}
       </div>
