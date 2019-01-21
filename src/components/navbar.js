@@ -9,13 +9,13 @@ export default class NavbarTemplate extends React.Component {
     this.props.tabs.forEach(tab => {
       if (tab.newtab === false) {
         tabs.push(
-          <li>
+          <li key={this.props.keys + '-' + tab.name}>
             <a href={tab.href}>{tab.name}</a>
           </li>,
         )
       } else {
         tabs.push(
-          <li>
+          <li key={this.props.keys + '-' + tab.name}>
             <a href={tab.href} rel="noopener noreferrer" target="_blank">
               {tab.name}
             </a>

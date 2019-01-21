@@ -22,7 +22,7 @@ export default class CategoryListPage extends React.Component {
           meta={[
             {
               name: 'name',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Category`,
             },
             {
               name: 'description',
@@ -54,7 +54,7 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'og:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Category`,
             },
             {
               name: 'og:description',
@@ -90,7 +90,7 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Category`,
             },
             {
               name: 'twitter:description',
@@ -101,7 +101,7 @@ export default class CategoryListPage extends React.Component {
               content: siteUrl + '/default.jpg',
             },
           ]}
-          title={`Category · ${siteTitle}`}>
+          title={`${siteTitle} · Category`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {

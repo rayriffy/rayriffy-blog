@@ -24,7 +24,7 @@ export default class AuthorListPage extends React.Component {
           meta={[
             {
               name: 'name',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Authors`,
             },
             {
               name: 'description',
@@ -56,7 +56,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'og:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Authors`,
             },
             {
               name: 'og:description',
@@ -92,7 +92,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Authors`,
             },
             {
               name: 'twitter:description',
@@ -103,7 +103,7 @@ export default class AuthorListPage extends React.Component {
               content: siteUrl + '/default.jpg',
             },
           ]}
-          title={`Category · ${siteTitle}`}>
+          title={`${siteTitle} · Authors`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
