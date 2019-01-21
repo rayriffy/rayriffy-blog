@@ -26,7 +26,7 @@ export default class CategoryTemplate extends React.Component {
           meta={[
             {
               name: 'name',
-              content: categoryName,
+              content: `${siteTitle} · ${categoryName}`,
             },
             {
               name: 'description',
@@ -58,7 +58,7 @@ export default class CategoryTemplate extends React.Component {
             },
             {
               name: 'og:title',
-              content: categoryName,
+              content: `${siteTitle} · ${categoryName}`,
             },
             {
               name: 'og:description',
@@ -94,7 +94,7 @@ export default class CategoryTemplate extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: categoryName,
+              content: `${siteTitle} · ${categoryName}`,
             },
             {
               name: 'twitter:description',
@@ -105,7 +105,7 @@ export default class CategoryTemplate extends React.Component {
               content: siteUrl + bannerUrl,
             },
           ]}
-          title={`${categoryName} · ${siteTitle}`}>
+          title={`${siteTitle} · ${categoryName}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {

@@ -48,7 +48,7 @@ export default class BlogPostTemplate extends React.Component {
           meta={[
             {
               name: 'name',
-              content: post.frontmatter.title + '·' + siteTitle,
+              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
               name: 'description',
@@ -81,7 +81,7 @@ export default class BlogPostTemplate extends React.Component {
             },
             {
               name: 'og:title',
-              content: post.frontmatter.title,
+              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
               name: 'og:description',
@@ -123,7 +123,7 @@ export default class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: post.frontmatter.title,
+              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
               name: 'twitter:description',
@@ -139,7 +139,7 @@ export default class BlogPostTemplate extends React.Component {
               content: 'nositelinkssearchbox',
             },
           ]}
-          title={`${post.frontmatter.title} · ${siteTitle}`}>
+          title={`${siteTitle} · ${post.frontmatter.title}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
