@@ -5130,10 +5130,10 @@ gatsby-paginate@^1.0.17:
   dependencies:
     path "^0.12.7"
 
-gatsby-plugin-feed@^2.0.8:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.0.11.tgz#1baa33565c131415a2c971aa49adea02a08bf935"
-  integrity sha512-YefZwUeKiPd2OVz15XlRtb9LqNA0d66ThVCNwpr1kqyMRQg22pwmE2D+ZVLEWlB6uQv/92kY4hw13W6fKcpTFQ==
+gatsby-plugin-feed@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.0.12.tgz#18b7cb08adca34c35ec24e855e51e2fa71a7d553"
+  integrity sha512-V808bPtQ+/A+8L5x6iIS6yjk+udcbn8L37rnKn/pG1q4MeRYq7xEgZf+3sDoi36LSwUbUsl1jVwxwldeoiWkTQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     lodash.merge "^4.6.0"
