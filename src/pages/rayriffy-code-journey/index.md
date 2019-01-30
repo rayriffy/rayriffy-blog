@@ -4,7 +4,7 @@ subtitle: มาเล่าประสบการณ์การโค๊ด�
 banner: ./banner.jpg
 category: lifestyle
 author: rayriffy
-date: "2020-01-31T03:00:00.000Z"
+date: "2019-01-31T03:00:00.000Z"
 featured: false
 type: blog
 status: published
