@@ -176,8 +176,9 @@ exports.createPages = ({graphql, actions}) => {
               'SiriuSStarS',
             ]
             _.each(filterNode, node => {
-              filteredResult.data[node].edges = result.data[node].edges.filter(
-                edge => edge.node.frontmatter.status === 'published',
+              filteredResult.data[node].edges = _.filter(
+                result.data[node].edges,
+                {node: {frontmatter: {status: 'published'}}},
               )
             })
             filteredResult.data.allCategoriesJson.edges =
