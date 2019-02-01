@@ -43,7 +43,7 @@ export default class BlogCardTemplate extends React.Component {
           {this.props.date && this.props.author && (
             <div className={cardStyle.meta}>
               Written by{' '}
-              <Link to={'author/' + this.props.author.user}>
+              <Link to={'/author/' + this.props.author.user}>
                 {this.props.author.name}
               </Link>{' '}
               on {this.props.date}

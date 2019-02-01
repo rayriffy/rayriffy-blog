@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -6,16 +7,16 @@ import navbarStyle from './navbar.module.css'
 export default class NavbarTemplate extends React.Component {
   render() {
     const tabs = []
-    this.props.tabs.forEach(tab => {
+    _.each(this.props.tabs, tab => {
       if (tab.newtab === false) {
         tabs.push(
-          <li key={this.props.keys + '-' + tab.name}>
+          <li key={`${this.props.keys}-${tab.name}`}>
             <a href={tab.href}>{tab.name}</a>
           </li>,
         )
       } else {
         tabs.push(
-          <li key={this.props.keys + '-' + tab.name}>
+          <li key={`${this.props.keys}-${tab.name}`}>
             <a href={tab.href} rel="noopener noreferrer" target="_blank">
               {tab.name}
             </a>

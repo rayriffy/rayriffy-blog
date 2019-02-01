@@ -167,7 +167,7 @@ export default class BlogPostTemplate extends React.Component {
                   "name" : "${siteTitle}",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "${siteUrl + '/icon.png'}"
+                    "url": "${`${siteUrl}/icon.png`}"
                   }
                 }
               }

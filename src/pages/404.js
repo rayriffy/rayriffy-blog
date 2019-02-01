@@ -15,7 +15,7 @@ export default class NotFoundPage extends React.Component {
       <Layout>
         <Helmet
           htmlAttributes={{lang: 'en'}}
-          title={siteTitle + ' · Not Found'}
+          title={`${siteTitle} · Not Found`}
         />
         <Card
           banner={this.props.data.banner.childImageSharp.fluid}
