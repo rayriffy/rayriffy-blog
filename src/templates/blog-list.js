@@ -135,7 +135,7 @@ export default class BlogIndex extends React.Component {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix=""
+          pathPrefix="/"
         />
       </Layout>
     )
