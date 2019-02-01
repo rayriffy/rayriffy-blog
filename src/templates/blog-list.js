@@ -116,7 +116,9 @@ export default class BlogIndex extends React.Component {
           </script>
         </Helmet>
         {posts.map(({node}) => {
-          let author = _.find(this.props.data.allAuthorsJson.edges, {node: {user: node.frontmatter.author}})
+          let author = _.find(this.props.data.allAuthorsJson.edges, {
+            node: {user: node.frontmatter.author},
+          })
           return (
             <Card
               key={node.fields.slug}
