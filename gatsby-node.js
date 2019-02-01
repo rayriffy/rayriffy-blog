@@ -271,7 +271,7 @@ exports.createPages = ({graphql, actions}) => {
             var pathPrefix = categoryPathPrefix + category.node.key
             _.times(numCategoryPages, i => {
               createPage({
-                path: i === 0 ? pathPrefix : pathPrefix + `/pages/${i + 1}`,
+                path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
                 component: path.resolve('./src/templates/category.js'),
                 context: {
                   category: category.node.key,
@@ -279,7 +279,7 @@ exports.createPages = ({graphql, actions}) => {
                   limit: postsPerPage,
                   numPages: numCategoryPages,
                   pathPrefix,
-                  regex: '/' + category.node.key + '/',
+                  regex: `/${category.node.key}/`,
                   skip: i * postsPerPage,
                   status: filter,
                 },
@@ -295,7 +295,7 @@ exports.createPages = ({graphql, actions}) => {
             var pathPrefix = authorPathPrefix + author.node.user
             _.times(numAuthorPages, i => {
               createPage({
-                path: i === 0 ? pathPrefix : pathPrefix + `/pages/${i + 1}`,
+                path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
                 component: path.resolve('./src/templates/author.js'),
                 context: {
                   author: author.node.user,
@@ -303,7 +303,7 @@ exports.createPages = ({graphql, actions}) => {
                   limit: postsPerPage,
                   numPages: numAuthorPages,
                   pathPrefix,
-                  regex: '/' + author.node.user + '/',
+                  regex: `/${author.node.user}/`,
                   skip: i * postsPerPage,
                   status: filter,
                 },

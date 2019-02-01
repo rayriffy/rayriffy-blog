@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
@@ -36,7 +37,7 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:url',
@@ -68,11 +69,11 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:alt',
@@ -100,7 +101,7 @@ export default class BlogIndex extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
           ]}
           title={siteTitle}>
@@ -115,18 +116,12 @@ export default class BlogIndex extends React.Component {
           </script>
         </Helmet>
         {posts.map(({node}) => {
-          var author = null
-          this.props.data.allAuthorsJson.edges.forEach(authorJson => {
-            if (authorJson.node.user === node.frontmatter.author) {
-              author = authorJson.node
-              return true
-            }
-          })
+          let author = _.find(this.props.data.allAuthorsJson.edges, {node: {user: node.frontmatter.author}})
           return (
             <Card
               key={node.fields.slug}
               slug={node.fields.slug}
-              author={author}
+              author={author.node}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}

@@ -36,7 +36,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:url',
@@ -68,11 +68,11 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:alt',
@@ -100,7 +100,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
           ]}
           title={`${siteTitle} · Authors`}>
