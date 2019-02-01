@@ -118,8 +118,8 @@ export default class AuthorListPage extends React.Component {
         {this.props.data.allAuthorsJson.edges.map(({node}) => {
           return (
             <Card
-              key={'author/' + node.user}
-              slug={'author/' + node.user}
+              key={`/author/${node.user}`}
+              slug={`/author/${node.user}`}
               banner={this.props.data[node.user].childImageSharp.fluid}
               title={node.name}
               status="published"

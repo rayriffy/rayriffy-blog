@@ -116,8 +116,8 @@ export default class CategoryListPage extends React.Component {
         {this.props.data.allCategoriesJson.edges.map(({node}) => {
           return (
             <Card
-              key={'category/' + node.key}
-              slug={'category/' + node.key}
+              key={`/category/${node.key}`}
+              slug={`/category/${node.key}`}
               banner={
                 this.props.data[node.key].edges[0].node.frontmatter.banner
                   .childImageSharp.fluid
