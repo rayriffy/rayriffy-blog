@@ -5352,10 +5352,10 @@ gatsby-remark-responsive-iframe@^2.0.8:
     lodash "^4.17.10"
     unist-util-visit "^1.3.0"
 
-gatsby-remark-smartypants@^2.0.5:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-smartypants/-/gatsby-remark-smartypants-2.0.7.tgz#2218a7c00461d025db228a9a8108af2dd9987c8c"
-  integrity sha512-s7exDK+p3uqUintp6ZMTw7zrus0nDvhdw1KnZLQH6H+49FScFNFkIveKiwLkXc9BXlSHpqWqza1Jmdym6dBAlg==
+gatsby-remark-smartypants@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-smartypants/-/gatsby-remark-smartypants-2.0.8.tgz#969372c7dbf478467300a00d59da4c69fbaca967"
+  integrity sha512-mrO/VVILD3YjD6FGprGSq7gkaVJNjWiAobgxneYSmVJIRggIOP5WOPfKGdTsIB0pZCdIc0r4xUNBE5hYhJaMKw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     retext "^5.0.0"
