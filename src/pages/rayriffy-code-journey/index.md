@@ -46,7 +46,7 @@ status: published
 
 สวัสดีมหิดลวิทยานุสรณ์ ช่วงนี้จะเป็นช่วงที่รู้ตัวเองแล้วว่าไปทางเว็บน่าจะดีกว่าไปทาง Mobile Application ก็ลุยทางเว็บแบบรัวๆเลย พอมาถึงช่วงเทอม 2 ก็ได้ Assignment ให้เขียนเว็บสำหรับทำกิจกรรมรวมค่าย PRE-MWIT 2016 ตอนนั้นเป็นช่วงเริ่มแรกๆสำหรับเว็บเลยก็เขียนโดยใช้ PHP 5.6 เป็นตัว Backend และ [Bootflat](https://bootflat.github.io/) เป็น Design Framework หลัก รวมทีมกับ[กัสโต้](https://facebook.com/mirrormacruziouscraze) และ[แทน](https://facebook.com/thanwj) (รวมกับเพื่อนอีกบางค่วยมา Test แล้วช่วยกันแก้บัค) มาช่วยกันเขียนให้ทัน Deadline ใน 2 สัปดาห์ตอนนั้นคือเรียกได้ว่าได้ความรู้ PHP มาแบบเต็มอิ่ม
 
-<iframe src="https://web.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Frayriffy%2Fposts%2F473574709496617&width=500" width="100%" height="400px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+<iframe src="https://web.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Frayriffy%2Fposts%2F473574709496617&width=1000" width="500" height="364" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
 [ดู Source Code ได้ที่ GitHub](https://github.com/premwits/premwits-2016)
 
@@ -61,7 +61,7 @@ status: published
 
 แล้วก็ระหว่างทำไปเรื่อยๆก็มี Requirement ถล่มมาเรื่อยๆอยู่อย่างงั้นแหละทำให้งานไม่เสร็จสักส่วน พอไปเล่นกันก็เจ๊งตามคาด
 
-<iframe src="https://web.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Frayriffy%2Fposts%2F614221728765247&width=500" width="100%" height="400px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+<iframe src="https://web.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Frayriffy%2Fposts%2F614221728765247&width=1000" width="500" height="364" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
 [ซึ่งแน่นอน Source Code ดูที่ GitHub เหมือนกัน](https://github.com/premwits/premwits-2017)
 
