@@ -16,7 +16,7 @@ status: published
 
 งั้นเราก็มาเริ่มต้นการทำ Web Scraping กันเลยดีกว่า
 
-เราจะใช้ HTML อันนี้เป็นตัวอย่างการเขียน Web Scraping สมมุติว่าหน้าน้อยู่ใน `https://example.com/`
+เราจะใช้ HTML อันนี้เป็นตัวอย่างการเขียน Web Scraping สมมุติว่าหน้านี้อยู่ใน `https://example.com/`
 
 `gist:rayriffy/63b342a5796f935bb5de0849851bb0bb`
 
