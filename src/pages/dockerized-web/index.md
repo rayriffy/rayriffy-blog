@@ -16,7 +16,7 @@ status: published
 
 ระบบที่วางเอาไว้คือ จะให้ Traffic ทั้งหมดไปที่ container ที่ชื่อว่า `proxy` โดย `proxy` จะเป็นตัวกลางสื่อสารระหว่าง Network ภายนอกกับ Network ภายใน
 
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Frayriffy%2Fposts%2F942521585935258&width=500" width="100%" height="400px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Frayriffy%2Fposts%2F942521585935258&width=1000" width="500" height="364" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
 ส่วนด้านในก็จะเป็นเว็บต่างๆ โดยจัดไว้แบบหนึ่งเว็บต่อ container แล้วก็มีของจุกจิกอื่นๆนิดหน่อยเช่น `php-fpm` คือ...ต้องเข้าใจนะว่าผมสาย Laravel ผสม Vue.js ซึ่ง Laravel มันก็ต้องใช้ `php-fpm` เหมือนกัน แล้วทั้งหมดนี้ก็จะอยู่ใน backend Network ที่ไม่สามารถเข้าถึงได้โดยตรงจากภายนอก
 
