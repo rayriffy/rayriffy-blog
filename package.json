@@ -36,7 +36,7 @@
     "gatsby-transformer-sharp": "^2.1.13",
     "lodash": "^4.17.11",
     "prismjs": "^1.15.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.1",
     "react": "^16.8.1",
     "react-adsense": "^0.0.6",
     "react-dom": "^16.8.1",
