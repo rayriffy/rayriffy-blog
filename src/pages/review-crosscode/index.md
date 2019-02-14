@@ -56,7 +56,7 @@ She became a friend with Lea after her entering CrossWorlds and become her first
 
 ## Game mechanics
 
-**NOTE:** Before you reading this I reccomended to try a demo first. :)
+**NOTE:** Before you reading this I recommended to try a demo first. :)
 
 CrossCode is bringing everything in your loved RPG games mechanics from the past like in the Super NES console and optimizing it to be better than ever before.
 
