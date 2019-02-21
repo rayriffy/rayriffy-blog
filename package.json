@@ -17,7 +17,7 @@
     "gatsby-plugin-manifest": "^2.0.17",
     "gatsby-plugin-netlify": "^2.0.11",
     "gatsby-plugin-netlify-cache": "^1.0.0",
-    "gatsby-plugin-offline": "^2.0.23",
+    "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.6",
     "gatsby-plugin-robots-txt": "^1.4.0",
     "gatsby-plugin-sharp": "^2.0.21",
