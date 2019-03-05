@@ -4825,10 +4825,10 @@ gatsby-plugin-feed@^2.0.14:
     pify "^3.0.0"
     rss "^1.2.2"
 
-gatsby-plugin-google-analytics@^2.0.15:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.15.tgz#c70a69f873398b737776dd5b05abacb763fc8cc7"
-  integrity sha512-XO2KVHN/pt2sNFraw+V5K026L6F72MisWAfxRm7U+zPX2cjDHN5w74fojM+6S0BPiRb4/KDitwSTVu4FQ+mEow==
+gatsby-plugin-google-analytics@^2.0.16:
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.16.tgz#92e2f4c145cae75fe6d828d3fced89ccd70a1813"
+  integrity sha512-xJNcDZzBjtsHBm+uEMv8dJEvOg5XXnVJQmHgEn4NoYp+nByIGWPL13o579lIiaoOcgSRZX0Yek3qpaUFDyWpzQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
