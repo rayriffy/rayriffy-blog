@@ -24,7 +24,7 @@ export default class AuthorListPage extends React.Component {
           meta={[
             {
               name: 'name',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Authors`,
             },
             {
               name: 'description',
@@ -36,7 +36,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:url',
@@ -56,7 +56,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'og:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Authors`,
             },
             {
               name: 'og:description',
@@ -68,11 +68,11 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:alt',
@@ -92,7 +92,7 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Authors`,
             },
             {
               name: 'twitter:description',
@@ -100,10 +100,10 @@ export default class AuthorListPage extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
           ]}
-          title={`Category · ${siteTitle}`}>
+          title={`${siteTitle} · Authors`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -118,8 +118,8 @@ export default class AuthorListPage extends React.Component {
         {this.props.data.allAuthorsJson.edges.map(({node}) => {
           return (
             <Card
-              key={'author/' + node.user}
-              slug={'author/' + node.user}
+              key={`/author/${node.user}`}
+              slug={`/author/${node.user}`}
               banner={this.props.data[node.user].childImageSharp.fluid}
               title={node.name}
               status="published"

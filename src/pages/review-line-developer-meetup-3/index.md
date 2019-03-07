@@ -28,7 +28,7 @@ LINE Company Thailand ตั้งอยู่ที่ Gaysorn Tower เรา�
 
 เราก็ไปพักกันที่ Starbucks ก่อนแล้วมาคุยเล่นๆ เพราะตอนนั้นมาถึงก่อนเวลาเกือบชั่วโมง
 
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjukbots%2Fposts%2F2381250825237791&width=500" width="100%;" height="400px;" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjukbots%2Fposts%2F2381250825237791&width=1000" width="500" height="364" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
 พอถึงเวลาก็แลกบัตรแล้วดิ่งขึ้นไปที่ชั้น 17 โลดดดด
 

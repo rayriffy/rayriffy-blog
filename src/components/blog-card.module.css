@@ -96,13 +96,12 @@ pre {
 
 .subtitle {
   font-style: normal;
-  font-size: 101%;
   font-weight: 400;
 }
 
 .meta {
   color: #A5A5A5;
-  font-size: 15.5px;
+  font-size: 16px;
   line-height: 20px;
   margin-bottom: 25px;
   margin-top: 25px;

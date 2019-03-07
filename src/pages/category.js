@@ -22,7 +22,7 @@ export default class CategoryListPage extends React.Component {
           meta={[
             {
               name: 'name',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Category`,
             },
             {
               name: 'description',
@@ -34,7 +34,7 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:url',
@@ -54,7 +54,7 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'og:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Category`,
             },
             {
               name: 'og:description',
@@ -66,11 +66,11 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'og:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:secure_url',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
             {
               name: 'og:image:alt',
@@ -90,7 +90,7 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: 'Category ·' + siteTitle,
+              content: `${siteTitle} · Category`,
             },
             {
               name: 'twitter:description',
@@ -98,10 +98,10 @@ export default class CategoryListPage extends React.Component {
             },
             {
               name: 'twitter:image',
-              content: siteUrl + '/default.jpg',
+              content: `${siteUrl}/default.jpg`,
             },
           ]}
-          title={`Category · ${siteTitle}`}>
+          title={`${siteTitle} · Category`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -116,8 +116,8 @@ export default class CategoryListPage extends React.Component {
         {this.props.data.allCategoriesJson.edges.map(({node}) => {
           return (
             <Card
-              key={'category/' + node.key}
-              slug={'category/' + node.key}
+              key={`/category/${node.key}`}
+              slug={`/category/${node.key}`}
               banner={
                 this.props.data[node.key].edges[0].node.frontmatter.banner
                   .childImageSharp.fluid

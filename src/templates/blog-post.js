@@ -25,6 +25,22 @@ export default class BlogPostTemplate extends React.Component {
     const blogDescription = post.frontmatter.subtitle
     const author = this.props.data.authorsJson
 
+    let ads = ''
+
+    const {GATSBY_ENV = 'development'} = process.env
+
+    if (GATSBY_ENV !== 'development') {
+      ads = (
+        <AdSense.Google
+          client="ca-pub-2837414306121160"
+          slot="7015425171"
+          style={{display: 'block'}}
+          format="auto"
+          responsive="true"
+        />
+      )
+    }
+
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -32,7 +48,7 @@ export default class BlogPostTemplate extends React.Component {
           meta={[
             {
               name: 'name',
-              content: post.frontmatter.title + '·' + siteTitle,
+              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
               name: 'description',
@@ -65,7 +81,7 @@ export default class BlogPostTemplate extends React.Component {
             },
             {
               name: 'og:title',
-              content: post.frontmatter.title,
+              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
               name: 'og:description',
@@ -107,7 +123,7 @@ export default class BlogPostTemplate extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: post.frontmatter.title,
+              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
               name: 'twitter:description',
@@ -123,7 +139,7 @@ export default class BlogPostTemplate extends React.Component {
               content: 'nositelinkssearchbox',
             },
           ]}
-          title={`${post.frontmatter.title} · ${siteTitle}`}>
+          title={`${siteTitle} · ${post.frontmatter.title}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
@@ -151,7 +167,7 @@ export default class BlogPostTemplate extends React.Component {
                   "name" : "${siteTitle}",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "${siteUrl + '/icon.png'}"
+                    "url": "${`${siteUrl}/icon.png`}"
                   }
                 }
               }
@@ -168,16 +184,11 @@ export default class BlogPostTemplate extends React.Component {
           status={post.frontmatter.status}
           link={false}
           content={post.html}>
-          <AdSense.Google
-            client="ca-pub-2837414306121160"
-            slot="7015425171"
-            style={{display: 'block'}}
-            format="auto"
-            responsive="true"
-          />
+          {ads}
           <hr
             style={{
               marginBottom: rhythm(1),
+              marginTop: rhythm(1),
             }}
           />
           <Navigation>
