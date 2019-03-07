@@ -28,7 +28,7 @@ export default class AuthorTemplate extends React.Component {
           meta={[
             {
               name: 'name',
-              content: authorName,
+              content: `${siteTitle} · ${authorName}`,
             },
             {
               name: 'description',
@@ -60,7 +60,7 @@ export default class AuthorTemplate extends React.Component {
             },
             {
               name: 'og:title',
-              content: authorName,
+              content: `${siteTitle} · ${authorName}`,
             },
             {
               name: 'og:description',
@@ -96,7 +96,7 @@ export default class AuthorTemplate extends React.Component {
             },
             {
               name: 'twitter:title',
-              content: authorName,
+              content: `${siteTitle} · ${authorName}`,
             },
             {
               name: 'twitter:description',
@@ -107,7 +107,7 @@ export default class AuthorTemplate extends React.Component {
               content: siteUrl + bannerUrl,
             },
           ]}
-          title={`${authorName} · ${siteTitle}`}>
+          title={`${siteTitle} · ${authorName}`}>
           <script type="application/ld+json" data-react-helmet="true">
             {`
               {
