@@ -1,5 +1,5 @@
 ---
-title: Review - Restaurant to Another World
+title: Review - Resturant to Another World
 subtitle: อนิเมชั่นแนวแฟนตาซีที่จะพาคุณยิ้มไปกับเรื่องราว...และอาหาร
 banner: ./banner.jpg
 category: review
