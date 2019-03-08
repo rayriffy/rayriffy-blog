@@ -214,7 +214,7 @@ exports.createPages = ({graphql, actions}) => {
           _.times(numPages, i => {
             createPage({
               path: i === 0 ? `/` : `/pages/${i + 1}`,
-              component: path.resolve('./src/templates/blog-list.js'),
+              component: path.resolve('./src/templates/blog-list.tsx'),
               context: {
                 limit: postsPerPage,
                 skip: i * postsPerPage,
@@ -243,7 +243,7 @@ exports.createPages = ({graphql, actions}) => {
 
             createPage({
               path: post.node.fields.slug,
-              component: path.resolve('./src/templates/blog-post.js'),
+              component: path.resolve('./src/templates/blog-post.tsx'),
               context: {
                 author: post.node.frontmatter.author,
                 slug: post.node.fields.slug,
@@ -272,7 +272,7 @@ exports.createPages = ({graphql, actions}) => {
             _.times(numCategoryPages, i => {
               createPage({
                 path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-                component: path.resolve('./src/templates/category.js'),
+                component: path.resolve('./src/templates/category.tsx'),
                 context: {
                   category: category.node.key,
                   currentPage: i + 1,
@@ -296,7 +296,7 @@ exports.createPages = ({graphql, actions}) => {
             _.times(numAuthorPages, i => {
               createPage({
                 path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-                component: path.resolve('./src/templates/author.js'),
+                component: path.resolve('./src/templates/author.tsx'),
                 context: {
                   author: author.node.user,
                   currentPage: i + 1,
