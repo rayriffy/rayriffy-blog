@@ -7,8 +7,10 @@
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.122",
+    "@types/react-helmet": "^5.0.8",
     "cross-env": "^5.2.0",
-    "gatsby": "^2.1.23",
+    "gatsby": "^2.1.24",
     "gatsby-image": "^2.0.31",
     "gatsby-paginate": "^1.0.17",
     "gatsby-plugin-feed": "^2.0.14",
@@ -22,6 +24,7 @@
     "gatsby-plugin-robots-txt": "^1.4.0",
     "gatsby-plugin-sharp": "^2.0.25",
     "gatsby-plugin-sitemap": "^2.0.6",
+    "gatsby-plugin-typescript": "^2.0.10",
     "gatsby-plugin-typography": "^2.2.8",
     "gatsby-remark-copy-linked-files": "^2.0.9",
     "gatsby-remark-embed-gist": "^1.1.6",
@@ -37,11 +40,11 @@
     "lodash": "^4.17.11",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.3",
+    "react": "^16.8.4",
     "react-adsense": "^0.0.6",
-    "react-dom": "^16.8.3",
+    "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
-    "react-icons": "^3.4.0",
+    "react-icons": "^3.5.0",
     "react-typography": "^0.16.18",
     "riffy-gjs-embeded-video": "^1.3.1",
     "typeface-merriweather": "0.0.72",
@@ -49,6 +52,8 @@
     "typography": "^0.16.17"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.1.0",
@@ -59,7 +64,8 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^4.0.0",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "typescript": "^3.3.3333"
   },
   "homepage": "https://blog.rayriffy.com",
   "keywords": [
@@ -77,6 +83,7 @@
     "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
   },
   "scripts": {
+    "type-check": "tsc",
     "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
     "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
     "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",

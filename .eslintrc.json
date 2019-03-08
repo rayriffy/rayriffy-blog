@@ -1,22 +1,24 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["standard", "prettier", "prettier/standard", "plugin:react/recommended"],
-  "plugins": ["prettier", "standard"],
+  "parser": "@typescript-eslint/parser",
+  "extends": ["standard", "prettier", "prettier/standard", "plugin:react/recommended", "plugin:@typescript-eslint/recommended", "prettier/@typescript-eslint"],
+  "plugins": ["prettier", "standard", "@typescript-eslint", "react"],
   "parserOptions": {
-    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
   "settings": {
     "react": {
       "createClass": "createReactClass",
       "pragma": "React",
-      "version": "16.7",
+      "version": "16.8.3",
       "flowVersion": "0.53"
     }
   },
   "env": {
+    "browser": true,
     "es6": true,
     "node": true
   },
@@ -39,5 +41,14 @@
     "space-before-function-paren": 0,
     "generator-star-spacing": 0,
     "strict": 1
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/camelcase": "off"
+      }
+    }
+  ]
 }
