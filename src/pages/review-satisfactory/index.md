@@ -4,10 +4,10 @@ subtitle: ยินดีต้อนรับสู่ Factorio 3 มิติ
 banner: ./banner.jpg
 category: review
 author: SiriuSStarS
-date: "2019-03-14T04:30:00.000Z"
+date: "2019-03-14T10:15:00.000Z"
 featured: false
 type: blog
-status: draft
+status: published
 ---
 
 **Spoiler Rate : 10%**
