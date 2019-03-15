@@ -10,7 +10,7 @@
     "@types/lodash": "^4.14.123",
     "@types/react-helmet": "^5.0.8",
     "cross-env": "^5.2.0",
-    "gatsby": "^2.1.33",
+    "gatsby": "^2.1.35",
     "gatsby-image": "^2.0.33",
     "gatsby-paginate": "^1.0.17",
     "gatsby-plugin-feed": "^2.0.15",
