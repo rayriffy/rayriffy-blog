@@ -5,7 +5,6 @@ const typography = new Typography({
   baseLineHeight: 1.45,
   headerFontFamily: ['Kanit', 'sans-serif'],
   bodyFontFamily: ['Kanit', 'sans-serif'],
-  // See below for the full list of options.
 })
 
 // Hot reload typography in development.

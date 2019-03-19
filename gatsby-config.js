@@ -16,6 +16,7 @@ module.exports = {
     author: 'Phumrapee Limpianchop',
     description: 'The Nerdy Blogger',
     siteUrl: `${hostname}`,
+    fbApp: '342680353046527',
   },
   pathPrefix: '/',
   plugins: [
@@ -105,7 +106,34 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          'gatsby-remark-embed-spotify',
+          {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              providers: {
+                include: [
+                  'SoundCloud',
+                  'Instagram',
+                  'Spotify',
+                  'Facebook (Post)',
+                  'Facebook (Video)',
+                  'Twitter',
+                ],
+                settings: {
+                  SoundCloud: {
+                    color: '#1976d2',
+                    show_comments: false,
+                    visual: false,
+                    hide_related: true,
+                    auto_play: false,
+                    show_user: false,
+                    show_reposts: false,
+                    show_teaser: false,
+                  },
+                  Instagram: {hidecaption: true},
+                },
+              },
+            },
+          },
           'riffy-gjs-embeded-video',
           {
             resolve: 'gatsby-remark-embed-gist',
