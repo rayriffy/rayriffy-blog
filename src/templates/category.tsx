@@ -19,7 +19,7 @@ export default class CategoryTemplate extends React.Component {
     const categoryDescription = this.props.data.categoriesJson.desc
     const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
-    const facebookAppID = this.props.data.site.fbApp
+    const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
 
     return (

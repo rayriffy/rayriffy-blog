@@ -16,7 +16,7 @@ export default class AuthorListPage extends React.Component {
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
     const siteDescription = this.props.data.site.siteMetadata.description
-    const facebookAppID = this.props.data.site.fbApp
+    const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     return (
       <Layout location={this.props.location}>
