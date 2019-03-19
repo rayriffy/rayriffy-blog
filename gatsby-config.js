@@ -16,6 +16,7 @@ module.exports = {
     author: 'Phumrapee Limpianchop',
     description: 'The Nerdy Blogger',
     siteUrl: `${hostname}`,
+    fbApp: '342680353046527',
   },
   pathPrefix: '/',
   plugins: [
