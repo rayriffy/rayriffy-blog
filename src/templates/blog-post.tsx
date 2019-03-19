@@ -24,7 +24,7 @@ export default class BlogPostTemplate extends React.Component {
     const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
     const blogDescription = post.frontmatter.subtitle
     const author = this.props.data.authorsJson
-    const facebookAppID = this.props.data.site.fbApp
+    const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     let ads = ''
 

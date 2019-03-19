@@ -17,7 +17,7 @@ export default class BlogIndex extends React.Component {
     const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
     const {currentPage, numPages} = this.props.pageContext
-    const facebookAppID = this.props.data.site.fbApp
+    const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     return (
       <Layout location={this.props.location}>

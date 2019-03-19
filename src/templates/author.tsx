@@ -21,7 +21,7 @@ export default class AuthorTemplate extends React.Component {
     const authorDescription = 'List of blogs wriiten by ' + authorName
     const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
-    const facebookAppID = this.props.data.site.fbApp
+    const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     return (
       <Layout location={this.props.location}>
