@@ -7,6 +7,7 @@
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
   },
   "dependencies": {
+    "@raae/gatsby-remark-oembed": "^0.0.5",
     "@types/lodash": "^4.14.123",
     "@types/react-helmet": "^5.0.8",
     "@types/typography": "^0.16.2",

@@ -16,6 +16,7 @@ export default class AuthorListPage extends React.Component {
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
     const siteDescription = this.props.data.site.siteMetadata.description
+    const facebookAppID = this.props.data.site.fbApp
 
     return (
       <Layout location={this.props.location}>
@@ -39,43 +40,47 @@ export default class AuthorListPage extends React.Component {
               content: `${siteUrl}/default.jpg`,
             },
             {
-              name: 'og:url',
+              property: 'og:url',
               content: siteUrl,
             },
             {
-              name: 'og:type',
+              property: 'og:type',
               content: 'article',
             },
             {
-              name: 'og:locale',
+              property: 'og:locale',
               content: 'th_TH',
             },
             {
-              name: 'og:locale:alternate',
+              property: 'og:locale:alternate',
               content: 'en_US',
             },
             {
-              name: 'og:title',
+              property: 'og:title',
               content: `${siteTitle} · Authors`,
             },
             {
-              name: 'og:description',
+              property: 'og:description',
               content: siteDescription,
             },
             {
-              name: 'article:author',
+              property: 'fb:app_id',
+              content: facebookAppID,
+            },
+            {
+              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
             },
             {
-              name: 'og:image',
+              property: 'og:image',
               content: `${siteUrl}/default.jpg`,
             },
             {
-              name: 'og:image:secure_url',
+              property: 'og:image:secure_url',
               content: `${siteUrl}/default.jpg`,
             },
             {
-              name: 'og:image:alt',
+              property: 'og:image:alt',
               content: 'banner',
             },
             {
@@ -152,6 +157,7 @@ export const pageQuery = graphql`
         description
         author
         siteUrl
+        fbApp
       }
     }
     allAuthorsJson(sort: {fields: [name], order: ASC}) {
@@ -203,6 +209,7 @@ AuthorListPage.propTypes = {
         description: PropTypes.string,
         title: PropTypes.string,
         siteUrl: PropTypes.string,
+        fbApp: PropTypes.string,
       }),
     }),
     allAuthorsJson: PropTypes.shape({

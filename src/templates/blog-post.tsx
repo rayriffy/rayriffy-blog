@@ -24,6 +24,7 @@ export default class BlogPostTemplate extends React.Component {
     const blogUrl = this.props.data.site.siteMetadata.siteUrl + post.fields.slug
     const blogDescription = post.frontmatter.subtitle
     const author = this.props.data.authorsJson
+    const facebookAppID = this.props.data.site.fbApp
 
     let ads = ''
 
@@ -64,49 +65,53 @@ export default class BlogPostTemplate extends React.Component {
                 siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              name: 'og:url',
+              property: 'og:url',
               content: blogUrl,
             },
             {
-              name: 'og:type',
+              property: 'og:type',
               content: 'article',
             },
             {
-              name: 'og:locale',
+              property: 'og:locale',
               content: 'th_TH',
             },
             {
-              name: 'og:locale:alternate',
+              property: 'og:locale:alternate',
               content: 'en_US',
             },
             {
-              name: 'og:title',
+              property: 'og:title',
               content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
-              name: 'og:description',
+              property: 'og:description',
               content: blogDescription,
             },
             {
-              name: 'article:author',
+              property: 'fb:app_id',
+              content: facebookAppID,
+            },
+            {
+              property: 'article:author',
               content: author.facebook,
             },
             {
-              name: 'article:published_time',
+              property: 'article:published_time',
               content: post.frontmatter.date,
             },
             {
-              name: 'og:image',
+              property: 'og:image',
               content:
                 siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              name: 'og:image:secure_url',
+              property: 'og:image:secure_url',
               content:
                 siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              name: 'og:image:alt',
+              property: 'og:image:alt',
               content: 'banner',
             },
             {
@@ -224,6 +229,7 @@ export const pageQuery = graphql`
         title
         author
         siteUrl
+        fbApp
       }
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
@@ -270,6 +276,7 @@ BlogPostTemplate.propTypes = {
         author: PropTypes.string,
         title: PropTypes.string,
         siteUrl: PropTypes.string,
+        fbApp: PropTypes.string,
       }),
     }),
     markdownRemark: PropTypes.object,
