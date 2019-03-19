@@ -21,6 +21,8 @@ export default class AuthorTemplate extends React.Component {
     const authorDescription = 'List of blogs wriiten by ' + authorName
     const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
+    const facebookAppID = this.props.data.site.fbApp
+
     return (
       <Layout location={this.props.location}>
         <Helmet
@@ -43,43 +45,47 @@ export default class AuthorTemplate extends React.Component {
               content: siteUrl + bannerUrl,
             },
             {
-              name: 'og:url',
+              property: 'og:url',
               content: siteUrl,
             },
             {
-              name: 'og:type',
+              property: 'og:type',
               content: 'article',
             },
             {
-              name: 'og:locale',
+              property: 'og:locale',
               content: 'th_TH',
             },
             {
-              name: 'og:locale:alternate',
+              property: 'og:locale:alternate',
               content: 'en_US',
             },
             {
-              name: 'og:title',
+              property: 'og:title',
               content: `${siteTitle} · ${authorName}`,
             },
             {
-              name: 'og:description',
+              property: 'og:description',
               content: authorDescription,
             },
             {
-              name: 'article:author',
+              property: 'fb:app_id',
+              content: facebookAppID,
+            },
+            {
+              property: 'article:author',
               content: author.facebook,
             },
             {
-              name: 'og:image',
+              property: 'og:image',
               content: siteUrl + bannerUrl,
             },
             {
-              name: 'og:image:secure_url',
+              property: 'og:image:secure_url',
               content: siteUrl + bannerUrl,
             },
             {
-              name: 'og:image:alt',
+              property: 'og:image:alt',
               content: 'banner',
             },
             {
@@ -175,6 +181,7 @@ export const pageQuery = graphql`
         description
         author
         siteUrl
+        fbApp
       }
     }
     authorsJson(user: {eq: $author}) {
@@ -246,6 +253,7 @@ AuthorTemplate.propTypes = {
         description: PropTypes.string,
         title: PropTypes.string,
         siteUrl: PropTypes.string,
+        fbApp: PropTypes.string,
       }),
     }),
     allMarkdownRemark: PropTypes.shape({
