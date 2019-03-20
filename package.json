@@ -54,7 +54,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.3",
