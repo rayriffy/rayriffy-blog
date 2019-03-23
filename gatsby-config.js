@@ -134,7 +134,7 @@ module.exports = {
               },
             },
           },
-          'riffy-gjs-embeded-video',
+          'gatsby-remark-embed-video',
           {
             resolve: 'gatsby-remark-embed-gist',
             options: {
