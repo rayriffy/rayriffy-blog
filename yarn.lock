@@ -5063,15 +5063,14 @@ gatsby-plugin-robots-txt@^1.4.0:
     "@babel/runtime" "^7.3.1"
     generate-robotstxt "^6.0.0"
 
-gatsby-plugin-sharp@^2.0.31:
-  version "2.0.31"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.31.tgz#2b6a291b3acc3918d05eb6a910f38cf0905ffb7b"
-  integrity sha512-HUe3EZoVnEhqwFXTNH7t6Yy3sbvzSTNlaS6enD7PemNQ06mnqGw5t/tq0sbAY0fztKGK0jUA8/StzeL+8Y5xFg==
+gatsby-plugin-sharp@^2.0.32:
+  version "2.0.32"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.32.tgz#47ebf2e44ece58560fa8bc604e7904ff9dca1386"
+  integrity sha512-5cLD2VUcKBtIm7QJbSj4fIAv/eqD6KhraHODHjpGwqvwSOdLQB7YcmzSCPnRwxEv+0f2wNrjZYpsd8SmIWfhDw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     async "^2.1.2"
     bluebird "^3.5.0"
-    fs-exists-cached "^1.0.0"
     fs-extra "^7.0.0"
     imagemin "^6.0.0"
     imagemin-mozjpeg "^8.0.0"
