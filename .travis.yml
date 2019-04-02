@@ -8,4 +8,5 @@ node_js:
 
 script:
   - yarn install
-  - yarn run lint
+  - yarn lint
+  - yarn type-check
