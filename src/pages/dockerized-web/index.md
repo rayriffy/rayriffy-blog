@@ -28,9 +28,9 @@ status: published
 
 แน่นอนว่าเราต้องลง **Docker CE** และ **Docker Compose** ให้เรียบร้อยก่อน โดยจะแปะ tutorial ไว้ให้
 
-  - [ติดตั้ง Docker CE สำหรับ CentOS](https://docs.docker.com/install/linux/docker-ce/centos)
-  - [ติดตั้ง Docker CE สำหรับ Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu)
-  - [ติดตั้ง Docker Compose](https://docs.docker.com/compose/install)
+-   [ติดตั้ง Docker CE สำหรับ CentOS](https://docs.docker.com/install/linux/docker-ce/centos)
+-   [ติดตั้ง Docker CE สำหรับ Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu)
+-   [ติดตั้ง Docker Compose](https://docs.docker.com/compose/install)
 
 หลังลงเสร็จแล้วก็มาต่อกันได้เลย ไฟล์หลักที่เราจะทำงานกันคือ `docker-compose.yml` โดยเริ่มต้นเราก็จะมาสร้าง Network ให้กับระบบเราก่อน ซึ่งจะมีอยู่ 2 อันคือ *frontend* กับ *backend*
 
