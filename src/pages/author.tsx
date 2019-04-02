@@ -1,17 +1,41 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
+import React from 'react'
+import Helmet from 'react-helmet'
 
 import {FaFacebook, FaTwitter} from 'react-icons/fa'
 
-import Layout from '../components/layout'
+import {Layout} from '../components/layout'
 
-import Card from '../components/blog-card'
-import Chip from '../components/chip'
+import {Card} from '../components/card'
+import {Chip} from '../components/chip'
 
-export default class AuthorListPage extends React.Component {
-  render() {
+interface PropsInterface {
+  location: object,
+  data: {
+    [key: string]: any,
+    site: {
+      siteMetadata: {
+        title: string,
+        siteUrl: string,
+        author: string,
+        description: string,
+        fbApp: string,
+      },
+    },
+    allAuthorsJson: {
+      edges: {
+        node: {
+          user: string,
+          name: string,
+          facebook: string,
+          twitter: string,
+        },
+      }[],
+    },
+  },
+}
+export default class AuthorListPage extends React.Component<PropsInterface> {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
@@ -24,92 +48,93 @@ export default class AuthorListPage extends React.Component {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · Authors`,
               name: 'name',
-              content: `${siteTitle} · Authors`,
             },
             {
+              content: siteDescription,
               name: 'description',
-              content: siteDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               name: 'image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · Authors`,
               property: 'og:title',
-              content: `${siteTitle} · Authors`,
             },
             {
+              content: siteDescription,
               property: 'og:description',
-              content: siteDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
+              property: 'article:author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image:secure_url',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:site',
-              content: '@rayriffy',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:creator',
-              content: '@rayriffy',
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · Authors`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: siteDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: `${siteUrl}/default.jpg`,
+              name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · Authors`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · Authors`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -119,7 +144,7 @@ export default class AuthorListPage extends React.Component {
             `}
           </script>
         </Helmet>
-        <Chip name="Authors" />
+        <Chip name='Authors' />
         {this.props.data.allAuthorsJson.edges.map(({node}) => {
           return (
             <Card
@@ -127,18 +152,20 @@ export default class AuthorListPage extends React.Component {
               slug={`/author/${node.user}`}
               banner={this.props.data[node.user].childImageSharp.fluid}
               title={node.name}
-              status="published"
-              link={true}>
+              status='published'
+              link={true}
+            >
               <FaFacebook />{' '}
-              <a href={node.facebook} rel="noopener noreferrer" target="_blank">
+              <a href={node.facebook} rel='noopener noreferrer' target='_blank'>
                 {node.facebook.split('/')[3]}
               </a>
               <br />
               <FaTwitter />{' '}
               <a
                 href={'https://twitter.com/' + node.twitter.split('@')[1]}
-                rel="noopener noreferrer"
-                target="_blank">
+                rel='noopener noreferrer'
+                target='_blank'
+              >
                 {node.twitter}
               </a>
             </Card>
@@ -200,21 +227,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-AuthorListPage.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-  location: PropTypes.object,
-}

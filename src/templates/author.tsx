@@ -1,17 +1,64 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
+import React from 'react'
+import Helmet from 'react-helmet'
 
-import Layout from '../components/layout'
+import {FluidObject} from 'gatsby-image'
 
-import Card from '../components/blog-card'
-import Chip from '../components/chip'
-import Navbar from '../components/navbar'
-import Pagination from '../components/pagination'
+import {Layout} from '../components/layout'
 
-export default class AuthorTemplate extends React.Component {
-  render() {
+import {Card} from '../components/card'
+import {Chip} from '../components/chip'
+import {Navbar} from '../components/navbar'
+import {Pagination} from '../components/pagination'
+
+interface PropsInterface {
+  location: object,
+  pageContext: {
+    currentPage: number,
+    numPages: number,
+    pathPrefix: string,
+  },
+  data: {
+    [key: string]: any,
+    site: {
+      siteMetadata: {
+        title: string,
+        siteUrl: string,
+        author: string,
+        fbApp: string,
+      },
+    },
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          fields: {
+            slug: string,
+          },
+          frontmatter: {
+            title: string,
+            subtitle: string,
+            date: string,
+            featured: boolean,
+            status: string,
+            banner: {
+              childImageSharp: {
+                fluid: FluidObject,
+              },
+            },
+          },
+        },
+      }[],
+    },
+    authorsJson: {
+      user: string,
+      name: string,
+      facebook: string,
+      twitter: string,
+    },
+  },
+}
+export default class AuthorTemplate extends React.Component<PropsInterface> {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
@@ -22,6 +69,7 @@ export default class AuthorTemplate extends React.Component {
     const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
+    const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
 
     return (
       <Layout location={this.props.location}>
@@ -29,92 +77,93 @@ export default class AuthorTemplate extends React.Component {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · ${authorName}`,
               name: 'name',
-              content: `${siteTitle} · ${authorName}`,
             },
             {
+              content: authorDescription,
               name: 'description',
-              content: authorDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: siteUrl + bannerUrl,
               name: 'image',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · ${authorName}`,
               property: 'og:title',
-              content: `${siteTitle} · ${authorName}`,
             },
             {
+              content: authorDescription,
               property: 'og:description',
-              content: authorDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: author.facebook,
+              property: 'article:author',
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image',
-              content: siteUrl + bannerUrl,
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image:secure_url',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: author.twitter,
               name: 'twitter:site',
-              content: author.twitter,
             },
             {
+              content: author.twitter,
               name: 'twitter:creator',
-              content: author.twitter,
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · ${authorName}`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: authorDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: siteUrl + bannerUrl,
+              name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · ${authorName}`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · ${authorName}`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -124,19 +173,19 @@ export default class AuthorTemplate extends React.Component {
             `}
           </script>
         </Helmet>
-        <Chip name={authorName.split(' ')[0]} desc={authorName.split(' ')[1]} />
+        <Chip name={authorFirstName} desc={authorLastName} />
         <Navbar
-          align="center"
-          keys="navAuthor"
+          align='center'
+          keys='navAuthor'
           tabs={[
             {
-              name: 'Facebook',
               href: author.facebook,
+              name: 'Facebook',
               newtab: true,
             },
             {
-              name: 'Twitter',
               href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              name: 'Twitter',
               newtab: true,
             },
           ]}
@@ -244,31 +293,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-AuthorTemplate.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    authorsJson: PropTypes.shape({
-      user: PropTypes.string,
-      name: PropTypes.string,
-      desc: PropTypes.string,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-    pathPrefix: PropTypes.string,
-  }),
-  location: PropTypes.object,
-}

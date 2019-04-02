@@ -1,53 +1,57 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
+import React from 'react'
 
-import Dev from './dev'
-import Footer from './footer'
-import Navbar from './navbar'
+import {Dev} from './dev'
+import {Footer} from './footer'
+import {Navbar} from './navbar'
 
 import layoutStyle from './layout.module.css'
 
-export default class LayoutTemplate extends React.Component {
-  render() {
-    let devStrip = ''
+interface PropsInterface {
+  location?: object,
+}
+export class Layout extends React.Component<PropsInterface> {
+  public render(): object {
+    let devStrip: object | null = null
 
     const {GATSBY_ENV = 'development'} = process.env
 
     if (GATSBY_ENV !== 'production') {
       devStrip = <Dev />
     }
+
     const {children} = this.props
+
     return (
       <div className={layoutStyle.page}>
         {devStrip}
         <div className={layoutStyle.cover}>
-          <div className={[layoutStyle.container]}>
-            <div className={[layoutStyle.header]}>
+          <div className={layoutStyle.container}>
+            <div className={layoutStyle.header}>
               <Link to={'/'}>
                 <img
                   className={layoutStyle.logo}
-                  alt="logo"
-                  src="/header.png"
+                  alt='logo'
+                  src='/header.png'
                 />
               </Link>
               <Navbar
-                align="center"
-                keys="navHeader"
+                align='center'
+                keys='navHeader'
                 tabs={[
                   {
-                    name: 'Home',
                     href: '/',
+                    name: 'Home',
                     newtab: false,
                   },
                   {
-                    name: 'Category',
                     href: '/category',
+                    name: 'Category',
                     newtab: false,
                   },
                   {
-                    name: '♪',
                     href: 'https://l.rayriffy.com/nico',
+                    name: '♪',
                     newtab: true,
                   },
                 ]}
@@ -60,8 +64,4 @@ export default class LayoutTemplate extends React.Component {
       </div>
     )
   }
-}
-
-LayoutTemplate.propTypes = {
-  children: PropTypes.array,
 }

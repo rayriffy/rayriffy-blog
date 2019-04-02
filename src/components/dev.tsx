@@ -2,8 +2,8 @@ import React from 'react'
 
 import devStyle from './dev.module.css'
 
-export default class DevTemplate extends React.Component {
-  render() {
+export class Dev extends React.Component {
+  public render(): object {
     return <div className={devStyle.container} />
   }
 }

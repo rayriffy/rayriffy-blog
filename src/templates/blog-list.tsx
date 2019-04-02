@@ -1,16 +1,67 @@
+import {graphql} from 'gatsby'
 import _ from 'lodash'
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
 
-import Layout from '../components/layout'
+import {FluidObject} from 'gatsby-image'
 
-import Card from '../components/blog-card'
-import Pagination from '../components/pagination'
+import {Layout} from '../components/layout'
 
-export default class BlogIndex extends React.Component {
-  render() {
+import {Card} from '../components/card'
+import {Pagination} from '../components/pagination'
+
+interface PropsInterface {
+  location: object
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+  }
+  data: {
+    [key: string]: any;
+    site: {
+      siteMetadata: {
+        author: string;
+        description: string;
+        title: string;
+        siteUrl: string;
+        fbApp: string;
+      };
+    };
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          fields: {
+            slug: string;
+          };
+          frontmatter: {
+            title: string;
+            subtitle: string;
+            author: string,
+            date: string;
+            featured: boolean;
+            status: string;
+            banner: {
+              childImageSharp: {
+                fluid: FluidObject,
+              };
+            };
+          };
+        };
+      }[];
+    };
+    allAuthorsJson: {
+      edges: {
+        node: {
+          user: string;
+          name: string;
+          facebook: string;
+        };
+      }[];
+    };
+  }
+}
+export default class BlogIndex extends React.Component<PropsInterface> {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
@@ -25,92 +76,93 @@ export default class BlogIndex extends React.Component {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: siteTitle,
               name: 'name',
-              content: siteTitle,
             },
             {
+              content: siteDescription,
               name: 'description',
-              content: siteDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               name: 'image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: siteTitle,
               property: 'og:title',
-              content: siteTitle,
             },
             {
+              content: siteDescription,
               property: 'og:description',
-              content: siteDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
+              property: 'article:author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image:secure_url',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:site',
-              content: '@rayriffy',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:creator',
-              content: '@rayriffy',
             },
             {
-              name: 'twitter:title',
               content: siteTitle,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: siteDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: `${siteUrl}/default.jpg`,
+              name: 'twitter:image',
             },
           ]}
-          title={siteTitle}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={siteTitle}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -121,7 +173,7 @@ export default class BlogIndex extends React.Component {
           </script>
         </Helmet>
         {posts.map(({node}) => {
-          let author = _.find(this.props.data.allAuthorsJson.edges, {
+          const author: any = _.find(this.props.data.allAuthorsJson.edges, {
             node: {user: node.frontmatter.author},
           })
           return (
@@ -142,7 +194,7 @@ export default class BlogIndex extends React.Component {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix="/"
+          pathPrefix='/'
         />
       </Layout>
     )
@@ -208,28 +260,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-BlogIndex.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-  }),
-  location: PropTypes.object,
-}
