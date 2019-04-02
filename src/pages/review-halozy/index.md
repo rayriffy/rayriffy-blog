@@ -41,8 +41,8 @@ https://soundcloud.com/halozy/hlzy-0029_demo
 
 หลักๆ จะมีอยู่ 2 คนนั่นก็คือ
 
- - [sumijun](https://twitter.com/sumijun_halozy)
- - [Novita](https://twitter.com/novita_halozy)
+-   [sumijun](https://twitter.com/sumijun_halozy)
+-   [Novita](https://twitter.com/novita_halozy)
 
 ## การแต่งเพลง
 
@@ -64,8 +64,8 @@ https://soundcloud.com/vangrisina-hydra-1/halozy-satorare
 
 นอกจากนี้ Halozy ก็ได้มีการร่วมกับ Circle อื่นๆเพื่อที่จะทำอัลบั้ม collab ออกมาอีกด้วยเช่น
 
- - [DiGiTAL WiNG](http://digital-wing.net/) (Electronic, Hyper Techno, Rave)
- - [A-One](http://a-one-records.com/) (Eurobeat)
+-   [DiGiTAL WiNG](http://digital-wing.net/) (Electronic, Hyper Techno, Rave)
+-   [A-One](http://a-one-records.com/) (Eurobeat)
 
 ![DiGiTAL WING x Halozy](./digitalwing.jpg)
 
@@ -83,5 +83,5 @@ https://soundcloud.com/vangrisina-hydra-1/halozy-satorare
 
 ## Editor Note
 
-- อ่อถ้าถามว่าสั่งแล้วจะส่งมาไทยยังไง [คำตอบอยู่ตรงนี้](https://www.google.com/search?q=Japan+Proxy+Shipping)
-- นี่มัน Tech Blog ชะรีวิวเพลงมาจากไหน 5555555
+-   อ่อถ้าถามว่าสั่งแล้วจะส่งมาไทยยังไง [คำตอบอยู่ตรงนี้](https://www.google.com/search?q=Japan+Proxy+Shipping)
+-   นี่มัน Tech Blog ชะรีวิวเพลงมาจากไหน 5555555
