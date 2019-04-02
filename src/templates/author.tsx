@@ -1,6 +1,8 @@
+import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
+
+import {FluidObject} from 'gatsby-image'
 
 import {Layout} from '../components/layout'
 
@@ -8,53 +10,52 @@ import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 import {Navbar} from '../components/navbar'
 import {Pagination} from '../components/pagination'
-import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
-  location: object;
+  location: object,
   pageContext: {
-    currentPage: number;
-    numPages: number;
-    pathPrefix: string;
-  };
+    currentPage: number,
+    numPages: number,
+    pathPrefix: string,
+  },
   data: {
-    [key: string]: any;
+    [key: string]: any,
     site: {
       siteMetadata: {
-        title: string;
-        siteUrl: string;
-        author: string;
-        fbApp: string;
-      };
-    };
+        title: string,
+        siteUrl: string,
+        author: string,
+        fbApp: string,
+      },
+    },
     allMarkdownRemark: {
       edges: {
         node: {
           fields: {
-            slug: string;
-          };
+            slug: string,
+          },
           frontmatter: {
-            title: string;
-            subtitle: string;
-            date: string;
-            featured: boolean;
-            status: string;
+            title: string,
+            subtitle: string,
+            date: string,
+            featured: boolean,
+            status: string,
             banner: {
               childImageSharp: {
-                fluid: FluidObject;
-              };
-            };
-          };
-        };
-      }[];
-    };
+                fluid: FluidObject,
+              },
+            },
+          },
+        },
+      }[],
+    },
     authorsJson: {
       user: string,
       name: string,
       facebook: string,
       twitter: string,
-    };
-  };
+    },
+  },
 }
 export default class AuthorTemplate extends React.Component<PropsInterface> {
   public render(): object {
@@ -160,8 +161,9 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · ${authorName}`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · ${authorName}`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -173,17 +175,17 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
         </Helmet>
         <Chip name={authorFirstName} desc={authorLastName} />
         <Navbar
-          align="center"
-          keys="navAuthor"
+          align='center'
+          keys='navAuthor'
           tabs={[
             {
-              name: 'Facebook',
               href: author.facebook,
+              name: 'Facebook',
               newtab: true,
             },
             {
-              name: 'Twitter',
               href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              name: 'Twitter',
               newtab: true,
             },
           ]}

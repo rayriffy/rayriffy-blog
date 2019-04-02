@@ -1,25 +1,26 @@
+import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
+
+import {FluidObject} from 'gatsby-image'
 
 import {Layout} from '../components/layout'
 
 import {Card} from '../components/card'
-import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
   data: {
     site: {
       siteMetadata: {
-        title: string;
-      };
-    };
+        title: string,
+      },
+    },
     banner: {
       childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
-  };
+        fluid: FluidObject,
+      },
+    },
+  },
 }
 export default class NotFoundPage extends React.Component<PropsInterface> {
   public render(): object {
@@ -32,12 +33,13 @@ export default class NotFoundPage extends React.Component<PropsInterface> {
           title={`${siteTitle} · Not Found`}
         />
         <Card
-          slug="/"
+          slug='/'
           banner={this.props.data.banner.childImageSharp.fluid}
-          title="NOT FOUND"
-          subtitle="Whoops! Looks like you&#39;re lost in the woods...with Cirno."
-          link={false}>
-          <a href="/">Back to home</a>
+          title='NOT FOUND'
+          subtitle='Whoops! Looks like you&#39;re lost in the woods...with Cirno.'
+          link={false}
+        >
+          <a href='/'>Back to home</a>
         </Card>
       </Layout>
     )

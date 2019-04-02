@@ -1,5 +1,5 @@
-import React from 'react'
 import {Link} from 'gatsby'
+import React from 'react'
 
 import {Dev} from './dev'
 import {Footer} from './footer'
@@ -8,7 +8,7 @@ import {Navbar} from './navbar'
 import layoutStyle from './layout.module.css'
 
 interface PropsInterface {
-  location?: object;
+  location?: object,
 }
 export class Layout extends React.Component<PropsInterface> {
   public render(): object {
@@ -31,13 +31,13 @@ export class Layout extends React.Component<PropsInterface> {
               <Link to={'/'}>
                 <img
                   className={layoutStyle.logo}
-                  alt="logo"
-                  src="/header.png"
+                  alt='logo'
+                  src='/header.png'
                 />
               </Link>
               <Navbar
-                align="center"
-                keys="navHeader"
+                align='center'
+                keys='navHeader'
                 tabs={[
                   {
                     href: '/',

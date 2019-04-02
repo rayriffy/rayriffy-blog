@@ -1,5 +1,5 @@
-import React from 'react'
 import {Link} from 'gatsby'
+import React from 'react'
 
 import Img, {FluidObject} from 'gatsby-image'
 
@@ -7,20 +7,20 @@ import cardStyle from './card.module.css'
 
 interface PropsInterface {
   author?: {
-    user: string;
-    name: string;
-    facebook: string;
-    twitter?: string;
-  };
-  banner: FluidObject;
-  date?: string;
-  featured?: boolean;
-  link: boolean;
-  slug: string;
-  status?: string;
-  subtitle?: string;
-  title: string;
-  content?: string;
+    user: string,
+    name: string,
+    facebook: string,
+    twitter?: string,
+  },
+  banner: FluidObject,
+  date?: string,
+  featured?: boolean,
+  link: boolean,
+  slug: string,
+  status?: string,
+  subtitle?: string,
+  title: string,
+  content?: string,
 }
 
 export class Card extends React.Component<PropsInterface> {
@@ -36,7 +36,8 @@ export class Card extends React.Component<PropsInterface> {
       title = (
         <Link
           style={{textDecoration: 'none', color: '#000000', boxShadow: 'none'}}
-          to={this.props.slug}>
+          to={this.props.slug}
+        >
           {this.props.title}
         </Link>
       )

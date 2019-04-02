@@ -3,8 +3,8 @@ import React from 'react'
 import chipStyle from './chip.module.css'
 
 interface PropsInterface {
-  name: string;
-  desc?: string;
+  name: string,
+  desc?: string,
 }
 export class Chip extends React.Component<PropsInterface> {
   public render(): object {

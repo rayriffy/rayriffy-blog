@@ -1,20 +1,21 @@
+import {graphql} from 'gatsby'
 import _ from 'lodash'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
+
+import {FluidObject} from 'gatsby-image'
 
 import {Layout} from '../components/layout'
 
 import {Card} from '../components/card'
 import {Pagination} from '../components/pagination'
-import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
-  location: object;
+  location: object
   pageContext: {
     currentPage: number;
     numPages: number;
-  };
+  }
   data: {
     [key: string]: any;
     site: {
@@ -57,7 +58,7 @@ interface PropsInterface {
         };
       }[];
     };
-  };
+  }
 }
 export default class BlogIndex extends React.Component<PropsInterface> {
   public render(): object {
@@ -159,8 +160,9 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               name: 'twitter:image',
             },
           ]}
-          title={siteTitle}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={siteTitle}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -192,7 +194,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix="/"
+          pathPrefix='/'
         />
       </Layout>
     )

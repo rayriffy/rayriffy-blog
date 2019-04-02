@@ -4,13 +4,13 @@ import React from 'react'
 import navbarStyle from './navbar.module.css'
 
 interface PropsInterface {
-  align: string;
-  keys: string;
+  align: string,
+  keys: string,
   tabs: {
-    name: string;
-    href: string;
-    newtab: boolean;
-  }[];
+    name: string,
+    href: string,
+    newtab: boolean,
+  }[],
 }
 export class Navbar extends React.Component<PropsInterface> {
   public render(): object {
@@ -25,7 +25,7 @@ export class Navbar extends React.Component<PropsInterface> {
       } else {
         tabs.push(
           <li key={`${this.props.keys}-${tab.name}`}>
-            <a href={tab.href} rel="noopener noreferrer" target="_blank">
+            <a href={tab.href} rel='noopener noreferrer' target='_blank'>
               {tab.name}
             </a>
           </li>,
@@ -43,7 +43,8 @@ export class Navbar extends React.Component<PropsInterface> {
             : this.props.align === 'center'
             ? navbarStyle.navbarcenter
             : navbarStyle.navbarright,
-        ].join(' ')}>
+        ].join(' ')}
+      >
         <ul className={navbarStyle.nav}>{tabs}</ul>
       </nav>
     )

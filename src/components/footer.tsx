@@ -13,8 +13,8 @@ export class Footer extends React.Component {
       <div className={footerStyle.footer}>
         <div className={footerStyle.container}>
           <Navbar
-            align="left"
-            keys="navFooter"
+            align='left'
+            keys='navFooter'
             tabs={[
               {
                 href: '/',
@@ -41,8 +41,8 @@ export class Footer extends React.Component {
         </div>
         <div style={{textAlign: 'center'}}>
           Built with {' '}
-          <img src={imgUrl} className={footerStyle.image} alt="love" /> by{' '}
-          <a href={faceUrl} rel="noopener noreferrer" target="_blank">
+          <img src={imgUrl} className={footerStyle.image} alt='love' /> by{' '}
+          <a href={faceUrl} rel='noopener noreferrer' target='_blank'>
             RayRiffy
           </a>
         </div>

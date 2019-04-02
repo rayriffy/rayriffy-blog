@@ -1,6 +1,6 @@
+import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
 
 import {FaFacebook, FaTwitter} from 'react-icons/fa'
 
@@ -10,29 +10,29 @@ import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 
 interface PropsInterface {
-  location: object;
+  location: object,
   data: {
-    [key: string]: any;
+    [key: string]: any,
     site: {
       siteMetadata: {
-        title: string;
-        siteUrl: string;
-        author: string;
-        description: string;
-        fbApp: string;
-      };
-    };
+        title: string,
+        siteUrl: string,
+        author: string,
+        description: string,
+        fbApp: string,
+      },
+    },
     allAuthorsJson: {
       edges: {
         node: {
-          user: string;
-          name: string;
-          facebook: string;
-          twitter: string;
-        };
-      }[];
-    };
-  };
+          user: string,
+          name: string,
+          facebook: string,
+          twitter: string,
+        },
+      }[],
+    },
+  },
 }
 export default class AuthorListPage extends React.Component<PropsInterface> {
   public render(): object {
@@ -132,8 +132,9 @@ export default class AuthorListPage extends React.Component<PropsInterface> {
               name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · Authors`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · Authors`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -143,7 +144,7 @@ export default class AuthorListPage extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
-        <Chip name="Authors" />
+        <Chip name='Authors' />
         {this.props.data.allAuthorsJson.edges.map(({node}) => {
           return (
             <Card
@@ -151,18 +152,20 @@ export default class AuthorListPage extends React.Component<PropsInterface> {
               slug={`/author/${node.user}`}
               banner={this.props.data[node.user].childImageSharp.fluid}
               title={node.name}
-              status="published"
-              link={true}>
+              status='published'
+              link={true}
+            >
               <FaFacebook />{' '}
-              <a href={node.facebook} rel="noopener noreferrer" target="_blank">
+              <a href={node.facebook} rel='noopener noreferrer' target='_blank'>
                 {node.facebook.split('/')[3]}
               </a>
               <br />
               <FaTwitter />{' '}
               <a
                 href={'https://twitter.com/' + node.twitter.split('@')[1]}
-                rel="noopener noreferrer"
-                target="_blank">
+                rel='noopener noreferrer'
+                target='_blank'
+              >
                 {node.twitter}
               </a>
             </Card>

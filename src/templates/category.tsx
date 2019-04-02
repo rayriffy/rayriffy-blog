@@ -1,21 +1,22 @@
+import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
+
+import {FluidObject} from 'gatsby-image'
 
 import {Layout} from '../components/layout'
 
 import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 import {Pagination} from '../components/pagination'
-import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
-  location: object;
+  location: object
   pageContext: {
     currentPage: number;
     numPages: number;
     pathPrefix: string;
-  };
+  }
   data: {
     site: {
       siteMetadata: {
@@ -62,7 +63,7 @@ interface PropsInterface {
       name: string;
       desc: string;
     };
-  };
+  }
 }
 export default class CategoryTemplate extends React.Component<PropsInterface> {
   public render(): object {
@@ -75,7 +76,6 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
     const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
-
 
     return (
       <Layout location={this.props.location}>
@@ -167,8 +167,9 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
               name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · ${categoryName}`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · ${categoryName}`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -182,7 +183,7 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
         {posts.map(({node}) => {
           let author = {
             facebook: 'def',
-            name: 'def', 
+            name: 'def',
             user: 'def',
           }
           this.props.data.allAuthorsJson.edges.forEach(authorJson => {

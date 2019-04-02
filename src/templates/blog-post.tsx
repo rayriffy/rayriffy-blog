@@ -1,9 +1,10 @@
+import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
 
 import {rhythm} from '../utils/typography'
 
+import {FluidObject} from 'gatsby-image'
 import AdSense from 'react-adsense'
 
 import {Layout} from '../components/layout'
@@ -13,10 +14,9 @@ import {NavigationContainer} from '../components/navigation-container'
 import {NavigationItem} from '../components/navigation-item'
 
 import {Card} from '../components/card'
-import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
-  location: object;
+  location: object
   pageContext: {
     next: {
       fields: {
@@ -34,7 +34,7 @@ interface PropsInterface {
         title: string;
       };
     };
-  };
+  }
   data: {
     site: {
       siteMetadata: {
@@ -70,7 +70,7 @@ interface PropsInterface {
       twitter: string;
       facebook: string;
     };
-  };
+  }
 }
 export default class BlogPostTemplate extends React.Component<PropsInterface> {
   public render(): object {
@@ -90,11 +90,11 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
     if (GATSBY_ENV !== 'development') {
       ads = (
         <AdSense.Google
-          client="ca-pub-2837414306121160"
-          slot="7015425171"
+          client='ca-pub-2837414306121160'
+          slot='7015425171'
           style={{display: 'block'}}
-          format="auto"
-          responsive="true"
+          format='auto'
+          responsive='true'
         />
       )
     }
@@ -201,8 +201,9 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
               name: 'google',
             },
           ]}
-          title={`${siteTitle} · ${post.frontmatter.title}`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · ${post.frontmatter.title}`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -245,7 +246,8 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
           featured={post.frontmatter.featured}
           status={post.frontmatter.status}
           link={false}
-          content={post.html}>
+          content={post.html}
+        >
           {ads}
           <hr
             style={{
@@ -258,7 +260,7 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
               {previous && (
                 <NavigationItem
                   slug={previous.fields.slug}
-                  meta="previous"
+                  meta='previous'
                   title={previous.frontmatter.title}
                 />
               )}
@@ -267,7 +269,7 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
               {next && (
                 <NavigationItem
                   slug={next.fields.slug}
-                  meta="next"
+                  meta='next'
                   title={next.frontmatter.title}
                 />
               )}

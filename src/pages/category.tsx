@@ -1,6 +1,6 @@
+import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {graphql} from 'gatsby'
 
 import {Layout} from '../components/layout'
 
@@ -8,28 +8,28 @@ import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 
 interface PropsInterface {
-  location: object;
+  location: object,
   data: {
-    [key: string]: any;
+    [key: string]: any,
     site: {
       siteMetadata: {
-        title: string;
-        siteUrl: string;
-        author: string;
-        description: string;
-        fbApp: string;
-      };
-    };
+        title: string,
+        siteUrl: string,
+        author: string,
+        description: string,
+        fbApp: string,
+      },
+    },
     allCategoriesJson: {
       edges: {
         node: {
-          key: string;
-          name: string;
-          desc: string;
-        };
-      }[];
-    };
-  };
+          key: string,
+          name: string,
+          desc: string,
+        },
+      }[],
+    },
+  },
 }
 export default class CategoryListPage extends React.Component<PropsInterface> {
   public render(): object {
@@ -45,92 +45,93 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · Category`,
               name: 'name',
-              content: `${siteTitle} · Category`,
             },
             {
+              content: siteDescription,
               name: 'description',
-              content: siteDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               name: 'image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · Category`,
               property: 'og:title',
-              content: `${siteTitle} · Category`,
             },
             {
+              content: siteDescription,
               property: 'og:description',
-              content: siteDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
+              property: 'article:author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image:secure_url',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:site',
-              content: '@rayriffy',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:creator',
-              content: '@rayriffy',
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · Category`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: siteDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: `${siteUrl}/default.jpg`,
+              name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · Category`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · Category`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -140,7 +141,7 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
-        <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
+        <Chip name='Category' desc='รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง' />
         {this.props.data.allCategoriesJson.edges.map(({node}) => {
           return (
             <Card
@@ -152,7 +153,7 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
               }
               title={node.name}
               subtitle={node.desc}
-              status="published"
+              status='published'
               link={true}
             />
           )

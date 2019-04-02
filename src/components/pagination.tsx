@@ -1,17 +1,17 @@
-import React from 'react'
 import {Link} from 'gatsby'
+import React from 'react'
 
 import paginationStyle from './pagination.module.css'
 
 interface PropsInterface {
-  numPages: number;
-  currentPage: number;
-  pathPrefix: string;
+  numPages: number,
+  currentPage: number,
+  pathPrefix: string,
 }
 export class Pagination extends React.Component<PropsInterface> {
   public render(): object {
-    var pagesLen: number
-    var startFrom: number
+    let pagesLen: number
+    let startFrom: number
     if (this.props.numPages > 5) {
       pagesLen = 5
 
@@ -36,7 +36,8 @@ export class Pagination extends React.Component<PropsInterface> {
               startFrom + i + 1 === this.props.currentPage
                 ? paginationStyle.active
                 : ''
-            }>
+            }
+          >
             <Link
               to={`${
                 startFrom + i === 0
@@ -44,7 +45,8 @@ export class Pagination extends React.Component<PropsInterface> {
                   : `${
                       this.props.pathPrefix === '/' ? '' : this.props.pathPrefix
                     }/pages/${startFrom + i + 1}`
-              }`}>
+              }`}
+            >
               {startFrom + i + 1}
             </Link>
           </li>
