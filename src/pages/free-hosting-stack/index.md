@@ -18,19 +18,19 @@ status: published
 
 ### บิล
 
-| รายการ | ราคา |
-|-|-|
-| rayriffy.com [1 YEAR] | 760 บาท |
-| Hosting Bronze | 500 บาท |
+| รายการ                                        | ราคา    |
+| --------------------------------------------- | ------- |
+| [rayriffy.com](https://rayriffy.com) (1 YEAR) | 760 บาท |
+| Hosting Bronze                                | 500 บาท |
 
 รวมทั้งหมด: **1260 บาทต่อปี**
 
 คราวนี้ก็มีปัญหาตามมาหลายอย่างหลังใช้งานไปได้สักพัก
 
-- ไม่สามารถเข้าไปจัดการ DNS โดยตรงได้
-- PHP รุ่นเก่า
-- ไม่มี Let's Encrypt
-- ราคา Domain แพง
+-   ไม่สามารถเข้าไปจัดการ DNS โดยตรงได้
+-   PHP รุ่นเก่า
+-   ไม่มี Let's Encrypt
+-   ราคา Domain แพง
 
 ## ตอนที่ 2: อดีต
 
@@ -38,11 +38,11 @@ status: published
 
 ### บิล
 
-| รายการ | ราคา |
-|-|-|
-| rayriffy.com [1 YEAR] | 460 บาท |
-| Cloudflare | 0 บาท |
-| Hosting Plan #T02 | 750 * 12 บาท |
+| รายการ                                        | ราคา         |
+| --------------------------------------------- | ------------ |
+| [rayriffy.com](https://rayriffy.com) (1 YEAR) | 460 บาท      |
+| Cloudflare                                    | 0 บาท        |
+| Hosting Plan #T02                             | 750 * 12 บาท |
 
 รวมทั้งหมด: **9460 บาทต่อปี**
 
@@ -62,12 +62,12 @@ status: published
 
 ## บิล
 
-| รายการ | ราคา |
-|-|-|
-| rayriffy.com [1 YEAR] | 460 บาท |
-| Cloudflare | 0 บาท |
-| Heroku | 0 บาท |
-| Hosting Plan #T02 | 750 * 12 บาท |
+| รายการ                                        | ราคา         |
+| --------------------------------------------- | ------------ |
+| [rayriffy.com](https://rayriffy.com) (1 YEAR) | 460 บาท      |
+| Cloudflare                                    | 0 บาท        |
+| Heroku                                        | 0 บาท        |
+| Hosting Plan #T02                             | 750 * 12 บาท |
 
 รวมทั้งหมด: **9460 บาทต่อปี**
 
@@ -107,14 +107,14 @@ https://open.spotify.com/track/41QZvZdRXJf6A87oNyzMKE
 
 ### บิล
 
-| รายการ | ราคา |
-|-|-|
-| rayriffy.com [1 YEAR] | 460 บาท |
-| Cloudflare | 0 บาท |
-| Heroku | 0 บาท |
-| Firebase | 0 บาท |
-| Netlify | 0 บาท |
-| Travis CI [Public Repository] | 0 บาท |
+| รายการ                                        | ราคา    |
+| --------------------------------------------- | ------- |
+| [rayriffy.com](https://rayriffy.com) (1 YEAR) | 460 บาท |
+| Cloudflare                                    | 0 บาท   |
+| Heroku                                        | 0 บาท   |
+| Firebase                                      | 0 บาท   |
+| Netlify                                       | 0 บาท   |
+| Travis CI (Public Repository)                 | 0 บาท   |
 
 รวมทั้งหมด: **460 บาทต่อปี**
 
