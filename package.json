@@ -56,6 +56,9 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.6",
+    "remark-cli": "^6.0.1",
+    "remark-lint": "^6.0.4",
+    "remark-preset-lint-recommended": "^3.0.2",
     "tslint": "^5.15.0",
     "tslint-react": "^4.0.0"
   },
@@ -75,18 +78,18 @@
     "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
   },
   "scripts": {
-    "type-check": "tsc",
-    "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
-    "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
-    "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --trailing-comma es6 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
-    "develop": "cross-env GATSBY_ENV=development gatsby develop --https",
-    "start": "npm run develop",
     "build": "cross-env GATSBY_ENV=production gatsby build",
     "build-staging": "cross-env GATSBY_ENV=staging gatsby build",
     "deploy": "gatsby build --prefix-paths",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+    "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
+    "develop": "cross-env GATSBY_ENV=development gatsby develop --https",
+    "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",
+    "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
+    "format": "prettier --trailing-comma es6 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "md-lint": "remark .",
+    "start": "npm run develop",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc"
   }
 }
