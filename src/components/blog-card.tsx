@@ -16,7 +16,7 @@ interface PropsInterface {
   date?: string;
   featured?: boolean;
   link: boolean;
-  slug?: string;
+  slug: string;
   status?: string;
   subtitle?: string;
   title: string;

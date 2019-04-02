@@ -32,6 +32,7 @@ export default class NotFoundPage extends React.Component<PropsInterface> {
           title={`${siteTitle} · Not Found`}
         />
         <Card
+          slug="/"
           banner={this.props.data.banner.childImageSharp.fluid}
           title="NOT FOUND"
           subtitle="Whoops! Looks like you&#39;re lost in the woods...with Cirno."
