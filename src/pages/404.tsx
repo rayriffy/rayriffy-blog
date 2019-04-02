@@ -22,7 +22,7 @@ interface PropsInterface {
   };
 }
 export default class NotFoundPage extends React.Component<PropsInterface> {
-  render() {
+  render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (

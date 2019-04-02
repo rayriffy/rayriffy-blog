@@ -42,7 +42,7 @@ interface PropsInterface {
             banner: {
               childImageSharp: {
                 fluid: FluidObject,
-              }
+              };
             };
           };
         }

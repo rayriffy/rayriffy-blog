@@ -73,7 +73,7 @@ interface PropsInterface {
   };
 }
 export default class BlogPostTemplate extends React.Component<PropsInterface> {
-  render() {
+  render(): object {
     const post = this.props.data.markdownRemark
     const {previous, next} = this.props.pageContext
     const siteTitle = this.props.data.site.siteMetadata.title

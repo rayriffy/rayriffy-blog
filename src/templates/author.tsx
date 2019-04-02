@@ -25,7 +25,7 @@ interface PropsInterface {
         siteUrl: string;
         author: string;
         fbApp: string;
-      }
+      };
     };
     allMarkdownRemark: {
       edges: {
