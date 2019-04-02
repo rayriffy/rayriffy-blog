@@ -22,11 +22,11 @@ Blog นี้เริ่มเขียนตอนตี 4 สภาพที
 
 เห็นนี่เป็นเป้าหมายที่ไร้สาระนะ แต่สำหรับเค้านี่คือดีใจสัสๆเลยที่จบจาก MWIT ได้ เพราะสังคมในโรงเรียนมีค่านิยมที่แปลกมากๆ
 
-- ต้องเห็นพ้องกับส่วนใหญ่ ถ้าอยุ่กับส่วนน้อยก็หลุดโลกไปดลย
-- อานารย์ฟิสิกส์คนนึงไม่ค่อยเห็นด้วยกับการไปทางสายคอมพิวเตอร์เท่าไหร่ (แถมมีการแฉให้จารย์คนอื่นฟังแบบได้ยินเต็มสองหูระหว่างซ่อมอยู่ด้วย)
-- วางแผนไว้เป็นเดือน สุดท้ายโดนล้มเพราะประกาศกำหนดการกิจกรรมโรงเรียนที่จะออกมาแบบเย็นนั้นเลยยังได้
-- เคยเกือบโดนตัดคะแนนเพราะไม่ได้อาบน้ำ (คือมันไม่มีในระเบียบมั้ยล่ะ จะตัดได้ไง แล้วเอามาคะแนนมาขู่เด็กเล่นๆอ่ะนะ เห็นกฏเป็นบ้าอะไร)
-- ความไม่ใส่ใจถึงความปลอดภัยในระบบคอมพิวเตอร์ในวงโรงเรียนกันเอง
+-   ต้องเห็นพ้องกับส่วนใหญ่ ถ้าอยุ่กับส่วนน้อยก็หลุดโลกไปดลย
+-   อานารย์ฟิสิกส์คนนึงไม่ค่อยเห็นด้วยกับการไปทางสายคอมพิวเตอร์เท่าไหร่ (แถมมีการแฉให้จารย์คนอื่นฟังแบบได้ยินเต็มสองหูระหว่างซ่อมอยู่ด้วย)
+-   วางแผนไว้เป็นเดือน สุดท้ายโดนล้มเพราะประกาศกำหนดการกิจกรรมโรงเรียนที่จะออกมาแบบเย็นนั้นเลยยังได้
+-   เคยเกือบโดนตัดคะแนนเพราะไม่ได้อาบน้ำ (คือมันไม่มีในระเบียบมั้ยล่ะ จะตัดได้ไง แล้วเอามาคะแนนมาขู่เด็กเล่นๆอ่ะนะ เห็นกฏเป็นบ้าอะไร)
+-   ความไม่ใส่ใจถึงความปลอดภัยในระบบคอมพิวเตอร์ในวงโรงเรียนกันเอง
 
 หลังจบไปก็ยังมาที่โรงเรียนบ่อยๆอยู่ดีเพราะเรามีรุ่นน้องที่สนิทไว้คุยกันตลอด + คอยช่วยเหลือกันเวลามีปัญหา
 
@@ -54,8 +54,8 @@ Blog นี้เริ่มเขียนตอนตี 4 สภาพที
 
 เป็นปีแรกที่เข้าสู่การเรียนปริญญาตรีทางสายที่ตัวเองชอบ ซึ่งบอกเลยว่ามาถูกทางจริงๆแต่ว่าเนื้อหาช่วงนี้ง่ายไปหน่อยเพราะจะเอาอะไรล่ะ เรียน Basic C Programming ทั้งๆที่ mastered ไปตั้งแต่ค่าย สอวน. ตอนมัธยม 3 แต่เดี๋ยวไปเรื่อยๆเนื้อหาน่าจะยากขึ้นมั้ง
 
-- Object Oriented Programming (Java) - เรียนไปแล้ว
-- Web Programming - Master อยู่แล้วทางนี้
+-   Object Oriented Programming (Java) - เรียนไปแล้ว
+-   Web Programming - Master อยู่แล้วทางนี้
 
 เอาง่ายๆเลยคือน่าจะเรียนสบายยาวไปยันปี 2 ปี 3 นู้นเลย แต่ก็ยังมีแค่วิชาวิทย์ และ Discrete Structure ให้มา seirous อยู่ แต่ก็ดีกว่าไม่มีอะไรมาท้าทายเลยสักนิด
 
@@ -65,24 +65,24 @@ Blog นี้เริ่มเขียนตอนตี 4 สภาพที
 
 รวมกับ Event อื่นๆอีกมากมายไม่ว่าจะเป็น Google I/O Extended BKK, DevOps BKK งานใหญ่ๆทั้งนั้นและได้ความรู้มาลองวิชาเพียบเลย ซึ่งบางอันก็ดูเหมือนจะปัง บางอันก็แห้วไปเลย แต่ก็ดีใจที่ได้ลองอะไรหลายๆอย่างที่คนส่วนใหญ่ไม่ค่อยได้ลอง นี่ก็น่าจะเป็น list งานทั้งหมดที่ไปในปีนี้
 
-- Progressive Web Apps (PWA) - Mobile app's future
-- IT Contest 2018
-- Google I/O Extended Bangkok 2018
-- Android Bangkok 2018
-- Blind Spots: Ignored Opportunities In The Wider World (Marketing Talk)
-- Google Assistant Workshop
-- UX Methodologies & Design Thinking - Panel Discussion
-- Applying Functional Programming in Everyday Web Development
-- React Bangkok 3.0.0
-- The Stupid Hackathon Thailand #2
-- Flutter Dev Day
-- Firebase Dev Day 2018
-- GDG DevFest Bangkok 2018
-- LINE Developer Meetup #2
-- Firebase Submit Extended Bangkok 2018
-- Action on Google Hackathon Thailand
-- Hack Your Tech 2018
-- LINE Developer Meetup #3
+-   Progressive Web Apps (PWA) - Mobile app's future
+-   IT Contest 2018
+-   Google I/O Extended Bangkok 2018
+-   Android Bangkok 2018
+-   Blind Spots: Ignored Opportunities In The Wider World (Marketing Talk)
+-   Google Assistant Workshop
+-   UX Methodologies & Design Thinking - Panel Discussion
+-   Applying Functional Programming in Everyday Web Development
+-   React Bangkok 3.0.0
+-   The Stupid Hackathon Thailand #2
+-   Flutter Dev Day
+-   Firebase Dev Day 2018
+-   GDG DevFest Bangkok 2018
+-   LINE Developer Meetup #2
+-   Firebase Submit Extended Bangkok 2018
+-   Action on Google Hackathon Thailand
+-   Hack Your Tech 2018
+-   LINE Developer Meetup #3
 
 ![LDM](./E190C739-FF7A-405D-9071-A29DBDA7D7CD.jpg)
 
@@ -108,8 +108,8 @@ Blog นี้เริ่มเขียนตอนตี 4 สภาพที
 
 ก็คิดว่าได้เลาต้องหาตู้อื่นเล่นบ้าง โชคดีที่ปีนี้ HAHAMA เอาตู้ Dancerush Stardom เข้ามาใหม่ แต่เสียดายที่มีข้อเสียอยู่ 2 อย่าง
 
-1. แพง 4 token (40 THB) ต่อเกม
-2. มีแค่ 2 ตู้เท่านั้นในไทย (1 ตู้ในกรุงเทพ)
+1.  แพง 4 token (40 THB) ต่อเกม
+2.  มีแค่ 2 ตู้เท่านั้นในไทย (1 ตู้ในกรุงเทพ)
 
 แต่คือถ้าเล่นได้นี่เท่มากๆเลยนะเนี่ย ต้อง master ให้ได้ในปีนี้แหละ นี่เอาตัวอย่างมาให้ดูว่าเป็นยังไง
 
