@@ -20,9 +20,9 @@ status: published
 
 ด้านในกล่องก็จะมีของอยู่ 3 อย่าง
 
-- ใบคู่มือใช้งาน และ Safety Warning
-- AirPods ที่อยู่ใน AirPods case
-- สาย USB to Lightning 1.5 เมตร
+-   ใบคู่มือใช้งาน และ Safety Warning
+-   AirPods ที่อยู่ใน AirPods case
+-   สาย USB to Lightning 1.5 เมตร
 
 ![ตอนเปิดตัวกล่อง](./IMG_1590.jpg)
 

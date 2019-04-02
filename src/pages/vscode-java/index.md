@@ -44,8 +44,8 @@ status: published
 
 แล้วก็กด `New` คราวนี้ก็เพิ่มของอยู่ 2 อย่าง
 
-- **Variable Name** ให้ตั้งชื่อว่า `JAVA_HOME`
-- **Variable Value** ก็ให้ใส่ Path ที่ติดตั้ง *JDK* เข้าไปอย่างของเราก็จะเป็น `C:\Program Files\Java\jdk-11.0.1`
+-   **Variable Name** ให้ตั้งชื่อว่า `JAVA_HOME`
+-   **Variable Value** ก็ให้ใส่ Path ที่ติดตั้ง *JDK* เข้าไปอย่างของเราก็จะเป็น `C:\Program Files\Java\jdk-11.0.1`
 
 ![ENV](./windows_env.jpg)
 

@@ -46,9 +46,9 @@ https://soundcloud.com/r4yr1ffy/jtgygv8my2tg
 
 รอบนี้เราก็คิดว่าหยิบมาให้ฟังเป็นอัลบั้มเลยดีกว่า เราก็ได้เลือกมาให้เลยทั้งหมด 3 อัลบั้มมาให้ลอง แต่ถ้าจะให้แนะนำเพลงในแต่ละอัลบั้มให้ด้วยละกัน
 
-- **Roots**: 欠陥品
-- **Chill In Wonderland**: Chill In Wonderland
-- **STILLING**: Dreamy Noise
+-   **Roots**: 欠陥品
+-   **Chill In Wonderland**: Chill In Wonderland
+-   **STILLING**: Dreamy Noise
 
 https://soundcloud.com/r4yr1ffy/sets/roots
 

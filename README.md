@@ -6,12 +6,12 @@ All *new* Riffy Blog based on GatsbyJS generator.
 Demo
 ----
 
-https://blog.rayriffy.com
+[blog.rayriffy.com](https://blog.rayriffy.com)
 
 Requirements
 ------------
 
-- Node LTS
+-   Node LTS
 
 Installation
 ------------
