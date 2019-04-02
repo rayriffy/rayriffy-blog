@@ -13,15 +13,14 @@ export class Pagination extends React.Component<PropsInterface> {
     var pagesLen: number
     var startFrom: number
     if (this.props.numPages > 5) {
+      pagesLen = 5
+
       if (this.props.currentPage - 2 < 1) {
-        pagesLen = 5
         startFrom = 0
       } else if (this.props.currentPage + 2 > this.props.numPages) {
-        pagesLen = 5
-        startFrom = this.props.numPages - 5
+        startFrom = this.props.numPages - pagesLen
       } else {
-        pagesLen = 5
-        startFrom = this.props.currentPage - 3
+        startFrom = this.props.currentPage - (pagesLen - 2)
       }
     } else {
       pagesLen = this.props.numPages

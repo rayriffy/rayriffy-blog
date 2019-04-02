@@ -45,7 +45,7 @@ interface PropsInterface {
               };
             };
           };
-        }
+        };
       }[];
     };
     allAuthorsJson: {
