@@ -54,8 +54,8 @@ The key's randomart image is:
 
 พอถึงจุดนี้ก็จะได้ Public Key และ Private Key แล้ว
 
-- Private Key: /home/rayriffy/.ssh/id_rsa
-- Public Key: /home/rayriffy/.ssh/id_rsa.pub
+-   Private Key: /home/rayriffy/.ssh/id_rsa
+-   Public Key: /home/rayriffy/.ssh/id_rsa.pub
 
 ## ขั้นตอนที่ 2: เอา Public Key ขึ้น Server
 
