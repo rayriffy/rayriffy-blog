@@ -1,12 +1,20 @@
 import _ from 'lodash'
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import navbarStyle from './navbar.module.css'
 
-export default class NavbarTemplate extends React.Component {
+interface PropsInterface {
+  align: string;
+  keys: string;
+  tabs: {
+    name: string;
+    href: string;
+    newtab: boolean;
+  }[];
+}
+export default class NavbarTemplate extends React.Component<PropsInterface> {
   render() {
-    const tabs = []
+    const tabs: any[] = []
     _.each(this.props.tabs, tab => {
       if (tab.newtab === false) {
         tabs.push(
@@ -39,10 +47,4 @@ export default class NavbarTemplate extends React.Component {
       </nav>
     )
   }
-}
-
-NavbarTemplate.propTypes = {
-  align: PropTypes.string,
-  keys: PropTypes.string,
-  tabs: PropTypes.array,
 }

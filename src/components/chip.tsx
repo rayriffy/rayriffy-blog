@@ -1,9 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import chipStyle from './chip.module.css'
 
-export default class ChipTemplate extends React.Component {
+interface PropsInterface {
+  name: string;
+  desc: string;
+}
+export default class ChipTemplate extends React.Component<PropsInterface> {
   render() {
     return (
       <div className={chipStyle.container}>
@@ -14,9 +17,4 @@ export default class ChipTemplate extends React.Component {
       </div>
     )
   }
-}
-
-ChipTemplate.propTypes = {
-  name: PropTypes.string,
-  desc: PropTypes.string,
 }

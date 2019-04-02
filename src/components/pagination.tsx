@@ -1,13 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
 import paginationStyle from './pagination.module.css'
 
-export default class PaginationTemplate extends React.Component {
+interface PropsInterface {
+  numPages: number;
+  currentPage: number;
+  pathPrefix: string;
+}
+export default class PaginationTemplate extends React.Component<PropsInterface> {
   render() {
-    var pagesLen
-    var startFrom
+    var pagesLen: number
+    var startFrom: number
     if (this.props.numPages > 5) {
       if (this.props.currentPage - 2 < 1) {
         pagesLen = 5
@@ -48,10 +52,4 @@ export default class PaginationTemplate extends React.Component {
       </ul>
     )
   }
-}
-
-PaginationTemplate.propTypes = {
-  numPages: PropTypes.number,
-  currentPage: PropTypes.number,
-  pathPrefix: PropTypes.string,
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
 import Dev from './dev'
@@ -10,7 +9,7 @@ import layoutStyle from './layout.module.css'
 
 export default class LayoutTemplate extends React.Component {
   render() {
-    let devStrip = ''
+    let devStrip: any = ''
 
     const {GATSBY_ENV = 'development'} = process.env
 
@@ -22,8 +21,8 @@ export default class LayoutTemplate extends React.Component {
       <div className={layoutStyle.page}>
         {devStrip}
         <div className={layoutStyle.cover}>
-          <div className={[layoutStyle.container]}>
-            <div className={[layoutStyle.header]}>
+          <div className={layoutStyle.container}>
+            <div className={layoutStyle.header}>
               <Link to={'/'}>
                 <img
                   className={layoutStyle.logo}
@@ -60,8 +59,4 @@ export default class LayoutTemplate extends React.Component {
       </div>
     )
   }
-}
-
-LayoutTemplate.propTypes = {
-  children: PropTypes.array,
 }

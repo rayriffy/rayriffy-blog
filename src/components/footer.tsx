@@ -38,13 +38,13 @@ export default class FooterTemplate extends React.Component {
             ]}
           />
         </div>
-        <center>
+        <div style={{textAlign: 'center'}}>
           Built with {' '}
           <img src={imgUrl} className={footerStyle.image} alt="love" /> by{' '}
           <a href={faceUrl} rel="noopener noreferrer" target="_blank">
             RayRiffy
           </a>
-        </center>
+        </div>
       </div>
     )
   }
