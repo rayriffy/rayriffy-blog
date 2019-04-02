@@ -204,6 +204,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify-cache`,
-    `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
   ],
 }

@@ -68,6 +68,7 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
     const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
+    const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
 
     return (
       <Layout location={this.props.location}>
@@ -170,7 +171,7 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
-        <Chip name={authorName.split(' ')[0]} desc={authorName.split(' ')[1]} />
+        <Chip name={authorFirstName} desc={authorLastName} />
         <Navbar
           align="center"
           keys="navAuthor"

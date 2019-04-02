@@ -24,7 +24,7 @@ interface PropsInterface {
         title: string;
         siteUrl: string;
         fbApp: string;
-      }
+      };
     };
     allMarkdownRemark: {
       edges: {
@@ -59,7 +59,7 @@ interface PropsInterface {
     };
   };
 }
-export default class BlogIndex extends React.Component<PropsInterface> {
+export class BlogIndex extends React.Component<PropsInterface> {
   public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl

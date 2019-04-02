@@ -17,23 +17,23 @@ export class Footer extends React.Component {
             keys="navFooter"
             tabs={[
               {
-                name: 'Home',
                 href: '/',
+                name: 'Home',
                 newtab: false,
               },
               {
-                name: 'Authors',
                 href: '/author',
+                name: 'Authors',
                 newtab: false,
               },
               {
-                name: 'About Me',
                 href: 'https://cv.rayriffy.com',
+                name: 'About Me',
                 newtab: true,
               },
               {
-                name: 'Contact',
                 href: 'mailto:contact@rayriffy.com',
+                name: 'Contact',
                 newtab: false,
               },
             ]}

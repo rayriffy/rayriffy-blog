@@ -40,18 +40,18 @@ export class Layout extends React.Component<PropsInterface> {
                 keys="navHeader"
                 tabs={[
                   {
-                    name: 'Home',
                     href: '/',
+                    name: 'Home',
                     newtab: false,
                   },
                   {
-                    name: 'Category',
                     href: '/category',
+                    name: 'Category',
                     newtab: false,
                   },
                   {
-                    name: '♪',
                     href: 'https://l.rayriffy.com/nico',
+                    name: '♪',
                     newtab: true,
                   },
                 ]}
