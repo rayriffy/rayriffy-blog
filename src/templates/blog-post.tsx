@@ -105,100 +105,100 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · ${post.frontmatter.title}`,
               name: 'name',
-              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
+              content: blogDescription,
               name: 'description',
-              content: blogDescription,
             },
             {
-              name: 'author',
               content: author.name,
+              name: 'author',
             },
             {
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
               name: 'image',
-              content:
-                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              property: 'og:url',
               content: blogUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · ${post.frontmatter.title}`,
               property: 'og:title',
-              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
+              content: blogDescription,
               property: 'og:description',
-              content: blogDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: author.facebook,
+              property: 'article:author',
             },
             {
-              property: 'article:published_time',
               content: post.frontmatter.date,
+              property: 'article:published_time',
             },
             {
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
               property: 'og:image',
-              content:
-                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
               property: 'og:image:secure_url',
-              content:
-                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: author.twitter,
               name: 'twitter:site',
-              content: author.twitter,
             },
             {
+              content: author.twitter,
               name: 'twitter:creator',
-              content: author.twitter,
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · ${post.frontmatter.title}`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: blogDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content:
                 siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
+              name: 'twitter:image',
             },
             {
-              name: 'google',
               content: 'nositelinkssearchbox',
+              name: 'google',
             },
           ]}
           title={`${siteTitle} · ${post.frontmatter.title}`}>

@@ -75,88 +75,88 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · ${authorName}`,
               name: 'name',
-              content: `${siteTitle} · ${authorName}`,
             },
             {
+              content: authorDescription,
               name: 'description',
-              content: authorDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: siteUrl + bannerUrl,
               name: 'image',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · ${authorName}`,
               property: 'og:title',
-              content: `${siteTitle} · ${authorName}`,
             },
             {
+              content: authorDescription,
               property: 'og:description',
-              content: authorDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: author.facebook,
+              property: 'article:author',
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image',
-              content: siteUrl + bannerUrl,
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image:secure_url',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: author.twitter,
               name: 'twitter:site',
-              content: author.twitter,
             },
             {
+              content: author.twitter,
               name: 'twitter:creator',
-              content: author.twitter,
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · ${authorName}`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: authorDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: siteUrl + bannerUrl,
+              name: 'twitter:image',
             },
           ]}
           title={`${siteTitle} · ${authorName}`}>

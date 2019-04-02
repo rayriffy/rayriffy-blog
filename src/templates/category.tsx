@@ -83,88 +83,88 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · ${categoryName}`,
               name: 'name',
-              content: `${siteTitle} · ${categoryName}`,
             },
             {
+              content: categoryDescription,
               name: 'description',
-              content: categoryDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: siteUrl + bannerUrl,
               name: 'image',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · ${categoryName}`,
               property: 'og:title',
-              content: `${siteTitle} · ${categoryName}`,
             },
             {
+              content: categoryDescription,
               property: 'og:description',
-              content: categoryDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
+              property: 'article:author',
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image',
-              content: siteUrl + bannerUrl,
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image:secure_url',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:site',
-              content: '@rayriffy',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:creator',
-              content: '@rayriffy',
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · ${categoryName}`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: categoryDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: siteUrl + bannerUrl,
+              name: 'twitter:image',
             },
           ]}
           title={`${siteTitle} · ${categoryName}`}>

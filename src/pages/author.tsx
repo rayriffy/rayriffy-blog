@@ -48,88 +48,88 @@ export default class AuthorListPage extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · Authors`,
               name: 'name',
-              content: `${siteTitle} · Authors`,
             },
             {
+              content: siteDescription,
               name: 'description',
-              content: siteDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               name: 'image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · Authors`,
               property: 'og:title',
-              content: `${siteTitle} · Authors`,
             },
             {
+              content: siteDescription,
               property: 'og:description',
-              content: siteDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
+              property: 'article:author',
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image',
-              content: `${siteUrl}/default.jpg`,
             },
             {
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image:secure_url',
-              content: `${siteUrl}/default.jpg`,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:site',
-              content: '@rayriffy',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:creator',
-              content: '@rayriffy',
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · Authors`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: siteDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: `${siteUrl}/default.jpg`,
+              name: 'twitter:image',
             },
           ]}
           title={`${siteTitle} · Authors`}>
