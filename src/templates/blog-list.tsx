@@ -59,7 +59,7 @@ interface PropsInterface {
     };
   };
 }
-export class BlogIndex extends React.Component<PropsInterface> {
+export default class BlogIndex extends React.Component<PropsInterface> {
   public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
