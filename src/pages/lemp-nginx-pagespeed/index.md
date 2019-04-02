@@ -11,8 +11,8 @@ status: published
 ---
 
 ใน Tutorial นี้จะสอนอยู่ 2 อย่าง
- - ติดตั้ง LEMP stack (**L**inux, **E**Nginx, **M**ySQL, **P**HP)
- - ติดตั้ง NGINX PageSpeed Module
+-   ติดตั้ง LEMP stack (**L**inux, **E**Nginx, **M**ySQL, **P**HP)
+-   ติดตั้ง NGINX PageSpeed Module
 
 โดย LEMP stack เพราะเป็นการรวม software พื้นฐานที่จะสามารถทำให้เครื่องเซิร์ฟเวอร์ให้บริการเว็บไซต์แบบ dynamic ได้นั่นเอง
 
@@ -415,7 +415,7 @@ pagespeed EnableFilters collapse_whitespace,combine_heads,flatten_css_imports,co
 
 ## ขั้นตอนที่ 7: สรุปลวกๆ
 
-- config ของ NGINX อยู่ที่ `/etc/nginx`
-- root directory ที่ไว้ใช้แสดงผลเว็บจะอยู่ที่ `/usr/share/nginx` เป็นค่าพื้นฐาน
+-   config ของ NGINX อยู่ที่ `/etc/nginx`
+-   root directory ที่ไว้ใช้แสดงผลเว็บจะอยู่ที่ `/usr/share/nginx` เป็นค่าพื้นฐาน
 
 # เสร็จ!!! พร้อมเล่น
