@@ -30,9 +30,9 @@ Akatsuki Records ได้เริ่มเข้ามาในวงการ
 
 Circle นี้ทีอยู่ทั้งหมดอยู่แค่ 3 คน
 
-- [Neko Manjuu](https://twitter.com/nekomanjyu_aktk) โดยเขาทำอยู่เกือบทุกอย่างตั้งแต่ Compose เพลง, Arrange เพลง และ Piano
-- [StackBros. (ACTRock)](https://twitter.com/stack_bros) ทำหน้าที่ Arrange สว่นใหญ่
-- [Stack](https://twitter.com/Stack_Akatsuki) เป็นคนที่ให้ Vocal กับเพลง
+-   [Neko Manjuu](https://twitter.com/nekomanjyu_aktk) โดยเขาทำอยู่เกือบทุกอย่างตั้งแต่ Compose เพลง, Arrange เพลง และ Piano
+-   [StackBros. (ACTRock)](https://twitter.com/stack_bros) ทำหน้าที่ Arrange สว่นใหญ่
+-   [Stack](https://twitter.com/Stack_Akatsuki) เป็นคนที่ให้ Vocal กับเพลง
 
 ## รีวิวของจริงล่ะ
 
