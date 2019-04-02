@@ -9,7 +9,7 @@ interface PropsInterface {
   pathPrefix: string;
 }
 export class Pagination extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     var pagesLen: number
     var startFrom: number
     if (this.props.numPages > 5) {

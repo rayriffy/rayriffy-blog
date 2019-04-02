@@ -32,7 +32,7 @@ interface PropsInterface {
   };
 }
 export default class CategoryListPage extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author

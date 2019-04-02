@@ -9,7 +9,7 @@ interface PropsInterface {
   title: string;
 }
 export class NavigationItem extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     return (
       <Link to={this.props.slug} rel={this.props.meta}>
         <span className={navigationItemStyle.meta}>{this.props.meta}</span>

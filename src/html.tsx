@@ -10,7 +10,7 @@ interface PropsInterface {
   
 }
 export default class HTML extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     return (
       <html {...this.props.htmlAttributes}>
         <head>

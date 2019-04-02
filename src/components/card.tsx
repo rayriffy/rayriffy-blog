@@ -24,7 +24,7 @@ interface PropsInterface {
 }
 
 export class Card extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     const {children} = this.props
     let banner, title
     if (this.props.link === true) {

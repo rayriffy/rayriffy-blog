@@ -13,7 +13,7 @@ interface PropsInterface {
   }[];
 }
 export class Navbar extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     const tabs: object[] = []
     _.each(this.props.tabs, tab => {
       if (tab.newtab === false) {

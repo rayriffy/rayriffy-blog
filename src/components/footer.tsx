@@ -5,7 +5,7 @@ import {Navbar} from './navbar'
 import footerStyle from './footer.module.css'
 
 export class Footer extends React.Component {
-  render(): object {
+  public render(): object {
     const imgUrl = 'https://s.w.org/images/core/emoji/2.4/svg/2764.svg'
     const faceUrl = 'https://facebook.com/rayriffy'
 

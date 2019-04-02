@@ -11,7 +11,7 @@ interface PropsInterface {
   location?: object;
 }
 export class Layout extends React.Component<PropsInterface> {
-  render(): object {
+  public render(): object {
     let devStrip: object | null = null
 
     const {GATSBY_ENV = 'development'} = process.env

@@ -57,7 +57,7 @@ interface PropsInterface {
   };
 }
 export default class AuthorTemplate extends React.Component<PropsInterface> {
-  render() {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
