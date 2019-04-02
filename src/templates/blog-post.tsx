@@ -83,7 +83,7 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
     const author = this.props.data.authorsJson
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
-    let ads: any = ''
+    let ads: object = {}
 
     const {GATSBY_ENV = 'development'} = process.env
 

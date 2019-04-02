@@ -181,7 +181,9 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
         <Chip name={categoryName} desc={categoryDescription} />
         {posts.map(({node}) => {
           let author = {
-            user: 'def', name: 'def', facebook: 'def'
+            facebook: 'def',
+            name: 'def', 
+            user: 'def',
           }
           this.props.data.allAuthorsJson.edges.forEach(authorJson => {
             if (authorJson.node.user === node.frontmatter.author) {

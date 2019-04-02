@@ -2,11 +2,11 @@ import React from 'react'
 
 interface PropsInterface {
   htmlAttributes: object;
-  headComponents: any[];
+  headComponents: object[];
   bodyAttributes: object;
-  preBodyComponents: any[];
+  preBodyComponents: object[];
   body: string;
-  postBodyComponents: any[];
+  postBodyComponents: object[];
   
 }
 export default class HTML extends React.Component<PropsInterface> {

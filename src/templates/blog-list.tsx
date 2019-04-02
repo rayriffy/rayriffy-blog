@@ -54,7 +54,7 @@ interface PropsInterface {
           user: string;
           name: string;
           facebook: string;
-        }
+        };
       }[];
     };
   };
@@ -171,7 +171,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
           </script>
         </Helmet>
         {posts.map(({node}) => {
-          let author: any = _.find(this.props.data.allAuthorsJson.edges, {
+          const author: any = _.find(this.props.data.allAuthorsJson.edges, {
             node: {user: node.frontmatter.author},
           })
           return (

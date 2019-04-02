@@ -26,7 +26,7 @@ interface PropsInterface {
           key: string;
           name: string;
           desc: string;
-        }
+        };
       }[];
     };
   };

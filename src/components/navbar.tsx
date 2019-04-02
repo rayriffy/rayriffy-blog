@@ -14,7 +14,7 @@ interface PropsInterface {
 }
 export default class NavbarTemplate extends React.Component<PropsInterface> {
   render() {
-    const tabs: any[] = []
+    let tabs: object[] = []
     _.each(this.props.tabs, tab => {
       if (tab.newtab === false) {
         tabs.push(

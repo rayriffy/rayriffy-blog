@@ -54,6 +54,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-eslint": "^10.0.1",

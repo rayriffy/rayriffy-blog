@@ -12,13 +12,14 @@ interface PropsInterface {
 }
 export default class LayoutTemplate extends React.Component<PropsInterface> {
   render() {
-    let devStrip: any = ''
+    let devStrip: object | null = null
 
     const {GATSBY_ENV = 'development'} = process.env
 
     if (GATSBY_ENV !== 'production') {
       devStrip = <Dev />
     }
+
     const {children} = this.props
     return (
       <div className={layoutStyle.page}>

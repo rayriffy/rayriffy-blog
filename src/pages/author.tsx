@@ -29,7 +29,7 @@ interface PropsInterface {
           name: string;
           facebook: string;
           twitter: string;
-        }
+        };
       }[];
     };
   };
