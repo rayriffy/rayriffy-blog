@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
 import Pagination from '../components/pagination'
+import { FluidObject } from 'gatsby-image';
 
 interface PropsInterface {
   location: object;
@@ -36,11 +37,11 @@ interface PropsInterface {
             subtitle: string;
             author: string,
             date: string;
-            featured: string;
+            featured: boolean;
             status: string;
             banner: {
               childImageSharp: {
-                fluid: object,
+                fluid: FluidObject,
               }
             };
           };
@@ -170,7 +171,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
           </script>
         </Helmet>
         {posts.map(({node}) => {
-          let author: {node: {user: string, name: string, facebook: string}} = _.find(this.props.data.allAuthorsJson.edges, {
+          let author: any = _.find(this.props.data.allAuthorsJson.edges, {
             node: {user: node.frontmatter.author},
           })
           return (

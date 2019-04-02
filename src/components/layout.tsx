@@ -7,7 +7,10 @@ import Navbar from './navbar'
 
 import layoutStyle from './layout.module.css'
 
-export default class LayoutTemplate extends React.Component {
+interface PropsInterface {
+  location?: object;
+}
+export default class LayoutTemplate extends React.Component<PropsInterface> {
   render() {
     let devStrip: any = ''
 

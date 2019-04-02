@@ -6,21 +6,21 @@ import Img, { FluidObject } from 'gatsby-image'
 import cardStyle from './blog-card.module.css'
 
 interface PropsInterface {
-  author: {
+  author?: {
     user: string;
     name: string;
     facebook: string;
-    twitter: string;
+    twitter?: string;
   };
   banner: FluidObject;
-  date: string;
-  featured: boolean;
+  date?: string;
+  featured?: boolean;
   link: boolean;
-  slug: string;
-  status: string;
-  subtitle: string;
+  slug?: string;
+  status?: string;
+  subtitle?: string;
   title: string;
-  content: string;
+  content?: string;
 }
 
 export default class BlogCardTemplate extends React.Component<PropsInterface> {

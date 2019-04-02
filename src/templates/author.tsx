@@ -8,6 +8,7 @@ import Card from '../components/blog-card'
 import Chip from '../components/chip'
 import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
+import { FluidObject } from 'gatsby-image';
 
 interface PropsInterface {
   location: object;
@@ -27,7 +28,25 @@ interface PropsInterface {
       }
     };
     allMarkdownRemark: {
-      edges: object[],
+      edges: {
+        node: {
+          fields: {
+            slug: string;
+          };
+          frontmatter: {
+            title: string;
+            subtitle: string;
+            date: string;
+            featured: boolean;
+            status: string;
+            banner: {
+              childImageSharp: {
+                fluid: FluidObject;
+              };
+            };
+          };
+        };
+      }[];
     };
     authorsJson: {
       user: string,

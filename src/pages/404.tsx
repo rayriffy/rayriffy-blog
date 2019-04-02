@@ -5,6 +5,7 @@ import {graphql} from 'gatsby'
 import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
+import { FluidObject } from 'gatsby-image';
 
 interface PropsInterface {
   data: {
@@ -15,7 +16,7 @@ interface PropsInterface {
     };
     banner: {
       childImageSharp: {
-        fluid: object;
+        fluid: FluidObject;
       };
     };
   };

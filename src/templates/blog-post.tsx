@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
@@ -14,6 +13,7 @@ import NavigationContainer from '../components/navigation-container'
 import NavigationItem from '../components/navigation-item'
 
 import Card from '../components/blog-card'
+import { FluidObject } from 'gatsby-image';
 
 interface PropsInterface {
   location: object;
@@ -54,13 +54,11 @@ interface PropsInterface {
         subtitle: string;
         author: string,
         date: string;
-        featured: string;
+        featured: boolean;
         status: string;
         banner: {
           childImageSharp: {
-            fluid: {
-              src: string;
-            },
+            fluid: FluidObject,
           };
         };
       };
@@ -327,23 +325,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-BlogPostTemplate.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    markdownRemark: PropTypes.object,
-    authorsJson: PropTypes.object,
-  }),
-  pageContext: PropTypes.shape({
-    next: PropTypes.object,
-    previous: PropTypes.object,
-  }),
-  location: PropTypes.object,
-}

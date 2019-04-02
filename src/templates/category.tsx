@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 import Card from '../components/blog-card'
 import Chip from '../components/chip'
 import Pagination from '../components/pagination'
+import { FluidObject } from 'gatsby-image';
 
 interface PropsInterface {
   location: object;
@@ -37,13 +38,11 @@ interface PropsInterface {
             title: string;
             subtitle: string;
             status: string;
-            featured: string;
+            featured: boolean;
             author: string;
             banner: {
               childImageSharp: {
-                fluid: {
-                  src: string;
-                };
+                fluid: FluidObject;
               };
             };
           };
@@ -181,7 +180,9 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
         </Helmet>
         <Chip name={categoryName} desc={categoryDescription} />
         {posts.map(({node}) => {
-          var author = null
+          let author = {
+            user: 'def', name: 'def', facebook: 'def'
+          }
           this.props.data.allAuthorsJson.edges.forEach(authorJson => {
             if (authorJson.node.user === node.frontmatter.author) {
               author = authorJson.node

@@ -4,7 +4,7 @@ import chipStyle from './chip.module.css'
 
 interface PropsInterface {
   name: string;
-  desc: string;
+  desc?: string;
 }
 export default class ChipTemplate extends React.Component<PropsInterface> {
   render() {
