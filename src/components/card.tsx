@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link} from 'gatsby'
 
-import Img, { FluidObject } from 'gatsby-image'
+import Img, {FluidObject} from 'gatsby-image'
 
-import cardStyle from './blog-card.module.css'
+import cardStyle from './card.module.css'
 
 interface PropsInterface {
   author?: {
@@ -23,7 +23,7 @@ interface PropsInterface {
   content?: string;
 }
 
-export default class BlogCardTemplate extends React.Component<PropsInterface> {
+export class Card extends React.Component<PropsInterface> {
   render() {
     const {children} = this.props
     let banner, title
@@ -44,6 +44,7 @@ export default class BlogCardTemplate extends React.Component<PropsInterface> {
       banner = <Img fluid={this.props.banner} className={cardStyle.banner} />
       title = this.props.title
     }
+
     return (
       <div key={this.props.slug} className={cardStyle.card}>
         <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>

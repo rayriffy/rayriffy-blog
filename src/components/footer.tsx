@@ -1,13 +1,14 @@
 import React from 'react'
 
-import Navbar from './navbar'
+import {Navbar} from './navbar'
 
 import footerStyle from './footer.module.css'
 
-export default class FooterTemplate extends React.Component {
+export class Footer extends React.Component {
   render() {
     const imgUrl = 'https://s.w.org/images/core/emoji/2.4/svg/2764.svg'
     const faceUrl = 'https://facebook.com/rayriffy'
+
     return (
       <div className={footerStyle.footer}>
         <div className={footerStyle.container}>

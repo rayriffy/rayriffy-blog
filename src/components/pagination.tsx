@@ -8,7 +8,7 @@ interface PropsInterface {
   currentPage: number;
   pathPrefix: string;
 }
-export default class PaginationTemplate extends React.Component<PropsInterface> {
+export class Pagination extends React.Component<PropsInterface> {
   render() {
     var pagesLen: number
     var startFrom: number
@@ -27,6 +27,7 @@ export default class PaginationTemplate extends React.Component<PropsInterface> 
       pagesLen = this.props.numPages
       startFrom = 0
     }
+
     return (
       <ul className={paginationStyle.pagination}>
         {Array.from({length: pagesLen}, (_, i) => (

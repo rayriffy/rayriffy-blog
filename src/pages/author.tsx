@@ -4,10 +4,10 @@ import {graphql} from 'gatsby'
 
 import {FaFacebook, FaTwitter} from 'react-icons/fa'
 
-import Layout from '../components/layout'
+import {Layout} from '../components/layout'
 
-import Card from '../components/blog-card'
-import Chip from '../components/chip'
+import {Card} from '../components/card'
+import {Chip} from '../components/chip'
 
 interface PropsInterface {
   location: object;

@@ -8,7 +8,7 @@ interface PropsInterface {
   slug: string;
   title: string;
 }
-export default class NavigationItemTemplate extends React.Component<PropsInterface> {
+export class NavigationItem extends React.Component<PropsInterface> {
   render() {
     return (
       <Link to={this.props.slug} rel={this.props.meta}>

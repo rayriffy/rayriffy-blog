@@ -6,7 +6,7 @@ interface PropsInterface {
   name: string;
   desc?: string;
 }
-export default class ChipTemplate extends React.Component<PropsInterface> {
+export class Chip extends React.Component<PropsInterface> {
   render() {
     return (
       <div className={chipStyle.container}>

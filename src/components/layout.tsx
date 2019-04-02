@@ -1,16 +1,16 @@
 import React from 'react'
 import {Link} from 'gatsby'
 
-import Dev from './dev'
-import Footer from './footer'
-import Navbar from './navbar'
+import {Dev} from './dev'
+import {Footer} from './footer'
+import {Navbar} from './navbar'
 
 import layoutStyle from './layout.module.css'
 
 interface PropsInterface {
   location?: object;
 }
-export default class LayoutTemplate extends React.Component<PropsInterface> {
+export class Layout extends React.Component<PropsInterface> {
   render() {
     let devStrip: object | null = null
 
@@ -21,6 +21,7 @@ export default class LayoutTemplate extends React.Component<PropsInterface> {
     }
 
     const {children} = this.props
+
     return (
       <div className={layoutStyle.page}>
         {devStrip}

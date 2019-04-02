@@ -12,7 +12,7 @@ interface PropsInterface {
     newtab: boolean;
   }[];
 }
-export default class NavbarTemplate extends React.Component<PropsInterface> {
+export class Navbar extends React.Component<PropsInterface> {
   render() {
     let tabs: object[] = []
     _.each(this.props.tabs, tab => {
@@ -32,6 +32,7 @@ export default class NavbarTemplate extends React.Component<PropsInterface> {
         )
       }
     })
+
     return (
       <nav
         key={this.props.keys}

@@ -6,14 +6,14 @@ import {rhythm} from '../utils/typography'
 
 import AdSense from 'react-adsense'
 
-import Layout from '../components/layout'
+import {Layout} from '../components/layout'
 
-import Navigation from '../components/navigation'
-import NavigationContainer from '../components/navigation-container'
-import NavigationItem from '../components/navigation-item'
+import {Navigation} from '../components/navigation'
+import {NavigationContainer} from '../components/navigation-container'
+import {NavigationItem} from '../components/navigation-item'
 
-import Card from '../components/blog-card'
-import { FluidObject } from 'gatsby-image';
+import {Card} from '../components/card'
+import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
   location: object;
@@ -83,7 +83,7 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
     const author = this.props.data.authorsJson
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
-    let ads: object = {}
+    let ads: object | null = null
 
     const {GATSBY_ENV = 'development'} = process.env
 

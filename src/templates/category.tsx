@@ -2,12 +2,12 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
-import Layout from '../components/layout'
+import {Layout} from '../components/layout'
 
-import Card from '../components/blog-card'
-import Chip from '../components/chip'
-import Pagination from '../components/pagination'
-import { FluidObject } from 'gatsby-image';
+import {Card} from '../components/card'
+import {Chip} from '../components/chip'
+import {Pagination} from '../components/pagination'
+import {FluidObject} from 'gatsby-image';
 
 interface PropsInterface {
   location: object;
