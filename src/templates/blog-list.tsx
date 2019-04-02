@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
@@ -9,7 +8,57 @@ import Layout from '../components/layout'
 import Card from '../components/blog-card'
 import Pagination from '../components/pagination'
 
-export default class BlogIndex extends React.Component {
+interface PropsInterface {
+  location: object;
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+  };
+  data: {
+    [key: string]: any;
+    site: {
+      siteMetadata: {
+        author: string;
+        description: string;
+        title: string;
+        siteUrl: string;
+        fbApp: string;
+      }
+    };
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          fields: {
+            slug: string;
+          };
+          frontmatter: {
+            title: string;
+            subtitle: string;
+            author: string,
+            date: string;
+            featured: string;
+            status: string;
+            banner: {
+              childImageSharp: {
+                fluid: object,
+              }
+            };
+          };
+        }
+      }[];
+    };
+    allAuthorsJson: {
+      edges: {
+        node: {
+          user: string;
+          name: string;
+          facebook: string;
+        }
+      }[];
+    };
+  };
+}
+export default class BlogIndex extends React.Component<PropsInterface> {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -121,7 +170,7 @@ export default class BlogIndex extends React.Component {
           </script>
         </Helmet>
         {posts.map(({node}) => {
-          let author = _.find(this.props.data.allAuthorsJson.edges, {
+          let author: {node: {user: string, name: string, facebook: string}} = _.find(this.props.data.allAuthorsJson.edges, {
             node: {user: node.frontmatter.author},
           })
           return (
@@ -208,28 +257,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-BlogIndex.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-  }),
-  location: PropTypes.object,
-}

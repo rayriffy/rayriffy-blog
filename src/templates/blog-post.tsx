@@ -15,7 +15,66 @@ import NavigationItem from '../components/navigation-item'
 
 import Card from '../components/blog-card'
 
-export default class BlogPostTemplate extends React.Component {
+interface PropsInterface {
+  location: object;
+  pageContext: {
+    next: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+    previous: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+  };
+  data: {
+    site: {
+      siteMetadata: {
+        author: string;
+        description: string;
+        title: string;
+        siteUrl: string;
+        fbApp: string;
+      };
+    };
+    markdownRemark: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+        subtitle: string;
+        author: string,
+        date: string;
+        featured: string;
+        status: string;
+        banner: {
+          childImageSharp: {
+            fluid: {
+              src: string;
+            },
+          };
+        };
+      };
+      html: string;
+    };
+    authorsJson: {
+      user: string;
+      name: string;
+      twitter: string;
+      facebook: string;
+    };
+  };
+}
+export default class BlogPostTemplate extends React.Component<PropsInterface> {
   render() {
     const post = this.props.data.markdownRemark
     const {previous, next} = this.props.pageContext
@@ -26,7 +85,7 @@ export default class BlogPostTemplate extends React.Component {
     const author = this.props.data.authorsJson
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
-    let ads = ''
+    let ads: any = ''
 
     const {GATSBY_ENV = 'development'} = process.env
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
@@ -10,7 +9,49 @@ import Chip from '../components/chip'
 import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
 
-export default class AuthorTemplate extends React.Component {
+interface PropsInterface {
+  location: object;
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+    pathPrefix: string;
+  };
+  data: {
+    [key: string]: any;
+    site: {
+      siteMetadata: {
+        title: string;
+        siteUrl: string;
+        author: string;
+        fbApp: string;
+      }
+    };
+    allMarkdownRemark: {
+      edges: object[],
+    };
+    authorsJson: {
+      user: string,
+      name: string,
+      facebook: string,
+      twitter: string,
+    };
+    rayriffy: {
+      childImageSharp: {
+        fluid: {
+          src: string,
+        }
+      }
+    };
+    SiriuSStarS: {
+      childImageSharp: {
+        fluid: {
+          src: string,
+        }
+      }
+    };
+  };
+}
+export default class AuthorTemplate extends React.Component<PropsInterface> {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -244,31 +285,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-AuthorTemplate.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    authorsJson: PropTypes.shape({
-      user: PropTypes.string,
-      name: PropTypes.string,
-      desc: PropTypes.string,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-    pathPrefix: PropTypes.string,
-  }),
-  location: PropTypes.object,
-}

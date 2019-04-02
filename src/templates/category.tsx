@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
@@ -9,7 +8,64 @@ import Card from '../components/blog-card'
 import Chip from '../components/chip'
 import Pagination from '../components/pagination'
 
-export default class CategoryTemplate extends React.Component {
+interface PropsInterface {
+  location: object;
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+    pathPrefix: string;
+  };
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+        siteUrl: string;
+        author: string;
+        fbApp: string;
+      };
+    };
+    allMarkdownRemark: {
+      totalCount: number;
+      edges: {
+        node: {
+          excerpt: string;
+          fields: {
+            slug: string;
+          };
+          frontmatter: {
+            date: string;
+            title: string;
+            subtitle: string;
+            status: string;
+            featured: string;
+            author: string;
+            banner: {
+              childImageSharp: {
+                fluid: {
+                  src: string;
+                };
+              };
+            };
+          };
+        };
+      }[];
+    };
+    allAuthorsJson: {
+      edges: {
+        node: {
+          user: string;
+          name: string;
+          facebook: string;
+        };
+      }[];
+    };
+    categoriesJson: {
+      name: string;
+      desc: string;
+    };
+  };
+}
+export default class CategoryTemplate extends React.Component<PropsInterface> {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -227,33 +283,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-CategoryTemplate.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    categoriesJson: PropTypes.shape({
-      name: PropTypes.string,
-      desc: PropTypes.string,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-    pathPrefix: PropTypes.string,
-  }),
-  location: PropTypes.object,
-}
