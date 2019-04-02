@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
@@ -10,7 +9,32 @@ import Layout from '../components/layout'
 import Card from '../components/blog-card'
 import Chip from '../components/chip'
 
-export default class AuthorListPage extends React.Component {
+interface PropsInterface {
+  location: object;
+  data: {
+    [key: string]: any;
+    site: {
+      siteMetadata: {
+        title: string;
+        siteUrl: string;
+        author: string;
+        description: string;
+        fbApp: string;
+      };
+    };
+    allAuthorsJson: {
+      edges: {
+        node: {
+          user: string;
+          name: string;
+          facebook: string;
+          twitter: string;
+        }
+      }[];
+    };
+  };
+}
+export default class AuthorListPage extends React.Component<PropsInterface> {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -200,21 +224,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-AuthorListPage.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-  location: PropTypes.object,
-}

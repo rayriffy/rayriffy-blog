@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
 
@@ -7,7 +6,21 @@ import Layout from '../components/layout'
 
 import Card from '../components/blog-card'
 
-export default class NotFoundPage extends React.Component {
+interface PropsInterface {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+    banner: {
+      childImageSharp: {
+        fluid: object;
+      };
+    };
+  };
+}
+export default class NotFoundPage extends React.Component<PropsInterface> {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
 
@@ -52,14 +65,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-NotFoundPage.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-    banner: PropTypes.object,
-  }),
-}

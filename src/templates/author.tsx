@@ -35,20 +35,6 @@ interface PropsInterface {
       facebook: string,
       twitter: string,
     };
-    rayriffy: {
-      childImageSharp: {
-        fluid: {
-          src: string,
-        }
-      }
-    };
-    SiriuSStarS: {
-      childImageSharp: {
-        fluid: {
-          src: string,
-        }
-      }
-    };
   };
 }
 export default class AuthorTemplate extends React.Component<PropsInterface> {
