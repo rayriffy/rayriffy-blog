@@ -1,7 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-export default class HTML extends React.Component {
+interface PropsInterface {
+  htmlAttributes: object;
+  headComponents: any[];
+  bodyAttributes: object;
+  preBodyComponents: any[];
+  body: string;
+  postBodyComponents: any[];
+  
+}
+export default class HTML extends React.Component<PropsInterface> {
   render() {
     return (
       <html {...this.props.htmlAttributes}>
@@ -40,13 +48,4 @@ export default class HTML extends React.Component {
       </html>
     )
   }
-}
-
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
 }
