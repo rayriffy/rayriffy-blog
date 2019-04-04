@@ -191,10 +191,10 @@ $ docker create --name riffydaddyallhome \
 `-v` ชื่อว่า Volume ซึ่งจำเป็นสำหรับใครที่ทำงาน Project ใหญ่ๆ เพราะ container นั้นถูกจำกัดขนาดไว้ที่ 20GB โดย *default* จะแก้ด้วยการตั้งค่าใหม่ก็ได้ แต่อย่าเลย ดังนั้นเราก็สามารถเชื่อม Folder บน Host ขึ้นไปบน container ได้ทุกที่ๆกำหนดไว้ ซึ่งแปลว่าเวลาเราทำงานบน container แล้วเก็บไฟล์ไว้ที่ตำแหน่งที่เรา volume ไว้มันจะไปเก็บใน Host แทนแต่ก็ยังสามารถเข้าถึงได้ใน container ทำให้ไม่มีปัญหากับพื้นที่จำกัด 20 GB ซึ่งวิธีเชื่อมก็กำหนด `folderของhost:folderของcontainer` ในตัวอย่างจะเห็นว่าผมกรอก `/home/ray:/workspace` ซึ่งก็คือผมเชื่อม `/home/ray` บน host ไปยัง `/workspace` บน container แล้วทุกๆไฟล์ที่อยู่ใน `/home/ray` สามารถเข้าถึงได้โดยไปยัง `/workspace` บน container และในเวลาเดียวกันทุกๆไฟล์ `/workspace` บน container สามารถเข้าถึงได้โดยไปยัง `/home/ray` บน Host นั่นเอง (และ..เหมือนกับ `-p` และ `-e`)
 
 `--restart` ไว้ใช้บอก container ว่ามันควรจะ restart หรือไม่ โดยมี option ให้เลือกอยู่ **4 แบบ** 
- - `no` บอกว่าเมื่อ container exit ตัวเองไม่ต้อง restart
- - `on-failure:<จำนวน restart>` สั่งให้ restart เมื่อ*ไม่ได้* exit ด้วย `code 0` และจำกัดจำนวนการลอง restart ไว้
- - `always` restart ไปแหล่ทุกกรณี ออก `code 0` หรือไม่...ไม่แคร์ค่ะ!
- - `unless-stopped` เหมือนกับ always แต่ต่างที่มันจะไม่ start เองถ้า container อยู่ในสถานะ `STOPPED` ก่อนที่ Docker daemon จะหยุดตัวเอง
+-   `no` บอกว่าเมื่อ container exit ตัวเองไม่ต้อง restart
+-   `on-failure:<จำนวน restart>` สั่งให้ restart เมื่อ*ไม่ได้* exit ด้วย `code 0` และจำกัดจำนวนการลอง restart ไว้
+-   `always` restart ไปแหล่ทุกกรณี ออก `code 0` หรือไม่...ไม่แคร์ค่ะ!
+-   `unless-stopped` เหมือนกับ always แต่ต่างที่มันจะไม่ start เองถ้า container อยู่ในสถานะ `STOPPED` ก่อนที่ Docker daemon จะหยุดตัวเอง
 
 คราวนี้ container เราได้ถูกสร้างแล้ว ลองไปดูได้โดยใช้คำสั่ง
 
@@ -212,11 +212,11 @@ CONTAINER ID        IMAGE                        COMMAND                  CREATE
 ```
 
 คราวนี้จะสั่ง start มันขึ้นมาล่ะ? ทำไง?... `docker start` ไง! โดยมีอยู่ 2 วิธี
- - จาก container ID
+-   จาก container ID
  ```
  $ docker start 4a6296fb34ed
  ```
- - จาก container name
+-   จาก container name
  ```
  $ docker start riffydaddyallhome
  ```

@@ -44,7 +44,7 @@ She has a problem with her avatar's speech synchronization causing her to comple
 
 ![Lea](IMG_2276.jpg)
 
-> Credit: https://twitter.com/abitofBaileys/status/814102299610140672
+> Credit: [Twitter](https://twitter.com/abitofBaileys/status/814102299610140672)
 
 ### Emilienator
 
@@ -52,7 +52,7 @@ She became a friend with Lea after her entering CrossWorlds and become her first
 
 ![Emilienator](IMG_2278.jpg)
 
-> Credit: https://twitter.com/RadicalFishGame/status/896879223553507328
+> Credit: [Twitter](https://twitter.com/RadicalFishGame/status/896879223553507328)
 
 ## Game mechanics
 

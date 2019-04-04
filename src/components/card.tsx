@@ -1,13 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
+import React from 'react'
 
-import Img from 'gatsby-image'
+import Img, {FluidObject} from 'gatsby-image'
 
-import cardStyle from './blog-card.module.css'
+import cardStyle from './card.module.css'
 
-export default class BlogCardTemplate extends React.Component {
-  render() {
+interface PropsInterface {
+  author?: {
+    user: string,
+    name: string,
+    facebook: string,
+    twitter?: string,
+  },
+  banner: FluidObject,
+  date?: string,
+  featured?: boolean,
+  link: boolean,
+  slug: string,
+  status?: string,
+  subtitle?: string,
+  title: string,
+  content?: string,
+}
+
+export class Card extends React.Component<PropsInterface> {
+  public render(): object {
     const {children} = this.props
     let banner, title
     if (this.props.link === true) {
@@ -19,7 +36,8 @@ export default class BlogCardTemplate extends React.Component {
       title = (
         <Link
           style={{textDecoration: 'none', color: '#000000', boxShadow: 'none'}}
-          to={this.props.slug}>
+          to={this.props.slug}
+        >
           {this.props.title}
         </Link>
       )
@@ -27,8 +45,9 @@ export default class BlogCardTemplate extends React.Component {
       banner = <Img fluid={this.props.banner} className={cardStyle.banner} />
       title = this.props.title
     }
+
     return (
-      <div key={this.props.slug} className={[cardStyle.card]}>
+      <div key={this.props.slug} className={cardStyle.card}>
         <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>
           {this.props.featured && (
             <span className={cardStyle.slug}>featured</span>
@@ -63,27 +82,4 @@ export default class BlogCardTemplate extends React.Component {
       </div>
     )
   }
-}
-
-BlogCardTemplate.propTypes = {
-  author: PropTypes.shape({
-    user: PropTypes.string,
-    name: PropTypes.string,
-    facebook: PropTypes.string,
-    twitter: PropTypes.string,
-  }),
-  banner: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
-  ]),
-  date: PropTypes.string,
-  featured: PropTypes.bool,
-  link: PropTypes.bool,
-  slug: PropTypes.string,
-  status: PropTypes.string,
-  subtitle: PropTypes.string,
-  title: PropTypes.string,
-  content: PropTypes.string,
 }

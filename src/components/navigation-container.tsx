@@ -1,15 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import navigationContainerStyle from './navigation-container.module.css'
 
-export default class NavigationContainerTemplate extends React.Component {
-  render() {
+export class NavigationContainer extends React.Component {
+  public render(): object {
     const {children} = this.props
     return <div className={navigationContainerStyle.container}>{children}</div>
   }
-}
-
-NavigationContainerTemplate.propTypes = {
-  children: PropTypes.object,
 }

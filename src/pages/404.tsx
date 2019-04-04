@@ -1,14 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
+import React from 'react'
+import Helmet from 'react-helmet'
 
-import Layout from '../components/layout'
+import {FluidObject} from 'gatsby-image'
 
-import Card from '../components/blog-card'
+import {Layout} from '../components/layout'
 
-export default class NotFoundPage extends React.Component {
-  render() {
+import {Card} from '../components/card'
+
+interface PropsInterface {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string,
+      },
+    },
+    banner: {
+      childImageSharp: {
+        fluid: FluidObject,
+      },
+    },
+  },
+}
+export default class NotFoundPage extends React.Component<PropsInterface> {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
@@ -18,11 +33,13 @@ export default class NotFoundPage extends React.Component {
           title={`${siteTitle} · Not Found`}
         />
         <Card
+          slug='/'
           banner={this.props.data.banner.childImageSharp.fluid}
-          title="NOT FOUND"
-          subtitle="Whoops! Looks like you&#39;re lost in the woods...with Cirno."
-          link={false}>
-          <a href="/">Back to home</a>
+          title='NOT FOUND'
+          subtitle='Whoops! Looks like you&#39;re lost in the woods...with Cirno.'
+          link={false}
+        >
+          <a href='/'>Back to home</a>
         </Card>
       </Layout>
     )
@@ -52,14 +69,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-NotFoundPage.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-    banner: PropTypes.object,
-  }),
-}

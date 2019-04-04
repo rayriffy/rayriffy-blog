@@ -98,9 +98,9 @@ l.rayriffy.com. IN CNAME rayriffy-l.netlify.com
 
 สำหรับ Netlify จะสามารถใช้ไฟล์ `_redirects` เพื่อทำการ redirect ไปที่ไหนก็ได้ โดยในหนึ่งบรรทัดจะมี argument หลักๆอยู่ 3 อย่างคือ
 
-- ตำแหน่งต้นทาง: ไว้บอกว่า URL ต้นทางจะเป็นยังไง ในกรณีนี้คือ `/helloplanet`
-- ตำแหน่งปลายทาง: บอกว่าถ้า match กับต้นทางแล้วให้ไปไหนต่อ ในกรณีนี้คือ `https://youtu.be/_dlyIyfd9s0`
-- HTTP Status: ส่ง [302](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302) เพื่อบอกว่าเจอแล้ว
+-   ตำแหน่งต้นทาง: ไว้บอกว่า URL ต้นทางจะเป็นยังไง ในกรณีนี้คือ `/helloplanet`
+-   ตำแหน่งปลายทาง: บอกว่าถ้า match กับต้นทางแล้วให้ไปไหนต่อ ในกรณีนี้คือ `https://youtu.be/_dlyIyfd9s0`
+-   HTTP Status: ส่ง [302](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302) เพื่อบอกว่าเจอแล้ว
 
 แล้วในกรณีที่ URL ไม่ match กับอะไรเลยล่ะจะทำยังไง? เลยเป็นที่มาของอบรรทัดล่างสุด
 

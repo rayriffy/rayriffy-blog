@@ -102,8 +102,8 @@ $('#contentPrint > div:nth-child(1) > div.title').text()
 
 จากที่เห็น cheerio มี Function ที่ช่วยในการทำ Loop ให้แล้วโดยใช้ `.each()` แล้วจะมี parameter อยู่ 2 ตัว
 
-- `i` จะเป็นเลข Indexes เผื่อต้องการใช้
-- `elem` จะเป็น Element ใน Loop นั้น
+-   `i` จะเป็นเลข Indexes เผื่อต้องการใช้
+-   `elem` จะเป็น Element ใน Loop นั้น
 
 แล้วเราก็เอา `elem` ออกมา Extract text ออกมา
 
@@ -129,4 +129,4 @@ $(elem).text()
 
 ### Resources Link
 
-- [cheerio Documentation](https://cheerio.js.org/)
+-   [cheerio Documentation](https://cheerio.js.org/)

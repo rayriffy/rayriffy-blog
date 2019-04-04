@@ -134,7 +134,7 @@ module.exports = {
               },
             },
           },
-          'riffy-gjs-embeded-video',
+          'gatsby-remark-embed-video',
           {
             resolve: 'gatsby-remark-embed-gist',
             options: {
@@ -204,6 +204,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify-cache`,
-    `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
   ],
 }

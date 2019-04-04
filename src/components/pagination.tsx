@@ -1,28 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
+import React from 'react'
 
 import paginationStyle from './pagination.module.css'
 
-export default class PaginationTemplate extends React.Component {
-  render() {
-    var pagesLen
-    var startFrom
+interface PropsInterface {
+  numPages: number,
+  currentPage: number,
+  pathPrefix: string,
+}
+export class Pagination extends React.Component<PropsInterface> {
+  public render(): object {
+    let pagesLen: number
+    let startFrom: number
     if (this.props.numPages > 5) {
+      pagesLen = 5
+
       if (this.props.currentPage - 2 < 1) {
-        pagesLen = 5
         startFrom = 0
       } else if (this.props.currentPage + 2 > this.props.numPages) {
-        pagesLen = 5
-        startFrom = this.props.numPages - 5
+        startFrom = this.props.numPages - pagesLen
       } else {
-        pagesLen = 5
-        startFrom = this.props.currentPage - 3
+        startFrom = this.props.currentPage - (pagesLen - 2)
       }
     } else {
       pagesLen = this.props.numPages
       startFrom = 0
     }
+
     return (
       <ul className={paginationStyle.pagination}>
         {Array.from({length: pagesLen}, (_, i) => (
@@ -32,7 +36,8 @@ export default class PaginationTemplate extends React.Component {
               startFrom + i + 1 === this.props.currentPage
                 ? paginationStyle.active
                 : ''
-            }>
+            }
+          >
             <Link
               to={`${
                 startFrom + i === 0
@@ -40,7 +45,8 @@ export default class PaginationTemplate extends React.Component {
                   : `${
                       this.props.pathPrefix === '/' ? '' : this.props.pathPrefix
                     }/pages/${startFrom + i + 1}`
-              }`}>
+              }`}
+            >
               {startFrom + i + 1}
             </Link>
           </li>
@@ -48,10 +54,4 @@ export default class PaginationTemplate extends React.Component {
       </ul>
     )
   }
-}
-
-PaginationTemplate.propTypes = {
-  numPages: PropTypes.number,
-  currentPage: PropTypes.number,
-  pathPrefix: PropTypes.string,
 }

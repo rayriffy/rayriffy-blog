@@ -74,9 +74,9 @@ before(done => {
 
 มันก็ไม่ได้มีแค่นี้หรอกมันจะมี
 
-- `after()` ที่รันตอนสุดท้าย
-- `beforeEach()` จะรันทุกครั้งก่อนที่จะเริ่มทุก Test
-- `afterEach()` จะรันทุกครั้งหลัง Test เสร็จ
+-   `after()` ที่รันตอนสุดท้าย
+-   `beforeEach()` จะรันทุกครั้งก่อนที่จะเริ่มทุก Test
+-   `afterEach()` จะรันทุกครั้งหลัง Test เสร็จ
 
 ```javascript
 it('it should have message OK', done => {
@@ -107,8 +107,8 @@ chai
 
 จากนั้นก็เรียก request โดยใช้ `.end()` แล้วก็เอาของข้างในมาเช็คต่อ ในตัวอย่างก็จะเป็น
 
-- ดูว่าส่ง HTTP Status มาเป็น 200 หรือไม่ (`res.should.have.status(200)`)
-- ส่วน response ที่ออกมามี message ว่า OK หรือไม่ (`res.body.should.have.property('message').eql('OK')`)
+-   ดูว่าส่ง HTTP Status มาเป็น 200 หรือไม่ (`res.should.have.status(200)`)
+-   ส่วน response ที่ออกมามี message ว่า OK หรือไม่ (`res.body.should.have.property('message').eql('OK')`)
 
 ถ้าไม่ผ่านก็จะ fail ไปแต่ถ้าผ่านทุกกรณีก็จะให้ผ่าน `done()` ออกไปนั่นเอง
 
@@ -143,7 +143,7 @@ yarn test
 
 ## Reference
 
-- [Mocha](https://mochajs.org/)
-- [Mocha Guide to Testing](https://gist.github.com/samwize/8877226)
-- [Chai](https://www.chaijs.com/)
-- [Chai HTTP](https://www.chaijs.com/plugins/chai-http/)
+-   [Mocha](https://mochajs.org/)
+-   [Mocha Guide to Testing](https://gist.github.com/samwize/8877226)
+-   [Chai](https://www.chaijs.com/)
+-   [Chai HTTP](https://www.chaijs.com/plugins/chai-http/)

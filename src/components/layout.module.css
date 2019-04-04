@@ -22,7 +22,8 @@ html {
 }
 
 .logo {
-  height: 150px;
+  height: 120px;
+  margin-bottom: 1.45rem;
 }
 
 .cover {
@@ -46,14 +47,13 @@ html {
 @media (max-width: 767px) {
   .header {
     display: block;
+    margin: 0 0 20px 0;
     margin-top: 0;
-    margin-bottom: 20px;
     text-align: left;
-    margin-left: 0;
-    margin-right: 0;
   }
   .logo {
-    height: 80px;
+    margin-left: 15px;
+    height: 60px;
   }
 }
 

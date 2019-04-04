@@ -1,22 +1,79 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
+import React from 'react'
+import Helmet from 'react-helmet'
 
 import {rhythm} from '../utils/typography'
 
+import {FluidObject} from 'gatsby-image'
 import AdSense from 'react-adsense'
 
-import Layout from '../components/layout'
+import {Layout} from '../components/layout'
 
-import Navigation from '../components/navigation'
-import NavigationContainer from '../components/navigation-container'
-import NavigationItem from '../components/navigation-item'
+import {Navigation} from '../components/navigation'
+import {NavigationContainer} from '../components/navigation-container'
+import {NavigationItem} from '../components/navigation-item'
 
-import Card from '../components/blog-card'
+import {Card} from '../components/card'
 
-export default class BlogPostTemplate extends React.Component {
-  render() {
+interface PropsInterface {
+  location: object
+  pageContext: {
+    next: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+    previous: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+  }
+  data: {
+    site: {
+      siteMetadata: {
+        author: string;
+        description: string;
+        title: string;
+        siteUrl: string;
+        fbApp: string;
+      };
+    };
+    markdownRemark: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+        subtitle: string;
+        author: string,
+        date: string;
+        featured: boolean;
+        status: string;
+        banner: {
+          childImageSharp: {
+            fluid: FluidObject,
+          };
+        };
+      };
+      html: string;
+    };
+    authorsJson: {
+      user: string;
+      name: string;
+      twitter: string;
+      facebook: string;
+    };
+  }
+}
+export default class BlogPostTemplate extends React.Component<PropsInterface> {
+  public render(): object {
     const post = this.props.data.markdownRemark
     const {previous, next} = this.props.pageContext
     const siteTitle = this.props.data.site.siteMetadata.title
@@ -26,18 +83,18 @@ export default class BlogPostTemplate extends React.Component {
     const author = this.props.data.authorsJson
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
-    let ads = ''
+    let ads: object | null = null
 
     const {GATSBY_ENV = 'development'} = process.env
 
     if (GATSBY_ENV !== 'development') {
       ads = (
         <AdSense.Google
-          client="ca-pub-2837414306121160"
-          slot="7015425171"
+          client='ca-pub-2837414306121160'
+          slot='7015425171'
           style={{display: 'block'}}
-          format="auto"
-          responsive="true"
+          format='auto'
+          responsive='true'
         />
       )
     }
@@ -48,104 +105,105 @@ export default class BlogPostTemplate extends React.Component {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · ${post.frontmatter.title}`,
               name: 'name',
-              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
+              content: blogDescription,
               name: 'description',
-              content: blogDescription,
             },
             {
-              name: 'author',
               content: author.name,
+              name: 'author',
             },
             {
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
               name: 'image',
-              content:
-                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              property: 'og:url',
               content: blogUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · ${post.frontmatter.title}`,
               property: 'og:title',
-              content: `${siteTitle} · ${post.frontmatter.title}`,
             },
             {
+              content: blogDescription,
               property: 'og:description',
-              content: blogDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: author.facebook,
+              property: 'article:author',
             },
             {
-              property: 'article:published_time',
               content: post.frontmatter.date,
+              property: 'article:published_time',
             },
             {
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
               property: 'og:image',
-              content:
-                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
+              content:
+                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
               property: 'og:image:secure_url',
-              content:
-                siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: author.twitter,
               name: 'twitter:site',
-              content: author.twitter,
             },
             {
+              content: author.twitter,
               name: 'twitter:creator',
-              content: author.twitter,
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · ${post.frontmatter.title}`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: blogDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content:
                 siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
+              name: 'twitter:image',
             },
             {
-              name: 'google',
               content: 'nositelinkssearchbox',
+              name: 'google',
             },
           ]}
-          title={`${siteTitle} · ${post.frontmatter.title}`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · ${post.frontmatter.title}`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -188,7 +246,8 @@ export default class BlogPostTemplate extends React.Component {
           featured={post.frontmatter.featured}
           status={post.frontmatter.status}
           link={false}
-          content={post.html}>
+          content={post.html}
+        >
           {ads}
           <hr
             style={{
@@ -201,7 +260,7 @@ export default class BlogPostTemplate extends React.Component {
               {previous && (
                 <NavigationItem
                   slug={previous.fields.slug}
-                  meta="previous"
+                  meta='previous'
                   title={previous.frontmatter.title}
                 />
               )}
@@ -210,7 +269,7 @@ export default class BlogPostTemplate extends React.Component {
               {next && (
                 <NavigationItem
                   slug={next.fields.slug}
-                  meta="next"
+                  meta='next'
                   title={next.frontmatter.title}
                 />
               )}
@@ -268,23 +327,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-BlogPostTemplate.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    markdownRemark: PropTypes.object,
-    authorsJson: PropTypes.object,
-  }),
-  pageContext: PropTypes.shape({
-    next: PropTypes.object,
-    previous: PropTypes.object,
-  }),
-  location: PropTypes.object,
-}

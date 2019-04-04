@@ -28,16 +28,16 @@ pre {
   -moz-tab-size: 4;
   tab-size: 4;
   overflow: auto;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #eeeeee;
   border-radius: 3px;
 }
 
 :not(pre)>code {
   font-size: 12px;
   color: #f0615c;
-  white-space: nowrap;
+  white-space: pre-wrap;
   padding: 1px 6px 3px 6px;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #eeeeee;
   border-radius: 3px;
 }
 
@@ -72,7 +72,7 @@ pre {
 }
 
 .displayblock {
-  display: block !important;
+  display: block;
 }
 
 .title {

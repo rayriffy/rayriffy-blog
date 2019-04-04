@@ -1,16 +1,72 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
+import React from 'react'
+import Helmet from 'react-helmet'
 
-import Layout from '../components/layout'
+import {FluidObject} from 'gatsby-image'
 
-import Card from '../components/blog-card'
-import Chip from '../components/chip'
-import Pagination from '../components/pagination'
+import {Layout} from '../components/layout'
 
-export default class CategoryTemplate extends React.Component {
-  render() {
+import {Card} from '../components/card'
+import {Chip} from '../components/chip'
+import {Pagination} from '../components/pagination'
+
+interface PropsInterface {
+  location: object
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+    pathPrefix: string;
+  }
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+        siteUrl: string;
+        author: string;
+        fbApp: string;
+      };
+    };
+    allMarkdownRemark: {
+      totalCount: number;
+      edges: {
+        node: {
+          excerpt: string;
+          fields: {
+            slug: string;
+          };
+          frontmatter: {
+            date: string;
+            title: string;
+            subtitle: string;
+            status: string;
+            featured: boolean;
+            author: string;
+            banner: {
+              childImageSharp: {
+                fluid: FluidObject;
+              };
+            };
+          };
+        };
+      }[];
+    };
+    allAuthorsJson: {
+      edges: {
+        node: {
+          user: string;
+          name: string;
+          facebook: string;
+        };
+      }[];
+    };
+    categoriesJson: {
+      name: string;
+      desc: string;
+    };
+  }
+}
+export default class CategoryTemplate extends React.Component<PropsInterface> {
+  public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
@@ -21,99 +77,99 @@ export default class CategoryTemplate extends React.Component {
     const {currentPage, numPages, pathPrefix} = this.props.pageContext
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
-
     return (
       <Layout location={this.props.location}>
         <Helmet
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
+              content: `${siteTitle} · ${categoryName}`,
               name: 'name',
-              content: `${siteTitle} · ${categoryName}`,
             },
             {
+              content: categoryDescription,
               name: 'description',
-              content: categoryDescription,
             },
             {
-              name: 'author',
               content: siteAuthor,
+              name: 'author',
             },
             {
+              content: siteUrl + bannerUrl,
               name: 'image',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:url',
               content: siteUrl,
+              property: 'og:url',
             },
             {
-              property: 'og:type',
               content: 'article',
+              property: 'og:type',
             },
             {
-              property: 'og:locale',
               content: 'th_TH',
+              property: 'og:locale',
             },
             {
-              property: 'og:locale:alternate',
               content: 'en_US',
+              property: 'og:locale:alternate',
             },
             {
+              content: `${siteTitle} · ${categoryName}`,
               property: 'og:title',
-              content: `${siteTitle} · ${categoryName}`,
             },
             {
+              content: categoryDescription,
               property: 'og:description',
-              content: categoryDescription,
             },
             {
-              property: 'fb:app_id',
               content: facebookAppID,
+              property: 'fb:app_id',
             },
             {
-              property: 'article:author',
               content: 'https://facebook.com/rayriffy',
+              property: 'article:author',
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image',
-              content: siteUrl + bannerUrl,
             },
             {
+              content: siteUrl + bannerUrl,
               property: 'og:image:secure_url',
-              content: siteUrl + bannerUrl,
             },
             {
-              property: 'og:image:alt',
               content: 'banner',
+              property: 'og:image:alt',
             },
             {
-              name: 'twitter:card',
               content: 'summary_large_image',
+              name: 'twitter:card',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:site',
-              content: '@rayriffy',
             },
             {
+              content: '@rayriffy',
               name: 'twitter:creator',
-              content: '@rayriffy',
             },
             {
-              name: 'twitter:title',
               content: `${siteTitle} · ${categoryName}`,
+              name: 'twitter:title',
             },
             {
-              name: 'twitter:description',
               content: categoryDescription,
+              name: 'twitter:description',
             },
             {
-              name: 'twitter:image',
               content: siteUrl + bannerUrl,
+              name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · ${categoryName}`}>
-          <script type="application/ld+json" data-react-helmet="true">
+          title={`${siteTitle} · ${categoryName}`}
+        >
+          <script type='application/ld+json' data-react-helmet='true'>
             {`
               {
                 "@context": "http://schema.org/",
@@ -125,7 +181,11 @@ export default class CategoryTemplate extends React.Component {
         </Helmet>
         <Chip name={categoryName} desc={categoryDescription} />
         {posts.map(({node}) => {
-          var author = null
+          let author = {
+            facebook: 'def',
+            name: 'def',
+            user: 'def',
+          }
           this.props.data.allAuthorsJson.edges.forEach(authorJson => {
             if (authorJson.node.user === node.frontmatter.author) {
               author = authorJson.node
@@ -227,33 +287,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-CategoryTemplate.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        siteUrl: PropTypes.string,
-        fbApp: PropTypes.string,
-      }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    allAuthorsJson: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-    categoriesJson: PropTypes.shape({
-      name: PropTypes.string,
-      desc: PropTypes.string,
-    }),
-  }),
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number,
-    numPages: PropTypes.number,
-    pathPrefix: PropTypes.string,
-  }),
-  location: PropTypes.object,
-}
