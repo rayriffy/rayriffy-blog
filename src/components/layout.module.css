@@ -22,7 +22,8 @@ html {
 }
 
 .logo {
-  height: 150px;
+  height: 120px;
+  margin-bottom: 1.45rem;
 }
 
 .cover {
@@ -51,7 +52,8 @@ html {
     text-align: left;
   }
   .logo {
-    height: 80px;
+    margin-left: 15px;
+    height: 60px;
   }
 }
 
