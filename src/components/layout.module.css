@@ -26,6 +26,10 @@ html {
   margin-bottom: 1.45rem;
 }
 
+.vector {
+  fill: #4b6fff;
+}
+
 .cover {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -66,5 +70,19 @@ html {
   .cover {
     padding-top: 70px;
     padding-bottom: 70px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #212121;
+  }
+
+  .page {
+    background-color: #212121;
+  }
+
+  .vector {
+    fill: #ffffff; 
   }
 }

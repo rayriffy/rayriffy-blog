@@ -79,3 +79,23 @@
   background-color: transparent;
   color: rgba(34, 34, 34, 0.5)
 }
+
+@media (prefers-color-scheme: dark) {
+  .nav>li>a {
+    color: #eee;
+  }
+
+  .nav>li>a:active {
+    color: #eee;
+  }
+
+  .nav>li:hover>a,
+  .nav>li>a:focus,
+  .nav>li.uk-open>a {
+    color: rgba(238, 238, 238, 0.5);
+  }
+
+  .nav>li.active>a {
+    color: rgba(238, 238, 238, 0.5);
+  }
+}

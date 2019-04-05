@@ -10,6 +10,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: #000;
   font-weight: 400;
   margin: 35px 0 25px 0;
 }
@@ -33,6 +34,7 @@ pre {
 }
 
 :not(pre)>code {
+  background: #fff;
   font-size: 12px;
   color: #f0615c;
   white-space: pre-wrap;
@@ -57,7 +59,6 @@ pre {
 
 @media only screen and (min-width: 960px) {
   .card {
-    background: #fff;
     margin-top: 45px;
     padding: 70px;
   }
@@ -89,7 +90,7 @@ pre {
 }
 
 .title>a {
-  color: #536a90;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
 }
@@ -100,7 +101,7 @@ pre {
 }
 
 .meta {
-  color: #A5A5A5;
+  color: #a5a5a5;
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 25px;
@@ -141,4 +142,43 @@ pre {
 
 .content>ul>li {
   color: #6f6f6f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: #303030;
+  }
+
+  .title,
+  .title>a {
+    color: #fff;
+  }
+
+  .meta {
+    color: #fff;
+  }
+
+  .meta>a {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+  }
+
+  p,
+  ol,
+  table {
+    color: #fff;
+  }
+
+  :not(pre)>code {
+    background: #292d34;
+    color: #ef596f;
+  }
 }
