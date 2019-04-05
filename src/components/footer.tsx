@@ -39,7 +39,7 @@ export class Footer extends React.Component {
             ]}
           />
         </div>
-        <div style={{textAlign: 'center'}}>
+        <div style={{textAlign: 'center'}} className={footerStyle.content}>
           Built with {' '}
           <img src={imgUrl} className={footerStyle.image} alt='love' /> by{' '}
           <a href={faceUrl} rel='noopener noreferrer' target='_blank'>

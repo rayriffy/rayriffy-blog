@@ -1,6 +1,6 @@
 const {GATSBY_ENV = 'development'} = process.env
 
-var hostname
+let hostname
 
 if (GATSBY_ENV === 'production') {
   hostname = 'https://blog.rayriffy.com'

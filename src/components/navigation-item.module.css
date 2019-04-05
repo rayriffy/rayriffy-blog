@@ -1,5 +1,5 @@
 .meta {
-  color: #333333;
+  color: #333;
   display: block;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -7,4 +7,10 @@
 
 .title {
   display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  .meta {
+    color: #eee;
+  }
 }

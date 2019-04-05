@@ -17,7 +17,9 @@ export class Layout extends React.Component<PropsInterface> {
     const {GATSBY_ENV = 'development'} = process.env
 
     if (GATSBY_ENV !== 'production') {
-      devStrip = <Dev />
+      devStrip = (
+        <Dev />
+      )
     }
 
     const {children} = this.props

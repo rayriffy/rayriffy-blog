@@ -15,6 +15,10 @@
   margin-bottom: 20px;
 }
 
+.content {
+  color: #000;
+}
+
 @media only screen and (min-width: 540px) {
   .container {
     width: 80%;
@@ -25,5 +29,11 @@
   .container {
     width: 66.67%;
     max-width: 60rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .content {
+    color: #fff;
   }
 }

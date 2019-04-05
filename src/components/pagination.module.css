@@ -39,7 +39,9 @@
 
 .pagination>li>a {
   background: transparent;
-  color: #A5A5A5;
+  color: #a5a5a5;
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out
 }
 
 .pagination>li>a:hover,
@@ -57,4 +59,17 @@
 .pagination>.active>a {
   background: transparent;
   color: #222;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pagination>li>a {
+    color: #eee;
+  }
+
+  .pagination>li>a:active,
+  .pagination>.active>a,
+  .pagination>li>a:hover,
+  .pagination>li>a:focus {
+    color: rgba(238, 238, 238, 0.5);
+  }
 }
