@@ -42,8 +42,12 @@ export class Card extends React.Component<PropsInterface> {
         </Link>
       )
     } else {
-      banner = <Img fluid={this.props.banner} className={cardStyle.banner} />
-      title = this.props.title
+      banner = (
+        <Img fluid={this.props.banner} className={cardStyle.banner} />
+      )
+      title = (
+        this.props.title
+      )
     }
 
     return (
