@@ -947,10 +947,10 @@
     string-width "^2.0.0"
     strip-ansi "^3"
 
-"@raae/gatsby-remark-oembed@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@raae/gatsby-remark-oembed/-/gatsby-remark-oembed-0.0.5.tgz#37519c19a65f3fc43f4ae49763cd343babc3c51b"
-  integrity sha512-mbbw3sjphZBuP2HbCWLQdBWorcacazvBOLAoxXMmyCvZRZwUQP77wD0k8ZjxCGH98Stp4bTvrKtIy1bVBrZZJQ==
+"@raae/gatsby-remark-oembed@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@raae/gatsby-remark-oembed/-/gatsby-remark-oembed-0.0.6.tgz#cf138245e954c33d627df70bfdb9301683648b73"
+  integrity sha512-0ITMMfyHVsth8tCS2SA8O9UWHnbxgnW4IH7bPWIBf7yds/fDCJF7P+P8eJpJwFKc4FFaPAqfkmKi5EymUb2i6w==
   dependencies:
     axios "^0.18.0"
     bluebird "^3.5.1"
