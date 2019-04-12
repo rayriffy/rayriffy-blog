@@ -109,6 +109,7 @@ module.exports = {
           {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
+              usePrefix: true,
               providers: {
                 include: [
                   'SoundCloud',

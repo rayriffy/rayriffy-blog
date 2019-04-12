@@ -79,7 +79,7 @@ CV. Kamiki Ryunosuke
 
 > เดี๋ยวนี้มี Spotify กันแล้วก็จะปรับเนื้อหาตรงนี้นิสนึง ให้มัน Interactive ได้
 
-https://open.spotify.com/album/4wfg3RVjMHViARKbdbjURd?si=jJWjRFieQ6mFfbILLH3v3w
+`oembed: https://open.spotify.com/album/4wfg3RVjMHViARKbdbjURd?si=jJWjRFieQ6mFfbILLH3v3w`
 
 ## SCORE
 

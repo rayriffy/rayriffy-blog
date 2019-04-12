@@ -16,7 +16,7 @@ status: published
 
 แนวเพลง: Vocal, Hip hop, Ambient
 
-https://soundcloud.com/r4yr1ffy/still-feat-ao
+`oembed: https://soundcloud.com/r4yr1ffy/still-feat-ao`
 
 ## Trivia
 
@@ -30,15 +30,15 @@ Circle นี้จัดตั้งโดย *Coro* ซึ่งจะโฟ�
 
 ก็อย่างแรกเลยนั่นก็คือความกว้างขวางของอารมณ์ในแต่ละเพลง คือแบบ...ทำออกมาได้ Perfect เลยทีเดียว จะออกมาแบบ Relax มากๆ จนไปถึง Energetic แบบสุดๆ ก็ทำได้โดยสามารถสังเกตุได้แบบชัดเจนเลยถ้าลองฟัง 2 อันนี้
 
-https://soundcloud.com/r4yr1ffy/she-saw-the-future-feat-ao
+`oembed: https://soundcloud.com/r4yr1ffy/she-saw-the-future-feat-ao`
 
-https://soundcloud.com/r4yr1ffy/secret-garden-remix
+`oembed: https://soundcloud.com/r4yr1ffy/secret-garden-remix`
 
 หรือจะเป็น Track ที่ทำให้เราสนุกกับมันไปด้วยจนไปแบบมืดๆ ลึกๆไปเลยก็มี ก็มีมาให้เทียบเหมือนกัน
 
-https://soundcloud.com/r4yr1ffy/feat
+`oembed: https://soundcloud.com/r4yr1ffy/feat`
 
-https://soundcloud.com/r4yr1ffy/jtgygv8my2tg
+`oembed: https://soundcloud.com/r4yr1ffy/jtgygv8my2tg`
 
 ซึ่งก็ตามที่บอกเลยคือความหลากหลายมันกว้างมากๆ บวกกับความ Unique ใน Arrange กับ Vocal อีกจึงทำให้ Tamaonsen มีจุดของตัวเองที่เด่นออกมากมากๆ
 
@@ -50,11 +50,11 @@ https://soundcloud.com/r4yr1ffy/jtgygv8my2tg
 -   **Chill In Wonderland**: Chill In Wonderland
 -   **STILLING**: Dreamy Noise
 
-https://soundcloud.com/r4yr1ffy/sets/roots
+`oembed: https://soundcloud.com/r4yr1ffy/sets/roots`
 
-https://soundcloud.com/r4yr1ffy/sets/chill-in-wonderland
+`oembed: https://soundcloud.com/r4yr1ffy/sets/chill-in-wonderland`
 
-https://soundcloud.com/r4yr1ffy/sets/stilling
+`oembed: https://soundcloud.com/r4yr1ffy/sets/stilling`
 
 ## Supporting
 
