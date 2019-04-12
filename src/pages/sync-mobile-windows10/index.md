@@ -26,7 +26,7 @@ status: published
 
 (ปกติไม่ฟังเพลงแนวนี้หรอก แต่คือเข้าใจมะ อยากย้อนวัย 555555555555 ปกติฟังเพลงแนวนี้
 
-https://open.spotify.com/track/5so7F3hsNWmSpjyQ4dSr2W?si=cE1jNnYSTOKaOlW-qQ0smg
+`oembed: https://open.spotify.com/track/5so7F3hsNWmSpjyQ4dSr2W?si=cE1jNnYSTOKaOlW-qQ0smg`
 
 คราวนี้ก็มาประเด็นย้ายคอมใหม่ ต้องมา Login ทุกอย่างใหม่หมดโอ๊ยยยปวดหัวโว้ยยยย แล้วทำๆไปเรื่องๆ บางเว็บก็ต้องใช้ 2FA (Two-factor Authentication) ผ่าน SMS ก็ต้องมางัดโทรศัพท์มาดูอีก โอ๊ย! เสียเวลา!!!
 

@@ -50,7 +50,7 @@ Hastune Miku ก็เป็นหนึ่งใน pop star ของญี่
 
 กลับเข้าเรื่องๆ ถ้าเอาจริงๆ Hastune Miku ไม่มีตัวตนเลยด้วยซ้ำ เพราะจุดเริ่มต้นทุกอย่างเนี่ยมาจากเสียงของเธอเอง ซึ่งเราสามารถ[ซื้อมาใช้](https://www.vocaloid.com/products/show/v4l_hatsune_miku_v4x)ได้เลย (แปะลิงค์สำหรับสายเปย์ให้แล้ว) ลองไปฟังตัวอย่างเสียงดูกัน
 
-https://soundcloud.com/vocaloid_yamaha/vocaloid4-hatsune-miku-v4x-miku-v4x-original-sample
+`oembed: https://soundcloud.com/vocaloid_yamaha/vocaloid4-hatsune-miku-v4x-miku-v4x-original-sample`
 
 ### แล้วถ้าได้เพลงแล้ว...แต่ Music Video ล่ะ?
 

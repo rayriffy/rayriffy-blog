@@ -114,7 +114,7 @@ status: published
 
 ### Editor Note
 
-ตอนนี้สามารถเลือกหาดู AMP Components ได้ที่ [amp.dev](https://amp.dev/documentation/components.html) ได้เช่นกันนะครับ อันนี้อ่านง่ายกว่าเยอะ
+ตอนนี้สามารถเลือกหาดู AMP Components ได้ที่ [amp.dev](https://amp.dev/documentation/components/) ได้เช่นกันนะครับ อันนี้อ่านง่ายกว่าเยอะ
 
 ## สรุป
 

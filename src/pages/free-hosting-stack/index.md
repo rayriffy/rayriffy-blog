@@ -87,7 +87,7 @@ Static Hosting จะมีข้อดีอยู่ว่าตัวเว�
 
 ยกตัวอย่างเช่นตัวเล่นเพลง Spotify
 
-https://open.spotify.com/track/41QZvZdRXJf6A87oNyzMKE
+`oembed: https://open.spotify.com/track/41QZvZdRXJf6A87oNyzMKE`
 
 หรือจะเป็น YouTube Embeded
 
