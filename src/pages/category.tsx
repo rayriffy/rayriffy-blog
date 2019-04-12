@@ -65,7 +65,7 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
               property: 'og:url',
             },
             {
-              content: 'article',
+              content: 'website',
               property: 'og:type',
             },
             {
@@ -89,10 +89,6 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
               property: 'fb:app_id',
             },
             {
-              content: 'https://facebook.com/rayriffy',
-              property: 'article:author',
-            },
-            {
               content: `${siteUrl}/default.jpg`,
               property: 'og:image',
             },
@@ -103,6 +99,14 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
             {
               content: 'banner',
               property: 'og:image:alt',
+            },
+            {
+              content: '1500',
+              property: 'og:image:width',
+            },
+            {
+              content: '788',
+              property: 'og:image:height',
             },
             {
               content: 'summary_large_image',
