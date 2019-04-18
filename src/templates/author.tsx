@@ -137,6 +137,14 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               property: 'og:image:alt',
             },
             {
+              content: '1500',
+              property: 'og:image:width',
+            },
+            {
+              content: '788',
+              property: 'og:image:height',
+            },
+            {
               content: 'summary_large_image',
               name: 'twitter:card',
             },
