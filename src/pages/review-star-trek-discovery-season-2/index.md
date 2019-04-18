@@ -1,6 +1,6 @@
 ---
 title: 'Review - Star Trek: Discovery Season 2'
-subtitle: To the infinity...and beyond
+subtitle: เป็น Series Sci-fi ที่ประทับใจมากที่สุดตั้งแต่สมัย ม.ปลายเลยเรื่องนี้
 banner: ./banner.jpg
 category: review
 author: rayriffy
