@@ -7,7 +7,7 @@ author: rayriffy
 date: "2019-04-18T14:00:00.000Z"
 featured: false
 type: blog
-status: memo
+status: published
 ---
 
 > Spoil Rate: 35%
