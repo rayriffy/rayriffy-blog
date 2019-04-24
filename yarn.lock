@@ -5126,10 +5126,10 @@ gatsby-remark-embed-video@^1.7.1:
     get-video-id "^3.1.0"
     unist-util-visit "^1.4.0"
 
-gatsby-remark-images@^3.0.10:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.10.tgz#a69b2d99246e285dc3a7a317acacbabb40948bd6"
-  integrity sha512-gP8U6Vvxn281UUvXAWZqNDv0GUH81d57q8n2sjq2wKZIEy5XGK6MX2lNAwGieJNtZuJWBTR4PXrFGLGFrQ9M6A==
+gatsby-remark-images@^3.0.11:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.11.tgz#248d3575720802df67f4320feb4dceb42188ac57"
+  integrity sha512-EWcxWXyBYsHaAmFAT4Icxz7OFcurhVqRfSrHf/CeJ2Olk8rmBIIrrUnDW/mSOAdO1fPB7RHA1HHGBjanhGYL4w==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
