@@ -116,9 +116,9 @@ Source: [GitHub](https://github.com/rayriffy/nh-reverse-proxy)
 
 โจทย์ของ Dark mode มีอยู่แบบนี้
 
-1.   เราจะทำการเปิด-ปิด Dark mode ด้วยการกด Switch ที่อยู่ที่ [Nav](https://github.com/rayriffy/rayriffy-h/blob/bab1ccbed708c41b169a6811c71936b43fac32a2/src/components/nav.js)
-2.   Web จะต้องจำ State dark mode เวลากลับเข้ามา หรือเปลี่ยนหน้าได้
-3.   state ของ Dark mode จะส่งไปให้ถึงทั่วทุก Components
+1.  เราจะทำการเปิด-ปิด Dark mode ด้วยการกด Switch ที่อยู่ที่ [Nav](https://github.com/rayriffy/rayriffy-h/blob/bab1ccbed708c41b169a6811c71936b43fac32a2/src/components/nav.js)
+2.  Web จะต้องจำ State dark mode เวลากลับเข้ามา หรือเปลี่ยนหน้าได้
+3.  state ของ Dark mode จะส่งไปให้ถึงทั่วทุก Components
 
 คำตอบก็ง่ายมากๆ เราจะเก็บ State ของ Dark mode ไว้ใน [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) โดยตัวที่จะ Init state และ Function toggle จะอยู่ที่ [App](https://github.com/rayriffy/rayriffy-h/blob/bab1ccbed708c41b169a6811c71936b43fac32a2/src/components/app.js#L19-L40)
 
