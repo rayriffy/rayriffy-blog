@@ -4977,10 +4977,10 @@ gatsby-paginate@^1.0.17:
   dependencies:
     path "^0.12.7"
 
-gatsby-plugin-feed@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.1.2.tgz#a7eb77596c11937df5e5e107a7292e395337ed8f"
-  integrity sha512-E9Rln1ycbj80//dYj1C3330J7ru1LADrJn8ZZzWKcHmEgTYVrhsjV1L6vsIz2kN0fMvRdmW0iYxdBMVa8jIZWg==
+gatsby-plugin-feed@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.2.0.tgz#fde7c0de54364e21b58ed88c5b394cf58d530d89"
+  integrity sha512-/xbR/bfDWYyeCkgGqCXSURa1xvK3P8DlzHNu63fEXCsTR/fqi272SdRtlgpxIVqHJg11DmKyI+ZIWt1olAtoXA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fs-extra "^7.0.1"
