@@ -2,7 +2,7 @@
 title: เรียนรู้ Promise ฉบับเร่งรัด สไตล์ริฟฟี่
 subtitle: คาดว่าอ่าน Blog นี้เสร็จก็น่าจะพร้อมใช้งาน Promise ได้เลย
 banner: ./banner.jpg
-category: tutorial
+category: tutorial, programming
 author: rayriffy
 date: "2019-05-11T09:30:00.000Z"
 featured: false
