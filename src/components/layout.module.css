@@ -14,18 +14,6 @@ html {
   padding-bottom: 20px 70px;
 }
 
-.header {
-  margin-bottom: 35px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.logo {
-  height: 120px;
-  margin-bottom: 1.45rem;
-}
-
 .cover {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -41,19 +29,6 @@ html {
   .cover {
     padding-top: 50px;
     padding-bottom: 50px;
-  }
-}
-
-@media (max-width: 767px) {
-  .header {
-    display: block;
-    margin: 0 0 20px 0;
-    margin-top: 0;
-    text-align: left;
-  }
-  .logo {
-    margin-left: 15px;
-    height: 60px;
   }
 }
 
