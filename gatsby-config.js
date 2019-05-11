@@ -1,21 +1,17 @@
 const {GATSBY_ENV = 'development'} = process.env
 
-var hostname
-
-if (GATSBY_ENV === 'production') {
-  hostname = 'https://blog.rayriffy.com'
-} else if (GATSBY_ENV === 'staging') {
-  hostname = 'https://blog-staging.rayriffy.com'
-} else if (GATSBY_ENV === 'development') {
-  hostname = 'https://localhost:8000'
-}
-
 module.exports = {
   siteMetadata: {
     title: 'Riffy Blog',
     author: 'Phumrapee Limpianchop',
     description: 'The Nerdy Blogger',
-    siteUrl: `${hostname}`,
+    siteUrl: `${
+      GATSBY_ENV === 'production'
+        ? `https://blog.rayriffy.com`
+        : GATSBY_ENV === 'staging'
+        ? `https://blog-staging.rayriffy.com`
+        : `https://localhost:8000`
+    }`,
     fbApp: '342680353046527',
   },
   pathPrefix: '/',
@@ -148,7 +144,6 @@ module.exports = {
             options: {
               maxWidth: 1000,
               linkImagesToOriginal: false,
-              sizeByPixelDensity: true,
               withWebp: true,
               quality: 80,
             },
