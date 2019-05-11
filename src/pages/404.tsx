@@ -4,8 +4,6 @@ import Helmet from 'react-helmet'
 
 import {FluidObject} from 'gatsby-image'
 
-import {Layout} from '../components/layout'
-
 import {Card} from '../components/card'
 
 interface PropsInterface {
@@ -35,7 +33,7 @@ export default class NotFoundPage extends React.Component<PropsInterface> {
     const bannerUrl = this.props.data.banner.childImageSharp.fluid.src
 
     return (
-      <Layout>
+      <>
         <Helmet
           htmlAttributes={{lang: 'en'}}
           meta={[
@@ -139,7 +137,7 @@ export default class NotFoundPage extends React.Component<PropsInterface> {
         >
           <a href='/'>Back to home</a>
         </Card>
-      </Layout>
+      </>
     )
   }
 }

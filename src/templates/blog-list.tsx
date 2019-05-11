@@ -5,8 +5,6 @@ import Helmet from 'react-helmet'
 
 import {FluidObject} from 'gatsby-image'
 
-import {Layout} from '../components/layout'
-
 import {Card} from '../components/card'
 import {Pagination} from '../components/pagination'
 
@@ -71,7 +69,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     return (
-      <Layout location={this.props.location}>
+      <>
         <Helmet
           htmlAttributes={{lang: 'en'}}
           meta={[
@@ -204,7 +202,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
           currentPage={currentPage}
           pathPrefix='/'
         />
-      </Layout>
+      </>
     )
   }
 }

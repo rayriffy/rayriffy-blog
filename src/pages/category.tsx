@@ -2,8 +2,6 @@ import {graphql} from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import {Layout} from '../components/layout'
-
 import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 
@@ -40,7 +38,7 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     return (
-      <Layout location={this.props.location}>
+      <>
         <Helmet
           htmlAttributes={{lang: 'en'}}
           meta={[
@@ -162,7 +160,7 @@ export default class CategoryListPage extends React.Component<PropsInterface> {
             />
           )
         })}
-      </Layout>
+      </>
     )
   }
 }
