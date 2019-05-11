@@ -29,13 +29,17 @@ export class Card extends React.Component<PropsInterface> {
     let banner, title
     if (this.props.link === true) {
       banner = (
-        <Link to={this.props.slug}>
+        <Link
+          to={this.props.slug}
+          aria-label={`card-banner-link-${this.props.slug}`}
+        >
           <Img fluid={this.props.banner} className={cardStyle.banner} />
         </Link>
       )
       title = (
         <Link
           to={this.props.slug}
+          aria-label={`card-title-link-${this.props.slug}`}
         >
           {this.props.title}
         </Link>
