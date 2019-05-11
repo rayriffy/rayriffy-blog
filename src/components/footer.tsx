@@ -27,11 +27,6 @@ export class Footer extends React.Component {
                 newtab: false,
               },
               {
-                href: 'https://cv.rayriffy.com',
-                name: 'About Me',
-                newtab: true,
-              },
-              {
                 href: 'mailto:contact@rayriffy.com',
                 name: 'Contact',
                 newtab: false,
