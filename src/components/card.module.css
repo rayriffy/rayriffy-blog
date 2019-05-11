@@ -17,7 +17,7 @@ h6 {
 p,
 ol,
 table {
-  color: #6f6f6f
+  color: rgba(0, 0, 0, 0.6)
 }
 
 pre {
@@ -89,7 +89,7 @@ pre {
 }
 
 .title>a {
-  color: #536a90;
+  color: rgba(0, 0, 0, 1.0);
   text-decoration: none;
   cursor: pointer;
 }
@@ -100,7 +100,7 @@ pre {
 }
 
 .meta {
-  color: #A5A5A5;
+  color: rgba(0, 0, 0, 0.6);
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 25px;
@@ -108,7 +108,7 @@ pre {
 }
 
 .meta>a {
-  color: #757575;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .slug {

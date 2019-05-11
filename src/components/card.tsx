@@ -35,7 +35,6 @@ export class Card extends React.Component<PropsInterface> {
       )
       title = (
         <Link
-          style={{textDecoration: 'none', color: '#000000', boxShadow: 'none'}}
           to={this.props.slug}
         >
           {this.props.title}
