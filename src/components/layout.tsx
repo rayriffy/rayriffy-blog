@@ -28,7 +28,7 @@ export class Layout extends React.Component<PropsInterface> {
         <div className={layoutStyle.cover}>
           <div className={layoutStyle.container}>
             <div className={layoutStyle.header}>
-              <Link to={'/'}>
+              <Link to={'/'} aria-label={`logo`}>
                 <svg className={layoutStyle.logo} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 370.1 512'>
                   <path
                     fill='#4b6fff'
