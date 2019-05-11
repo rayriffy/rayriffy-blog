@@ -4,8 +4,6 @@ import Helmet from 'react-helmet'
 
 import {FluidObject} from 'gatsby-image'
 
-import {Layout} from '../components/layout'
-
 import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 import {Navbar} from '../components/navbar'
@@ -72,7 +70,7 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
     const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
 
     return (
-      <Layout location={this.props.location}>
+      <>
         <Helmet
           htmlAttributes={{lang: 'en'}}
           meta={[
@@ -219,7 +217,7 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
           currentPage={currentPage}
           pathPrefix={pathPrefix}
         />
-      </Layout>
+      </>
     )
   }
 }
