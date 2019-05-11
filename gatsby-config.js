@@ -5,7 +5,13 @@ module.exports = {
     title: 'Riffy Blog',
     author: 'Phumrapee Limpianchop',
     description: 'The Nerdy Blogger',
-    siteUrl: `${GATSBY_ENV === 'production' ? `https://blog.rayriffy.com` : GATSBY_ENV === 'staging' ? `https://blog-staging.rayriffy.com` : `https://localhost:8000`}`,
+    siteUrl: `${
+      GATSBY_ENV === 'production'
+        ? `https://blog.rayriffy.com`
+        : GATSBY_ENV === 'staging'
+        ? `https://blog-staging.rayriffy.com`
+        : `https://localhost:8000`
+    }`,
     fbApp: '342680353046527',
   },
   pathPrefix: '/',
