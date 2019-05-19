@@ -12,7 +12,7 @@ status: published
 
 มาาาาจาากล่าวบทปายยยยยย....ถุ้ย! 55555
 
-ย้อนรอยไปตอนที่แล้วที่สอนทำ [LEMP Stack](https://blog.rayriffy.com/post/2) อย่าง~~ยาก~~ง่ายไป คือตัว NGINX อ่ะมีความสามารถที่จะสามารถจัดการ Web Server ได้หลายๆ Domain ภายในตัวมันเองได้
+ย้อนรอยไปตอนที่แล้วที่สอนทำ [LEMP Stack](/lemp-nginx-pagespeed) อย่าง~~ยาก~~ง่ายไป คือตัว NGINX อ่ะมีความสามารถที่จะสามารถจัดการ Web Server ได้หลายๆ Domain ภายในตัวมันเองได้
 
 แต่คราวนี้ปัญหาจะมา ถ้าเราเอา config ทุกอย่างไปลงที่ `nginx.conf` ที่เดียวเลย เวลามีหลายๆ Domain เข้าจำนวนบรรทัดอาจพุ่งเป็นระดับพันบรรทัดได้
 
@@ -52,7 +52,7 @@ status: published
 
 `_php` จะอุดมไปด้วย config PHP ล้วนๆ โดยเรียกผ่าน `_phpXX.conf` และแก้ไข config ที่ `_phpXX_fastcgi.conf`
 
-`_ssl.conf` ระบุด้วย config SSL ทุกอย่างโดยที่สามารถเรียกไฟล์เดียวใช้กับทุกโดเมนแบบนี้ได้เพราะเรามี [Wildcard Certificate](https://blog.rayriffy.com/post/1) เย้!!
+`_ssl.conf` ระบุด้วย config SSL ทุกอย่างโดยที่สามารถเรียกไฟล์เดียวใช้กับทุกโดเมนแบบนี้ได้เพราะเรามี [Wildcard Certificate](/wildcard-ssl-lets-encrypt) เย้!!
 
 `_wordpress.conf` เผื่อใครใช้ Wordpress ก็ทำ config สำเร็จรูปให้พร้อม
 
@@ -188,9 +188,9 @@ ssl_stapling on;
 ssl_stapling_verify on;
 ```
 
-จากตอนที่ผมสร้าง [Wildcard Certificate](https://blog.rayriffy.com/post/1) ก็เอามาใช้ในงานนี้แหล่! ก็เรียกไฟล์ SSL ที่สร้างมาโดยจะมีทั้งตัว certificate และ private key ใส่ไว้ที่ `ssl_certificate` และ `ssl_certificate_key` ตามลำดับ
+จากตอนที่ผมสร้าง [Wildcard Certificate](/wildcard-ssl-lets-encrypt) ก็เอามาใช้ในงานนี้แหล่! ก็เรียกไฟล์ SSL ที่สร้างมาโดยจะมีทั้งตัว certificate และ private key ใส่ไว้ที่ `ssl_certificate` และ `ssl_certificate_key` ตามลำดับ
 
-ต่อมาด้วยตอนที่สร้าง [NGINX พร้อมกับ PageSpeed Module](https://blog.rayriffy.com/post/2) ผมเคยบ่นไว้ว่าจะใช้ `TLSv1.3` ก็เอามาใช้ใน `ssl_protocols` นี้แหล่เพื่อเพิ่มระดับความปลอดภับของการสื่อสารผมแนะนำว่าอย่าใช้ `TLSv1.1` เลคครับ แต่ก็ต้องแลกมากับ Web Browser เก่าๆจะเข้าเว็บเราไม่ได้เลย
+ต่อมาด้วยตอนที่สร้าง [NGINX พร้อมกับ PageSpeed Module](/lemp-nginx-pagespeed) ผมเคยบ่นไว้ว่าจะใช้ `TLSv1.3` ก็เอามาใช้ใน `ssl_protocols` นี้แหล่เพื่อเพิ่มระดับความปลอดภับของการสื่อสารผมแนะนำว่าอย่าใช้ `TLSv1.1` เลคครับ แต่ก็ต้องแลกมากับ Web Browser เก่าๆจะเข้าเว็บเราไม่ได้เลย
 
 ของแถมคือไหนๆเว็บเราก็จะใช้ HTTPS 100% ล่ะผมก็ขอแนะนำ `HSTS` โดยย่อมาจาก [HTTP Strict Transport Security](http://www.rfc-base.org/txt/rfc-6797.txt) โดยมันเป็น Website header ไว้ใช้ป้องกันการโดยขโมย cookie, SSL โดนแกะ หรือถูกโจมตีวิธีต่างๆ และเป็นตัวบังคับให้ Web Browser เชื่อมต่อผ่านทาง HTTPS เท่านั้นด้วย
 

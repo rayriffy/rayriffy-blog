@@ -14,7 +14,7 @@ status: published
 
 ## ขั้นตอนที่ 1: เตรียมของเล่นให้ครบ
 
-เหมือนตอนลง [VS Code กับ gcc](https://blog.rayriffy.com/vscode-c/) เลยแต่ต่างกันที่ว่าเราจะลง *JDK (Java Development Kit)* แทน *gcc*
+เหมือนตอนลง [VS Code กับ gcc](/vscode-c) เลยแต่ต่างกันที่ว่าเราจะลง *JDK (Java Development Kit)* แทน *gcc*
 
 **Visual Studio Code** สามารถ[โหลดตรงๆจากเว็บของเค้าได้เลย](https://code.visualstudio.com/Download)
 
@@ -49,7 +49,7 @@ status: published
 
 ![ENV](./windows_env.jpg)
 
-แล้วก็เพิ่ม `C:\Program Files\Java\jdk-11.0.1\bin` ลงไปใน PATH [เหมือนตอนที่ทำกับ gcc ด้วย](https://blog.rayriffy.com/vscode-c/)
+แล้วก็เพิ่ม `C:\Program Files\Java\jdk-11.0.1\bin` ลงไปใน PATH [เหมือนตอนที่ทำกับ gcc ด้วย](/vscode-c)
 
 กด `OK` เรื่อยๆให้ออกมาแล้ว Restart เครื่องรอบนึง ไม่ก็ Log off แล้ว Sign in ใหม่
 
