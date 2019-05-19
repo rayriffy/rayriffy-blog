@@ -34,7 +34,7 @@ status: published
 
 ## ตอนที่ 2: อดีต
 
-ช่วงปี 2017 เป็นปีแรกที่เข้าสู่สังคมกาชา + Arcade ทำให้เงิน support ไม่ค่อยมีมาก ก็เลย Transfer domain ไปอยู่ที่ [Google Domain Registar](https://domains.google) จัดการ DNS ด้วย [Cloudflare](https://www.cloudflare.com) และ Hosting ก็ได้เช่าเครื่องมาจาก [PzVPS](https://pzvps.com) แล้วทำ [NGINX](https://blog.rayriffy.com/blog/2) มาใช้งานเองกับ [Let's Encrypt](https://blog.rayriffy.com/blog/1)
+ช่วงปี 2017 เป็นปีแรกที่เข้าสู่สังคมกาชา + Arcade ทำให้เงิน support ไม่ค่อยมีมาก ก็เลย Transfer domain ไปอยู่ที่ [Google Domain Registar](https://domains.google) จัดการ DNS ด้วย [Cloudflare](https://www.cloudflare.com) และ Hosting ก็ได้เช่าเครื่องมาจาก [PzVPS](https://pzvps.com) แล้วทำ [NGINX](/lemp-nginx-pagespeed) มาใช้งานเองกับ [Let's Encrypt](/wildcard-ssl-lets-encrypt)
 
 ### บิล
 
