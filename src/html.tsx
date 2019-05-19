@@ -22,6 +22,7 @@ export default class HTML extends React.Component<PropsInterface> {
           />
           <link href='/icon.png' rel='shortcut icon' type='image/png' />
           <link href='/icon.png' rel='apple-touch-icon-precomposed' />
+          <link href='https://fonts.googleapis.com/css?family=Kanit&font-display=swap' rel='stylesheet' />
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

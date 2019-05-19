@@ -16,12 +16,6 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`kanit`],
-      },
-    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
