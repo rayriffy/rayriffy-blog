@@ -34,6 +34,14 @@ exports.createPages = ({graphql, actions}) => {
                     subtitle
                     status
                     author
+                    banner {
+                      childImageSharp {
+                        fluid(maxWidth: 1000, quality: 90) {
+                          src
+                          srcSet
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -238,6 +246,9 @@ exports.createPages = ({graphql, actions}) => {
                 name: post.node.frontmatter.title,
                 desc: post.node.frontmatter.subtitle,
                 slug: siteUrl + post.node.fields.slug,
+                src:
+                  siteUrl +
+                  post.node.frontmatter.banner.childImageSharp.fluid.src,
               })
             }
 
