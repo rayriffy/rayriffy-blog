@@ -241,7 +241,7 @@ exports.createPages = ({graphql, actions}) => {
               index === posts.length - 1 ? null : posts[index + 1].node
             const next = index === 0 ? null : posts[index - 1].node
 
-            if (count < 5) {
+            if (count < 6) {
               jsonFeed.push({
                 name: post.node.frontmatter.title,
                 desc: post.node.frontmatter.subtitle,
