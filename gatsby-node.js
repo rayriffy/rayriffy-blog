@@ -266,7 +266,7 @@ exports.createPages = async ({graphql, actions}) => {
       key: category.node.key,
       name: category.node.name,
       desc: category.node.desc,
-      banner: categoryTopBlog.node.frontmatter.banner
+      banner: categoryTopBlog.node.frontmatter.banner,
     })
   }
 
@@ -280,7 +280,7 @@ exports.createPages = async ({graphql, actions}) => {
     path: categoryPathPrefix,
     component: path.resolve('./src/templates/category.tsx'),
     context: {
-      categories: _.sortBy(categoryRaw, o => o.key)
+      categories: _.sortBy(categoryRaw, o => o.key),
     },
   })
 
@@ -315,7 +315,7 @@ exports.createPages = async ({graphql, actions}) => {
       name: author.node.name,
       facebook: author.node.facebook,
       twitter: author.node.twitter,
-      banner: authorResult.data.author
+      banner: authorResult.data.author,
     })
   }
 
@@ -329,7 +329,7 @@ exports.createPages = async ({graphql, actions}) => {
     path: authorPathPrefix,
     component: path.resolve('./src/templates/author.tsx'),
     context: {
-      authors: authorRaw
+      authors: authorRaw,
     },
   })
 
