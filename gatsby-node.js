@@ -4,12 +4,10 @@ const fs = require('fs')
 const path = require('path')
 const {createFilePath} = require('gatsby-source-filesystem')
 
-const {GATSBY_ENV = 'development'} = process.env
-
 exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions
 
-  var siteUrl
+  let siteUrl
 
   const result = await graphql(
     `
@@ -56,6 +54,9 @@ exports.createPages = async ({graphql, actions}) => {
           edges {
             node {
               user
+              name
+              facebook
+              twitter
             }
           }
         }
@@ -68,6 +69,8 @@ exports.createPages = async ({graphql, actions}) => {
   }
 
   const postsPerPage = 5
+  const categoryPathPrefix = '/category/'
+  const authorPathPrefix = '/author/'
 
   const posts = result.data.allMarkdownRemark.edges
   const catrgories = result.data.allCategoriesJson.edges
@@ -90,8 +93,8 @@ exports.createPages = async ({graphql, actions}) => {
   })
 
   // Create blog posts pages.
-  var count = 0
-  var jsonFeed = []
+  let count = 0
+  let jsonFeed = []
   _.each(posts, (post, index) => {
     const previous =
       index === posts.length - 1 ? null : posts[index + 1].node
@@ -131,7 +134,6 @@ exports.createPages = async ({graphql, actions}) => {
   })
 
   // Create category pages
-  const categoryPathPrefix = '/category/'
 
   _.each(catrgories, async category => {
     const categoryResult = await graphql(
@@ -152,15 +154,15 @@ exports.createPages = async ({graphql, actions}) => {
       `,
     )
 
-    var totalCount = categoryResult.data.blogs.edges.length
+    let totalCount = categoryResult.data.blogs.edges.length
 
-    var categoryPages = Math.ceil(totalCount / postsPerPage)
-    var pathPrefix = categoryPathPrefix + category.node.key
+    let categoryPages = Math.ceil(totalCount / postsPerPage)
+    let pathPrefix = categoryPathPrefix + category.node.key
 
     _.times(categoryPages, i => {
       createPage({
         path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/category.tsx'),
+        component: path.resolve('./src/templates/category-list.tsx'),
         context: {
           category: category.node.key,
           currentPage: i + 1,
@@ -175,7 +177,6 @@ exports.createPages = async ({graphql, actions}) => {
   })
 
   // Create author pages
-  var authorPathPrefix = '/author/'
 
   _.each(authors, async author => {
     const authorResult = await graphql(
@@ -196,14 +197,14 @@ exports.createPages = async ({graphql, actions}) => {
       `,
     )
 
-    var totalCount = authorResult.data.blogs.edges.length
+    let totalCount = authorResult.data.blogs.edges.length
 
-    var authorPages = Math.ceil(totalCount / postsPerPage)
-    var pathPrefix = authorPathPrefix + author.node.user
+    let authorPages = Math.ceil(totalCount / postsPerPage)
+    let pathPrefix = authorPathPrefix + author.node.user
     _.times(authorPages, i => {
       createPage({
         path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/author.tsx'),
+        component: path.resolve('./src/templates/author-list.tsx'),
         context: {
           author: author.node.user,
           currentPage: i + 1,
@@ -215,6 +216,121 @@ exports.createPages = async ({graphql, actions}) => {
         },
       })
     })
+  })
+
+  /*
+   * NOTE: PageContext cannot pass variable that return from async function!
+   */
+
+  // Create category list page
+  const categoryRaw = []
+  const categoryPromise = []
+
+  const fetchCategory = async category => {
+    const categoryResult = await graphql(
+      `
+        {
+          blogs: allMarkdownRemark(
+            sort: {fields: [frontmatter___date], order: DESC}
+            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
+            limit: 1
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  banner {
+                    childImageSharp {
+                      fluid(maxWidth: 1000, quality: 90) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    )
+
+    const categoryTopBlog = _.head(categoryResult.data.blogs.edges)
+
+    return categoryRaw.push({
+      key: category.node.key,
+      name: category.node.name,
+      desc: category.node.desc,
+      banner: categoryTopBlog.node.frontmatter.banner
+    })
+  }
+
+  _.each(catrgories, category => {
+    categoryPromise.push(fetchCategory(category))
+  })
+
+  await Promise.all(categoryPromise)
+
+  createPage({
+    path: categoryPathPrefix,
+    component: path.resolve('./src/templates/category.tsx'),
+    context: {
+      categories: _.sortBy(categoryRaw, o => o.key)
+    },
+  })
+
+  // Create author list page
+  const authorRaw = []
+  const authorPromise = []
+
+  const fetchAuthor = async author => {
+    const authorResult = await graphql(
+      `
+        {
+          author: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+      `,
+    )
+
+    return authorRaw.push({
+      user: author.node.user,
+      name: author.node.name,
+      facebook: author.node.facebook,
+      twitter: author.node.twitter,
+      banner: authorResult.data.author
+    })
+  }
+
+  _.each(authors, author => {
+    authorPromise.push(fetchAuthor(author))
+  })
+
+  await Promise.all(authorPromise)
+
+  createPage({
+    path: authorPathPrefix,
+    component: path.resolve('./src/templates/author.tsx'),
+    context: {
+      authors: authorRaw
+    },
   })
 
   return null
