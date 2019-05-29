@@ -17,9 +17,7 @@ exports.createPages = async ({graphql, actions}) => {
             siteUrl
           }
         }
-        allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: DESC}
-        ) {
+        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
           edges {
             node {
               fields {
@@ -65,7 +63,7 @@ exports.createPages = async ({graphql, actions}) => {
   )
 
   if (result.errors) {
-    reject(result.errors)
+    throw result.errors
   }
 
   const postsPerPage = 5
@@ -96,8 +94,7 @@ exports.createPages = async ({graphql, actions}) => {
   let count = 0
   let jsonFeed = []
   _.each(posts, (post, index) => {
-    const previous =
-      index === posts.length - 1 ? null : posts[index + 1].node
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
     if (count < 6) {
@@ -106,8 +103,7 @@ exports.createPages = async ({graphql, actions}) => {
         desc: post.node.frontmatter.subtitle,
         slug: siteUrl + post.node.fields.slug,
         banner:
-          siteUrl +
-          post.node.frontmatter.banner.childImageSharp.fluid.src,
+          siteUrl + post.node.frontmatter.banner.childImageSharp.fluid.src,
       })
     }
 
@@ -124,12 +120,9 @@ exports.createPages = async ({graphql, actions}) => {
     count++
   })
 
-  fs.writeFile('public/feed.json', JSON.stringify(jsonFeed), function(
-    err,
-  ) {
+  fs.writeFile('public/feed.json', JSON.stringify(jsonFeed), err => {
     if (err) {
-      console.error(err)
-      reject(err)
+      throw err
     }
   })
 
