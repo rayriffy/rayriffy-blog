@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-12-06T03:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 หลังจากได้ Apple Watch Series 4 มาใส่ที่ข้อมือเมื่อวันพฤหัสที่แล้ว ก็ได้เอาไปลองของหลายๆอย่างเพียบเลย แล้วอยากจะมาเล่าสู่กันฟัง (ป้ายยา) กันนะครับ

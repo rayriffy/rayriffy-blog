@@ -37,7 +37,6 @@ interface PropsInterface {
             author: string,
             date: string;
             featured: boolean;
-            status: string;
             banner: {
               childImageSharp: {
                 fluid: FluidObject,
@@ -208,7 +207,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
 }
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!, $status: String!) {
+  query blogPageQuery($limit: Int!, $skip: Int!) {
     site {
       siteMetadata {
         title
@@ -222,7 +221,7 @@ export const pageQuery = graphql`
       sort: {fields: [frontmatter___date], order: DESC}
       limit: $limit
       skip: $skip
-      filter: {frontmatter: {status: {ne: $status}, type: {eq: "blog"}}}
+      filter: {frontmatter: {type: {eq: "blog"}}}
     ) {
       edges {
         node {

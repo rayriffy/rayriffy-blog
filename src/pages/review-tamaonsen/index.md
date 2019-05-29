@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-03-20T03:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ## ข้อมูลภาพรวม

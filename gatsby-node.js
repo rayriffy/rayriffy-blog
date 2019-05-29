@@ -30,7 +30,6 @@ exports.createPages = async ({graphql, actions}) => {
               frontmatter {
                 title
                 subtitle
-                status
                 author
                 banner {
                   childImageSharp {
@@ -74,13 +73,6 @@ exports.createPages = async ({graphql, actions}) => {
   const catrgories = result.data.allCategoriesJson.edges
   const authors = result.data.allAuthorsJson.edges
 
-  let filter
-  if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
-    filter = 'draft'
-  } else if (GATSBY_ENV === 'development') {
-    filter = ''
-  }
-
   // Create blog lists pages.
   const numPages = Math.ceil(posts.length / postsPerPage)
 
@@ -91,7 +83,6 @@ exports.createPages = async ({graphql, actions}) => {
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
-        status: filter,
         numPages,
         currentPage: i + 1,
       },
@@ -152,7 +143,7 @@ exports.createPages = async ({graphql, actions}) => {
             edges {
               node {
                 frontmatter {
-                  status
+                  title
                 }
               }
             }
@@ -178,7 +169,6 @@ exports.createPages = async ({graphql, actions}) => {
           pathPrefix,
           regex: `/${category.node.key}/`,
           skip: i * postsPerPage,
-          status: filter,
         },
       })
     })
@@ -197,7 +187,7 @@ exports.createPages = async ({graphql, actions}) => {
             edges {
               node {
                 frontmatter {
-                  status
+                  title
                 }
               }
             }
@@ -222,7 +212,6 @@ exports.createPages = async ({graphql, actions}) => {
           pathPrefix,
           regex: `/${author.node.user}/`,
           skip: i * postsPerPage,
-          status: filter,
         },
       })
     })

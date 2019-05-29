@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-05-30T22:30:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 คราวนี้ก็รู้ทั้ง[วิธีการใช้ Docker](/docker-beginner-guide) และ[วิธีการเขียน Dockerfile](/dockerfile-guide) กันไปแล้ว ก็ถึงคราวจริงจังกับเรื่องของ **Storage** กันแล้ว

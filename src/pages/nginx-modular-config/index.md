@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-05-06T09:30:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 มาาาาจาากล่าวบทปายยยยยย....ถุ้ย! 55555

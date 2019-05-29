@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-11-07T14:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ## บทเกริ่นก่อนที่จะเริ่มอ่านกัน

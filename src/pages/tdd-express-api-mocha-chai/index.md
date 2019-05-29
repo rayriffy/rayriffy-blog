@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-02-21T08:00:00.000Z"
 featured: true
 type: blog
-status: published
 ---
 
 ถ้าคุณเขียน Software ในระดับ Production มาบ่อยๆ ก็น่าจะได้รู้จักกับคำว่า TDD (**T**est **D**riven **D**evelopment) กันบ้างแล้ว แต่ถ้าไม่เคยรู้จักมาก่อนเดี๋ยวจะมาอธิบายให้ฟัง

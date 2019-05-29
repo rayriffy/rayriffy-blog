@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-02-07T04:30:00.000Z"
 featured: true
 type: blog
-status: published
 ---
 
 สวัสดีครับ ในสัปดาห์นี้เราจะมาสอนทำ Web Scraping กันโดยใช้ library ที่ชื่อว่า **cheerio** กันนะครับ >w<

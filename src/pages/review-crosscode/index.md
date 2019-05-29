@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-02-14T09:59:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 **Spoiler Rate: 1%**

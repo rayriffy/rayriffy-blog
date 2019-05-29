@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-11-29T01:57:15.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 สวัสดีครับ ตามหัวเรื่องเลยนะครับ ผมจะมาอธิบายการแปลง stack ทั้งหมดบน [rayriffy.com](https://rayriffy.com) ให้ hosting ได้ฟรีๆแบบไม่เสียเงินสักกะบาท (ไม่รวมค่า domain)

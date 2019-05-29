@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-01-24T08:04:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 เราจะขอมาขั้นรายการ Blog ทุกอย่างที่อยู่ในคิวแล้วออกมาเตือนเรื่อง DNS Flag Day กันหน่อยเพราะเห็นว่าหลายคนไม่รู้จักกัน

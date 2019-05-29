@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-05-19T03:40:00.000Z"
 featured: true
 type: blog
-status: published
 ---
 
 โอเค เมื่อสัปดาห์ที่แล้วก็ได้รู้เกี่ยวกับ [Promises](/promise-guide) กันแล้ว จะเห็นว่าใช้งาน Promises นั้นก็ดีที่เราสามารถทำ Asynchronous function ได้แต่บางคนอาจจะยังไม่เข้าใจว่าจะเขียนยังไง ดังนั้นในโลกของ Asynchronous function ของ Javascript จะมีของอีกอย่างให้ใช้งานซึ่งใช้งานง่ายกว่ามากนั่นคือ **async / await** นั่นเอง

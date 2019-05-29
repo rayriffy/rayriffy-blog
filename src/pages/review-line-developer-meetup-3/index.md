@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-12-14T03:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ตอนกดบัตรเข้าไปก็ไม่คิดหรอกว่าจะได้บัตร ดันได้เฉย 555 ก็โอเคเพราะนี่ก็เป็นครั้งแรกที่ไป LINE Company Thailand เหมือนกัน

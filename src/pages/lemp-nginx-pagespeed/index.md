@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-05-01T05:37:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ใน Tutorial นี้จะสอนอยู่ 2 อย่าง

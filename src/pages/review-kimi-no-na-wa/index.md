@@ -7,7 +7,6 @@ author: rayriffy
 date: "2017-03-10T13:37:37.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 > ช่วยอ่าน Disclaimer ก่อนด้วยครับ ;)

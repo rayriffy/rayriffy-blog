@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-05-04T07:47:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 > **คำเตือน:** จากรูปก็น่าจะรู้กันแล้วเนอะว่านี่จะเป็น **Mature Content** ถ้าคิดว่าอ่านไม่ได้ก็ข้าม Blog นี้ไปเลย

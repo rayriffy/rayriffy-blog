@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-01-04T04:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ที่ MUICT ตอนนี้ก็จะเข้าเทอม 2 แล้วซึ่งจะเรียน **Object Oriented Programming** กัน แล้วแน่นอนว่าจะหลุดพ้นอะไรไปไม่ได้นอกจาก Java ดังนั้นเราก็จะมาบอกวิธีการตั้งค่า VS Code ไว้ใช้ทำงานกับไฟล์ `.java` กันนะครับ

@@ -7,7 +7,6 @@ author: SiriuSStarS
 date: "2018-12-24T04:30:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 > Banner Credit [pixiv](https://www.pixiv.net/member_illust.php?mode=medium&illust_id=52048973)

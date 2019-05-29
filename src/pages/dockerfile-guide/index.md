@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-05-22T23:24:53.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 หลังจากที่สอน[วิธีใช้งาน Docker ไป](/docker-beginner-guide)ก็น่าจะได้ลองเล่นกันไปบ้างแล้ว บางทีก็พบว่าพอลองหา Images ที่ต้องการใช้งานใน [Docker Store](https://store.docker.com/) แล้ว...มันแบบ......ไม่ค่อยจะได้เท่าที่ต้องการสักเท่าไหร่ ไม่ก็แบบเรามี script ติดตั้งเองอยู่แล้ว และไม่อยากไปนั่งลงใหม่ทีละ container

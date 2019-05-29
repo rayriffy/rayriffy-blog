@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-04-12T07:06:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ค่าย **Young Creator's Camp** ครั้งแรกก็ผ่านมากสัก 2-3 สัปดาห์แล้ว เราก็จะมาเล่าประสบการณ์เกี่ยวกับค่ายนี้ให้ฟังกันนะครับ :)

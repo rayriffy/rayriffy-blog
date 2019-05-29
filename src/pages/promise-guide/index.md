@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-05-11T09:30:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ดีฮะ วันนี้เราก็จะมาเรียนรู้ Promises หนึ่งในฟีเจอร์ที่เจ๋งที่สุด และเกือบจะน่าปวดหัวที่สุดสำหรับผู้เริ่มต้นใน **JavaScript** ฉบับเร่งรัดกันนะครับ

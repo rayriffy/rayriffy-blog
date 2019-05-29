@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-01-31T03:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 ตอนที่ Draft อันนี้อยู่ก็งงนะว่า

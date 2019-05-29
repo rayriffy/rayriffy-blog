@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-12-11T03:40:00.000Z"
 featured: true
 type: blog
-status: published
 ---
 
 Big O Notation เป็นหนึ่งในความรู้ที่สำคัญมากใน Computer Science นิยามของมันก็ง่ายแสนง่าย นั่นก็คือ...

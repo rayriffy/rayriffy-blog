@@ -53,7 +53,6 @@ interface PropsInterface {
         author: string,
         date: string;
         featured: boolean;
-        status: string;
         banner: {
           childImageSharp: {
             fluid: FluidObject,

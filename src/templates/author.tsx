@@ -37,7 +37,6 @@ interface PropsInterface {
             subtitle: string,
             date: string,
             featured: boolean,
-            status: string,
             banner: {
               childImageSharp: {
                 fluid: FluidObject,
@@ -228,7 +227,6 @@ export const pageQuery = graphql`
     $limit: Int!
     $regex: String!
     $skip: Int!
-    $status: String!
   ) {
     site {
       siteMetadata {
@@ -247,7 +245,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {status: {ne: $status}, author: {regex: $regex}}}
+      filter: {frontmatter: {author: {regex: $regex}}}
       limit: $limit
       skip: $skip
     ) {

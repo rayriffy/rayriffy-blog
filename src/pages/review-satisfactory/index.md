@@ -7,7 +7,6 @@ author: SiriuSStarS
 date: "2019-03-14T10:15:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 **Spoiler Rate : 10%**

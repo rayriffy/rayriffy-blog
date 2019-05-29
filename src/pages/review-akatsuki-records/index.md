@@ -7,7 +7,6 @@ author: rayriffy
 date: "2019-02-28T12:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 กลับมาอีกครั้งสำหรับ Music Review หลังจากไม่ได้ทำมาตั้งนานตั้งแต่ตอนรีวิว [Halozy](/review-halozy) ไป รอบนี้ก็จะมารีวิววง Akatsuki Records ตามที่ทิ้งเอาไว้ให้เมื่อรอบที่แล้ว ก็เหมือนเดิมเลย... **แนะนำให้ใส่หูฟังมาด้วยสำหรับบทความนี้**

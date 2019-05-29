@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-05-16T22:30:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 คุณเคยเจอปัญหานี้หรือไม่ นำแอพพลิเคชั่นขึ้น Production Server มากขึ้นเรื่อยๆ แล้วแอพพลิเคชั่นแต่ละตัวที่มีความต้องการ Environment ที่แตกต่างกันเข้ามาตีกันใน Environment อาจทำให้ Production Server พังถึงขั้นพิการได้ สมัยก่อนเราจัดการแก้ปัญหากันโดยใช้ Hypervisor ในการแยกแอพพลิเคชั่นออกจากกันผ่าน VM (Virtual Machine) แต่ถ้าหากมีอะไรที่ดีกว่านี้? ถ้าหากเราแยก Environment ออกจากกันโดยใช้ OS แค่ตัวเดียว?

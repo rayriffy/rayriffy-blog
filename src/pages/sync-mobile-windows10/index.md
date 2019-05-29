@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-09-06T02:00:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 สวัสดีครับทุกคนนนนน วันนี้จะมาแชร์ประสบการณ์การ Cross-platform ระหว่าง Android กับ Windows 10 กันนะครับ

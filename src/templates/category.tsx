@@ -36,7 +36,6 @@ interface PropsInterface {
             date: string;
             title: string;
             subtitle: string;
-            status: string;
             featured: boolean;
             author: string;
             banner: {
@@ -221,7 +220,6 @@ export const pageQuery = graphql`
     $limit: Int!
     $regex: String!
     $skip: Int!
-    $status: String!
   ) {
     site {
       siteMetadata {
@@ -234,7 +232,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {status: {ne: $status}, category: {regex: $regex}}}
+      filter: {frontmatter: {category: {regex: $regex}}}
       limit: $limit
       skip: $skip
     ) {

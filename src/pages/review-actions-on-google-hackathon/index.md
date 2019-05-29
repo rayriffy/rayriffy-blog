@@ -7,7 +7,6 @@ author: rayriffy
 date: "2018-12-21T10:02:00.000Z"
 featured: false
 type: blog
-status: published
 ---
 
 เรื่องราวเริ่มมาตั้งแต่หลัง LINE Developer Meetup #3 ล่ะหลังจากรู้แบบแน่ๆแล้วว่า เราจะต้องไปแข่งรอบ 10 ทีมสุดท้ายภายใต้หัวข้อ *Smart Living with connected home* ก็นั่งๆคุยๆกันว่ากะว่าจะเอา LINE Things มาลองเล่นกับ Actions on Google ดู
