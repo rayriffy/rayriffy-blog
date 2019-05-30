@@ -1,7 +1,7 @@
 {
   "name": "rayriffy-blog",
   "description": "The Nerdy Blogger",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
@@ -91,10 +91,9 @@
     "develop": "cross-env GATSBY_ENV=development gatsby develop --https",
     "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",
     "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
-    "format": "yarn prettier -- --write",
+    "format": "yarn lint --fix",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "md-lint": "remark .",
-    "prettier": "prettier \"src/**/*.+(js|jsx|ts|tsx)\"",
     "start": "npm run develop",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc"
