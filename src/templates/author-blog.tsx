@@ -1,11 +1,12 @@
 import { graphql } from 'gatsby'
-import _ from 'lodash'
 import React from 'react'
 import Helmet from 'react-helmet'
 
 import { FluidObject } from 'gatsby-image'
 
 import { Card } from '../components/card'
+import { Chip } from '../components/chip'
+import { Navbar } from '../components/navbar'
 import { Pagination } from '../components/pagination'
 
 interface PropsInterface {
@@ -13,15 +14,15 @@ interface PropsInterface {
   pageContext: {
     currentPage: number
     numPages: number
+    pathPrefix: string
   }
   data: {
     [key: string]: any
     site: {
       siteMetadata: {
-        author: string
-        description: string
         title: string
         siteUrl: string
+        author: string
         fbApp: string
       }
     }
@@ -34,7 +35,6 @@ interface PropsInterface {
           frontmatter: {
             title: string
             subtitle: string
-            author: string
             date: string
             featured: boolean
             banner: {
@@ -46,38 +46,38 @@ interface PropsInterface {
         }
       }[]
     }
-    allAuthorsJson: {
-      edges: {
-        node: {
-          user: string
-          name: string
-          facebook: string
-        }
-      }[]
+    authorsJson: {
+      user: string
+      name: string
+      facebook: string
+      twitter: string
     }
   }
 }
 
-const BlogList: React.SFC<PropsInterface> = props => {
+const AuthorBlog: React.SFC<PropsInterface> = props => {
   const siteTitle = props.data.site.siteMetadata.title
   const siteUrl = props.data.site.siteMetadata.siteUrl
   const siteAuthor = props.data.site.siteMetadata.author
-  const siteDescription = props.data.site.siteMetadata.description
   const posts = props.data.allMarkdownRemark.edges
-  const {currentPage, numPages} = props.pageContext
+  const author = props.data.authorsJson
+  const authorName = author.name
+  const authorDescription = 'List of blogs wriiten by ' + authorName
+  const bannerUrl = props.data[author.user].childImageSharp.fluid.src
+  const {currentPage, numPages, pathPrefix} = props.pageContext
   const facebookAppID = props.data.site.siteMetadata.fbApp
-
+  const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
   return (
     <>
       <Helmet
         htmlAttributes={{lang: 'en'}}
         meta={[
           {
-            content: siteTitle,
+            content: `${siteTitle} · ${authorName}`,
             name: 'name',
           },
           {
-            content: siteDescription,
+            content: authorDescription,
             name: 'description',
           },
           {
@@ -85,7 +85,7 @@ const BlogList: React.SFC<PropsInterface> = props => {
             name: 'author',
           },
           {
-            content: `${siteUrl}/default.jpg`,
+            content: siteUrl + bannerUrl,
             name: 'image',
           },
           {
@@ -105,11 +105,11 @@ const BlogList: React.SFC<PropsInterface> = props => {
             property: 'og:locale:alternate',
           },
           {
-            content: siteTitle,
+            content: `${siteTitle} · ${authorName}`,
             property: 'og:title',
           },
           {
-            content: siteDescription,
+            content: authorDescription,
             property: 'og:description',
           },
           {
@@ -117,15 +117,15 @@ const BlogList: React.SFC<PropsInterface> = props => {
             property: 'fb:app_id',
           },
           {
-            content: 'https://facebook.com/rayriffy',
+            content: author.facebook,
             property: 'article:author',
           },
           {
-            content: `${siteUrl}/default.jpg`,
+            content: siteUrl + bannerUrl,
             property: 'og:image',
           },
           {
-            content: `${siteUrl}/default.jpg`,
+            content: siteUrl + bannerUrl,
             property: 'og:image:secure_url',
           },
           {
@@ -145,27 +145,27 @@ const BlogList: React.SFC<PropsInterface> = props => {
             name: 'twitter:card',
           },
           {
-            content: '@rayriffy',
+            content: author.twitter,
             name: 'twitter:site',
           },
           {
-            content: '@rayriffy',
+            content: author.twitter,
             name: 'twitter:creator',
           },
           {
-            content: siteTitle,
+            content: `${siteTitle} · ${authorName}`,
             name: 'twitter:title',
           },
           {
-            content: siteDescription,
+            content: authorDescription,
             name: 'twitter:description',
           },
           {
-            content: `${siteUrl}/default.jpg`,
+            content: siteUrl + bannerUrl,
             name: 'twitter:image',
           },
         ]}
-        title={siteTitle}>
+        title={`${siteTitle} · ${authorName}`}>
         <script type="application/ld+json" data-react-helmet="true">
           {`
             {
@@ -176,15 +176,29 @@ const BlogList: React.SFC<PropsInterface> = props => {
           `}
         </script>
       </Helmet>
+      <Chip name={authorFirstName} desc={authorLastName} />
+      <Navbar
+        align="center"
+        keys="navAuthor"
+        tabs={[
+          {
+            href: author.facebook,
+            name: 'Facebook',
+            newtab: true,
+          },
+          {
+            href: 'https://twitter.com/' + author.twitter.split('@')[1],
+            name: 'Twitter',
+            newtab: true,
+          },
+        ]}
+      />
       {posts.map(({node}) => {
-        const author: any = _.find(props.data.allAuthorsJson.edges, {
-          node: {user: node.frontmatter.author},
-        })
         return (
           <Card
             key={node.fields.slug}
             slug={node.fields.slug}
-            author={author.node}
+            author={props.data.authorsJson}
             banner={node.frontmatter.banner.childImageSharp.fluid}
             title={node.frontmatter.title}
             date={node.frontmatter.date}
@@ -194,15 +208,15 @@ const BlogList: React.SFC<PropsInterface> = props => {
           />
         )
       })}
-      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix="/" />
+      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
     </>
   )
 }
 
-export default BlogList
+export default AuthorBlog
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!) {
+  query AuthorPage($author: String!, $limit: Int!, $regex: String!, $skip: Int!) {
     site {
       siteMetadata {
         title
@@ -212,12 +226,19 @@ export const pageQuery = graphql`
         fbApp
       }
     }
+    authorsJson(user: {eq: $author}) {
+      user
+      name
+      facebook
+      twitter
+    }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {author: {regex: $regex}}}
       limit: $limit
       skip: $skip
-      filter: {frontmatter: {type: {eq: "blog"}}}
     ) {
+      totalCount
       edges {
         node {
           excerpt
@@ -249,12 +270,17 @@ export const pageQuery = graphql`
         }
       }
     }
-    allAuthorsJson {
-      edges {
-        node {
-          user
-          name
-          facebook
+    rayriffy: file(relativePath: {eq: "rayriffy.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          src
+        }
+      }
+    }
+    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          src
         }
       }
     }

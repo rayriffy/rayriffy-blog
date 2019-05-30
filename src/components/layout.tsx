@@ -1,37 +1,35 @@
 import React from 'react'
 
-import {Dev} from './dev'
-import {Footer} from './footer'
-import {Header} from './header'
+import { Dev } from './dev'
+import { Footer } from './footer'
+import { Header } from './header'
 
 import layoutStyle from './layout.module.css'
 
 interface PropsInterface {
-  location?: object,
+  location?: object
 }
-export class Layout extends React.Component<PropsInterface> {
-  public render(): object {
-    let devStrip: object | null = null
+const Layout: React.SFC<PropsInterface> = props => {
+  const {children} = props
 
-    const {GATSBY_ENV = 'development'} = process.env
+  let devStrip: object | null = null
 
-    if (GATSBY_ENV !== 'production') {
-      devStrip = <Dev />
-    }
+  const {GATSBY_ENV = 'development'} = process.env
 
-    const {children} = this.props
-
-    return (
-      <div className={layoutStyle.page}>
-        {devStrip}
-        <div className={layoutStyle.cover}>
-          <Header />
-          <div className={layoutStyle.container}>
-            {children}
-          </div>
-          <Footer />
-        </div>
-      </div>
-    )
+  if (GATSBY_ENV !== 'production') {
+    devStrip = <Dev />
   }
+
+  return (
+    <div className={layoutStyle.page}>
+      {devStrip}
+      <div className={layoutStyle.cover}>
+        <Header />
+        <div className={layoutStyle.container}>{children}</div>
+        <Footer />
+      </div>
+    </div>
+  )
 }
+
+export { Layout }
