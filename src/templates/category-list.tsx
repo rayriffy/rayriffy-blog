@@ -1,11 +1,11 @@
 import {graphql} from 'gatsby'
-import _ from 'lodash'
 import React from 'react'
 import Helmet from 'react-helmet'
 
 import {FluidObject} from 'gatsby-image'
 
 import {Card} from '../components/card'
+import {Chip} from '../components/chip'
 import {Pagination} from '../components/pagination'
 
 interface PropsInterface {
@@ -13,33 +13,34 @@ interface PropsInterface {
   pageContext: {
     currentPage: number;
     numPages: number;
+    pathPrefix: string;
   }
   data: {
-    [key: string]: any;
     site: {
       siteMetadata: {
-        author: string;
-        description: string;
         title: string;
         siteUrl: string;
+        author: string;
         fbApp: string;
       };
     };
     allMarkdownRemark: {
+      totalCount: number;
       edges: {
         node: {
+          excerpt: string;
           fields: {
             slug: string;
           };
           frontmatter: {
+            date: string;
             title: string;
             subtitle: string;
-            author: string,
-            date: string;
             featured: boolean;
+            author: string;
             banner: {
               childImageSharp: {
-                fluid: FluidObject,
+                fluid: FluidObject;
               };
             };
           };
@@ -55,16 +56,22 @@ interface PropsInterface {
         };
       }[];
     };
+    categoriesJson: {
+      name: string;
+      desc: string;
+    };
   }
 }
-export default class BlogIndex extends React.Component<PropsInterface> {
+export default class CategoryTemplate extends React.Component<PropsInterface> {
   public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
-    const {currentPage, numPages} = this.props.pageContext
+    const categoryName = this.props.data.categoriesJson.name
+    const categoryDescription = this.props.data.categoriesJson.desc
+    const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
+    const {currentPage, numPages, pathPrefix} = this.props.pageContext
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
 
     return (
@@ -73,11 +80,11 @@ export default class BlogIndex extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
-              content: siteTitle,
+              content: `${siteTitle} · ${categoryName}`,
               name: 'name',
             },
             {
-              content: siteDescription,
+              content: categoryDescription,
               name: 'description',
             },
             {
@@ -85,7 +92,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               name: 'author',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               name: 'image',
             },
             {
@@ -105,11 +112,11 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               property: 'og:locale:alternate',
             },
             {
-              content: siteTitle,
+              content: `${siteTitle} · ${categoryName}`,
               property: 'og:title',
             },
             {
-              content: siteDescription,
+              content: categoryDescription,
               property: 'og:description',
             },
             {
@@ -121,24 +128,16 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               property: 'article:author',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               property: 'og:image',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               property: 'og:image:secure_url',
             },
             {
               content: 'banner',
               property: 'og:image:alt',
-            },
-            {
-              content: '1500',
-              property: 'og:image:width',
-            },
-            {
-              content: '788',
-              property: 'og:image:height',
             },
             {
               content: 'summary_large_image',
@@ -153,19 +152,19 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               name: 'twitter:creator',
             },
             {
-              content: siteTitle,
+              content: `${siteTitle} · ${categoryName}`,
               name: 'twitter:title',
             },
             {
-              content: siteDescription,
+              content: categoryDescription,
               name: 'twitter:description',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               name: 'twitter:image',
             },
           ]}
-          title={siteTitle}
+          title={`${siteTitle} · ${categoryName}`}
         >
           <script type='application/ld+json' data-react-helmet='true'>
             {`
@@ -177,15 +176,24 @@ export default class BlogIndex extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
+        <Chip name={categoryName} desc={categoryDescription} />
         {posts.map(({node}) => {
-          const author: any = _.find(this.props.data.allAuthorsJson.edges, {
-            node: {user: node.frontmatter.author},
+          let author = {
+            facebook: 'def',
+            name: 'def',
+            user: 'def',
+          }
+          this.props.data.allAuthorsJson.edges.forEach(authorJson => {
+            if (authorJson.node.user === node.frontmatter.author) {
+              author = authorJson.node
+              return true
+            }
           })
           return (
             <Card
               key={node.fields.slug}
               slug={node.fields.slug}
-              author={author.node}
+              author={author}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
@@ -198,7 +206,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix='/'
+          pathPrefix={pathPrefix}
         />
       </>
     )
@@ -206,7 +214,12 @@ export default class BlogIndex extends React.Component<PropsInterface> {
 }
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!) {
+  query CategoryPage(
+    $category: String!
+    $limit: Int!
+    $regex: String!
+    $skip: Int!
+  ) {
     site {
       siteMetadata {
         title
@@ -218,10 +231,11 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {category: {regex: $regex}}}
       limit: $limit
       skip: $skip
-      filter: {frontmatter: {type: {eq: "blog"}}}
     ) {
+      totalCount
       edges {
         node {
           excerpt
@@ -261,6 +275,10 @@ export const pageQuery = graphql`
           facebook
         }
       }
+    }
+    categoriesJson(key: {eq: $category}) {
+      name
+      desc
     }
   }
 `

@@ -1,79 +1,46 @@
 import {graphql} from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import {FluidObject} from 'gatsby-image'
-
 import {Card} from '../components/card'
 import {Chip} from '../components/chip'
-import {Pagination} from '../components/pagination'
 
 interface PropsInterface {
-  location: object
-  pageContext: {
-    currentPage: number;
-    numPages: number;
-    pathPrefix: string;
-  }
+  location: object,
   data: {
     site: {
       siteMetadata: {
-        title: string;
-        siteUrl: string;
-        author: string;
-        fbApp: string;
-      };
-    };
-    allMarkdownRemark: {
-      totalCount: number;
-      edges: {
-        node: {
-          excerpt: string;
-          fields: {
-            slug: string;
-          };
-          frontmatter: {
-            date: string;
-            title: string;
-            subtitle: string;
-            status: string;
-            featured: boolean;
-            author: string;
-            banner: {
-              childImageSharp: {
-                fluid: FluidObject;
-              };
-            };
-          };
-        };
-      }[];
-    };
-    allAuthorsJson: {
-      edges: {
-        node: {
-          user: string;
-          name: string;
-          facebook: string;
-        };
-      }[];
-    };
-    categoriesJson: {
-      name: string;
-      desc: string;
-    };
-  }
+        title: string,
+        siteUrl: string,
+        author: string,
+        description: string,
+        fbApp: string,
+      },
+    },
+  },
+  pageContext: {
+    categories: {
+      key: string,
+      name: string,
+      desc: string,
+      banner: {
+        childImageSharp: {
+          fluid: FluidObject,
+        },
+      },
+    }[],
+  },
 }
-export default class CategoryTemplate extends React.Component<PropsInterface> {
+export default class CategoryListPage extends React.Component<PropsInterface> {
   public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const posts = this.props.data.allMarkdownRemark.edges
-    const categoryName = this.props.data.categoriesJson.name
-    const categoryDescription = this.props.data.categoriesJson.desc
-    const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
-    const {currentPage, numPages, pathPrefix} = this.props.pageContext
+    const siteDescription = this.props.data.site.siteMetadata.description
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
+
+    const { categories = [] } = this.props.pageContext
 
     return (
       <>
@@ -81,11 +48,11 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
-              content: `${siteTitle} · ${categoryName}`,
+              content: `${siteTitle} · Category`,
               name: 'name',
             },
             {
-              content: categoryDescription,
+              content: siteDescription,
               name: 'description',
             },
             {
@@ -93,7 +60,7 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
               name: 'author',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               name: 'image',
             },
             {
@@ -101,7 +68,7 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
               property: 'og:url',
             },
             {
-              content: 'article',
+              content: 'website',
               property: 'og:type',
             },
             {
@@ -113,11 +80,11 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
               property: 'og:locale:alternate',
             },
             {
-              content: `${siteTitle} · ${categoryName}`,
+              content: `${siteTitle} · Category`,
               property: 'og:title',
             },
             {
-              content: categoryDescription,
+              content: siteDescription,
               property: 'og:description',
             },
             {
@@ -125,20 +92,24 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
               property: 'fb:app_id',
             },
             {
-              content: 'https://facebook.com/rayriffy',
-              property: 'article:author',
-            },
-            {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image:secure_url',
             },
             {
               content: 'banner',
               property: 'og:image:alt',
+            },
+            {
+              content: '1500',
+              property: 'og:image:width',
+            },
+            {
+              content: '788',
+              property: 'og:image:height',
             },
             {
               content: 'summary_large_image',
@@ -153,19 +124,19 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
               name: 'twitter:creator',
             },
             {
-              content: `${siteTitle} · ${categoryName}`,
+              content: `${siteTitle} · Category`,
               name: 'twitter:title',
             },
             {
-              content: categoryDescription,
+              content: siteDescription,
               name: 'twitter:description',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · ${categoryName}`}
+          title={`${siteTitle} · Category`}
         >
           <script type='application/ld+json' data-react-helmet='true'>
             {`
@@ -177,52 +148,26 @@ export default class CategoryTemplate extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
-        <Chip name={categoryName} desc={categoryDescription} />
-        {posts.map(({node}) => {
-          let author = {
-            facebook: 'def',
-            name: 'def',
-            user: 'def',
-          }
-          this.props.data.allAuthorsJson.edges.forEach(authorJson => {
-            if (authorJson.node.user === node.frontmatter.author) {
-              author = authorJson.node
-              return true
-            }
-          })
+        <Chip name='Category' desc='รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง' />
+        {categories.map(category => {
           return (
             <Card
-              key={node.fields.slug}
-              slug={node.fields.slug}
-              author={author}
-              banner={node.frontmatter.banner.childImageSharp.fluid}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              subtitle={node.frontmatter.subtitle}
-              featured={node.frontmatter.featured}
-              status={node.frontmatter.status}
+              key={`category-${category.key}`}
+              slug={`/category/${category.key}`}
+              banner={category.banner.childImageSharp.fluid}
+              title={category.name}
+              subtitle={category.desc}
               link={true}
             />
           )
         })}
-        <Pagination
-          numPages={numPages}
-          currentPage={currentPage}
-          pathPrefix={pathPrefix}
-        />
       </>
     )
   }
 }
 
 export const pageQuery = graphql`
-  query CategoryPage(
-    $category: String!
-    $limit: Int!
-    $regex: String!
-    $skip: Int!
-    $status: String!
-  ) {
+  query categoryPageQuery {
     site {
       siteMetadata {
         title
@@ -231,57 +176,6 @@ export const pageQuery = graphql`
         siteUrl
         fbApp
       }
-    }
-    allMarkdownRemark(
-      sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {status: {ne: $status}, category: {regex: $regex}}}
-      limit: $limit
-      skip: $skip
-    ) {
-      totalCount
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            subtitle
-            status
-            featured
-            author
-            banner {
-              childImageSharp {
-                fluid(maxWidth: 1000, quality: 90) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    allAuthorsJson {
-      edges {
-        node {
-          user
-          name
-          facebook
-        }
-      }
-    }
-    categoriesJson(key: {eq: $category}) {
-      name
-      desc
     }
   }
 `

@@ -53,7 +53,6 @@ interface PropsInterface {
         author: string,
         date: string;
         featured: boolean;
-        status: string;
         banner: {
           childImageSharp: {
             fluid: FluidObject,
@@ -250,7 +249,6 @@ export default class BlogPostTemplate extends React.Component<PropsInterface> {
           title={post.frontmatter.title}
           date={post.frontmatter.date}
           featured={post.frontmatter.featured}
-          status={post.frontmatter.status}
           link={false}
           content={post.html}
         >

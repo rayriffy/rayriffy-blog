@@ -4,326 +4,329 @@ const fs = require('fs')
 const path = require('path')
 const {createFilePath} = require('gatsby-source-filesystem')
 
-const {GATSBY_ENV = 'development'} = process.env
-
-exports.createPages = ({graphql, actions}) => {
+exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions
 
-  var siteUrl
+  let siteUrl
 
-  return new Promise((resolve, reject) => {
-    resolve(
-      graphql(
-        `
-          {
-            site {
-              siteMetadata {
-                siteUrl
+  const result = await graphql(
+    `
+      {
+        site {
+          siteMetadata {
+            siteUrl
+          }
+        }
+        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                subtitle
+                author
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      src
+                      srcSet
+                    }
+                  }
+                }
               }
             }
-            allMarkdownRemark(
-              sort: {fields: [frontmatter___date], order: DESC}
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                    subtitle
-                    status
-                    author
-                    banner {
-                      childImageSharp {
-                        fluid(maxWidth: 1000, quality: 90) {
-                          src
-                          srcSet
-                        }
+          }
+        }
+        allCategoriesJson {
+          edges {
+            node {
+              key
+              name
+              desc
+            }
+          }
+        }
+        allAuthorsJson {
+          edges {
+            node {
+              user
+              name
+              facebook
+              twitter
+            }
+          }
+        }
+      }
+    `,
+  )
+
+  if (result.errors) {
+    throw result.errors
+  }
+
+  const postsPerPage = 5
+  const categoryPathPrefix = '/category/'
+  const authorPathPrefix = '/author/'
+
+  const posts = result.data.allMarkdownRemark.edges
+  const catrgories = result.data.allCategoriesJson.edges
+  const authors = result.data.allAuthorsJson.edges
+
+  // Create blog lists pages.
+  const numPages = Math.ceil(posts.length / postsPerPage)
+
+  _.times(numPages, i => {
+    createPage({
+      path: i === 0 ? `/` : `/pages/${i + 1}`,
+      component: path.resolve('./src/templates/blog-list.tsx'),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  // Create blog posts pages.
+  let count = 0
+  let jsonFeed = []
+  _.each(posts, (post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
+
+    if (count < 6) {
+      jsonFeed.push({
+        name: post.node.frontmatter.title,
+        desc: post.node.frontmatter.subtitle,
+        slug: siteUrl + post.node.fields.slug,
+        banner:
+          siteUrl + post.node.frontmatter.banner.childImageSharp.fluid.src,
+      })
+    }
+
+    createPage({
+      path: post.node.fields.slug,
+      component: path.resolve('./src/templates/blog-post.tsx'),
+      context: {
+        author: post.node.frontmatter.author,
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+    count++
+  })
+
+  fs.writeFile('public/feed.json', JSON.stringify(jsonFeed), err => {
+    if (err) {
+      throw err
+    }
+  })
+
+  // Create category pages
+
+  _.each(catrgories, async category => {
+    const categoryResult = await graphql(
+      `
+        {
+          blogs: allMarkdownRemark(
+            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  title
+                }
+              }
+            }
+          }
+        }
+      `,
+    )
+
+    let totalCount = categoryResult.data.blogs.edges.length
+
+    let categoryPages = Math.ceil(totalCount / postsPerPage)
+    let pathPrefix = categoryPathPrefix + category.node.key
+
+    _.times(categoryPages, i => {
+      createPage({
+        path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
+        component: path.resolve('./src/templates/category-list.tsx'),
+        context: {
+          category: category.node.key,
+          currentPage: i + 1,
+          limit: postsPerPage,
+          numPages: categoryPages,
+          pathPrefix,
+          regex: `/${category.node.key}/`,
+          skip: i * postsPerPage,
+        },
+      })
+    })
+  })
+
+  // Create author pages
+
+  _.each(authors, async author => {
+    const authorResult = await graphql(
+      `
+        {
+          blogs: allMarkdownRemark(
+            filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  title
+                }
+              }
+            }
+          }
+        }
+      `,
+    )
+
+    let totalCount = authorResult.data.blogs.edges.length
+
+    let authorPages = Math.ceil(totalCount / postsPerPage)
+    let pathPrefix = authorPathPrefix + author.node.user
+    _.times(authorPages, i => {
+      createPage({
+        path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
+        component: path.resolve('./src/templates/author-list.tsx'),
+        context: {
+          author: author.node.user,
+          currentPage: i + 1,
+          limit: postsPerPage,
+          numPages: authorPages,
+          pathPrefix,
+          regex: `/${author.node.user}/`,
+          skip: i * postsPerPage,
+        },
+      })
+    })
+  })
+
+  /*
+   * NOTE: PageContext cannot pass variable that return from async function!
+   */
+
+  // Create category list page
+  const categoryRaw = []
+  const categoryPromise = []
+
+  const fetchCategory = async category => {
+    const categoryResult = await graphql(
+      `
+        {
+          blogs: allMarkdownRemark(
+            sort: {fields: [frontmatter___date], order: DESC}
+            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
+            limit: 1
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  banner {
+                    childImageSharp {
+                      fluid(maxWidth: 1000, quality: 90) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
                       }
                     }
                   }
                 }
               }
             }
-            allCategoriesJson {
-              edges {
-                node {
-                  key
-                  name
-                  desc
-                }
-              }
-            }
-            allAuthorsJson {
-              edges {
-                node {
-                  user
-                }
-              }
-            }
-            lifestyle: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/lifestyle/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            misc: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/misc/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            music: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/music/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            programming: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/programming/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            review: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/review/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            tutorial: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/tutorial/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            rayriffy: allMarkdownRemark(
-              filter: {frontmatter: {author: {regex: "/rayriffy/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            SiriuSStarS: allMarkdownRemark(
-              filter: {frontmatter: {author: {regex: "/SiriuSStarS/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
           }
-        `,
-      )
-        .then(result => {
-          siteUrl = result.data.site.siteMetadata.siteUrl
-          var filteredResult
-          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
-            filteredResult = {
-              data: {
-                allMarkdownRemark: {edges: null},
-                allCategoriesJson: {edges: null},
-                allAuthorsJson: {edges: null},
-                lifestyle: {edges: null},
-                misc: {edges: null},
-                music: {edges: null},
-                programming: {edges: null},
-                review: {edges: null},
-                tutorial: {edges: null},
-                rayriffy: {edges: null},
-                SiriuSStarS: {edges: null},
-              },
-            }
-            const filterNode = [
-              'allMarkdownRemark',
-              'lifestyle',
-              'misc',
-              'music',
-              'programming',
-              'review',
-              'tutorial',
-              'rayriffy',
-              'SiriuSStarS',
-            ]
-            _.each(filterNode, node => {
-              filteredResult.data[node].edges = _.filter(
-                result.data[node].edges,
-                {node: {frontmatter: {status: 'published'}}},
-              )
-            })
-            filteredResult.data.allCategoriesJson.edges =
-              result.data.allCategoriesJson.edges
-            filteredResult.data.allAuthorsJson.edges =
-              result.data.allAuthorsJson.edges
-          } else if (GATSBY_ENV === 'development') {
-            filteredResult = result
-          }
-          return filteredResult
-        })
-        .then(result => {
-          if (result.errors) {
-            console.error(result.errors)
-            reject(result.errors)
-          }
-
-          const posts = result.data.allMarkdownRemark.edges
-          const catrgories = result.data.allCategoriesJson.edges
-          const authors = result.data.allAuthorsJson.edges
-
-          var filter
-          const postsPerPage = 5
-          if (GATSBY_ENV === 'production' || GATSBY_ENV === 'staging') {
-            filter = 'draft'
-          } else if (GATSBY_ENV === 'development') {
-            filter = ''
-          }
-
-          // Create blog lists pages.
-          const numPages = Math.ceil(posts.length / postsPerPage)
-
-          _.times(numPages, i => {
-            createPage({
-              path: i === 0 ? `/` : `/pages/${i + 1}`,
-              component: path.resolve('./src/templates/blog-list.tsx'),
-              context: {
-                limit: postsPerPage,
-                skip: i * postsPerPage,
-                status: filter,
-                numPages,
-                currentPage: i + 1,
-              },
-            })
-          })
-
-          // Create blog posts pages.
-          var count = 0
-          var jsonFeed = []
-          _.each(posts, (post, index) => {
-            const previous =
-              index === posts.length - 1 ? null : posts[index + 1].node
-            const next = index === 0 ? null : posts[index - 1].node
-
-            if (count < 5) {
-              jsonFeed.push({
-                name: post.node.frontmatter.title,
-                desc: post.node.frontmatter.subtitle,
-                slug: siteUrl + post.node.fields.slug,
-                src:
-                  siteUrl +
-                  post.node.frontmatter.banner.childImageSharp.fluid.src,
-              })
-            }
-
-            createPage({
-              path: post.node.fields.slug,
-              component: path.resolve('./src/templates/blog-post.tsx'),
-              context: {
-                author: post.node.frontmatter.author,
-                slug: post.node.fields.slug,
-                previous,
-                next,
-              },
-            })
-            count++
-          })
-
-          fs.writeFile('public/feed.json', JSON.stringify(jsonFeed), function(
-            err,
-          ) {
-            if (err) {
-              console.error(err)
-              reject(err)
-            }
-          })
-
-          // Create category pages
-          var categoryPathPrefix = '/category/'
-          _.each(catrgories, category => {
-            var totalCount = result.data[category.node.key].edges.length
-            var numCategoryPages = Math.ceil(totalCount / postsPerPage)
-            var pathPrefix = categoryPathPrefix + category.node.key
-            _.times(numCategoryPages, i => {
-              createPage({
-                path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-                component: path.resolve('./src/templates/category.tsx'),
-                context: {
-                  category: category.node.key,
-                  currentPage: i + 1,
-                  limit: postsPerPage,
-                  numPages: numCategoryPages,
-                  pathPrefix,
-                  regex: `/${category.node.key}/`,
-                  skip: i * postsPerPage,
-                  status: filter,
-                },
-              })
-            })
-          })
-
-          // Create author pages
-          var authorPathPrefix = '/author/'
-          _.each(authors, author => {
-            var totalCount = result.data[author.node.user].edges.length
-            var numAuthorPages = Math.ceil(totalCount / postsPerPage)
-            var pathPrefix = authorPathPrefix + author.node.user
-            _.times(numAuthorPages, i => {
-              createPage({
-                path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-                component: path.resolve('./src/templates/author.tsx'),
-                context: {
-                  author: author.node.user,
-                  currentPage: i + 1,
-                  limit: postsPerPage,
-                  numPages: numAuthorPages,
-                  pathPrefix,
-                  regex: `/${author.node.user}/`,
-                  skip: i * postsPerPage,
-                  status: filter,
-                },
-              })
-            })
-          })
-        }),
+        }
+      `,
     )
+
+    const categoryTopBlog = _.head(categoryResult.data.blogs.edges)
+
+    return categoryRaw.push({
+      key: category.node.key,
+      name: category.node.name,
+      desc: category.node.desc,
+      banner: categoryTopBlog.node.frontmatter.banner,
+    })
+  }
+
+  _.each(catrgories, category => {
+    categoryPromise.push(fetchCategory(category))
   })
+
+  await Promise.all(categoryPromise)
+
+  createPage({
+    path: categoryPathPrefix,
+    component: path.resolve('./src/templates/category.tsx'),
+    context: {
+      categories: _.sortBy(categoryRaw, o => o.key),
+    },
+  })
+
+  // Create author list page
+  const authorRaw = []
+  const authorPromise = []
+
+  const fetchAuthor = async author => {
+    const authorResult = await graphql(
+      `
+        {
+          author: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+      `,
+    )
+
+    return authorRaw.push({
+      user: author.node.user,
+      name: author.node.name,
+      facebook: author.node.facebook,
+      twitter: author.node.twitter,
+      banner: authorResult.data.author,
+    })
+  }
+
+  _.each(authors, author => {
+    authorPromise.push(fetchAuthor(author))
+  })
+
+  await Promise.all(authorPromise)
+
+  createPage({
+    path: authorPathPrefix,
+    component: path.resolve('./src/templates/author.tsx'),
+    context: {
+      authors: authorRaw,
+    },
+  })
+
+  return null
 }
 
 exports.onCreateNode = ({node, actions, getNode}) => {

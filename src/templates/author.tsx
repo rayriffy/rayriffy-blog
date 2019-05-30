@@ -1,73 +1,49 @@
 import {graphql} from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import {FluidObject} from 'gatsby-image'
+import {FaFacebook, FaTwitter} from 'react-icons/fa'
 
 import {Card} from '../components/card'
 import {Chip} from '../components/chip'
-import {Navbar} from '../components/navbar'
-import {Pagination} from '../components/pagination'
 
 interface PropsInterface {
   location: object,
-  pageContext: {
-    currentPage: number,
-    numPages: number,
-    pathPrefix: string,
-  },
   data: {
-    [key: string]: any,
     site: {
       siteMetadata: {
         title: string,
         siteUrl: string,
         author: string,
+        description: string,
         fbApp: string,
       },
     },
-    allMarkdownRemark: {
-      edges: {
-        node: {
-          fields: {
-            slug: string,
-          },
-          frontmatter: {
-            title: string,
-            subtitle: string,
-            date: string,
-            featured: boolean,
-            status: string,
-            banner: {
-              childImageSharp: {
-                fluid: FluidObject,
-              },
-            },
-          },
-        },
-      }[],
-    },
-    authorsJson: {
+  },
+  pageContext: {
+    authors: {
       user: string,
       name: string,
       facebook: string,
       twitter: string,
-    },
-  },
+      banner: {
+        childImageSharp: {
+          fluid: FluidObject,
+        },
+      },
+    }[],
+  }
 }
-export default class AuthorTemplate extends React.Component<PropsInterface> {
+export default class AuthorListPage extends React.Component<PropsInterface> {
   public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const posts = this.props.data.allMarkdownRemark.edges
-    const author = this.props.data.authorsJson
-    const authorName = author.name
-    const authorDescription = 'List of blogs wriiten by ' + authorName
-    const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
-    const {currentPage, numPages, pathPrefix} = this.props.pageContext
+    const siteDescription = this.props.data.site.siteMetadata.description
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
-    const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
+
+    const { authors = [] } = this.props.pageContext
 
     return (
       <>
@@ -75,11 +51,11 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
-              content: `${siteTitle} · ${authorName}`,
+              content: `${siteTitle} · Authors`,
               name: 'name',
             },
             {
-              content: authorDescription,
+              content: siteDescription,
               name: 'description',
             },
             {
@@ -87,7 +63,7 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               name: 'author',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               name: 'image',
             },
             {
@@ -95,7 +71,7 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               property: 'og:url',
             },
             {
-              content: 'article',
+              content: 'website',
               property: 'og:type',
             },
             {
@@ -107,11 +83,11 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               property: 'og:locale:alternate',
             },
             {
-              content: `${siteTitle} · ${authorName}`,
+              content: `${siteTitle} · Authors`,
               property: 'og:title',
             },
             {
-              content: authorDescription,
+              content: siteDescription,
               property: 'og:description',
             },
             {
@@ -119,15 +95,15 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               property: 'fb:app_id',
             },
             {
-              content: author.facebook,
+              content: 'https://facebook.com/rayriffy',
               property: 'article:author',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               property: 'og:image:secure_url',
             },
             {
@@ -147,27 +123,27 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
               name: 'twitter:card',
             },
             {
-              content: author.twitter,
+              content: '@rayriffy',
               name: 'twitter:site',
             },
             {
-              content: author.twitter,
+              content: '@rayriffy',
               name: 'twitter:creator',
             },
             {
-              content: `${siteTitle} · ${authorName}`,
+              content: `${siteTitle} · Authors`,
               name: 'twitter:title',
             },
             {
-              content: authorDescription,
+              content: siteDescription,
               name: 'twitter:description',
             },
             {
-              content: siteUrl + bannerUrl,
+              content: `${siteUrl}/default.jpg`,
               name: 'twitter:image',
             },
           ]}
-          title={`${siteTitle} · ${authorName}`}
+          title={`${siteTitle} · Authors`}
         >
           <script type='application/ld+json' data-react-helmet='true'>
             {`
@@ -179,57 +155,39 @@ export default class AuthorTemplate extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
-        <Chip name={authorFirstName} desc={authorLastName} />
-        <Navbar
-          align='center'
-          keys='navAuthor'
-          tabs={[
-            {
-              href: author.facebook,
-              name: 'Facebook',
-              newtab: true,
-            },
-            {
-              href: 'https://twitter.com/' + author.twitter.split('@')[1],
-              name: 'Twitter',
-              newtab: true,
-            },
-          ]}
-        />
-        {posts.map(({node}) => {
+        <Chip name='Authors' />
+        {authors.map(author => {
           return (
             <Card
-              key={node.fields.slug}
-              slug={node.fields.slug}
-              author={this.props.data.authorsJson}
-              banner={node.frontmatter.banner.childImageSharp.fluid}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              subtitle={node.frontmatter.subtitle}
-              featured={node.frontmatter.featured}
-              status={node.frontmatter.status}
+              key={`author-${author.user}`}
+              slug={`/author/${author.user}`}
+              banner={author.banner.childImageSharp.fluid}
+              title={author.name}
               link={true}
-            />
+            >
+              <FaFacebook />{' '}
+              <a href={author.facebook} rel='noopener noreferrer' target='_blank'>
+                {author.facebook.split('/')[3]}
+              </a>
+              <br />
+              <FaTwitter />{' '}
+              <a
+                href={'https://twitter.com/' + author.twitter.split('@')[1]}
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                {author.twitter}
+              </a>
+            </Card>
           )
         })}
-        <Pagination
-          numPages={numPages}
-          currentPage={currentPage}
-          pathPrefix={pathPrefix}
-        />
       </>
     )
   }
 }
 
 export const pageQuery = graphql`
-  query AuthorPage(
-    $author: String!
-    $limit: Int!
-    $regex: String!
-    $skip: Int!
-    $status: String!
-  ) {
+  query authorPageQuery {
     site {
       siteMetadata {
         title
@@ -237,64 +195,6 @@ export const pageQuery = graphql`
         author
         siteUrl
         fbApp
-      }
-    }
-    authorsJson(user: {eq: $author}) {
-      user
-      name
-      facebook
-      twitter
-    }
-    allMarkdownRemark(
-      sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {status: {ne: $status}, author: {regex: $regex}}}
-      limit: $limit
-      skip: $skip
-    ) {
-      totalCount
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            subtitle
-            status
-            featured
-            author
-            banner {
-              childImageSharp {
-                fluid(maxWidth: 1000, quality: 90) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    rayriffy: file(relativePath: {eq: "rayriffy.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 90) {
-          src
-        }
-      }
-    }
-    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 90) {
-          src
-        }
       }
     }
   }

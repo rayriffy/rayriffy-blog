@@ -1,71 +1,72 @@
 import {graphql} from 'gatsby'
-import _ from 'lodash'
 import React from 'react'
 import Helmet from 'react-helmet'
 
 import {FluidObject} from 'gatsby-image'
 
 import {Card} from '../components/card'
+import {Chip} from '../components/chip'
+import {Navbar} from '../components/navbar'
 import {Pagination} from '../components/pagination'
 
 interface PropsInterface {
-  location: object
+  location: object,
   pageContext: {
-    currentPage: number;
-    numPages: number;
-  }
+    currentPage: number,
+    numPages: number,
+    pathPrefix: string,
+  },
   data: {
-    [key: string]: any;
+    [key: string]: any,
     site: {
       siteMetadata: {
-        author: string;
-        description: string;
-        title: string;
-        siteUrl: string;
-        fbApp: string;
-      };
-    };
+        title: string,
+        siteUrl: string,
+        author: string,
+        fbApp: string,
+      },
+    },
     allMarkdownRemark: {
       edges: {
         node: {
           fields: {
-            slug: string;
-          };
+            slug: string,
+          },
           frontmatter: {
-            title: string;
-            subtitle: string;
-            author: string,
-            date: string;
-            featured: boolean;
+            title: string,
+            subtitle: string,
+            date: string,
+            featured: boolean,
             banner: {
               childImageSharp: {
                 fluid: FluidObject,
-              };
-            };
-          };
-        };
-      }[];
-    };
-    allAuthorsJson: {
-      edges: {
-        node: {
-          user: string;
-          name: string;
-          facebook: string;
-        };
-      }[];
-    };
-  }
+              },
+            },
+          },
+        },
+      }[],
+    },
+    authorsJson: {
+      user: string,
+      name: string,
+      facebook: string,
+      twitter: string,
+    },
+  },
 }
-export default class BlogIndex extends React.Component<PropsInterface> {
+export default class AuthorTemplate extends React.Component<PropsInterface> {
   public render(): object {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const siteAuthor = this.props.data.site.siteMetadata.author
-    const siteDescription = this.props.data.site.siteMetadata.description
     const posts = this.props.data.allMarkdownRemark.edges
-    const {currentPage, numPages} = this.props.pageContext
+    const author = this.props.data.authorsJson
+    const authorName = author.name
+    const authorDescription = 'List of blogs wriiten by ' + authorName
+    const bannerUrl = this.props.data[author.user].childImageSharp.fluid.src
+    const {currentPage, numPages, pathPrefix} = this.props.pageContext
     const facebookAppID = this.props.data.site.siteMetadata.fbApp
+    const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
 
     return (
       <>
@@ -73,11 +74,11 @@ export default class BlogIndex extends React.Component<PropsInterface> {
           htmlAttributes={{lang: 'en'}}
           meta={[
             {
-              content: siteTitle,
+              content: `${siteTitle} · ${authorName}`,
               name: 'name',
             },
             {
-              content: siteDescription,
+              content: authorDescription,
               name: 'description',
             },
             {
@@ -85,7 +86,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               name: 'author',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               name: 'image',
             },
             {
@@ -105,11 +106,11 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               property: 'og:locale:alternate',
             },
             {
-              content: siteTitle,
+              content: `${siteTitle} · ${authorName}`,
               property: 'og:title',
             },
             {
-              content: siteDescription,
+              content: authorDescription,
               property: 'og:description',
             },
             {
@@ -117,15 +118,15 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               property: 'fb:app_id',
             },
             {
-              content: 'https://facebook.com/rayriffy',
+              content: author.facebook,
               property: 'article:author',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               property: 'og:image',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               property: 'og:image:secure_url',
             },
             {
@@ -145,27 +146,27 @@ export default class BlogIndex extends React.Component<PropsInterface> {
               name: 'twitter:card',
             },
             {
-              content: '@rayriffy',
+              content: author.twitter,
               name: 'twitter:site',
             },
             {
-              content: '@rayriffy',
+              content: author.twitter,
               name: 'twitter:creator',
             },
             {
-              content: siteTitle,
+              content: `${siteTitle} · ${authorName}`,
               name: 'twitter:title',
             },
             {
-              content: siteDescription,
+              content: authorDescription,
               name: 'twitter:description',
             },
             {
-              content: `${siteUrl}/default.jpg`,
+              content: siteUrl + bannerUrl,
               name: 'twitter:image',
             },
           ]}
-          title={siteTitle}
+          title={`${siteTitle} · ${authorName}`}
         >
           <script type='application/ld+json' data-react-helmet='true'>
             {`
@@ -177,15 +178,29 @@ export default class BlogIndex extends React.Component<PropsInterface> {
             `}
           </script>
         </Helmet>
+        <Chip name={authorFirstName} desc={authorLastName} />
+        <Navbar
+          align='center'
+          keys='navAuthor'
+          tabs={[
+            {
+              href: author.facebook,
+              name: 'Facebook',
+              newtab: true,
+            },
+            {
+              href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              name: 'Twitter',
+              newtab: true,
+            },
+          ]}
+        />
         {posts.map(({node}) => {
-          const author: any = _.find(this.props.data.allAuthorsJson.edges, {
-            node: {user: node.frontmatter.author},
-          })
           return (
             <Card
               key={node.fields.slug}
               slug={node.fields.slug}
-              author={author.node}
+              author={this.props.data.authorsJson}
               banner={node.frontmatter.banner.childImageSharp.fluid}
               title={node.frontmatter.title}
               date={node.frontmatter.date}
@@ -198,7 +213,7 @@ export default class BlogIndex extends React.Component<PropsInterface> {
         <Pagination
           numPages={numPages}
           currentPage={currentPage}
-          pathPrefix='/'
+          pathPrefix={pathPrefix}
         />
       </>
     )
@@ -206,7 +221,12 @@ export default class BlogIndex extends React.Component<PropsInterface> {
 }
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!) {
+  query AuthorPage(
+    $author: String!
+    $limit: Int!
+    $regex: String!
+    $skip: Int!
+  ) {
     site {
       siteMetadata {
         title
@@ -216,12 +236,19 @@ export const pageQuery = graphql`
         fbApp
       }
     }
+    authorsJson(user: {eq: $author}) {
+      user
+      name
+      facebook
+      twitter
+    }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {author: {regex: $regex}}}
       limit: $limit
       skip: $skip
-      filter: {frontmatter: {type: {eq: "blog"}}}
     ) {
+      totalCount
       edges {
         node {
           excerpt
@@ -253,12 +280,17 @@ export const pageQuery = graphql`
         }
       }
     }
-    allAuthorsJson {
-      edges {
-        node {
-          user
-          name
-          facebook
+    rayriffy: file(relativePath: {eq: "rayriffy.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          src
+        }
+      }
+    }
+    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 90) {
+          src
         }
       }
     }

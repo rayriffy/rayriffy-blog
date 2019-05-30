@@ -17,7 +17,6 @@ interface PropsInterface {
   featured?: boolean,
   link: boolean,
   slug: string,
-  status?: string,
   subtitle?: string,
   title: string,
   content?: string,
@@ -54,9 +53,6 @@ export class Card extends React.Component<PropsInterface> {
         <div className={[cardStyle.teaser, cardStyle.displayblock].join(' ')}>
           {this.props.featured && (
             <span className={cardStyle.slug}>featured</span>
-          )}
-          {this.props.status !== 'published' && (
-            <span className={cardStyle.slug}>{this.props.status}</span>
           )}
           {banner}
         </div>
