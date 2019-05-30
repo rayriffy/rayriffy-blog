@@ -47,4 +47,4 @@ const Navbar: React.SFC<PropsInterface> = props => {
   )
 }
 
-export {Navbar}
+export { Navbar }

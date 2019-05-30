@@ -1,13 +1,13 @@
-import {graphql} from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import {FluidObject} from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 
-import {Card} from '../components/card'
-import {Chip} from '../components/chip'
-import {Navbar} from '../components/navbar'
-import {Pagination} from '../components/pagination'
+import { Card } from '../components/card'
+import { Chip } from '../components/chip'
+import { Navbar } from '../components/navbar'
+import { Pagination } from '../components/pagination'
 
 interface PropsInterface {
   location: object

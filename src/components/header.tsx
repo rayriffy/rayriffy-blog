@@ -1,7 +1,7 @@
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 import React from 'react'
 
-import {Navbar} from './navbar'
+import { Navbar } from './navbar'
 
 import headerStyle from './header.module.css'
 
@@ -44,4 +44,4 @@ const Header: React.SFC = () => {
   )
 }
 
-export {Header}
+export { Header }

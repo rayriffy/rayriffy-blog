@@ -1,17 +1,17 @@
-import {graphql} from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import {rhythm} from '../utils/typography'
+import { rhythm } from '../utils/typography'
 
-import {FluidObject} from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 import AdSense from 'react-adsense'
 
-import {Navigation} from '../components/navigation'
-import {NavigationContainer} from '../components/navigation-container'
-import {NavigationItem} from '../components/navigation-item'
+import { Navigation } from '../components/navigation'
+import { NavigationContainer } from '../components/navigation-container'
+import { NavigationItem } from '../components/navigation-item'
 
-import {Card} from '../components/card'
+import { Card } from '../components/card'
 
 interface PropsInterface {
   location: object

@@ -1,4 +1,4 @@
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 import React from 'react'
 
 import paginationStyle from './pagination.module.css'
@@ -45,4 +45,4 @@ const Pagination: React.SFC<PropsInterface> = props => {
   )
 }
 
-export {Pagination}
+export { Pagination }

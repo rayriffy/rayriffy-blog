@@ -1,10 +1,10 @@
-import {graphql} from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import {FluidObject} from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 
-import {Card} from '../components/card'
+import { Card } from '../components/card'
 
 interface PropsInterface {
   data: {

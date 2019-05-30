@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Navbar} from './navbar'
+import { Navbar } from './navbar'
 
 import footerStyle from './footer.module.css'
 
@@ -43,4 +43,4 @@ const Footer: React.SFC = () => {
   )
 }
 
-export {Footer}
+export { Footer }

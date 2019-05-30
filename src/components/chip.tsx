@@ -18,4 +18,4 @@ const Chip: React.SFC<PropsInterface> = props => {
   )
 }
 
-export {Chip}
+export { Chip }

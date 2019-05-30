@@ -1,4 +1,4 @@
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 import React from 'react'
 
 import navigationItemStyle from './navigation-item.module.css'
@@ -19,4 +19,4 @@ const NavigationItem: React.SFC<PropsInterface> = props => {
   )
 }
 
-export {NavigationItem}
+export { NavigationItem }

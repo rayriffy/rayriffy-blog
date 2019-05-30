@@ -6,4 +6,4 @@ const Dev: React.SFC = () => {
   return <div className={devStyle.container} />
 }
 
-export {Dev}
+export { Dev }

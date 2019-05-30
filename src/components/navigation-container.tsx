@@ -8,4 +8,4 @@ const NavigationContainer: React.SFC = props => {
   return <div className={navigationContainerStyle.container}>{children}</div>
 }
 
-export {NavigationContainer}
+export { NavigationContainer }

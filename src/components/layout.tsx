@@ -1,8 +1,8 @@
 import React from 'react'
 
-import {Dev} from './dev'
-import {Footer} from './footer'
-import {Header} from './header'
+import { Dev } from './dev'
+import { Footer } from './footer'
+import { Header } from './header'
 
 import layoutStyle from './layout.module.css'
 
@@ -32,4 +32,4 @@ const Layout: React.SFC<PropsInterface> = props => {
   )
 }
 
-export {Layout}
+export { Layout }

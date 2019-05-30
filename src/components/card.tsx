@@ -1,7 +1,7 @@
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 import React from 'react'
 
-import Img, {FluidObject} from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 
 import cardStyle from './card.module.css'
 
@@ -64,4 +64,4 @@ const Card: React.SFC<PropsInterface> = props => {
   )
 }
 
-export {Card}
+export { Card }
