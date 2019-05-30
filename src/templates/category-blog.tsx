@@ -11,55 +11,55 @@ import {Pagination} from '../components/pagination'
 interface PropsInterface {
   location: object
   pageContext: {
-    currentPage: number;
-    numPages: number;
-    pathPrefix: string;
+    currentPage: number
+    numPages: number
+    pathPrefix: string
   }
   data: {
     site: {
       siteMetadata: {
-        title: string;
-        siteUrl: string;
-        author: string;
-        fbApp: string;
-      };
-    };
+        title: string
+        siteUrl: string
+        author: string
+        fbApp: string
+      }
+    }
     allMarkdownRemark: {
-      totalCount: number;
+      totalCount: number
       edges: {
         node: {
-          excerpt: string;
+          excerpt: string
           fields: {
-            slug: string;
-          };
+            slug: string
+          }
           frontmatter: {
-            date: string;
-            title: string;
-            subtitle: string;
-            featured: boolean;
-            author: string;
+            date: string
+            title: string
+            subtitle: string
+            featured: boolean
+            author: string
             banner: {
               childImageSharp: {
-                fluid: FluidObject;
-              };
-            };
-          };
-        };
-      }[];
-    };
+                fluid: FluidObject
+              }
+            }
+          }
+        }
+      }[]
+    }
     allAuthorsJson: {
       edges: {
         node: {
-          user: string;
-          name: string;
-          facebook: string;
-        };
-      }[];
-    };
+          user: string
+          name: string
+          facebook: string
+        }
+      }[]
+    }
     categoriesJson: {
-      name: string;
-      desc: string;
-    };
+      name: string
+      desc: string
+    }
   }
 }
 
@@ -164,9 +164,8 @@ const CategoryBlog: React.SFC<PropsInterface> = props => {
             name: 'twitter:image',
           },
         ]}
-        title={`${siteTitle} · ${categoryName}`}
-      >
-        <script type='application/ld+json' data-react-helmet='true'>
+        title={`${siteTitle} · ${categoryName}`}>
+        <script type="application/ld+json" data-react-helmet="true">
           {`
             {
               "@context": "http://schema.org/",
@@ -203,11 +202,7 @@ const CategoryBlog: React.SFC<PropsInterface> = props => {
           />
         )
       })}
-      <Pagination
-        numPages={numPages}
-        currentPage={currentPage}
-        pathPrefix={pathPrefix}
-      />
+      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
     </>
   )
 }
@@ -215,12 +210,7 @@ const CategoryBlog: React.SFC<PropsInterface> = props => {
 export default CategoryBlog
 
 export const pageQuery = graphql`
-  query CategoryPage(
-    $category: String!
-    $limit: Int!
-    $regex: String!
-    $skip: Int!
-  ) {
+  query CategoryPage($category: String!, $limit: Int!, $regex: String!, $skip: Int!) {
     site {
       siteMetadata {
         title

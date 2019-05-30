@@ -1,4 +1,4 @@
-const {GATSBY_ENV = 'development'} = process.env
+const { GATSBY_ENV = 'development' } = process.env
 
 module.exports = {
   siteMetadata: {
@@ -128,7 +128,7 @@ module.exports = {
                     show_reposts: false,
                     show_teaser: false,
                   },
-                  Instagram: {hidecaption: true},
+                  Instagram: { hidecaption: true },
                 },
               },
             },

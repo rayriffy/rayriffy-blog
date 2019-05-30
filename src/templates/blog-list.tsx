@@ -11,50 +11,50 @@ import {Pagination} from '../components/pagination'
 interface PropsInterface {
   location: object
   pageContext: {
-    currentPage: number;
-    numPages: number;
+    currentPage: number
+    numPages: number
   }
   data: {
-    [key: string]: any;
+    [key: string]: any
     site: {
       siteMetadata: {
-        author: string;
-        description: string;
-        title: string;
-        siteUrl: string;
-        fbApp: string;
-      };
-    };
+        author: string
+        description: string
+        title: string
+        siteUrl: string
+        fbApp: string
+      }
+    }
     allMarkdownRemark: {
       edges: {
         node: {
           fields: {
-            slug: string;
-          };
+            slug: string
+          }
           frontmatter: {
-            title: string;
-            subtitle: string;
-            author: string,
-            date: string;
-            featured: boolean;
+            title: string
+            subtitle: string
+            author: string
+            date: string
+            featured: boolean
             banner: {
               childImageSharp: {
-                fluid: FluidObject,
-              };
-            };
-          };
-        };
-      }[];
-    };
+                fluid: FluidObject
+              }
+            }
+          }
+        }
+      }[]
+    }
     allAuthorsJson: {
       edges: {
         node: {
-          user: string;
-          name: string;
-          facebook: string;
-        };
-      }[];
-    };
+          user: string
+          name: string
+          facebook: string
+        }
+      }[]
+    }
   }
 }
 
@@ -165,9 +165,8 @@ const BlogList: React.SFC<PropsInterface> = props => {
             name: 'twitter:image',
           },
         ]}
-        title={siteTitle}
-      >
-        <script type='application/ld+json' data-react-helmet='true'>
+        title={siteTitle}>
+        <script type="application/ld+json" data-react-helmet="true">
           {`
             {
               "@context": "http://schema.org/",
@@ -195,11 +194,7 @@ const BlogList: React.SFC<PropsInterface> = props => {
           />
         )
       })}
-      <Pagination
-        numPages={numPages}
-        currentPage={currentPage}
-        pathPrefix='/'
-      />
+      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix="/" />
     </>
   )
 }

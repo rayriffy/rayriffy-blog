@@ -18,55 +18,55 @@ interface PropsInterface {
   pageContext: {
     next: {
       fields: {
-        slug: string;
-      };
+        slug: string
+      }
       frontmatter: {
-        title: string;
-      };
-    };
+        title: string
+      }
+    }
     previous: {
       fields: {
-        slug: string;
-      };
+        slug: string
+      }
       frontmatter: {
-        title: string;
-      };
-    };
+        title: string
+      }
+    }
   }
   data: {
     site: {
       siteMetadata: {
-        author: string;
-        description: string;
-        title: string;
-        siteUrl: string;
-        fbApp: string;
-      };
-    };
+        author: string
+        description: string
+        title: string
+        siteUrl: string
+        fbApp: string
+      }
+    }
     markdownRemark: {
       fields: {
-        slug: string;
-      };
+        slug: string
+      }
       frontmatter: {
-        title: string;
-        subtitle: string;
-        author: string,
-        date: string;
-        featured: boolean;
+        title: string
+        subtitle: string
+        author: string
+        date: string
+        featured: boolean
         banner: {
           childImageSharp: {
-            fluid: FluidObject,
-          };
-        };
-      };
-      html: string;
-    };
+            fluid: FluidObject
+          }
+        }
+      }
+      html: string
+    }
     authorsJson: {
-      user: string;
-      name: string;
-      twitter: string;
-      facebook: string;
-    };
+      user: string
+      name: string
+      twitter: string
+      facebook: string
+    }
   }
 }
 
@@ -87,11 +87,11 @@ const BlogPost: React.SFC<PropsInterface> = props => {
   if (GATSBY_ENV !== 'development') {
     ads = (
       <AdSense.Google
-        client='ca-pub-2837414306121160'
-        slot='7015425171'
+        client="ca-pub-2837414306121160"
+        slot="7015425171"
         style={{display: 'block'}}
-        format='auto'
-        responsive='true'
+        format="auto"
+        responsive="true"
       />
     )
   }
@@ -114,8 +114,7 @@ const BlogPost: React.SFC<PropsInterface> = props => {
             name: 'author',
           },
           {
-            content:
-              siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
+            content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             name: 'image',
           },
           {
@@ -155,13 +154,11 @@ const BlogPost: React.SFC<PropsInterface> = props => {
             property: 'article:published_time',
           },
           {
-            content:
-              siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
+            content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             property: 'og:image',
           },
           {
-            content:
-              siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
+            content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             property: 'og:image:secure_url',
           },
           {
@@ -197,8 +194,7 @@ const BlogPost: React.SFC<PropsInterface> = props => {
             name: 'twitter:description',
           },
           {
-            content:
-              siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
+            content: siteUrl + post.frontmatter.banner.childImageSharp.fluid.src,
             name: 'twitter:image',
           },
           {
@@ -206,9 +202,8 @@ const BlogPost: React.SFC<PropsInterface> = props => {
             name: 'google',
           },
         ]}
-        title={`${siteTitle} · ${post.frontmatter.title}`}
-      >
-        <script type='application/ld+json' data-react-helmet='true'>
+        title={`${siteTitle} · ${post.frontmatter.title}`}>
+        <script type="application/ld+json" data-react-helmet="true">
           {`
             {
               "@context": "http://schema.org/",
@@ -226,8 +221,7 @@ const BlogPost: React.SFC<PropsInterface> = props => {
               },
               "datePublished" : "${post.frontmatter.date}",
               "dateModified" : "${post.frontmatter.date}",
-              "image" : "${siteUrl +
-                post.frontmatter.banner.childImageSharp.fluid.src}",
+              "image" : "${siteUrl + post.frontmatter.banner.childImageSharp.fluid.src}",
               "url" : "${siteUrl + post.fields.slug}",
               "description" : "${post.frontmatter.subtitle}",
               "publisher" : {
@@ -250,8 +244,7 @@ const BlogPost: React.SFC<PropsInterface> = props => {
         date={post.frontmatter.date}
         featured={post.frontmatter.featured}
         link={false}
-        content={post.html}
-      >
+        content={post.html}>
         {ads}
         <hr
           style={{
@@ -261,22 +254,10 @@ const BlogPost: React.SFC<PropsInterface> = props => {
         />
         <Navigation>
           <NavigationContainer>
-            {previous && (
-              <NavigationItem
-                slug={previous.fields.slug}
-                meta='previous'
-                title={previous.frontmatter.title}
-              />
-            )}
+            {previous && <NavigationItem slug={previous.fields.slug} meta="previous" title={previous.frontmatter.title} />}
           </NavigationContainer>
           <NavigationContainer>
-            {next && (
-              <NavigationItem
-                slug={next.fields.slug}
-                meta='next'
-                title={next.frontmatter.title}
-              />
-            )}
+            {next && <NavigationItem slug={next.fields.slug} meta="next" title={next.frontmatter.title} />}
           </NavigationContainer>
         </Navigation>
       </Card>

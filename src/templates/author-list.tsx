@@ -1,5 +1,5 @@
 import {graphql} from 'gatsby'
-import { FluidObject } from 'gatsby-image'
+import {FluidObject} from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 
@@ -9,30 +9,30 @@ import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 
 interface PropsInterface {
-  location: object,
+  location: object
   data: {
     site: {
       siteMetadata: {
-        title: string,
-        siteUrl: string,
-        author: string,
-        description: string,
-        fbApp: string,
-      },
-    },
-  },
+        title: string
+        siteUrl: string
+        author: string
+        description: string
+        fbApp: string
+      }
+    }
+  }
   pageContext: {
     authors: {
-      user: string,
-      name: string,
-      facebook: string,
-      twitter: string,
+      user: string
+      name: string
+      facebook: string
+      twitter: string
       banner: {
         childImageSharp: {
-          fluid: FluidObject,
-        },
-      },
-    }[],
+          fluid: FluidObject
+        }
+      }
+    }[]
   }
 }
 
@@ -43,7 +43,7 @@ const AuthorList: React.SFC<PropsInterface> = props => {
   const siteDescription = props.data.site.siteMetadata.description
   const facebookAppID = props.data.site.siteMetadata.fbApp
 
-  const { authors = [] } = props.pageContext
+  const {authors = []} = props.pageContext
 
   return (
     <>
@@ -143,9 +143,8 @@ const AuthorList: React.SFC<PropsInterface> = props => {
             name: 'twitter:image',
           },
         ]}
-        title={`${siteTitle} · Authors`}
-      >
-        <script type='application/ld+json' data-react-helmet='true'>
+        title={`${siteTitle} · Authors`}>
+        <script type="application/ld+json" data-react-helmet="true">
           {`
             {
               "@context": "http://schema.org/",
@@ -155,7 +154,7 @@ const AuthorList: React.SFC<PropsInterface> = props => {
           `}
         </script>
       </Helmet>
-      <Chip name='Authors' />
+      <Chip name="Authors" />
       {authors.map(author => {
         return (
           <Card
@@ -163,19 +162,14 @@ const AuthorList: React.SFC<PropsInterface> = props => {
             slug={`/author/${author.user}`}
             banner={author.banner.childImageSharp.fluid}
             title={author.name}
-            link={true}
-          >
+            link={true}>
             <FaFacebook />{' '}
-            <a href={author.facebook} rel='noopener noreferrer' target='_blank'>
+            <a href={author.facebook} rel="noopener noreferrer" target="_blank">
               {author.facebook.split('/')[3]}
             </a>
             <br />
             <FaTwitter />{' '}
-            <a
-              href={'https://twitter.com/' + author.twitter.split('@')[1]}
-              rel='noopener noreferrer'
-              target='_blank'
-            >
+            <a href={'https://twitter.com/' + author.twitter.split('@')[1]} rel="noopener noreferrer" target="_blank">
               {author.twitter}
             </a>
           </Card>

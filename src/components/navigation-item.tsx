@@ -4,9 +4,9 @@ import React from 'react'
 import navigationItemStyle from './navigation-item.module.css'
 
 interface PropsInterface {
-  meta: string,
-  slug: string,
-  title: string,
+  meta: string
+  slug: string
+  title: string
 }
 
 const NavigationItem: React.SFC<PropsInterface> = props => {

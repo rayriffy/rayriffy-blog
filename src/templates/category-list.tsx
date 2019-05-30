@@ -1,5 +1,5 @@
 import {graphql} from 'gatsby'
-import { FluidObject } from 'gatsby-image'
+import {FluidObject} from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 
@@ -7,30 +7,30 @@ import {Card} from '../components/card'
 import {Chip} from '../components/chip'
 
 interface PropsInterface {
-  location: object,
+  location: object
   data: {
     site: {
       siteMetadata: {
-        title: string,
-        siteUrl: string,
-        author: string,
-        description: string,
-        fbApp: string,
-      },
-    },
-  },
+        title: string
+        siteUrl: string
+        author: string
+        description: string
+        fbApp: string
+      }
+    }
+  }
   pageContext: {
     categories: {
-      key: string,
-      name: string,
-      desc: string,
+      key: string
+      name: string
+      desc: string
       banner: {
         childImageSharp: {
-          fluid: FluidObject,
-        },
-      },
-    }[],
-  },
+          fluid: FluidObject
+        }
+      }
+    }[]
+  }
 }
 
 const CategoryList: React.SFC<PropsInterface> = props => {
@@ -40,7 +40,7 @@ const CategoryList: React.SFC<PropsInterface> = props => {
   const siteDescription = props.data.site.siteMetadata.description
   const facebookAppID = props.data.site.siteMetadata.fbApp
 
-  const { categories = [] } = props.pageContext
+  const {categories = []} = props.pageContext
 
   return (
     <>
@@ -136,9 +136,8 @@ const CategoryList: React.SFC<PropsInterface> = props => {
             name: 'twitter:image',
           },
         ]}
-        title={`${siteTitle} · Category`}
-      >
-        <script type='application/ld+json' data-react-helmet='true'>
+        title={`${siteTitle} · Category`}>
+        <script type="application/ld+json" data-react-helmet="true">
           {`
             {
               "@context": "http://schema.org/",
@@ -148,7 +147,7 @@ const CategoryList: React.SFC<PropsInterface> = props => {
           `}
         </script>
       </Helmet>
-      <Chip name='Category' desc='รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง' />
+      <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
       {categories.map(category => {
         return (
           <Card

@@ -1,21 +1,7 @@
 {
-  "extends": ["tslint:recommended", "tslint-react"],
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier", "tslint-eslint-rules"],
   "rules": {
-    "max-line-length": {
-      "options": [125]
-    },
-    "quotemark": [true, "single", "backtick", "jsx-single"],
-    "semicolon": [true, "never"],
     "interface-name": false,
-    "jsx-wrap-multiline": false,
-    "jsx-no-multiline-js": false,
-    "one-variable-per-declaration": false,
-    "arrow-parens": false,
     "array-type": false
-  },
-  "jsRules": {
-    "max-line-length": {
-      "options": [125]
-    }
   }
 }

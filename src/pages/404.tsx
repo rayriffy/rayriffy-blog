@@ -10,18 +10,18 @@ interface PropsInterface {
   data: {
     site: {
       siteMetadata: {
-        title: string,
-        siteUrl: string,
-        author: string,
-        fbApp: string,
-      },
-    },
+        title: string
+        siteUrl: string
+        author: string
+        fbApp: string
+      }
+    }
     banner: {
       childImageSharp: {
-        fluid: FluidObject,
-      },
-    },
-  },
+        fluid: FluidObject
+      }
+    }
+  }
 }
 
 const NotFound: React.SFC<PropsInterface> = props => {
@@ -129,13 +129,12 @@ const NotFound: React.SFC<PropsInterface> = props => {
         title={`${siteTitle} · Not Found`}
       />
       <Card
-        slug='/'
+        slug="/"
         banner={props.data.banner.childImageSharp.fluid}
-        title='NOT FOUND'
-        subtitle='Whoops! Looks like you&#39;re lost in the woods...with Cirno.'
-        link={false}
-      >
-        <a href='/'>Back to home</a>
+        title="NOT FOUND"
+        subtitle="Whoops! Looks like you&#39;re lost in the woods...with Cirno."
+        link={false}>
+        <a href="/">Back to home</a>
       </Card>
     </>
   )

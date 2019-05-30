@@ -10,49 +10,49 @@ import {Navbar} from '../components/navbar'
 import {Pagination} from '../components/pagination'
 
 interface PropsInterface {
-  location: object,
+  location: object
   pageContext: {
-    currentPage: number,
-    numPages: number,
-    pathPrefix: string,
-  },
+    currentPage: number
+    numPages: number
+    pathPrefix: string
+  }
   data: {
-    [key: string]: any,
+    [key: string]: any
     site: {
       siteMetadata: {
-        title: string,
-        siteUrl: string,
-        author: string,
-        fbApp: string,
-      },
-    },
+        title: string
+        siteUrl: string
+        author: string
+        fbApp: string
+      }
+    }
     allMarkdownRemark: {
       edges: {
         node: {
           fields: {
-            slug: string,
-          },
+            slug: string
+          }
           frontmatter: {
-            title: string,
-            subtitle: string,
-            date: string,
-            featured: boolean,
+            title: string
+            subtitle: string
+            date: string
+            featured: boolean
             banner: {
               childImageSharp: {
-                fluid: FluidObject,
-              },
-            },
-          },
-        },
-      }[],
-    },
+                fluid: FluidObject
+              }
+            }
+          }
+        }
+      }[]
+    }
     authorsJson: {
-      user: string,
-      name: string,
-      facebook: string,
-      twitter: string,
-    },
-  },
+      user: string
+      name: string
+      facebook: string
+      twitter: string
+    }
+  }
 }
 
 const AuthorBlog: React.SFC<PropsInterface> = props => {
@@ -165,9 +165,8 @@ const AuthorBlog: React.SFC<PropsInterface> = props => {
             name: 'twitter:image',
           },
         ]}
-        title={`${siteTitle} · ${authorName}`}
-      >
-        <script type='application/ld+json' data-react-helmet='true'>
+        title={`${siteTitle} · ${authorName}`}>
+        <script type="application/ld+json" data-react-helmet="true">
           {`
             {
               "@context": "http://schema.org/",
@@ -179,8 +178,8 @@ const AuthorBlog: React.SFC<PropsInterface> = props => {
       </Helmet>
       <Chip name={authorFirstName} desc={authorLastName} />
       <Navbar
-        align='center'
-        keys='navAuthor'
+        align="center"
+        keys="navAuthor"
         tabs={[
           {
             href: author.facebook,
@@ -209,11 +208,7 @@ const AuthorBlog: React.SFC<PropsInterface> = props => {
           />
         )
       })}
-      <Pagination
-        numPages={numPages}
-        currentPage={currentPage}
-        pathPrefix={pathPrefix}
-      />
+      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
     </>
   )
 }
@@ -221,12 +216,7 @@ const AuthorBlog: React.SFC<PropsInterface> = props => {
 export default AuthorBlog
 
 export const pageQuery = graphql`
-  query AuthorPage(
-    $author: String!
-    $limit: Int!
-    $regex: String!
-    $skip: Int!
-  ) {
+  query AuthorPage($author: String!, $limit: Int!, $regex: String!, $skip: Int!) {
     site {
       siteMetadata {
         title

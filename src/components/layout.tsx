@@ -7,7 +7,7 @@ import {Header} from './header'
 import layoutStyle from './layout.module.css'
 
 interface PropsInterface {
-  location?: object,
+  location?: object
 }
 const Layout: React.SFC<PropsInterface> = props => {
   const {children} = props
@@ -25,9 +25,7 @@ const Layout: React.SFC<PropsInterface> = props => {
       {devStrip}
       <div className={layoutStyle.cover}>
         <Header />
-        <div className={layoutStyle.container}>
-          {children}
-        </div>
+        <div className={layoutStyle.container}>{children}</div>
         <Footer />
       </div>
     </div>

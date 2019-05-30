@@ -59,10 +59,13 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.6",
+    "prettier": "^1.17.1",
     "remark-cli": "^6.0.1",
     "remark-lint": "^6.0.4",
     "remark-preset-lint-recommended": "^3.0.2",
     "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0"
   },
   "homepage": "https://blog.rayriffy.com",
@@ -88,9 +91,10 @@
     "develop": "cross-env GATSBY_ENV=development gatsby develop --https",
     "dev-prod": "cross-env GATSBY_ENV=production gatsby develop --https",
     "dev-staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
-    "format": "prettier --trailing-comma es6 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
+    "format": "yarn prettier -- --write",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "md-lint": "remark .",
+    "prettier": "prettier \"src/**/*.+(js|jsx|ts|tsx)\"",
     "start": "npm run develop",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc"

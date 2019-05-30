@@ -2,10 +2,10 @@ const _ = require('lodash')
 const Promise = require('bluebird')
 const fs = require('fs')
 const path = require('path')
-const {createFilePath} = require('gatsby-source-filesystem')
+const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.createPages = async ({graphql, actions}) => {
-  const {createPage} = actions
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
   let siteUrl
 
@@ -17,7 +17,7 @@ exports.createPages = async ({graphql, actions}) => {
             siteUrl
           }
         }
-        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {
@@ -59,7 +59,7 @@ exports.createPages = async ({graphql, actions}) => {
           }
         }
       }
-    `,
+    `
   )
 
   if (result.errors) {
@@ -144,7 +144,7 @@ exports.createPages = async ({graphql, actions}) => {
             }
           }
         }
-      `,
+      `
     )
 
     let totalCount = categoryResult.data.blogs.edges.length
@@ -187,7 +187,7 @@ exports.createPages = async ({graphql, actions}) => {
             }
           }
         }
-      `,
+      `
     )
 
     let totalCount = authorResult.data.blogs.edges.length
@@ -250,7 +250,7 @@ exports.createPages = async ({graphql, actions}) => {
             }
           }
         }
-      `,
+      `
     )
 
     const categoryTopBlog = _.head(categoryResult.data.blogs.edges)
@@ -300,7 +300,7 @@ exports.createPages = async ({graphql, actions}) => {
             }
           }
         }
-      `,
+      `
     )
 
     return authorRaw.push({
@@ -329,11 +329,11 @@ exports.createPages = async ({graphql, actions}) => {
   return null
 }
 
-exports.onCreateNode = ({node, actions, getNode}) => {
-  const {createNodeField} = actions
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({node, getNode})
+    const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
@@ -342,7 +342,7 @@ exports.onCreateNode = ({node, actions, getNode}) => {
   }
 }
 
-exports.onCreateWebpackConfig = ({getConfig, stage}) => {
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   const config = getConfig()
   if (stage.startsWith('develop') && config.resolve) {
     config.resolve.alias = {

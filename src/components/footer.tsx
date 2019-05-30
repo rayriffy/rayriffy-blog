@@ -12,8 +12,8 @@ const Footer: React.SFC = () => {
     <div className={footerStyle.footer}>
       <div className={footerStyle.container}>
         <Navbar
-          align='left'
-          keys='navFooter'
+          align="left"
+          keys="navFooter"
           tabs={[
             {
               href: '/',
@@ -34,9 +34,8 @@ const Footer: React.SFC = () => {
         />
       </div>
       <div style={{textAlign: 'center'}}>
-        Built with {' '}
-        <img src={imgUrl} className={footerStyle.image} alt='love' /> by{' '}
-        <a href={faceUrl} rel='noopener noreferrer' target='_blank'>
+        Built with <img src={imgUrl} className={footerStyle.image} alt="love" /> by{' '}
+        <a href={faceUrl} rel="noopener noreferrer" target="_blank">
           RayRiffy
         </a>
       </div>
