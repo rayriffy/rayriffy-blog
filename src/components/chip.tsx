@@ -6,15 +6,18 @@ interface PropsInterface {
   name: string,
   desc?: string,
 }
-export class Chip extends React.Component<PropsInterface> {
-  public render(): object {
-    return (
-      <div className={chipStyle.container}>
-        <h3 className={chipStyle.title}>{this.props.name}</h3>
-        {this.props.desc && (
-          <div className={chipStyle.subtitle}>{this.props.desc}</div>
-        )}
-      </div>
-    )
-  }
+
+const Chip: React.SFC<PropsInterface> = props => {
+  const {name, desc} = props
+
+  return (
+    <div className={chipStyle.container}>
+      <h3 className={chipStyle.title}>{name}</h3>
+      {desc && (
+        <div className={chipStyle.subtitle}>{desc}</div>
+      )}
+    </div>
+  )
 }
+
+export {Chip}

@@ -155,7 +155,7 @@ exports.createPages = async ({graphql, actions}) => {
     _.times(categoryPages, i => {
       createPage({
         path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/category-list.tsx'),
+        component: path.resolve('./src/templates/category-blog.tsx'),
         context: {
           category: category.node.key,
           currentPage: i + 1,
@@ -197,7 +197,7 @@ exports.createPages = async ({graphql, actions}) => {
     _.times(authorPages, i => {
       createPage({
         path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/author-list.tsx'),
+        component: path.resolve('./src/templates/author-blog.tsx'),
         context: {
           author: author.node.user,
           currentPage: i + 1,
@@ -271,7 +271,7 @@ exports.createPages = async ({graphql, actions}) => {
 
   createPage({
     path: categoryPathPrefix,
-    component: path.resolve('./src/templates/category.tsx'),
+    component: path.resolve('./src/templates/category-list.tsx'),
     context: {
       categories: _.sortBy(categoryRaw, o => o.key),
     },
@@ -320,7 +320,7 @@ exports.createPages = async ({graphql, actions}) => {
 
   createPage({
     path: authorPathPrefix,
-    component: path.resolve('./src/templates/author.tsx'),
+    component: path.resolve('./src/templates/author-list.tsx'),
     context: {
       authors: authorRaw,
     },

@@ -12,41 +12,44 @@ interface PropsInterface {
     newtab: boolean,
   }[],
 }
-export class Navbar extends React.Component<PropsInterface> {
-  public render(): object {
-    const tabs: object[] = []
-    _.each(this.props.tabs, tab => {
-      if (tab.newtab === false) {
-        tabs.push(
-          <li key={`${this.props.keys}-${tab.name}`}>
-            <a href={tab.href}>{tab.name}</a>
-          </li>,
-        )
-      } else {
-        tabs.push(
-          <li key={`${this.props.keys}-${tab.name}`}>
-            <a href={tab.href} rel='noopener noreferrer' target='_blank'>
-              {tab.name}
-            </a>
-          </li>,
-        )
-      }
-    })
 
-    return (
-      <nav
-        key={this.props.keys}
-        className={[
-          navbarStyle.navbar,
-          this.props.align === 'left'
-            ? navbarStyle.navbarleft
-            : this.props.align === 'center'
-            ? navbarStyle.navbarcenter
-            : navbarStyle.navbarright,
-        ].join(' ')}
-      >
-        <ul className={navbarStyle.nav}>{tabs}</ul>
-      </nav>
-    )
-  }
+const Navbar: React.SFC<PropsInterface> = props => {
+  const {tabs, keys, align} = props
+
+  const processedTabs: object[] = []
+  _.each(tabs, tab => {
+    if (tab.newtab === false) {
+      processedTabs.push(
+        <li key={`${keys}-${tab.name}`}>
+          <a href={tab.href}>{tab.name}</a>
+        </li>,
+      )
+    } else {
+      processedTabs.push(
+        <li key={`${keys}-${tab.name}`}>
+          <a href={tab.href} rel='noopener noreferrer' target='_blank'>
+            {tab.name}
+          </a>
+        </li>,
+      )
+    }
+  })
+
+  return (
+    <nav
+      key={keys}
+      className={[
+        navbarStyle.navbar,
+        align === 'left'
+          ? navbarStyle.navbarleft
+          : align === 'center'
+          ? navbarStyle.navbarcenter
+          : navbarStyle.navbarright,
+      ].join(' ')}
+    >
+      <ul className={navbarStyle.nav}>{processedTabs}</ul>
+    </nav>
+  )
 }
+
+export {Navbar}
