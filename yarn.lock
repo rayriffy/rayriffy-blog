@@ -5092,10 +5092,10 @@ gatsby-link@^2.1.1:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-paginate@^1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/gatsby-paginate/-/gatsby-paginate-1.0.17.tgz#aa5536c569bc35f7517558eed7191980d737135a"
-  integrity sha512-tRjWuME0avbAyHSLXucEqs4wNWslTlJx7JAf4Qso17AZqulAvaVIIbIveCWLnbutdVsfAKXqZ5aHfbHe6RrGGw==
+gatsby-paginate@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/gatsby-paginate/-/gatsby-paginate-1.0.18.tgz#f6e768adddc8c096903728f59da3cecce35a1b93"
+  integrity sha512-Ie8PQ5RsC2a4ort2YeGX4xcrzajIi3B0o6xQ3QTlKOaHYmQbe3khz9BbTQxu/AMlF/OVoaeyvHQbQt4zM+p8eA==
   dependencies:
     path "^0.12.7"
 
