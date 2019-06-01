@@ -1,14 +1,57 @@
 import React from 'react'
 
+import styled, { createGlobalStyle } from 'styled-components'
+
 import { Dev } from './dev'
 import { Footer } from './footer'
 import { Header } from './header'
 
-import layoutStyle from './layout.module.css'
-
 interface PropsInterface {
   location?: object
 }
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    background-color: #f5f5f5;
+  }
+`
+
+const Page = styled.div`
+  background-color: #f5f5f5;
+`
+
+const Cover = styled.div`
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+  @media (min-width: 768px) {
+    & {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
+
+  @media only screen and (min-width: 960px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+`
+
+const Container = styled.div`
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media only screen and (min-width: 540px) {
+    width: 80%;
+  }
+
+  @media only screen and (min-width: 960px) {
+    width: 66.67%;
+    max-width: 60rem;
+  }
+`
+
 const Layout: React.SFC<PropsInterface> = props => {
   const {children} = props
 
@@ -21,14 +64,15 @@ const Layout: React.SFC<PropsInterface> = props => {
   }
 
   return (
-    <div className={layoutStyle.page}>
+    <Page>
+      <GlobalStyle />
       {devStrip}
-      <div className={layoutStyle.cover}>
+      <Cover>
         <Header />
-        <div className={layoutStyle.container}>{children}</div>
+        <Container>{children}</Container>
         <Footer />
-      </div>
-    </div>
+      </Cover>
+    </Page>
   )
 }
 
