@@ -40,6 +40,13 @@ module.exports = {
         ignore: [`**/.*`],
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: false,
+        ssr: true,
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -201,7 +208,12 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+      options: {
+        cachePublic: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
