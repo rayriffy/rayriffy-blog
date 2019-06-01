@@ -40,6 +40,12 @@ module.exports = {
         ignore: [`**/.*`],
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        ssr: true,
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
