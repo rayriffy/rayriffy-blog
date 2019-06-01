@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-import navigationItemStyle from './navigation-item.module.css'
+import styled from 'styled-components'
 
 interface PropsInterface {
   meta: string
@@ -9,12 +9,23 @@ interface PropsInterface {
   title: string
 }
 
+const Meta = styled.span`
+  color: #333333;
+  display: block;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+`
+
+const Title = styled.span`
+  display: block;
+`
+
 const NavigationItem: React.SFC<PropsInterface> = props => {
   const {slug, meta, title} = props
   return (
     <Link to={slug} rel={meta}>
-      <span className={navigationItemStyle.meta}>{meta}</span>
-      <span className={navigationItemStyle.title}>{title}</span>
+      <Meta>{meta}</Meta>
+      <Title>{title}</Title>
     </Link>
   )
 }

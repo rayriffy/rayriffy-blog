@@ -1,11 +1,15 @@
 import React from 'react'
 
-import navigationStyle from './navigation.module.css'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  margin: 30px 0 30px 0;
+`
 
 const Navigation: React.SFC = props => {
   const {children} = props
 
-  return <div className={navigationStyle.navpost}>{children}</div>
+  return <Container>{children}</Container>
 }
 
 export { Navigation }

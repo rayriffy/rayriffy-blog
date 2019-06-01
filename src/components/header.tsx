@@ -1,15 +1,39 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
+import styled from 'styled-components'
+
 import { Navbar } from './navbar'
 
-import headerStyle from './header.module.css'
+const Container = styled.div`
+  margin-bottom: 35px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media (max-width: 767px) {
+    display: block;
+    margin: 0 0 20px 0;
+    padding-left: 25px;
+    text-align: left;
+  }
+`
+
+const Logo = styled.svg`
+  height: 120px;
+  margin-bottom: 1.45rem;
+
+  @media (max-width: 767px) {
+    margin-left: 15px;
+    height: 60px;
+  }
+`
 
 const Header: React.SFC = () => {
   return (
-    <div className={headerStyle.container}>
+    <Container>
       <Link to={'/'} aria-label={`logo`}>
-        <svg className={headerStyle.logo} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370.1 512">
+        <Logo xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370.1 512">
           <path
             fill="#4b6fff"
             d="M320.61,295.5,447.15,512H329.39L208,303.54H180.18V512H77V0H251.12C365.23,0,425.94,54.13,425.94,145.55
@@ -17,7 +41,7 @@ const Header: React.SFC = () => {
             ,0-36.57-23.41-61.44-71.69-61.44Z"
             transform="translate(-77.04)"
           />
-        </svg>
+        </Logo>
       </Link>
       <Navbar
         align="center"
@@ -40,7 +64,7 @@ const Header: React.SFC = () => {
           },
         ]}
       />
-    </div>
+    </Container>
   )
 }
 
