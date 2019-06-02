@@ -181,7 +181,7 @@ const BlogList: React.SFC<PropsInterface> = props => {
       {posts.map(post => {
         const node: PostInterface = post.node
 
-        const author: any = _.filter(props.data.allAuthorsJson.edges, o => o.node.user === node.frontmatter.author)
+        const author: any = _.head(_.filter(props.data.allAuthorsJson.edges, o => o.node.user === node.frontmatter.author))
         return (
           <Card
             key={node.fields.slug}
