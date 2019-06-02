@@ -1,4 +1,4 @@
-const {GATSBY_ENV = 'development'} = process.env
+const { GATSBY_ENV = 'development' } = process.env
 
 module.exports = {
   siteMetadata: {
@@ -16,11 +16,42 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+        ignore: [`**/.*`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+        ignore: [`**/.*`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+        ignore: [`**/.*`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: false,
+        ssr: true,
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `./src/assets/database`,
+        path: `${__dirname}/content/database`,
       },
     },
     {
@@ -77,22 +108,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
-        ignore: [`**/.*`],
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/assets`,
-        name: 'assets',
-        ignore: [`**/.*`],
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
@@ -120,7 +135,7 @@ module.exports = {
                     show_reposts: false,
                     show_teaser: false,
                   },
-                  Instagram: {hidecaption: true},
+                  Instagram: { hidecaption: true },
                 },
               },
             },
@@ -173,7 +188,7 @@ module.exports = {
         background_color: `#f5f5f5`,
         theme_color: `#1e88e5`,
         display: `minimal-ui`,
-        icon: `src/assets/logo.png`,
+        icon: `${__dirname}/content/assets/logo.png`,
       },
     },
     `gatsby-plugin-offline`,
@@ -181,7 +196,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography',
+        pathToConfigModule: `${__dirname}/src/utils/typography`,
         omitGoogleFont: true,
       },
     },
@@ -193,7 +208,12 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+      options: {
+        cachePublic: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-typescript`,
       options: {

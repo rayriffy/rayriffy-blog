@@ -1,20 +1,33 @@
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 import React from 'react'
 
-import navigationItemStyle from './navigation-item.module.css'
+import styled from 'styled-components'
 
 interface PropsInterface {
-  meta: string,
-  slug: string,
-  title: string,
+  meta: string
+  slug: string
+  title: string
 }
-export class NavigationItem extends React.Component<PropsInterface> {
-  public render(): object {
-    return (
-      <Link to={this.props.slug} rel={this.props.meta}>
-        <span className={navigationItemStyle.meta}>{this.props.meta}</span>
-        <span className={navigationItemStyle.title}>{this.props.title}</span>
-      </Link>
-    )
-  }
+
+const Meta = styled.span`
+  color: #333333;
+  display: block;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+`
+
+const Title = styled.span`
+  display: block;
+`
+
+const NavigationItem: React.SFC<PropsInterface> = props => {
+  const {slug, meta, title} = props
+  return (
+    <Link to={slug} rel={meta}>
+      <Meta>{meta}</Meta>
+      <Title>{title}</Title>
+    </Link>
+  )
 }
+
+export { NavigationItem }

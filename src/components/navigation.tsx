@@ -1,10 +1,15 @@
 import React from 'react'
 
-import navigationStyle from './navigation.module.css'
+import styled from 'styled-components'
 
-export class Navigation extends React.Component {
-  public render(): object {
-    const {children} = this.props
-    return <div className={navigationStyle.navpost}>{children}</div>
-  }
+const Container = styled.div`
+  margin: 30px 0 30px 0;
+`
+
+const Navigation: React.SFC = props => {
+  const {children} = props
+
+  return <Container>{children}</Container>
 }
+
+export { Navigation }

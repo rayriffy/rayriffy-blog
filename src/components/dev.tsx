@@ -1,9 +1,19 @@
 import React from 'react'
 
-import devStyle from './dev.module.css'
+import styled from 'styled-components'
 
-export class Dev extends React.Component {
-  public render(): object {
-    return <div className={devStyle.container} />
-  }
+const Container = styled.div`
+  background: repeating-linear-gradient(45deg,
+    #fdd835,
+    #fdd835 20px,
+    #212121 20px,
+    #212121 40px);
+  display: block;
+  height: 20px;
+`
+
+const Dev: React.SFC = () => {
+  return <Container />
 }
+
+export { Dev }
