@@ -39,9 +39,12 @@ const Container = styled.ul`
   &>li:nth-child(n+2) {
     margin-left: 5px;
   }
+`
 
-  &>li>a,
-  &>li>span {
+const Item = styled.li`
+  &>a {
+    background: transparent;
+    color: #A5A5A5;
     display: inline-block;
     min-width: 26px;
     padding: 5px 5px;
@@ -51,28 +54,18 @@ const Container = styled.ul`
     text-align: center;
   }
 
-  &>li>a {
-    background: transparent;
-    color: #A5A5A5;
-  }
-
-  &>li>a:hover,
-  &>li>a:focus {
+  &>a::hover,
+  &>a::focus {
     background-color: transparent;
     color: #222;
     outline: none;
   }
 
-  &>li>a:active {
-    background-color: transparent;
-    color: #222;
-  }
-`
-
-const Item = styled.li`
   ${(props: ItemInterface) => props.active && `
-    background: transparent;
-    color: #222;
+    &>a {
+      background-color: transparent;
+      color: #222;
+    }
   `}
 `
 
