@@ -5,6 +5,11 @@ node_js:
   - "lts/*"
 cache:
   yarn: true
+jobs:
+  include:
+    - stage: lighthouse
+      if: type = pull_request AND branch = release
+      script: yarn lh https://blog-staging.rayriffy.com/
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.16.0
   - export PATH=$HOME/.yarn/bin:$PATH
