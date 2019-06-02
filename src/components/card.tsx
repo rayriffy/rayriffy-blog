@@ -140,6 +140,7 @@ const Title = styled.div`
 `
 
 const Subtitle = styled.div`
+  color: rgba(0,0,0,.6);
   font-style: normal;
   font-weight: 400;
 `

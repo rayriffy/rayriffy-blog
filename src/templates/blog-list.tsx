@@ -8,6 +8,24 @@ import { FluidObject } from 'gatsby-image'
 import { Card } from '../components/card'
 import { Pagination } from '../components/pagination'
 
+interface PostInterface {
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    title: string
+    subtitle: string
+    author: string
+    date: string
+    featured: boolean
+    banner: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
+  }
+}
+
 interface PropsInterface {
   location: object
   pageContext: {
@@ -27,23 +45,7 @@ interface PropsInterface {
     }
     allMarkdownRemark: {
       edges: {
-        node: {
-          fields: {
-            slug: string
-          }
-          frontmatter: {
-            title: string
-            subtitle: string
-            author: string
-            date: string
-            featured: boolean
-            banner: {
-              childImageSharp: {
-                fluid: FluidObject
-              }
-            }
-          }
-        }
+        node: PostInterface
       }[]
     }
     allAuthorsJson: {
@@ -176,10 +178,10 @@ const BlogList: React.SFC<PropsInterface> = props => {
           `}
         </script>
       </Helmet>
-      {posts.map(({node}) => {
-        const author: any = _.find(props.data.allAuthorsJson.edges, {
-          node: {user: node.frontmatter.author},
-        })
+      {posts.map(post => {
+        const node: PostInterface = post.node
+
+        const author: any = _.head(_.filter(props.data.allAuthorsJson.edges, o => o.node.user === node.frontmatter.author))
         return (
           <Card
             key={node.fields.slug}
