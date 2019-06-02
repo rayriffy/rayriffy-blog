@@ -7,8 +7,6 @@ const { createFilePath } = require('gatsby-source-filesystem')
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  let siteUrl
-
   const result = await graphql(
     `
       {
@@ -66,6 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
+  const siteUrl = result.data.site.siteMetadata.siteUrl
   const postsPerPage = 5
   const categoryPathPrefix = '/category/'
   const authorPathPrefix = '/author/'
