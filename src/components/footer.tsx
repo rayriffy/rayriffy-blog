@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { Navbar } from './navbar'
 
-const Wraper = styled.div`
+const Wraper = styled.footer`
   margin-top: 35px;
 `
 

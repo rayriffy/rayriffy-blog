@@ -37,7 +37,7 @@ const Cover = styled.div`
   }
 `
 
-const Container = styled.div`
+const Container = styled.main`
   width: 90%;
   margin-left: auto;
   margin-right: auto;
