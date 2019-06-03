@@ -80,21 +80,7 @@ const BlogPost: React.SFC<PropsInterface> = props => {
   const author = props.data.authorsJson
   const facebookAppID = props.data.site.siteMetadata.fbApp
 
-  let ads: object | null = null
-
   const {GATSBY_ENV = 'development'} = process.env
-
-  if (GATSBY_ENV !== 'development') {
-    ads = (
-      <AdSense.Google
-        client="ca-pub-2837414306121160"
-        slot="7015425171"
-        style={{display: 'block'}}
-        format="auto"
-        responsive="true"
-      />
-    )
-  }
 
   return (
     <>
@@ -245,7 +231,15 @@ const BlogPost: React.SFC<PropsInterface> = props => {
         featured={post.frontmatter.featured}
         link={false}
         content={post.html}>
-        {ads}
+        {GATSBY_ENV === 'production' ? 
+          <AdSense.Google
+            client="ca-pub-2837414306121160"
+            slot="7015425171"
+            style={{display: 'block'}}
+            format="auto"
+            responsive="true"
+          /> : null
+        }
         <hr
           style={{
             marginBottom: rhythm(1),
