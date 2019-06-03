@@ -13,4 +13,5 @@ script:
   - yarn lint
   - yarn type-check
   - yarn md-lint
-  - if [ "$TRAVIS_BRANCH" -eq "release" ] && ["$TRAVIS_EVENT_TYPE" -eq "pull_request"]; then yarn lh https://blog-staging.rayriffy.com/ fi
+after_success:
+  - if ["$TRAVIS_BRANCH" = "release" && "$TRAVIS_EVENT_TYPE" = "pull_request"]; then yarn lh https://blog-staging.rayriffy.com/ fi
