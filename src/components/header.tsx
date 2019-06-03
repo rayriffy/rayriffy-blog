@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { Navbar } from './navbar'
 
-const Container = styled.div`
+const Container = styled.header`
   margin-bottom: 35px;
   text-align: center;
   margin-left: auto;
