@@ -10,7 +10,7 @@
     "@raae/gatsby-remark-oembed": "^0.0.7",
     "@types/lodash": "^4.14.133",
     "@types/react-helmet": "^5.0.8",
-    "@types/styled-components": "^4.1.15",
+    "@types/styled-components": "^4.1.16",
     "@types/typography": "^0.16.2",
     "cross-env": "^5.2.0",
     "gatsby": "^2.8.2",
