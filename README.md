@@ -31,7 +31,7 @@ $ yarn dev
 Creating Articles
 -----------------
 
-You can create articles by using Markdown language. I provided you an example articles [here](src/pages/review-halozy/index.md). Good Luck
+You can create articles by using Markdown language. I provided you an example articles [here](content/blog/review-halozy/index.md). Good Luck
 
 Contributing
 ------------
