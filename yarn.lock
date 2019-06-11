@@ -5106,10 +5106,10 @@ gatsby-plugin-google-analytics@^2.0.21:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-gatsby-plugin-google-fonts@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.0.tgz#5edb46a7b58845ad1db9fcdeb8f9335170cd81c5"
-  integrity sha512-6EuRN4pLDrD4Ztug4Ia2IXch/cVJ76vywfLmIgxE77RV8VRxD0Bqx/mDN17XE+s67uqffkdlh/sl+GWIa/0MzQ==
+gatsby-plugin-google-fonts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.1.tgz#d71054f7bf207b9a8da227380369e18e6f4e0201"
+  integrity sha512-p1NVkn27GUnDA5qHM+Z4cCcLCJIardzZXMon3640sT4xuL/AZJbsx3HEt2KY/5oZu0UXIkytkxzV2Da4rQeUIg==
 
 gatsby-plugin-manifest@^2.1.1:
   version "2.1.1"
