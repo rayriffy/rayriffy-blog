@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.6",
-    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-styled-components": "^1.10.1",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
     "remark-cli": "^6.0.1",
