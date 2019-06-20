@@ -24,7 +24,7 @@ const Component: React.SFC = () => {
     <Box mt={[4, 4, 5, 5]} mb={4}>
       <Flex justifyContent={`center`}>
         <Box width={[1/6, 1/8, 1/10, 1/15]} mb={3}>
-          <Link href={`/`}>
+          <Link href={`/`} aria-label={`logo`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370.1 512">
               <path
                 fill="#4b6fff"

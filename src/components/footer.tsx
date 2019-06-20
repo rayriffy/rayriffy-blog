@@ -39,7 +39,7 @@ const Component: React.SFC = () => {
       </Box>
       <Box my={4}>
         <Flex justifyContent={`center`}>
-          <Text>Built with</Text><Love px={1} src={`https://s.w.org/images/core/emoji/2.4/svg/2764.svg`} /><Text>by <Link href={`https://facebook.com/rayriffy`} color={`rgb(83,106,144)`}>r4yr1ffy</Link></Text>
+          <Text>Built with</Text><Love px={1} alt={`love`} src={`https://s.w.org/images/core/emoji/2.4/svg/2764.svg`} /><Text>by <Link href={`https://facebook.com/rayriffy`} color={`rgb(83,106,144)`}>r4yr1ffy</Link></Text>
         </Flex>
       </Box>
     </>
