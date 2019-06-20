@@ -11,7 +11,7 @@ import Chip from '../components/chip'
 import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
 
-interface PropsInterface {
+interface IProps {
   location: object
   pageContext: {
     currentPage: number
@@ -19,15 +19,6 @@ interface PropsInterface {
     pathPrefix: string
   }
   data: {
-    [key: string]: any
-    site: {
-      siteMetadata: {
-        title: string
-        siteUrl: string
-        author: string
-        fbApp: string
-      }
-    }
     allMarkdownRemark: {
       edges: {
         node: {
@@ -57,7 +48,7 @@ interface PropsInterface {
   }
 }
 
-const AuthorBlog: React.SFC<PropsInterface> = props => {
+const AuthorBlog: React.SFC<IProps> = props => {
   const posts = props.data.allMarkdownRemark.edges
   const author = props.data.authorsJson
   const authorName = author.name
@@ -113,15 +104,6 @@ export default AuthorBlog
 
 export const pageQuery = graphql`
   query AuthorPage($author: String!, $limit: Int!, $regex: String!, $skip: Int!) {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        siteUrl
-        fbApp
-      }
-    }
     authorsJson(user: {eq: $author}) {
       user
       name

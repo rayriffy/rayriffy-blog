@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-interface PropsInterface {
+interface IProps {
   name: string
   desc?: string
 }
@@ -27,7 +27,7 @@ const Subtitle = styled.div`
   font-size: 18px;
 `
 
-const Component: React.SFC<PropsInterface> = props => {
+const Component: React.SFC<IProps> = props => {
   const {name, desc} = props
 
   return (

@@ -21,22 +21,13 @@ interface IAuthor {
   }
 }
 
-interface PropsInterface {
-  location: object
+interface IProps {
   pageContext: {
     currentPage: number
     numPages: number
     pathPrefix: string
   }
   data: {
-    site: {
-      siteMetadata: {
-        title: string
-        siteUrl: string
-        author: string
-        fbApp: string
-      }
-    }
     allMarkdownRemark: {
       totalCount: number
       edges: {
@@ -70,7 +61,7 @@ interface PropsInterface {
   }
 }
 
-const CategoryBlog: React.SFC<PropsInterface> = props => {
+const CategoryBlog: React.SFC<IProps> = props => {
   const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
   const categoryName = props.data.categoriesJson.name
@@ -112,15 +103,6 @@ export default CategoryBlog
 
 export const pageQuery = graphql`
   query CategoryPage($category: String!, $limit: Int!, $regex: String!, $skip: Int!) {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        siteUrl
-        fbApp
-      }
-    }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
       filter: {frontmatter: {category: {regex: $regex}}}

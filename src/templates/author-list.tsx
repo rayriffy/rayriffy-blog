@@ -11,19 +11,7 @@ import { FaFacebook, FaTwitter } from 'react-icons/fa'
 import Card from '../components/card'
 import Chip from '../components/chip'
 
-interface PropsInterface {
-  location: object
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-        siteUrl: string
-        author: string
-        description: string
-        fbApp: string
-      }
-    }
-  }
+interface IProps {
   pageContext: {
     authors: {
       user: string
@@ -39,7 +27,7 @@ interface PropsInterface {
   }
 }
 
-const AuthorList: React.SFC<PropsInterface> = props => {
+const AuthorList: React.SFC<IProps> = props => {
   const {authors = []} = props.pageContext
 
   return (
@@ -85,17 +73,3 @@ const AuthorList: React.SFC<PropsInterface> = props => {
 }
 
 export default AuthorList
-
-export const pageQuery = graphql`
-  query authorPageQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        siteUrl
-        fbApp
-      }
-    }
-  }
-`

@@ -8,8 +8,7 @@ import { Box, Flex } from 'rebass'
 import Card from '../components/card'
 import Chip from '../components/chip'
 
-interface PropsInterface {
-  location: object
+interface IProps {
   pageContext: {
     categories: {
       key: string
@@ -24,7 +23,7 @@ interface PropsInterface {
   }
 }
 
-const CategoryList: React.SFC<PropsInterface> = props => {
+const CategoryList: React.SFC<IProps> = props => {
   const {categories = []} = props.pageContext
 
   return (

@@ -8,16 +8,8 @@ import { Box, Flex } from 'rebass'
 
 import Card from '../components/card'
 
-interface PropsInterface {
+interface IProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
-        siteUrl: string
-        author: string
-        fbApp: string
-      }
-    }
     banner: {
       childImageSharp: {
         fluid: FluidObject
@@ -26,7 +18,7 @@ interface PropsInterface {
   }
 }
 
-const NotFound: React.SFC<PropsInterface> = props => {
+const NotFound: React.SFC<IProps> = props => {
   return (
     <Flex justifyContent={`center`}>
       <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
@@ -51,14 +43,6 @@ export default NotFound
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-        author
-        fbApp
-      }
-    }
     banner: file(relativePath: {eq: "404.jpg"}) {
       childImageSharp {
         fluid(maxWidth: 1000, quality: 90) {
