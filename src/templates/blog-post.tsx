@@ -77,6 +77,7 @@ const BlogPost: React.SFC<IProps> = props => {
         author={authorsJson}
         slug={slug}
         date={date}
+        type={`article`}
       />
       <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
         <Card author={authorsJson} blog={{
