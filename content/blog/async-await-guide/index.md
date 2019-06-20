@@ -1,6 +1,6 @@
 ---
 title: จัดการ Asynchronous functions อย่างง่ายดายด้วย async / await
-subtitle: แล้วเราก็สามารถอ่านไฟนอล ฟังเพลง และเขียน Blog นี้พร้อมกันในเวลาเดียวกันได้เพราะ async นั่นเองงงง
+subtitle: เราก็สามารถอ่านไฟนอล และเขียน Blog ในเวลาเดียวกันได้เพราะ async นั่นเอง
 banner: ./banner.jpg
 category: tutorial, programming
 author: rayriffy

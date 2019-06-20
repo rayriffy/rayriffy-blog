@@ -15,6 +15,34 @@ exports.createPages = async ({ graphql, actions }) => {
             siteUrl
           }
         }
+        featured: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {featured: {eq: true}}}, limit: 1) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                subtitle
+                author
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
         allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
@@ -28,8 +56,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 banner {
                   childImageSharp {
                     fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
                       src
                       srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
                     }
                   }
                 }
@@ -65,13 +99,14 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const siteUrl = result.data.site.siteMetadata.siteUrl
-  const postsPerPage = 5
+  const postsPerPage = 6
   const categoryPathPrefix = '/category/'
   const authorPathPrefix = '/author/'
 
   const posts = result.data.allMarkdownRemark.edges
   const catrgories = result.data.allCategoriesJson.edges
   const authors = result.data.allAuthorsJson.edges
+  const featured = _.head(result.data.featured.edges)
 
   // Create blog lists pages.
   const numPages = Math.ceil(posts.length / postsPerPage)
@@ -85,6 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
         skip: i * postsPerPage,
         numPages,
         currentPage: i + 1,
+        featured: i === 0 ? featured : null,
       },
     })
   })
@@ -142,6 +178,32 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
           }
+          banner: allMarkdownRemark(
+            sort: {fields: [frontmatter___date], order: DESC}
+            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
+            limit: 1
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  banner {
+                    childImageSharp {
+                      fluid(maxWidth: 1000, quality: 90) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       `
     )
@@ -163,6 +225,7 @@ exports.createPages = async ({ graphql, actions }) => {
           pathPrefix,
           regex: `/${category.node.key}/`,
           skip: i * postsPerPage,
+          banner: _.head(categoryResult.data.banner.edges)
         },
       })
     })
@@ -182,6 +245,20 @@ exports.createPages = async ({ graphql, actions }) => {
                 frontmatter {
                   title
                 }
+              }
+            }
+          }
+          banner: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
               }
             }
           }
@@ -205,6 +282,7 @@ exports.createPages = async ({ graphql, actions }) => {
           pathPrefix,
           regex: `/${author.node.user}/`,
           skip: i * postsPerPage,
+          banner: authorResult.data.banner
         },
       })
     })
