@@ -10,6 +10,7 @@ import Card from '../components/card'
 import Chip from '../components/chip'
 import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
+import SEO from '../components/seo'
 
 interface IProps {
   location: object
@@ -59,6 +60,14 @@ const AuthorBlog: React.SFC<IProps> = props => {
   return (
     <>
       <Helmet title={authorName} />
+      <SEO
+        title={authorName}
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
       <Chip name={authorFirstName} desc={authorLastName} />
       <Box mb={3}>
         <Navbar
