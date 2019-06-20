@@ -83,7 +83,7 @@ const Component: React.SFC<IProps> = props => {
   const cardTitle = <Heading fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`}>{title}</Heading>
 
   return (
-    <Card backgroundColor={`rgb(255, 255, 255)`} borderRadius={6} boxShadow={`0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)`}>
+    <Card backgroundColor={`rgb(255, 255, 255)`} borderRadius={6} boxShadow={`0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`}>
       <GlobalStyle />
       <Box>
         {slug ? <Link href={slug}>{cardBanner}</Link> : cardBanner}

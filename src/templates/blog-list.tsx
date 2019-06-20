@@ -1,14 +1,13 @@
 import React from 'react'
 
-import head from 'lodash/head'
 import filter from 'lodash/filter'
+import head from 'lodash/head'
 
 import { graphql } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 
-import { Box, Flex, Heading, Link, Text } from 'rebass'
+import { Box, Flex, Text } from 'rebass'
 
-import App from '../components/new/app'
 import Card from '../components/new/card'
 import Featured from '../components/new/featured'
 
