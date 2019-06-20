@@ -1,12 +1,15 @@
-import { graphql } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
+
+import { Box, Flex } from 'rebass'
+
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
-import { Card } from '../components/card'
 import { Chip } from '../components/chip'
+import Card from '../components/new/card'
 
 interface PropsInterface {
   location: object
@@ -37,145 +40,47 @@ interface PropsInterface {
 }
 
 const AuthorList: React.SFC<PropsInterface> = props => {
-  const siteTitle = props.data.site.siteMetadata.title
-  const siteUrl = props.data.site.siteMetadata.siteUrl
-  const siteAuthor = props.data.site.siteMetadata.author
-  const siteDescription = props.data.site.siteMetadata.description
-  const facebookAppID = props.data.site.siteMetadata.fbApp
-
   const {authors = []} = props.pageContext
 
   return (
-    <>
-      <Helmet
-        htmlAttributes={{lang: 'en'}}
-        meta={[
-          {
-            content: `${siteTitle} · Authors`,
-            name: 'name',
-          },
-          {
-            content: siteDescription,
-            name: 'description',
-          },
-          {
-            content: siteAuthor,
-            name: 'author',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'image',
-          },
-          {
-            content: siteUrl,
-            property: 'og:url',
-          },
-          {
-            content: 'website',
-            property: 'og:type',
-          },
-          {
-            content: 'th_TH',
-            property: 'og:locale',
-          },
-          {
-            content: 'en_US',
-            property: 'og:locale:alternate',
-          },
-          {
-            content: `${siteTitle} · Authors`,
-            property: 'og:title',
-          },
-          {
-            content: siteDescription,
-            property: 'og:description',
-          },
-          {
-            content: facebookAppID,
-            property: 'fb:app_id',
-          },
-          {
-            content: 'https://facebook.com/rayriffy',
-            property: 'article:author',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            property: 'og:image',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            property: 'og:image:secure_url',
-          },
-          {
-            content: 'banner',
-            property: 'og:image:alt',
-          },
-          {
-            content: '1500',
-            property: 'og:image:width',
-          },
-          {
-            content: '788',
-            property: 'og:image:height',
-          },
-          {
-            content: 'summary_large_image',
-            name: 'twitter:card',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:site',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:creator',
-          },
-          {
-            content: `${siteTitle} · Authors`,
-            name: 'twitter:title',
-          },
-          {
-            content: siteDescription,
-            name: 'twitter:description',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'twitter:image',
-          },
-        ]}
-        title={`${siteTitle} · Authors`}>
-        <script type="application/ld+json" data-react-helmet="true">
-          {`
-            {
-              "@context": "http://schema.org/",
-              "@type" : "Website",
-              "url" : "${siteUrl}"
-            }
-          `}
-        </script>
-      </Helmet>
+    <Box mb={4}>
+      <Helmet title={`Authors`} />
       <Chip name="Authors" />
-      {authors.map(author => {
-        return (
-          <Card
-            key={`author-${author.user}`}
-            slug={`/author/${author.user}`}
-            banner={author.banner.childImageSharp.fluid}
-            title={author.name}
-            link={true}>
-            <FaFacebook />{' '}
-            <a href={author.facebook} rel="noopener noreferrer" target="_blank">
-              {author.facebook.split('/')[3]}
-            </a>
-            <br />
-            <FaTwitter />{' '}
-            <a href={'https://twitter.com/' + author.twitter.split('@')[1]} rel="noopener noreferrer" target="_blank">
-              {author.twitter}
-            </a>
-          </Card>
-        )
-      })}
-    </>
+      <Box>
+        <Flex justifyContent={`center`}>
+          <Box width={[22/24, 22/24, 20/24, 18/24]}>
+            <Flex flexWrap={`wrap`}>
+              {authors.map(author => {
+                return (
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`author-${author.user}`}>
+                    <Card
+                      slug={`/author/${author.user}`}
+                      blog={{
+                        banner: author.banner,
+                        title: author.name,
+                      }}
+                      type={`listing`}
+                    >
+                      <Box px={4} pb={4}>
+                        <FaFacebook />{' '}
+                        <a href={author.facebook} rel="noopener noreferrer" target="_blank">
+                          {author.facebook.split('/')[3]}
+                        </a>
+                        <br />
+                        <FaTwitter />{' '}
+                        <a href={'https://twitter.com/' + author.twitter.split('@')[1]} rel="noopener noreferrer" target="_blank">
+                          {author.twitter}
+                        </a>
+                      </Box>
+                    </Card>
+                  </Box>
+                )
+              })}
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
+    </Box>
   )
 }
 

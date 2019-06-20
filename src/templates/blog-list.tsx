@@ -6,10 +6,11 @@ import head from 'lodash/head'
 import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
-import { Box, Flex, Text } from 'rebass'
+import { Box, Flex } from 'rebass'
 
 import Card from '../components/new/card'
 import Featured from '../components/new/featured'
+import Pagination from '../components/new/pagination'
 
 interface IPost {
   node : {
@@ -42,6 +43,7 @@ interface IAuthor {
 interface IProps {
   pageContext: {
     currentPage: number
+    numPages: number
   }
   data: {
     allMarkdownRemark: {
@@ -56,7 +58,7 @@ interface IProps {
 const MockPage: React.SFC<IProps> = props => {
   const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
-  const {currentPage} = props.pageContext
+  const {numPages, currentPage} = props.pageContext
 
   return (
     <>
@@ -91,7 +93,7 @@ const MockPage: React.SFC<IProps> = props => {
         </Flex>
       </Box>
       <Box my={3}>
-        <Text color={`red`} textAlign={`center`}>[WARN] Missing pagination</Text>
+      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix="/" />
       </Box>
     </>
   )

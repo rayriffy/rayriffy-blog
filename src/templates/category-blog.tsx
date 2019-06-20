@@ -1,12 +1,25 @@
-import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import filter from 'lodash/filter'
+import head from 'lodash/head'
+
+import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
-import { Card } from '../components/card'
+import { Box, Flex } from 'rebass'
+
 import { Chip } from '../components/chip'
-import { Pagination } from '../components/pagination'
+import Card from '../components/new/card'
+import Pagination from '../components/new/pagination'
+
+interface IAuthor {
+  node: {
+    user: string
+    name: string
+    facebook: string
+  }
+}
 
 interface PropsInterface {
   location: object
@@ -48,13 +61,7 @@ interface PropsInterface {
       }[]
     }
     allAuthorsJson: {
-      edges: {
-        node: {
-          user: string
-          name: string
-          facebook: string
-        }
-      }[]
+      edges: IAuthor[]
     }
     categoriesJson: {
       name: string
@@ -64,144 +71,38 @@ interface PropsInterface {
 }
 
 const CategoryBlog: React.SFC<PropsInterface> = props => {
-  const siteTitle = props.data.site.siteMetadata.title
-  const siteUrl = props.data.site.siteMetadata.siteUrl
-  const siteAuthor = props.data.site.siteMetadata.author
+  const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
   const categoryName = props.data.categoriesJson.name
   const categoryDescription = props.data.categoriesJson.desc
-  const bannerUrl = posts[0].node.frontmatter.banner.childImageSharp.fluid.src
+
   const {currentPage, numPages, pathPrefix} = props.pageContext
-  const facebookAppID = props.data.site.siteMetadata.fbApp
 
   return (
     <>
-      <Helmet
-        htmlAttributes={{lang: 'en'}}
-        meta={[
-          {
-            content: `${siteTitle} · ${categoryName}`,
-            name: 'name',
-          },
-          {
-            content: categoryDescription,
-            name: 'description',
-          },
-          {
-            content: siteAuthor,
-            name: 'author',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            name: 'image',
-          },
-          {
-            content: siteUrl,
-            property: 'og:url',
-          },
-          {
-            content: 'article',
-            property: 'og:type',
-          },
-          {
-            content: 'th_TH',
-            property: 'og:locale',
-          },
-          {
-            content: 'en_US',
-            property: 'og:locale:alternate',
-          },
-          {
-            content: `${siteTitle} · ${categoryName}`,
-            property: 'og:title',
-          },
-          {
-            content: categoryDescription,
-            property: 'og:description',
-          },
-          {
-            content: facebookAppID,
-            property: 'fb:app_id',
-          },
-          {
-            content: 'https://facebook.com/rayriffy',
-            property: 'article:author',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            property: 'og:image',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            property: 'og:image:secure_url',
-          },
-          {
-            content: 'banner',
-            property: 'og:image:alt',
-          },
-          {
-            content: 'summary_large_image',
-            name: 'twitter:card',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:site',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:creator',
-          },
-          {
-            content: `${siteTitle} · ${categoryName}`,
-            name: 'twitter:title',
-          },
-          {
-            content: categoryDescription,
-            name: 'twitter:description',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            name: 'twitter:image',
-          },
-        ]}
-        title={`${siteTitle} · ${categoryName}`}>
-        <script type="application/ld+json" data-react-helmet="true">
-          {`
-            {
-              "@context": "http://schema.org/",
-              "@type" : "Website",
-              "url" : "${siteUrl}"
-            }
-          `}
-        </script>
-      </Helmet>
+      <Helmet title={categoryName} />
       <Chip name={categoryName} desc={categoryDescription} />
-      {posts.map(({node}) => {
-        let author = {
-          facebook: 'def',
-          name: 'def',
-          user: 'def',
-        }
-        props.data.allAuthorsJson.edges.forEach(authorJson => {
-          if (authorJson.node.user === node.frontmatter.author) {
-            author = authorJson.node
-            return true
-          }
-        })
-        return (
-          <Card
-            key={node.fields.slug}
-            slug={node.fields.slug}
-            author={author}
-            banner={node.frontmatter.banner.childImageSharp.fluid}
-            title={node.frontmatter.title}
-            date={node.frontmatter.date}
-            subtitle={node.frontmatter.subtitle}
-            featured={node.frontmatter.featured}
-            link={true}
-          />
-        )
-      })}
+      <Box>
+        <Flex justifyContent={`center`}>
+          <Box width={[22/24, 22/24, 20/24, 18/24]}>
+            <Flex flexWrap={`wrap`}>
+              {posts.map(post => {
+                const {fields, frontmatter} = post.node
+                const {slug} = fields
+                const {author} = frontmatter
+
+                const fetchedAuthor: IAuthor | any = head(filter(authors, (o: IAuthor) => o.node.user === author))
+
+                return (
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${currentPage}-${slug}`}>
+                    <Card key={slug} slug={slug} author={fetchedAuthor.node} blog={frontmatter} type={`listing`} />
+                  </Box>
+                )
+              })}
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
       <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
     </>
   )

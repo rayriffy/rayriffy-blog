@@ -1,13 +1,15 @@
-import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
-import { Card } from '../components/card'
+import { Box, Flex } from 'rebass'
+
 import { Chip } from '../components/chip'
-import { Navbar } from '../components/navbar'
-import { Pagination } from '../components/pagination'
+import Card from '../components/new/card'
+import Navbar from '../components/new/navbar'
+import Pagination from '../components/new/pagination'
 
 interface PropsInterface {
   location: object
@@ -56,158 +58,52 @@ interface PropsInterface {
 }
 
 const AuthorBlog: React.SFC<PropsInterface> = props => {
-  const siteTitle = props.data.site.siteMetadata.title
-  const siteUrl = props.data.site.siteMetadata.siteUrl
-  const siteAuthor = props.data.site.siteMetadata.author
   const posts = props.data.allMarkdownRemark.edges
   const author = props.data.authorsJson
   const authorName = author.name
-  const authorDescription = 'List of blogs wriiten by ' + authorName
-  const bannerUrl = props.data[author.user].childImageSharp.fluid.src
+
   const {currentPage, numPages, pathPrefix} = props.pageContext
-  const facebookAppID = props.data.site.siteMetadata.fbApp
   const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
+
   return (
     <>
-      <Helmet
-        htmlAttributes={{lang: 'en'}}
-        meta={[
-          {
-            content: `${siteTitle} · ${authorName}`,
-            name: 'name',
-          },
-          {
-            content: authorDescription,
-            name: 'description',
-          },
-          {
-            content: siteAuthor,
-            name: 'author',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            name: 'image',
-          },
-          {
-            content: siteUrl,
-            property: 'og:url',
-          },
-          {
-            content: 'article',
-            property: 'og:type',
-          },
-          {
-            content: 'th_TH',
-            property: 'og:locale',
-          },
-          {
-            content: 'en_US',
-            property: 'og:locale:alternate',
-          },
-          {
-            content: `${siteTitle} · ${authorName}`,
-            property: 'og:title',
-          },
-          {
-            content: authorDescription,
-            property: 'og:description',
-          },
-          {
-            content: facebookAppID,
-            property: 'fb:app_id',
-          },
-          {
-            content: author.facebook,
-            property: 'article:author',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            property: 'og:image',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            property: 'og:image:secure_url',
-          },
-          {
-            content: 'banner',
-            property: 'og:image:alt',
-          },
-          {
-            content: '1500',
-            property: 'og:image:width',
-          },
-          {
-            content: '788',
-            property: 'og:image:height',
-          },
-          {
-            content: 'summary_large_image',
-            name: 'twitter:card',
-          },
-          {
-            content: author.twitter,
-            name: 'twitter:site',
-          },
-          {
-            content: author.twitter,
-            name: 'twitter:creator',
-          },
-          {
-            content: `${siteTitle} · ${authorName}`,
-            name: 'twitter:title',
-          },
-          {
-            content: authorDescription,
-            name: 'twitter:description',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            name: 'twitter:image',
-          },
-        ]}
-        title={`${siteTitle} · ${authorName}`}>
-        <script type="application/ld+json" data-react-helmet="true">
-          {`
-            {
-              "@context": "http://schema.org/",
-              "@type" : "Website",
-              "url" : "${siteUrl}"
-            }
-          `}
-        </script>
-      </Helmet>
+      <Helmet title={authorName} />
       <Chip name={authorFirstName} desc={authorLastName} />
-      <Navbar
-        align="center"
-        keys="navAuthor"
-        tabs={[
-          {
-            href: author.facebook,
-            name: 'Facebook',
-            newtab: true,
-          },
-          {
-            href: 'https://twitter.com/' + author.twitter.split('@')[1],
-            name: 'Twitter',
-            newtab: true,
-          },
-        ]}
-      />
-      {posts.map(({node}) => {
-        return (
-          <Card
-            key={node.fields.slug}
-            slug={node.fields.slug}
-            author={props.data.authorsJson}
-            banner={node.frontmatter.banner.childImageSharp.fluid}
-            title={node.frontmatter.title}
-            date={node.frontmatter.date}
-            subtitle={node.frontmatter.subtitle}
-            featured={node.frontmatter.featured}
-            link={true}
-          />
-        )
-      })}
+      <Box mb={3}>
+        <Navbar
+          align={`center`}
+          tabs={[
+            {
+              href: author.facebook,
+              name: 'Facebook',
+            },
+            {
+              href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              name: 'Twitter',
+            },
+          ]}
+        />
+      </Box>
+      <Box>
+        <Flex justifyContent={`center`}>
+          <Box width={[22/24, 22/24, 20/24, 18/24]}>
+            <Flex flexWrap={`wrap`}>
+              {posts.map(({node}) => {
+                return (
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={node.fields.slug}>
+                    <Card
+                      slug={node.fields.slug}
+                      author={props.data.authorsJson}
+                      blog={node.frontmatter}
+                      type={`listing`}
+                    />
+                  </Box>
+                )
+              })}
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
       <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
     </>
   )

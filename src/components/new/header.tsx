@@ -21,7 +21,7 @@ const Component: React.SFC = () => {
   ]
 
   return (
-    <Box mt={[4, 4, 5, 5]} mb={4} backgroundColor={`rgba(245, 245, 245, 1)`}>
+    <Box mt={[4, 4, 5, 5]} mb={4}>
       <Flex justifyContent={`center`}>
         <Box width={[1/6, 1/8, 1/10, 1/15]} mb={3}>
           <Link href={`/`}>

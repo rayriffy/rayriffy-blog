@@ -10,7 +10,7 @@ import { Box, Flex, Link, Text } from 'rebass'
 
 import Card from '../components/new/card'
 
-interface PropsInterface {
+interface IProps {
   pageContext: {
     next: {
       fields: {
@@ -57,7 +57,7 @@ interface PropsInterface {
   }
 }
 
-const BlogPost: React.SFC<PropsInterface> = props => {
+const BlogPost: React.SFC<IProps> = props => {
   const {previous, next} = props.pageContext
   const {authorsJson, markdownRemark} = props.data
 
@@ -120,7 +120,6 @@ export default BlogPost
 export const pageQuery = graphql`
   query BlogPostBySlug($author: String!, $slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
-      id
       html
       fields {
         slug

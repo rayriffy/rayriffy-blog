@@ -5,6 +5,7 @@ import { graphql, StaticQuery } from 'gatsby'
 
 import { createGlobalStyle } from 'styled-components'
 
+import Dev from './dev'
 import Footer from './footer'
 import Header from './header'
 
@@ -35,6 +36,7 @@ const HelmetRenderer = (data: IData) => {
 
 const Component: React.SFC = props => {
   const {children} = props
+  const {GATSBY_ENV = 'development'} = process.env
 
   return (
     <>
@@ -51,6 +53,7 @@ const Component: React.SFC = props => {
       render={HelmetRenderer}
       />
       <GlobalStyle />
+      {GATSBY_ENV !== 'production' ? <Dev /> : null}
       <Header />
       {children}
       <Footer />

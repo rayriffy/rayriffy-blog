@@ -11,14 +11,14 @@ interface IProps {
   blog: {
     title: string
     subtitle?: string
-    date: string
+    date?: string
     banner: {
       childImageSharp: {
         fluid: FluidObject
       }
     }
   }
-  author: {
+  author?: {
     name: string
     user: string
   }
@@ -91,11 +91,11 @@ const Component: React.SFC<IProps> = props => {
       <Box p={4}>
         {slug ? <Link href={slug}>{cardTitle}</Link> : cardTitle}
         {date && author ? (
-          <Text my={3} fontSize={[14, 16]} color={`rgba(0, 0, 0, 0.6)`}>
+          <Text fontSize={[14, 16]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>
             Written by <Link href={'/author/' + author.user} color={`rgba(0, 0, 0, 0.8)`}>{author.name}</Link> on {date}
           </Text>
         ) : null}
-        {subtitle ? <Text fontSize={[16, 17]} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text> : null}
+        {subtitle ? <Text fontSize={[16, 17]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text> : null}
       </Box>
       {children}
     </Card>
