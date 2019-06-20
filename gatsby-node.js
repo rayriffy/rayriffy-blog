@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const siteUrl = result.data.site.siteMetadata.siteUrl
-  const postsPerPage = 5
+  const postsPerPage = 6
   const categoryPathPrefix = '/category/'
   const authorPathPrefix = '/author/'
 
