@@ -28,8 +28,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 banner {
                   childImageSharp {
                     fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
                       src
                       srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
                     }
                   }
                 }

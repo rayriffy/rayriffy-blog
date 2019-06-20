@@ -6,6 +6,6 @@ export const onServiceWorkerUpdateReady = () => {
   window.location.reload()
 }
 
-export const wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>
-}
+// export const wrapPageElement = ({ element, props }) => {
+//   return <Layout {...props}>{element}</Layout>
+// }
