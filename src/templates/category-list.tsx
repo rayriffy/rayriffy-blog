@@ -7,6 +7,7 @@ import { Box, Flex } from 'rebass'
 
 import Card from '../components/card'
 import Chip from '../components/chip'
+import SEO from '../components/seo'
 
 interface IProps {
   pageContext: {
@@ -29,6 +30,14 @@ const CategoryList: React.SFC<IProps> = props => {
   return (
     <Box mb={4}>
       <Helmet title={`Category`} />
+      <SEO
+        title='Category'
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
       <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
       <Flex justifyContent={`center`}>
         <Box width={[22/24, 22/24, 20/24, 18/24]}>
