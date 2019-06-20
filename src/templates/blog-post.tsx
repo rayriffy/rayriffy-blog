@@ -9,6 +9,7 @@ import AdSense from 'react-adsense'
 import { Box, Flex, Link, Text } from 'rebass'
 
 import Card from '../components/card'
+import SEO from '../components/seo'
 
 interface IProps {
   pageContext: {
@@ -61,13 +62,28 @@ const BlogPost: React.SFC<IProps> = props => {
   const {previous, next} = props.pageContext
   const {authorsJson, markdownRemark} = props.data
 
+  const {slug} = markdownRemark.fields
+  const {title, subtitle, date, banner} = markdownRemark.frontmatter
+
   const {GATSBY_ENV = 'development'} = process.env
 
   return (
     <Flex justifyContent={`center`}>
-      <Helmet title={markdownRemark.frontmatter.title} />
+      <Helmet title={title} />
+      <SEO
+        title={title}
+        subtitle={subtitle}
+        banner={banner.childImageSharp.fluid.src}
+        author={authorsJson}
+        slug={slug}
+        date={date}
+      />
       <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
-        <Card author={authorsJson} blog={markdownRemark.frontmatter} type={`post`}>
+        <Card author={authorsJson} blog={{
+          banner,
+          date,
+          title,
+        }} type={`post`}>
           <Box px={[4, 5]}>
             <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
           </Box>
@@ -126,6 +142,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        subtitle
         date(formatString: "DD MMMM, YYYY")
         banner {
           childImageSharp {

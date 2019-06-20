@@ -4,12 +4,14 @@ import Helmet from 'react-helmet'
 import { graphql, StaticQuery } from 'gatsby'
 
 interface IData {
-  siteMetadata: {
-    title: string
-    description: string
-    author: string
-    siteUrl: string
-    fbApp: string
+  site: {
+    siteMetadata: {
+      title: string
+      description: string
+      author: string
+      siteUrl: string
+      fbApp: string
+    }
   }
 }
 
@@ -27,7 +29,8 @@ interface IProps {
 }
 
 const SEORenderer = (data: IData, props: IProps) => {
-  const {siteMetadata} = data
+  console.log(props)
+  const {siteMetadata} = data.site
   const {title = siteMetadata.title, subtitle = siteMetadata.description, banner = '/default.jpg', author, slug = '', date} = props
   const {name = siteMetadata.author, facebook = 'https://facebook.com/rayriffy', twitter = '@rayriffy'} = author
 
@@ -179,11 +182,15 @@ const Component: React.SFC<IProps> = props => {
           site {
             siteMetadata {
               title
+              author
+              description
+              siteUrl
+              fbApp
             }
           }
         }
       `}
-// tslint:disable-next-line: jsx-no-lambda
+      // tslint:disable-next-line: jsx-no-lambda
       render={data => SEORenderer(data, props)}
     />
   )
