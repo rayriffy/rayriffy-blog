@@ -12,6 +12,7 @@ import { Box, Flex } from 'rebass'
 import Card from '../components/card'
 import Chip from '../components/chip'
 import Pagination from '../components/pagination'
+import SEO from '../components/seo'
 
 interface IAuthor {
   node: {
@@ -72,6 +73,14 @@ const CategoryBlog: React.SFC<IProps> = props => {
   return (
     <>
       <Helmet title={categoryName} />
+      <SEO
+        title={categoryName}
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
       <Chip name={categoryName} desc={categoryDescription} />
       <Box>
         <Flex justifyContent={`center`}>
