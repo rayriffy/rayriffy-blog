@@ -1,9 +1,12 @@
 import React from 'react'
 
+import head from 'lodash/head'
+import filter from 'lodash/filter'
+
 import { graphql } from 'gatsby'
 import Img, { FluidObject } from 'gatsby-image'
 
-import { Box, Card, Flex, Heading, Text } from 'rebass'
+import { Box, Card, Flex, Heading, Link, Text } from 'rebass'
 
 import App from '../components/new/app'
 import Featured from '../components/new/featured'
@@ -51,6 +54,7 @@ interface IProps {
 }
 
 const MockPage: React.SFC<IProps> = props => {
+  const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
   const {currentPage} = props.pageContext
 
@@ -74,6 +78,8 @@ const MockPage: React.SFC<IProps> = props => {
                 const {slug} = fields
                 const {title, banner, subtitle, author, date} = frontmatter
 
+                const fetchedAuthor: IAuthor | any = head(filter(authors, o => o.node.user === author))
+
                 return (
                   <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${currentPage}-${slug}`}>
                     <Card backgroundColor={`rgb(255, 255, 255)`}>
@@ -81,8 +87,13 @@ const MockPage: React.SFC<IProps> = props => {
                         <Img fluid={banner.childImageSharp.fluid} />
                       </Box>
                       <Box p={4}>
-                        <Heading>{title}</Heading>
-                        <Text mt={4} fontSize={18} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text>
+                        <Heading fontSize={[24, 26, 28, 30]}>{title}</Heading>
+                        {date && author ? (
+                          <Text my={3} fontSize={[14, 16]} color={`rgba(0, 0, 0, 0.6)`}>
+                            Written by <Link href={'/author/' + fetchedAuthor.node.user} color={`rgba(0, 0, 0, 0.8)`}>{fetchedAuthor.node.name}</Link> on {date}
+                          </Text>
+                        ) : null}
+                        <Text fontSize={[16, 18]} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text>
                       </Box>
                     </Card>
                   </Box>

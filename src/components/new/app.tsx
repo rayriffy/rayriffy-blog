@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
   html {
     background-color: #f5f5f5;
   }
+  a {
+    text-decoration: none;
+    color: rgb(83, 106, 144);
+  }
 `
 
 const HelmetRenderer = (data: IData) => {
