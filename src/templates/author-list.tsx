@@ -1,7 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
@@ -10,6 +9,7 @@ import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
 import Card from '../components/card'
 import Chip from '../components/chip'
+import SEO from '../components/seo'
 
 interface IProps {
   pageContext: {
@@ -33,6 +33,14 @@ const AuthorList: React.SFC<IProps> = props => {
   return (
     <Box mb={4}>
       <Helmet title={`Authors`} />
+      <SEO
+        title='Authors'
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
       <Chip name="Authors" />
       <Box>
         <Flex justifyContent={`center`}>
