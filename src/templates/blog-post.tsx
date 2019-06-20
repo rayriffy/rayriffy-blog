@@ -66,7 +66,7 @@ const BlogPost: React.SFC<IProps> = props => {
   return (
     <Flex justifyContent={`center`}>
       <Helmet title={markdownRemark.frontmatter.title} />
-      <Box width={[20/24, 18/24, 14/24, 12/24]}>
+      <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
         <Card author={authorsJson} blog={markdownRemark.frontmatter} type={`post`}>
           <Box px={[4, 5]}>
             <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
