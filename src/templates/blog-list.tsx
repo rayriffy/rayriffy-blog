@@ -11,6 +11,7 @@ import { Box, Flex } from 'rebass'
 import Card from '../components/card'
 import Featured from '../components/featured'
 import Pagination from '../components/pagination'
+import SEO from '../components/seo'
 
 interface IPost {
   node : {
@@ -62,6 +63,13 @@ const MockPage: React.SFC<IProps> = props => {
 
   return (
     <>
+      <SEO
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
       {currentPage === 1 ? (
         <Box my={4}>
           <Flex justifyContent={`center`}>
