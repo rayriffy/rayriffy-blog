@@ -10,7 +10,7 @@ import { FluidObject } from 'gatsby-image'
 import { Box, Flex } from 'rebass'
 
 import Card from '../components/card'
-import Chip from '../components/chip'
+import Featured from '../components/featured'
 import Pagination from '../components/pagination'
 import SEO from '../components/seo'
 
@@ -22,35 +22,38 @@ interface IAuthor {
   }
 }
 
+interface IPost {
+  node: {
+    excerpt: string
+    fields: {
+      slug: string
+    }
+    frontmatter: {
+      date: string
+      title: string
+      subtitle: string
+      featured: boolean
+      author: string
+      banner: {
+        childImageSharp: {
+          fluid: FluidObject
+        }
+      }
+    }
+  }
+}
+
 interface IProps {
   pageContext: {
     currentPage: number
     numPages: number
     pathPrefix: string
+    banner: IPost
   }
   data: {
     allMarkdownRemark: {
       totalCount: number
-      edges: {
-        node: {
-          excerpt: string
-          fields: {
-            slug: string
-          }
-          frontmatter: {
-            date: string
-            title: string
-            subtitle: string
-            featured: boolean
-            author: string
-            banner: {
-              childImageSharp: {
-                fluid: FluidObject
-              }
-            }
-          }
-        }
-      }[]
+      edges: IPost[]
     }
     allAuthorsJson: {
       edges: IAuthor[]
@@ -68,7 +71,7 @@ const CategoryBlog: React.SFC<IProps> = props => {
   const categoryName = props.data.categoriesJson.name
   const categoryDescription = props.data.categoriesJson.desc
 
-  const {currentPage, numPages, pathPrefix} = props.pageContext
+  const {currentPage, numPages, pathPrefix, banner} = props.pageContext
 
   return (
     <>
@@ -81,7 +84,18 @@ const CategoryBlog: React.SFC<IProps> = props => {
           twitter: '@rayriffy',
         }}
         type={`page`} />
-      <Chip name={categoryName} desc={categoryDescription} />
+      <Box my={4}>
+        <Flex justifyContent={`center`}>
+          <Box width={[1, 18/24, 16/24, 14/24]}>
+            <Featured
+              title={categoryName}
+              subtitle={categoryDescription}
+              banner={banner.node.frontmatter.banner}
+              featured={false}
+            />
+          </Box>
+        </Flex>
+      </Box>
       <Box>
         <Flex justifyContent={`center`}>
           <Box width={[22/24, 22/24, 20/24, 18/24]}>

@@ -45,6 +45,7 @@ interface IProps {
   pageContext: {
     currentPage: number
     numPages: number
+    featured: IPost
   }
   data: {
     allMarkdownRemark: {
@@ -59,7 +60,7 @@ interface IProps {
 const MockPage: React.SFC<IProps> = props => {
   const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
-  const {numPages, currentPage} = props.pageContext
+  const {numPages, currentPage, featured} = props.pageContext
 
   return (
     <>
@@ -74,7 +75,13 @@ const MockPage: React.SFC<IProps> = props => {
         <Box my={4}>
           <Flex justifyContent={`center`}>
             <Box width={[1, 18/24, 16/24, 14/24]}>
-              <Featured />
+              <Featured
+                title={featured.node.frontmatter.title}
+                subtitle={featured.node.frontmatter.subtitle}
+                slug={featured.node.fields.slug}
+                banner={featured.node.frontmatter.banner}
+                featured={true}
+              />
             </Box>
           </Flex>
         </Box>

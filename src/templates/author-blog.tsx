@@ -7,17 +7,21 @@ import { FluidObject } from 'gatsby-image'
 import { Box, Flex } from 'rebass'
 
 import Card from '../components/card'
-import Chip from '../components/chip'
+import Featured from '../components/featured'
 import Navbar from '../components/navbar'
 import Pagination from '../components/pagination'
 import SEO from '../components/seo'
 
 interface IProps {
-  location: object
   pageContext: {
     currentPage: number
     numPages: number
     pathPrefix: string
+    banner: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
   }
   data: {
     allMarkdownRemark: {
@@ -54,21 +58,31 @@ const AuthorBlog: React.SFC<IProps> = props => {
   const author = props.data.authorsJson
   const authorName = author.name
 
-  const {currentPage, numPages, pathPrefix} = props.pageContext
-  const {0: authorFirstName, [authorName.split(' ').length - 1]: authorLastName} = authorName.split(' ')
+  const {currentPage, numPages, pathPrefix, banner} = props.pageContext
 
   return (
     <>
       <Helmet title={authorName} />
       <SEO
         title={authorName}
+        banner={banner.childImageSharp.fluid.src}
         author={{
           facebook: 'https://facebook.com/rayriffy',
           name: 'Phumrapee Limpianchop',
           twitter: '@rayriffy',
         }}
         type={`page`} />
-      <Chip name={authorFirstName} desc={authorLastName} />
+      <Box my={4}>
+        <Flex justifyContent={`center`}>
+          <Box width={[1, 18/24, 16/24, 14/24]}>
+            <Featured
+              title={authorName}
+              banner={banner}
+              featured={false}
+            />
+          </Box>
+        </Flex>
+      </Box>
       <Box mb={3}>
         <Navbar
           align={`center`}
@@ -154,20 +168,6 @@ export const pageQuery = graphql`
               }
             }
           }
-        }
-      }
-    }
-    rayriffy: file(relativePath: {eq: "rayriffy.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 90) {
-          src
-        }
-      }
-    }
-    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 90) {
-          src
         }
       }
     }
