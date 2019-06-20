@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface PropsInterface {
+interface IProps {
   htmlAttributes: object
   headComponents: object[]
   bodyAttributes: object
@@ -9,7 +9,7 @@ interface PropsInterface {
   postBodyComponents: object[]
 }
 
-const HTML: React.SFC<PropsInterface> = props => {
+const HTML: React.SFC<IProps> = props => {
   const {htmlAttributes, headComponents, bodyAttributes, preBodyComponents, body, postBodyComponents} = props
 
   return (

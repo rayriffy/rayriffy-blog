@@ -48,7 +48,7 @@ State commit (จุดปัจจุบันที่กำลังเขี
 
 ### UI Design
 
-เริ่มจากการออกแบบ UI เราจะเลือกใช้ Ant Design ในการออกแบบเว็บ แต่ก็แก้ CSS นิดหน่อยให่ผลลัพธ์ออกมาคล้ายๆ Native app บน iOS
+เริ่มจากการออกแบบ UI เราจะเลือกใช้ Ant Design ในการออกแบบเว็บ แต่ก็แก้ CSS นิดหน่อยให้ผลลัพธ์ออกมาคล้ายๆ Native app บน iOS
 
 ![Home](./home.jpg)
 
@@ -143,7 +143,7 @@ Source: [GitHub](https://github.com/rayriffy/nh-reverse-proxy)
 
 ### Riffy H: Phase 3
 
-งาน Phase 3 ได้เริ่มขึ้นแล้วส แต่อาจจะใช้เวลาเป็นปี โดย Target เพิ่ม features ใหม่ตามนี้ที่คิดได้
+งาน Phase 3 ได้เริ่มขึ้นแล้ว แต่อาจจะใช้เวลาเป็นปี โดย Target เพิ่ม features ใหม่ตามนี้ที่คิดได้
 
 -   Gallery ทั้งหมดจะ import มาจาก NHentai API ตรงๆ เลย
 -   เปิด History ดูว่าล่าสุดเปิดรหัสอะไรไป

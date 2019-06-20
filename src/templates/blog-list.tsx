@@ -1,219 +1,123 @@
-import { graphql } from 'gatsby'
-import _ from 'lodash'
 import React from 'react'
-import Helmet from 'react-helmet'
 
+import filter from 'lodash/filter'
+import head from 'lodash/head'
+
+import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
-import { Card } from '../components/card'
-import { Pagination } from '../components/pagination'
+import { Box, Flex } from 'rebass'
 
-interface PostInterface {
-  fields: {
-    slug: string
-  }
-  frontmatter: {
-    title: string
-    subtitle: string
-    author: string
-    date: string
-    featured: boolean
-    banner: {
-      childImageSharp: {
-        fluid: FluidObject
+import Card from '../components/card'
+import Featured from '../components/featured'
+import Pagination from '../components/pagination'
+import SEO from '../components/seo'
+
+interface IPost {
+  node : {
+    fields: {
+      slug: string
+    }
+    frontmatter: {
+      title: string
+      subtitle: string
+      author: string
+      date: string
+      featured: boolean
+      banner: {
+        childImageSharp: {
+          fluid: FluidObject
+        }
       }
     }
   }
 }
 
-interface PropsInterface {
-  location: object
+interface IAuthor {
+  node: {
+    user: string
+    name: string
+    facebook: string
+  }
+}
+
+interface IProps {
   pageContext: {
     currentPage: number
     numPages: number
+    featured: IPost
   }
   data: {
-    [key: string]: any
-    site: {
-      siteMetadata: {
-        author: string
-        description: string
-        title: string
-        siteUrl: string
-        fbApp: string
-      }
-    }
     allMarkdownRemark: {
-      edges: {
-        node: PostInterface
-      }[]
+      edges: IPost[]
     }
     allAuthorsJson: {
-      edges: {
-        node: {
-          user: string
-          name: string
-          facebook: string
-        }
-      }[]
+      edges: IAuthor[]
     }
   }
 }
 
-const BlogList: React.SFC<PropsInterface> = props => {
-  const siteTitle = props.data.site.siteMetadata.title
-  const siteUrl = props.data.site.siteMetadata.siteUrl
-  const siteAuthor = props.data.site.siteMetadata.author
-  const siteDescription = props.data.site.siteMetadata.description
+const MockPage: React.SFC<IProps> = props => {
+  const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
-  const {currentPage, numPages} = props.pageContext
-  const facebookAppID = props.data.site.siteMetadata.fbApp
+  const {numPages, currentPage, featured} = props.pageContext
 
   return (
     <>
-      <Helmet
-        htmlAttributes={{lang: 'en'}}
-        meta={[
-          {
-            content: siteTitle,
-            name: 'name',
-          },
-          {
-            content: siteDescription,
-            name: 'description',
-          },
-          {
-            content: siteAuthor,
-            name: 'author',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'image',
-          },
-          {
-            content: siteUrl,
-            property: 'og:url',
-          },
-          {
-            content: 'article',
-            property: 'og:type',
-          },
-          {
-            content: 'th_TH',
-            property: 'og:locale',
-          },
-          {
-            content: 'en_US',
-            property: 'og:locale:alternate',
-          },
-          {
-            content: siteTitle,
-            property: 'og:title',
-          },
-          {
-            content: siteDescription,
-            property: 'og:description',
-          },
-          {
-            content: facebookAppID,
-            property: 'fb:app_id',
-          },
-          {
-            content: 'https://facebook.com/rayriffy',
-            property: 'article:author',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            property: 'og:image',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            property: 'og:image:secure_url',
-          },
-          {
-            content: 'banner',
-            property: 'og:image:alt',
-          },
-          {
-            content: '1500',
-            property: 'og:image:width',
-          },
-          {
-            content: '788',
-            property: 'og:image:height',
-          },
-          {
-            content: 'summary_large_image',
-            name: 'twitter:card',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:site',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:creator',
-          },
-          {
-            content: siteTitle,
-            name: 'twitter:title',
-          },
-          {
-            content: siteDescription,
-            name: 'twitter:description',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'twitter:image',
-          },
-        ]}
-        title={siteTitle}>
-        <script type="application/ld+json" data-react-helmet="true">
-          {`
-            {
-              "@context": "http://schema.org/",
-              "@type" : "Website",
-              "url" : "${siteUrl}"
-            }
-          `}
-        </script>
-      </Helmet>
-      {posts.map(post => {
-        const node: PostInterface = post.node
+      <SEO
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
+      {currentPage === 1 ? (
+        <Box my={4}>
+          <Flex justifyContent={`center`}>
+            <Box width={[1, 18/24, 16/24, 14/24]}>
+              <Featured
+                title={featured.node.frontmatter.title}
+                subtitle={featured.node.frontmatter.subtitle}
+                slug={featured.node.fields.slug}
+                banner={featured.node.frontmatter.banner}
+                featured={true}
+              />
+            </Box>
+          </Flex>
+        </Box>
+      ) : null}
+      <Box>
+        <Flex justifyContent={`center`}>
+          <Box width={[22/24, 22/24, 20/24, 18/24]}>
+            <Flex flexWrap={`wrap`}>
+              {posts.map((post: IPost) => {
+                const {fields, frontmatter} = post.node
+                const {slug} = fields
+                const {author} = frontmatter
 
-        const author: any = _.head(_.filter(props.data.allAuthorsJson.edges, o => o.node.user === node.frontmatter.author))
-        return (
-          <Card
-            key={node.fields.slug}
-            slug={node.fields.slug}
-            author={author.node}
-            banner={node.frontmatter.banner.childImageSharp.fluid}
-            title={node.frontmatter.title}
-            date={node.frontmatter.date}
-            subtitle={node.frontmatter.subtitle}
-            featured={node.frontmatter.featured}
-            link={true}
-          />
-        )
-      })}
+                const fetchedAuthor: IAuthor | any = head(filter(authors, (o: IAuthor) => o.node.user === author))
+
+                return (
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${currentPage}-${slug}`}>
+                    <Card author={fetchedAuthor.node} blog={frontmatter} slug={slug} type={`listing`} />
+                  </Box>
+                )
+              })}
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
+      <Box my={3}>
       <Pagination numPages={numPages} currentPage={currentPage} pathPrefix="/" />
+      </Box>
     </>
   )
 }
 
-export default BlogList
+export default MockPage
 
 export const pageQuery = graphql`
-  query blogPageQuery($limit: Int!, $skip: Int!) {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        siteUrl
-        fbApp
-      }
-    }
+  query blogListingQuery($limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
       limit: $limit

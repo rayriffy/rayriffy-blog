@@ -6,3 +6,4 @@ public
 .cache/
 yarn-error.log
 package-lock.json
+src/pages/mock.tsx

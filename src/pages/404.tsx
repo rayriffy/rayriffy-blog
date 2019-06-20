@@ -1,21 +1,15 @@
-import { graphql } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
-import { Card } from '../components/card'
+import { Box, Flex } from 'rebass'
 
-interface PropsInterface {
+import Card from '../components/card'
+
+interface IProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
-        siteUrl: string
-        author: string
-        fbApp: string
-      }
-    }
     banner: {
       childImageSharp: {
         fluid: FluidObject
@@ -24,119 +18,24 @@ interface PropsInterface {
   }
 }
 
-const NotFound: React.SFC<PropsInterface> = props => {
-  const siteTitle = props.data.site.siteMetadata.title
-  const siteUrl = props.data.site.siteMetadata.siteUrl
-  const siteAuthor = props.data.site.siteMetadata.author
-  const facebookAppID = props.data.site.siteMetadata.fbApp
-  const siteDescription = 'Requested page is not exist!'
-  const bannerUrl = props.data.banner.childImageSharp.fluid.src
-
+const NotFound: React.SFC<IProps> = props => {
   return (
-    <>
-      <Helmet
-        htmlAttributes={{lang: 'en'}}
-        meta={[
-          {
-            content: `${siteTitle} · Not Found`,
-            name: 'name',
-          },
-          {
-            content: siteDescription,
-            name: 'description',
-          },
-          {
-            content: siteAuthor,
-            name: 'author',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'image',
-          },
-          {
-            content: siteUrl,
-            property: 'og:url',
-          },
-          {
-            content: 'website',
-            property: 'og:type',
-          },
-          {
-            content: 'th_TH',
-            property: 'og:locale',
-          },
-          {
-            content: 'en_US',
-            property: 'og:locale:alternate',
-          },
-          {
-            content: `${siteTitle} · Not Found`,
-            property: 'og:title',
-          },
-          {
-            content: siteDescription,
-            property: 'og:description',
-          },
-          {
-            content: facebookAppID,
-            property: 'fb:app_id',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            property: 'og:image',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            property: 'og:image:secure_url',
-          },
-          {
-            content: 'banner',
-            property: 'og:image:alt',
-          },
-          {
-            content: '1500',
-            property: 'og:image:width',
-          },
-          {
-            content: '788',
-            property: 'og:image:height',
-          },
-          {
-            content: 'summary_large_image',
-            name: 'twitter:card',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:site',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:creator',
-          },
-          {
-            content: `${siteTitle} · Category`,
-            name: 'twitter:title',
-          },
-          {
-            content: siteDescription,
-            name: 'twitter:description',
-          },
-          {
-            content: siteUrl + bannerUrl,
-            name: 'twitter:image',
-          },
-        ]}
-        title={`${siteTitle} · Not Found`}
-      />
-      <Card
-        slug="/"
-        banner={props.data.banner.childImageSharp.fluid}
-        title="NOT FOUND"
-        subtitle="Whoops! Looks like you&#39;re lost in the woods...with Cirno."
-        link={false}>
-        <a href="/">Back to home</a>
-      </Card>
-    </>
+    <Flex justifyContent={`center`}>
+      <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
+        <Helmet title={'Not Found'} />
+        <Card
+          blog={{
+            banner: props.data.banner,
+            subtitle: 'Whoops! Looks like you&#39;re lost in the woods...with Cirno.',
+            title: 'Not Found',
+          }}
+          type={`post`}>
+            <Box px={[4, 5]} pb={4}>
+              <a href="/">Back to home</a>
+            </Box>
+        </Card>
+      </Box>
+    </Flex>
   )
 }
 
@@ -144,14 +43,6 @@ export default NotFound
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-        author
-        fbApp
-      }
-    }
     banner: file(relativePath: {eq: "404.jpg"}) {
       childImageSharp {
         fluid(maxWidth: 1000, quality: 90) {
