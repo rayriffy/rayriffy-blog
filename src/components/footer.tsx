@@ -1,76 +1,49 @@
 import React from 'react'
 
+import { Box, Flex, Image, Link, Text } from 'rebass'
 import styled from 'styled-components'
 
-import { Navbar } from './navbar'
+import Navbar from './navbar'
 
-const Wraper = styled.footer`
-  margin-top: 35px;
+const Love = styled(Image)`
+  height: 17px;
 `
 
-const NavContainer = styled.div`
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
-  @media only screen and (min-width: 540px) {
-    width: 80%;
-  }
-  
-  @media only screen and (min-width: 960px) {
-    width: 66.67%;
-    max-width: 60rem;
-  }
-`
-
-const FooterContainer = styled.div`
-  text-align: center;
-`
-
-const Love = styled.img`
-  height: 14px;
-  width: auto;
-  margin: 0 0 0 0;
-`
-
-const Footer: React.SFC = () => {
-  const imgUrl = 'https://s.w.org/images/core/emoji/2.4/svg/2764.svg'
-  const faceUrl = 'https://facebook.com/rayriffy'
+const Component: React.SFC = () => {
+  const navTabs = [
+    {
+      href: '/',
+      name: 'Home',
+      newtab: false,
+    },
+    {
+      href: '/author',
+      name: 'Authors',
+      newtab: false,
+    },
+    {
+      href: 'mailto:contact@rayriffy.com',
+      name: 'Contact',
+      newtab: false,
+    },
+  ]
 
   return (
-    <Wraper>
-      <NavContainer>
-        <Navbar
-          align="left"
-          keys="navFooter"
-          tabs={[
-            {
-              href: '/',
-              name: 'Home',
-              newtab: false,
-            },
-            {
-              href: '/author',
-              name: 'Authors',
-              newtab: false,
-            },
-            {
-              href: 'mailto:contact@rayriffy.com',
-              name: 'Contact',
-              newtab: false,
-            },
-          ]}
-        />
-      </NavContainer>
-      <FooterContainer>
-        Built with <Love src={imgUrl} alt="love" /> by{' '}
-        <a href={faceUrl} rel="noopener noreferrer" target="_blank">
-          RayRiffy
-        </a>
-      </FooterContainer>
-    </Wraper>
+    <>
+      <Box mt={2}>
+        <Flex justifyContent={`center`}>
+          <Box width={[22/24, 22/24, 20/24, 18/24]}>
+            <Navbar align={`left`} tabs={navTabs} />
+          </Box>
+        </Flex>
+      </Box>
+      <Box my={4}>
+        <Flex justifyContent={`center`}>
+          <Text>Built with</Text><Love px={1} alt={`love`} src={`https://s.w.org/images/core/emoji/2.4/svg/2764.svg`} /><Text>by <Link href={`https://facebook.com/rayriffy`} color={`rgb(83,106,144)`}>r4yr1ffy</Link></Text>
+        </Flex>
+      </Box>
+    </>
   )
 }
 
-export { Footer }
+export default Component

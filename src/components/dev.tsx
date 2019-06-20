@@ -12,8 +12,8 @@ const Container = styled.div`
   height: 20px;
 `
 
-const Dev: React.SFC = () => {
+const Component: React.SFC = () => {
   return <Container />
 }
 
-export { Dev }
+export default Component

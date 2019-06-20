@@ -1,24 +1,15 @@
-import { graphql } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import { Card } from '../components/card'
-import { Chip } from '../components/chip'
+import { FluidObject } from 'gatsby-image'
 
-interface PropsInterface {
-  location: object
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-        siteUrl: string
-        author: string
-        description: string
-        fbApp: string
-      }
-    }
-  }
+import { Box, Flex } from 'rebass'
+
+import Card from '../components/card'
+import Chip from '../components/chip'
+import SEO from '../components/seo'
+
+interface IProps {
   pageContext: {
     categories: {
       key: string
@@ -33,149 +24,42 @@ interface PropsInterface {
   }
 }
 
-const CategoryList: React.SFC<PropsInterface> = props => {
-  const siteTitle = props.data.site.siteMetadata.title
-  const siteUrl = props.data.site.siteMetadata.siteUrl
-  const siteAuthor = props.data.site.siteMetadata.author
-  const siteDescription = props.data.site.siteMetadata.description
-  const facebookAppID = props.data.site.siteMetadata.fbApp
-
+const CategoryList: React.SFC<IProps> = props => {
   const {categories = []} = props.pageContext
 
   return (
-    <>
-      <Helmet
-        htmlAttributes={{lang: 'en'}}
-        meta={[
-          {
-            content: `${siteTitle} · Category`,
-            name: 'name',
-          },
-          {
-            content: siteDescription,
-            name: 'description',
-          },
-          {
-            content: siteAuthor,
-            name: 'author',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'image',
-          },
-          {
-            content: siteUrl,
-            property: 'og:url',
-          },
-          {
-            content: 'website',
-            property: 'og:type',
-          },
-          {
-            content: 'th_TH',
-            property: 'og:locale',
-          },
-          {
-            content: 'en_US',
-            property: 'og:locale:alternate',
-          },
-          {
-            content: `${siteTitle} · Category`,
-            property: 'og:title',
-          },
-          {
-            content: siteDescription,
-            property: 'og:description',
-          },
-          {
-            content: facebookAppID,
-            property: 'fb:app_id',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            property: 'og:image',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            property: 'og:image:secure_url',
-          },
-          {
-            content: 'banner',
-            property: 'og:image:alt',
-          },
-          {
-            content: '1500',
-            property: 'og:image:width',
-          },
-          {
-            content: '788',
-            property: 'og:image:height',
-          },
-          {
-            content: 'summary_large_image',
-            name: 'twitter:card',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:site',
-          },
-          {
-            content: '@rayriffy',
-            name: 'twitter:creator',
-          },
-          {
-            content: `${siteTitle} · Category`,
-            name: 'twitter:title',
-          },
-          {
-            content: siteDescription,
-            name: 'twitter:description',
-          },
-          {
-            content: `${siteUrl}/default.jpg`,
-            name: 'twitter:image',
-          },
-        ]}
-        title={`${siteTitle} · Category`}>
-        <script type="application/ld+json" data-react-helmet="true">
-          {`
-            {
-              "@context": "http://schema.org/",
-              "@type" : "Website",
-              "url" : "${siteUrl}"
-            }
-          `}
-        </script>
-      </Helmet>
+    <Box mb={4}>
+      <Helmet title={`Category`} />
+      <SEO
+        title='Category'
+        author={{
+          facebook: 'https://facebook.com/rayriffy',
+          name: 'Phumrapee Limpianchop',
+          twitter: '@rayriffy',
+        }}
+        type={`page`} />
       <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
-      {categories.map(category => {
-        return (
-          <Card
-            key={`category-${category.key}`}
-            slug={`/category/${category.key}`}
-            banner={category.banner.childImageSharp.fluid}
-            title={category.name}
-            subtitle={category.desc}
-            link={true}
-          />
-        )
-      })}
-    </>
+      <Flex justifyContent={`center`}>
+        <Box width={[22/24, 22/24, 20/24, 18/24]}>
+          <Flex flexWrap={`wrap`}>
+            {categories.map(category => (
+              <Box width={[1, 1, 1/2, 1/2]} p={3} key={`category-${category.key}`}>
+                <Card
+                  slug={`/category/${category.key}`}
+                  blog={{
+                    banner: category.banner,
+                    subtitle: category.desc,
+                    title: category.name,
+                  }}
+                  type={`post`}
+                />
+              </Box>
+            ))}
+          </Flex>
+        </Box>
+      </Flex>
+    </Box>
   )
 }
 
 export default CategoryList
-
-export const pageQuery = graphql`
-  query categoryPageQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        siteUrl
-        fbApp
-      }
-    }
-  }
-`

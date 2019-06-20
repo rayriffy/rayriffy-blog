@@ -1,75 +1,14 @@
-import { Link } from 'gatsby'
 import React from 'react'
 
-import styled from 'styled-components'
+import { Box, Flex, Link } from 'rebass'
 
-interface PropsInterface {
+interface IProps {
   numPages: number
   currentPage: number
   pathPrefix: string
 }
 
-interface ItemInterface {
-  active: boolean,
-}
-
-const Container = styled.ul`
-  padding: 0;
-  list-style: none;
-  text-align: center;
-  font-size: .001px;
-  margin-top: 25px;
-
-  &:before,
-  &:after {
-    content: "";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-
-  &>li {
-    display: inline-block;
-    font-size: 1rem;
-    vertical-align: top;
-  }
-
-  &>li:nth-child(n+2) {
-    margin-left: 5px;
-  }
-`
-
-const Item = styled.li`
-  &>a {
-    background: transparent;
-    color: #A5A5A5;
-    display: inline-block;
-    min-width: 26px;
-    padding: 5px 5px;
-    line-height: 26px;
-    text-decoration: none;
-    box-sizing: content-box;
-    text-align: center;
-  }
-
-  &>a::hover,
-  &>a::focus {
-    background-color: transparent;
-    color: #222;
-    outline: none;
-  }
-
-  ${(props: ItemInterface) => props.active && `
-    &>a {
-      background-color: transparent;
-      color: #222;
-    }
-  `}
-`
-
-const Pagination: React.SFC<PropsInterface> = props => {
+const Component: React.SFC<IProps> = props => {
   const {numPages, currentPage, pathPrefix} = props
 
   let pagesLen: number
@@ -77,6 +16,7 @@ const Pagination: React.SFC<PropsInterface> = props => {
 
   if (numPages > 5) {
     pagesLen = 5
+
     if (currentPage - 2 < 1) {
       startFrom = 0
     } else if (currentPage + 2 > numPages) {
@@ -90,19 +30,16 @@ const Pagination: React.SFC<PropsInterface> = props => {
   }
 
   return (
-    <Container>
-      {Array.from({length: pagesLen}, (_, i) => (
-        <Item key={`pagination-number${i + 1}`} active={startFrom + i + 1 === currentPage}>
-          <Link
-            to={`${
-              startFrom + i === 0 ? `${pathPrefix}` : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startFrom + i + 1}`
-            }`}>
+    <Box my={4}>
+      <Flex justifyContent={`center`}>
+        {Array.from({length: pagesLen}, (_, i) => (
+          <Link px={3} href={`${startFrom + i === 0 ? `${pathPrefix}` : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startFrom + i + 1}`}`} color={startFrom + i + 1 === currentPage ? `rgba(0, 0, 0, 1)` : `rgba(0, 0, 0, 0.5)`}>
             {startFrom + i + 1}
           </Link>
-        </Item>
-      ))}
-    </Container>
+        ))}
+      </Flex>
+    </Box>
   )
 }
 
-export { Pagination }
+export default Component
