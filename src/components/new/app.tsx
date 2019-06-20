@@ -33,7 +33,7 @@ const HelmetRenderer = (data: IData) => {
   )
 }
 
-const App: React.SFC = props => {
+const Component: React.SFC = props => {
   const {children} = props
 
   return (
@@ -58,4 +58,4 @@ const App: React.SFC = props => {
   )
 }
 
-export default App
+export default Component

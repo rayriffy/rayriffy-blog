@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Layout } from './src/components/layout'
+import App from './src/components/new/app'
 
 export const onServiceWorkerUpdateReady = () => {
   window.location.reload()
 }
 
-// export const wrapPageElement = ({ element, props }) => {
-//   return <Layout {...props}>{element}</Layout>
-// }
+export const wrapPageElement = ({ element, props }) => {
+  return <App {...props}>{element}</App>
+}

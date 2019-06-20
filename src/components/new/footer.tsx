@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Box, Text } from 'rebass'
 
-const Footer: React.SFC = () => {
+const Component: React.SFC = () => {
   return (
     <Box my={4}>
       <Text textAlign={`center`}>Built with love by RayRiffy</Text>
@@ -10,4 +10,4 @@ const Footer: React.SFC = () => {
   )
 }
 
-export default Footer
+export default Component

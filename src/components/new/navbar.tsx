@@ -16,7 +16,7 @@ interface IProps {
   }[]
 }
 
-const Navbar: React.SFC<IProps> = props => {
+const Component: React.SFC<IProps> = props => {
   const { align, tabs } = props
   return (
     <Flex justifyContent={align}>
@@ -33,4 +33,4 @@ const Navbar: React.SFC<IProps> = props => {
   )
 }
 
-export default Navbar
+export default Component

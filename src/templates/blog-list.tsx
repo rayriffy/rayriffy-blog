@@ -60,7 +60,7 @@ const MockPage: React.SFC<IProps> = props => {
   const {currentPage} = props.pageContext
 
   return (
-    <App>
+    <>
       {currentPage === 1 ? (
         <Box my={4}>
           <Flex justifyContent={`center`}>
@@ -83,7 +83,7 @@ const MockPage: React.SFC<IProps> = props => {
 
                 return (
                   <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${currentPage}-${slug}`}>
-                    <Card author={fetchedAuthor.node} blog={frontmatter} slug={slug} />
+                    <Card author={fetchedAuthor.node} blog={frontmatter} slug={slug} type={`listing`} />
                   </Box>
                 )
               })}
@@ -94,7 +94,7 @@ const MockPage: React.SFC<IProps> = props => {
       <Box my={3}>
         <Text color={`red`} textAlign={`center`}>[WARN] Missing pagination</Text>
       </Box>
-    </App>
+    </>
   )
 }
 
