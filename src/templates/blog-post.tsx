@@ -8,7 +8,7 @@ import AdSense from 'react-adsense'
 
 import { Box, Flex, Link, Text } from 'rebass'
 
-import Card from '../components/new/card'
+import Card from '../components/card'
 
 interface IProps {
   pageContext: {

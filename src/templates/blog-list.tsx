@@ -8,9 +8,9 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
 
-import Card from '../components/new/card'
-import Featured from '../components/new/featured'
-import Pagination from '../components/new/pagination'
+import Card from '../components/card'
+import Featured from '../components/featured'
+import Pagination from '../components/pagination'
 
 interface IPost {
   node : {

@@ -27,7 +27,7 @@ const Subtitle = styled.div`
   font-size: 18px;
 `
 
-const Chip: React.SFC<PropsInterface> = props => {
+const Component: React.SFC<PropsInterface> = props => {
   const {name, desc} = props
 
   return (
@@ -38,4 +38,4 @@ const Chip: React.SFC<PropsInterface> = props => {
   )
 }
 
-export { Chip }
+export default Component

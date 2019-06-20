@@ -6,10 +6,10 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
 
-import { Chip } from '../components/chip'
-import Card from '../components/new/card'
-import Navbar from '../components/new/navbar'
-import Pagination from '../components/new/pagination'
+import Card from '../components/card'
+import Chip from '../components/chip'
+import Navbar from '../components/navbar'
+import Pagination from '../components/pagination'
 
 interface PropsInterface {
   location: object

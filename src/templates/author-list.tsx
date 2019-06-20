@@ -8,8 +8,8 @@ import { Box, Flex } from 'rebass'
 
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
-import { Chip } from '../components/chip'
-import Card from '../components/new/card'
+import Card from '../components/card'
+import Chip from '../components/chip'
 
 interface PropsInterface {
   location: object
