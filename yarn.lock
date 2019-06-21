@@ -5086,10 +5086,10 @@ gatsby-link@^2.2.0:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-plugin-feed@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.2.3.tgz#5c1f279b3871c322639fa39ea03c95dac4a6f9b3"
-  integrity sha512-Q42UPtusQ6450envA8227fxDMI6NqNReuUL/VpBR4bfocZCa6/U1gYJovlgypQBApHnBXJ3r3jWUb9sJRyI1XQ==
+gatsby-plugin-feed@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.3.0.tgz#59783ba4385f420c24d1134636868c8db7071fcd"
+  integrity sha512-kolYZVE5EXqHH/SVfezGmAp0PigQLtTsiCcRtBaF2SzRL3zxnW4y7nOtWkwjaaaeIZIIldFSJxKUW0+d17UKew==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fs-extra "^7.0.1"
