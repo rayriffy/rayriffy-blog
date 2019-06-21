@@ -12,7 +12,7 @@ interface IProps {
     title: string
     subtitle?: string
     date?: string
-    banner: {
+    banner?: {
       childImageSharp: {
         fluid: FluidObject
       }
@@ -24,6 +24,7 @@ interface IProps {
   }
   slug?: string
   type: string
+  boxShadow?: string
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -75,19 +76,31 @@ const Banner = styled(Img)`
   border-radius: 6px 6px 0 0;
 `
 
+const BlogCard = styled(Card)`
+  ${props => props.type === 'post' ? `
+    border-radius: 0 0 6px 6px;
+  ` : props.type === 'listing' ? `
+    border-radius: 6px;
+  ` : `
+    border-radius: 6px
+  `}
+`
+
 const Component: React.SFC<IProps> = props => {
-  const {author, blog, children, slug, type} = props
+  const {author, blog, children, slug, type, boxShadow = `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`} = props
   const {title, subtitle, banner, date} = blog
 
-  const cardBanner = <Banner fluid={banner.childImageSharp.fluid} />
+  const cardBanner = banner ? <Banner fluid={banner.childImageSharp.fluid} /> : null
   const cardTitle = <Heading fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`}>{title}</Heading>
 
   return (
-    <Card backgroundColor={`rgb(255, 255, 255)`} borderRadius={6} boxShadow={`0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`}>
+    <BlogCard backgroundColor={`rgb(255, 255, 255)`} type={type} boxShadow={boxShadow}>
       <GlobalStyle />
-      <Box>
-        {slug ? <Link href={slug}>{cardBanner}</Link> : cardBanner}
-      </Box>
+      {banner ? (
+        <Box>
+          {slug ? <Link href={slug}>{cardBanner}</Link> : cardBanner}
+        </Box>
+      ) : null}
       <Box p={4}>
         {slug ? <Link href={slug}>{cardTitle}</Link> : cardTitle}
         {date && author ? (
@@ -98,7 +111,7 @@ const Component: React.SFC<IProps> = props => {
         {subtitle ? <Text fontSize={[16, 17]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text> : null}
       </Box>
       {children}
-    </Card>
+    </BlogCard>
   )
 }
 

@@ -77,7 +77,7 @@ const MockPage: React.SFC<IProps> = props => {
         <>
           <Box my={2}>
             <Flex justifyContent={`center`}>
-              <Box width={[22/24, 22/24, 20/24, 18/24]}>
+              <Box width={[22/24, 22/24, 20/24, 10/24]}>
                 <Warning />
               </Box>
             </Flex>

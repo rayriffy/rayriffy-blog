@@ -2,11 +2,12 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import { graphql } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 
 import AdSense from 'react-adsense'
 
 import { Box, Flex, Link, Text } from 'rebass'
+import styled from 'styled-components'
 
 import App from '../components/app'
 import Card from '../components/card'
@@ -59,6 +60,10 @@ interface IProps {
   }
 }
 
+const Banner = styled(Img)`
+  border-radius: 6px;
+`
+
 const BlogPost: React.SFC<IProps> = props => {
   const {previous, next} = props.pageContext
   const {authorsJson, markdownRemark} = props.data
@@ -70,23 +75,30 @@ const BlogPost: React.SFC<IProps> = props => {
 
   return (
     <App>
+      <Helmet title={title} />
+      <SEO
+        title={title}
+        subtitle={subtitle}
+        banner={banner.childImageSharp.fluid.src}
+        author={authorsJson}
+        slug={slug}
+        date={date}
+        type={`article`}
+      />
       <Flex justifyContent={`center`}>
-        <Helmet title={title} />
-        <SEO
-          title={title}
-          subtitle={subtitle}
-          banner={banner.childImageSharp.fluid.src}
-          author={authorsJson}
-          slug={slug}
-          date={date}
-          type={`article`}
-        />
+        <Box width={[21/24, 19/24, 15/24, 13/24]}>
+          <Banner fluid={banner.childImageSharp.fluid} />
+        </Box>
+      </Flex>
+      <Flex justifyContent={`center`}>
         <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
-          <Card author={authorsJson} blog={{
-            banner,
-            date,
-            title,
-          }} type={`post`}>
+          <Card 
+            author={authorsJson}
+            blog={{
+              date,
+              title,
+            }}
+            type={`post`}>
             <Box px={[4, 5]}>
               <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
             </Box>
