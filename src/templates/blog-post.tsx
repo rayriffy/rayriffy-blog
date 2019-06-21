@@ -8,6 +8,7 @@ import AdSense from 'react-adsense'
 
 import { Box, Flex, Link, Text } from 'rebass'
 
+import App from '../components/app'
 import Card from '../components/card'
 import SEO from '../components/seo'
 
@@ -68,67 +69,69 @@ const BlogPost: React.SFC<IProps> = props => {
   const {GATSBY_ENV = 'development'} = process.env
 
   return (
-    <Flex justifyContent={`center`}>
-      <Helmet title={title} />
-      <SEO
-        title={title}
-        subtitle={subtitle}
-        banner={banner.childImageSharp.fluid.src}
-        author={authorsJson}
-        slug={slug}
-        date={date}
-        type={`article`}
-      />
-      <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
-        <Card author={authorsJson} blog={{
-          banner,
-          date,
-          title,
-        }} type={`post`}>
-          <Box px={[4, 5]}>
-            <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
-          </Box>
-          {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
-            <>
-              <Box px={[4, 5]} py={2}>
-                <hr />
-              </Box>
-              <Box>
-                <AdSense.Google
-                  client="ca-pub-2837414306121160"
-                  slot="7015425171"
-                  format="auto"
-                  responsive="true"
-                />
-              </Box>
-            </>
-          ) : null}
-          <Box px={[4, 5]} py={2}>
-            <hr />
-          </Box>
-          <Box px={[4, 5]} pb={5}>
-            <Flex flexWrap={`wrap`}>
-              <Box width={1/2} px={2}>
-                {previous ? (
-                  <>
-                    <Text color={`rgba(0, 0, 0, 0.8)`}>PREVIOUS</Text>
-                    <Link href={previous.fields.slug} color={`rgb(83,106,144)`}>{previous.frontmatter.title}</Link>
-                  </>
-                ) : null}
-              </Box>
-              <Box width={1/2} px={2}>
-                {next ? (
-                  <>
-                    <Text color={`rgba(0, 0, 0, 0.8)`}>NEXT</Text>
-                    <Link href={next.fields.slug} color={`rgb(83,106,144)`}>{next.frontmatter.title}</Link>
-                  </>
-                ) : null}
-              </Box>
-            </Flex>
-          </Box>
-        </Card>
-      </Box>
-    </Flex>
+    <App>
+      <Flex justifyContent={`center`}>
+        <Helmet title={title} />
+        <SEO
+          title={title}
+          subtitle={subtitle}
+          banner={banner.childImageSharp.fluid.src}
+          author={authorsJson}
+          slug={slug}
+          date={date}
+          type={`article`}
+        />
+        <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
+          <Card author={authorsJson} blog={{
+            banner,
+            date,
+            title,
+          }} type={`post`}>
+            <Box px={[4, 5]}>
+              <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
+            </Box>
+            {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
+              <>
+                <Box px={[4, 5]} py={2}>
+                  <hr />
+                </Box>
+                <Box>
+                  <AdSense.Google
+                    client="ca-pub-2837414306121160"
+                    slot="7015425171"
+                    format="auto"
+                    responsive="true"
+                  />
+                </Box>
+              </>
+            ) : null}
+            <Box px={[4, 5]} py={2}>
+              <hr />
+            </Box>
+            <Box px={[4, 5]} pb={5}>
+              <Flex flexWrap={`wrap`}>
+                <Box width={1/2} px={2}>
+                  {previous ? (
+                    <>
+                      <Text color={`rgba(0, 0, 0, 0.8)`}>PREVIOUS</Text>
+                      <Link href={previous.fields.slug} color={`rgb(83,106,144)`}>{previous.frontmatter.title}</Link>
+                    </>
+                  ) : null}
+                </Box>
+                <Box width={1/2} px={2}>
+                  {next ? (
+                    <>
+                      <Text color={`rgba(0, 0, 0, 0.8)`}>NEXT</Text>
+                      <Link href={next.fields.slug} color={`rgb(83,106,144)`}>{next.frontmatter.title}</Link>
+                    </>
+                  ) : null}
+                </Box>
+              </Flex>
+            </Box>
+          </Card>
+        </Box>
+      </Flex>
+    </App>
   )
 }
 
