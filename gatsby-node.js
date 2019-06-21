@@ -270,7 +270,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
     let authorPages = Math.ceil(totalCount / postsPerPage)
     let pathPrefix = authorPathPrefix + author.node.user
-    _.times(authorPages, async i => {
+
+    _.times(authorPages, i => {
       createPage({
         path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
         component: path.resolve('./src/templates/author-blog.tsx'),
