@@ -89,6 +89,7 @@
   "scripts": {
     "build": "cross-env GATSBY_ENV=production gatsby build",
     "build-staging": "cross-env GATSBY_ENV=staging gatsby build",
+    "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths",
     "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
     "dev:net": "cross-env GATSBY_ENV=development gatsby develop -p 3000 -H 0.0.0.0",
