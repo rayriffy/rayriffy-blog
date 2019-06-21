@@ -177,6 +177,7 @@ module.exports = {
         }`,
       },
     },
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -190,7 +191,6 @@ module.exports = {
         icon: `${__dirname}/content/assets/logo.png`,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',
