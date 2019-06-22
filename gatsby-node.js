@@ -4,200 +4,188 @@ const fs = require('fs')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.createPages = async ({ graphql, actions }) => {
+const POST_PER_PAGE = 6
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  // Define createPage functions
   const { createPage } = actions
 
-  const result = await graphql(
-    `
-      {
-        site {
-          siteMetadata {
-            siteUrl
-          }
+  // Get all blogs, authors and categories
+  const dataResult = await graphql(`
+    {
+      site {
+        siteMetadata {
+          siteUrl
         }
-        featured: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {featured: {eq: true}}}, limit: 1) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                subtitle
-                author
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
+      }
+
+      blogs: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              subtitle
+              author
+              banner {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90) {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
                   }
                 }
               }
-            }
-          }
-        }
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                subtitle
-                author
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        allCategoriesJson {
-          edges {
-            node {
-              key
-              name
-              desc
-            }
-          }
-        }
-        allAuthorsJson {
-          edges {
-            node {
-              user
-              name
-              facebook
-              twitter
             }
           }
         }
       }
-    `
-  )
 
-  if (result.errors) {
-    throw result.errors
-  }
+      authors: allAuthorsJson {
+        edges {
+          node {
+            user
+            name
+            facebook
+            twitter
+          }
+        }
+      }
 
-  const siteUrl = result.data.site.siteMetadata.siteUrl
-  const postsPerPage = 6
-  const categoryPathPrefix = '/category/'
-  const authorPathPrefix = '/author/'
+      categories: allCategoriesJson {
+        edges {
+          node {
+            key
+            name
+            desc
+          }
+        }
+      }
+    }
+  `)
 
-  const posts = result.data.allMarkdownRemark.edges
-  const catrgories = result.data.allCategoriesJson.edges
-  const authors = result.data.allAuthorsJson.edges
-  const featured = _.head(result.data.featured.edges)
+  const {site, blogs, authors, categories} = dataResult.data
 
-  // Create blog lists pages.
-  const numPages = Math.ceil(posts.length / postsPerPage)
+  // Get featured post
+  const featuredResult = await graphql(`
+    {
+      featured: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {featured: {eq: true}}}, limit: 1) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              subtitle
+              author
+              banner {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90) {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  _.times(numPages, i => {
+  const featuredPost = _.head(featuredResult.data.featured.edges)
+
+  // Create blog listing
+  const blogListingPages = Math.ceil(blogs.edges.length / POST_PER_PAGE)
+
+  _.times(blogListingPages, i => {
     createPage({
       path: i === 0 ? `/` : `/pages/${i + 1}`,
       component: path.resolve('./src/templates/blog-list.tsx'),
       context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        numPages,
+        featured: i === 0 ? featuredPost : null,
+        skip: i * POST_PER_PAGE,
+        limit: POST_PER_PAGE,
         currentPage: i + 1,
-        featured: i === 0 ? featured : null,
+        numPages: blogListingPages,
       },
     })
   })
 
-  // Create blog posts pages.
-  let count = 0
-  let jsonFeed = []
-  _.each(posts, (post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
-    if (count < 6) {
-      jsonFeed.push({
-        name: post.node.frontmatter.title,
-        desc: post.node.frontmatter.subtitle,
-        slug: siteUrl + post.node.fields.slug,
-        banner:
-          siteUrl + post.node.frontmatter.banner.childImageSharp.fluid.src,
-      })
-    }
+  // Create blog posts
+  _.each(blogs.edges, (blog, i) => {
+    const previousBlog = i === blogs.edges.length - 1 ? null : blogs.edges[i + 1].node
+    const nextBlog = i === 0 ? null : blogs.edges[i - 1].node
 
     createPage({
-      path: post.node.fields.slug,
+      path: blog.node.fields.slug,
       component: path.resolve('./src/templates/blog-post.tsx'),
       context: {
-        author: post.node.frontmatter.author,
-        slug: post.node.fields.slug,
-        previous,
-        next,
+        author: blog.node.frontmatter.author,
+        slug: blog.node.fields.slug,
+        previous: previousBlog,
+        next: nextBlog,
       },
     })
-    count++
   })
 
-  fs.writeFile('public/feed.json', JSON.stringify(jsonFeed), err => {
+  // Create feed API
+  const feedBlogs = _.slice(blogs.edges, 0, 5)
+
+  fs.writeFile('public/feed.json', JSON.stringify(feedBlogs), err => {
     if (err) {
       throw err
     }
   })
 
-  // Create category pages
-
-  _.each(catrgories, async category => {
-    const categoryResult = await graphql(
-      `
-        {
-          blogs: allMarkdownRemark(
-            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  title
-                }
+  // Create category blog listing page
+  _.each(categories.edges, async category => {
+    const categoryResult = await graphql(`
+      {
+        blogs: allMarkdownRemark(
+          filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
+        ) {
+          edges {
+            node {
+              frontmatter {
+                title
               }
             }
           }
-          banner: allMarkdownRemark(
-            sort: {fields: [frontmatter___date], order: DESC}
-            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
-            limit: 1
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  banner {
-                    childImageSharp {
-                      fluid(maxWidth: 1000, quality: 90) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                      }
+        }
+        banner: allMarkdownRemark(
+          sort: {fields: [frontmatter___date], order: DESC}
+          filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
+          limit: 1
+        ) {
+          edges {
+            node {
+              frontmatter {
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
                     }
                   }
                 }
@@ -205,85 +193,76 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-      `
-    )
+      }
+    `)
 
-    let totalCount = categoryResult.data.blogs.edges.length
+    const categoryListingPages = Math.ceil(categoryResult.data.blogs.edges.length / POST_PER_PAGE)
 
-    let categoryPages = Math.ceil(totalCount / postsPerPage)
-    let pathPrefix = categoryPathPrefix + category.node.key
-
-    _.times(categoryPages, i => {
+    _.times(categoryListingPages, i => {
       createPage({
-        path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
+        path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
         component: path.resolve('./src/templates/category-blog.tsx'),
         context: {
+          pathPrefix: `/category/${category.node.key}`,
+          banner: _.head(categoryResult.data.banner.edges),
           category: category.node.key,
           currentPage: i + 1,
-          limit: postsPerPage,
-          numPages: categoryPages,
-          pathPrefix,
+          numPages: categoryListingPages,
           regex: `/${category.node.key}/`,
-          skip: i * postsPerPage,
-          banner: _.head(categoryResult.data.banner.edges)
+          limit: POST_PER_PAGE,
+          skip: i * POST_PER_PAGE,
         },
       })
     })
   })
 
-  // Create author pages
-
-  _.each(authors, async author => {
-    const authorResult = await graphql(
-      `
-        {
-          blogs: allMarkdownRemark(
-            filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  title
-                }
-              }
-            }
-          }
-          banner: file(relativePath: {eq: "${author.node.user}.jpg"}) {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 90) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+  // Create author blog listing page
+  _.each(authors.edges, async author => {
+    const authorResult = await graphql(`
+      {
+        blogs: allMarkdownRemark(
+          filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
+        ) {
+          edges {
+            node {
+              frontmatter {
+                title
               }
             }
           }
         }
-      `
-    )
+        banner: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 90) {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
+      }
+    `)
 
-    let totalCount = authorResult.data.blogs.edges.length
+    const authorListingPages = Math.ceil(authorResult.data.blogs.edges.length / POST_PER_PAGE)
 
-    let authorPages = Math.ceil(totalCount / postsPerPage)
-    let pathPrefix = authorPathPrefix + author.node.user
-
-    _.times(authorPages, i => {
+    _.times(authorListingPages, i => {
       createPage({
-        path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
+        path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
         component: path.resolve('./src/templates/author-blog.tsx'),
         context: {
+          pathPrefix: `/author/${author.node.user}`,
+          banner: authorResult.data.banner,
           author: author.node.user,
           currentPage: i + 1,
-          limit: postsPerPage,
-          numPages: authorPages,
-          pathPrefix,
+          numPages: authorListingPages,
           regex: `/${author.node.user}/`,
-          skip: i * postsPerPage,
-          banner: authorResult.data.banner
+          limit: POST_PER_PAGE,
+          skip: i * POST_PER_PAGE,
         },
       })
     })
@@ -341,14 +320,14 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  _.each(catrgories, category => {
+  _.each(categories.edges, category => {
     categoryPromise.push(fetchCategory(category))
   })
 
   await Promise.all(categoryPromise)
 
   createPage({
-    path: categoryPathPrefix,
+    path: `/category`,
     component: path.resolve('./src/templates/category-list.tsx'),
     context: {
       categories: _.sortBy(categoryRaw, o => o.key),
@@ -390,21 +369,21 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  _.each(authors, author => {
+  _.each(authors.edges, author => {
     authorPromise.push(fetchAuthor(author))
   })
 
   await Promise.all(authorPromise)
 
   createPage({
-    path: authorPathPrefix,
+    path: `/author`,
     component: path.resolve('./src/templates/author-list.tsx'),
     context: {
       authors: authorRaw,
     },
   })
 
-  return null
+  return true
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

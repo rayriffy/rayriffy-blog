@@ -126,7 +126,7 @@ const CategoryBlog: React.SFC<IProps> = props => {
 export default CategoryBlog
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String!, $limit: Int!, $regex: String!, $skip: Int!) {
+  query categoryPageQuery($category: String!, $limit: Int!, $regex: String!, $skip: Int!) {
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
       filter: {frontmatter: {category: {regex: $regex}}}

@@ -150,7 +150,7 @@ const BlogPost: React.SFC<IProps> = props => {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($author: String!, $slug: String!) {
+  query blogPostQuery($author: String!, $slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       fields {
