@@ -2,24 +2,13 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import { graphql } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
 
 import App from '../components/app'
 import Card from '../components/card'
 
-interface IProps {
-  data: {
-    banner: {
-      childImageSharp: {
-        fluid: FluidObject
-      }
-    }
-  }
-}
-
-const NotFound: React.SFC<IProps> = props => {
+const NotFound = props => {
   return (
     <App>
       <Flex justifyContent={`center`}>
@@ -28,7 +17,7 @@ const NotFound: React.SFC<IProps> = props => {
           <Card
             blog={{
               banner: props.data.banner,
-              subtitle: 'Whoops! Looks like you&#39;re lost in the woods...with Cirno.',
+              subtitle: `Whoops! Looks like you're lost in the woods...with Cirno.`,
               title: 'Not Found',
             }}
             type={`post`}>
