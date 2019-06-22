@@ -148,7 +148,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     name: o.node.frontmatter.title,
     desc: o.node.frontmatter.subtitle,
     slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
-    banner: o.node.frontmatter.banner.childImageSharp.fluid.src
+    banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
   }))
 
   fs.writeFile('public/feed.json', JSON.stringify(feedBlogs), err => {
