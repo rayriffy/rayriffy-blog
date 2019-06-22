@@ -81,7 +81,7 @@ const BlogPost: React.SFC<IProps> = props => {
         type={`article`}
       />
       <Flex justifyContent={`center`}>
-        <Box width={[20/24, 18/24, 16/24, 14/24]} mb={4}>
+        <Box width={[20/24, 18/24, 15/24, 13/24]} mb={4}>
           <Card 
             author={authorsJson}
             blog={{
@@ -90,7 +90,7 @@ const BlogPost: React.SFC<IProps> = props => {
               title,
             }}
             type={`post`}>
-            <Box px={[4, 5]}>
+            <Box px={[4, 5, 5]}>
               <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
             </Box>
             {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
