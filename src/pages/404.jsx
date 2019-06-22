@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 
 import { graphql } from 'gatsby'
 
-import { Box, Flex } from 'rebass'
+import { Box, Flex, Link } from 'rebass'
 
 import App from '../components/app'
 import Card from '../components/card'
@@ -22,7 +22,7 @@ const NotFound = props => {
             }}
             type={`post`}>
               <Box px={[4, 5]} pb={4}>
-                <a href="/">Back to home</a>
+                <Link href="/" color={`rgb(83,106,144)`}>Back to home</Link>
               </Box>
           </Card>
         </Box>
