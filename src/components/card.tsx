@@ -101,7 +101,7 @@ const Component: React.SFC<IProps> = props => {
           {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardBanner}</Link> : cardBanner}
         </Box>
       ) : null}
-      <Box px={type === 'listing' ? 4 : type === 'post' ? 5 : 4} py={4}>
+      <Box px={type === 'listing' ? 4 : type === 'post' ? [4, 5] : 4} py={4}>
         {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardTitle}</Link> : cardTitle}
         {date && author ? (
           <Text fontSize={[14, 16]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>
