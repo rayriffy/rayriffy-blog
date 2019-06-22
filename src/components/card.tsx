@@ -98,14 +98,14 @@ const Component: React.SFC<IProps> = props => {
       <GlobalStyle />
       {banner ? (
         <Box>
-          {slug ? <Link href={slug}>{cardBanner}</Link> : cardBanner}
+          {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardBanner}</Link> : cardBanner}
         </Box>
       ) : null}
       <Box p={4}>
-        {slug ? <Link href={slug}>{cardTitle}</Link> : cardTitle}
+        {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardTitle}</Link> : cardTitle}
         {date && author ? (
           <Text fontSize={[14, 16]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>
-            Written by <Link href={'/author/' + author.user} color={`rgba(0, 0, 0, 0.8)`}>{author.name}</Link> on {date}
+            Written by <Link href={'/author/' + author.user} color={`rgba(0, 0, 0, 0.8)`} aria-label={author.name}>{author.name}</Link> on {date}
           </Text>
         ) : null}
         {subtitle ? <Text fontSize={[16, 17]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text> : null}
