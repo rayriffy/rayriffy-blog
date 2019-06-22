@@ -2,12 +2,11 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import { graphql } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 
 import AdSense from 'react-adsense'
 
 import { Box, Flex, Link, Text } from 'rebass'
-import styled from 'styled-components'
 
 import App from '../components/app'
 import Card from '../components/card'
@@ -60,10 +59,6 @@ interface IProps {
   }
 }
 
-const Banner = styled(Img)`
-  border-radius: 6px;
-`
-
 const BlogPost: React.SFC<IProps> = props => {
   const {previous, next} = props.pageContext
   const {authorsJson, markdownRemark} = props.data
@@ -86,15 +81,11 @@ const BlogPost: React.SFC<IProps> = props => {
         type={`article`}
       />
       <Flex justifyContent={`center`}>
-        <Box width={[21/24, 19/24, 15/24, 13/24]}>
-          <Banner fluid={banner.childImageSharp.fluid} />
-        </Box>
-      </Flex>
-      <Flex justifyContent={`center`}>
-        <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
+        <Box width={[20/24, 18/24, 16/24, 14/24]} mb={4}>
           <Card 
             author={authorsJson}
             blog={{
+              banner,
               date,
               title,
             }}
