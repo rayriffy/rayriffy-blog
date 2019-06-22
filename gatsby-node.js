@@ -144,7 +144,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Create feed API
-  const feedBlogs = _.slice(blogs.edges, 0, 5)
+  const feedBlogs = _.slice(blogs.edges, 0, 5).map(o => ({
+    name: o.node.frontmatter.title,
+    desc: o.node.frontmatter.subtitle,
+    slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
+    banner: o.node.frontmatter.banner.childImageSharp.fluid.src
+  }))
 
   fs.writeFile('public/feed.json', JSON.stringify(feedBlogs), err => {
     if (err) {
