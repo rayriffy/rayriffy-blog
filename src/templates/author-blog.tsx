@@ -127,7 +127,7 @@ const AuthorBlog: React.SFC<IProps> = props => {
 export default AuthorBlog
 
 export const pageQuery = graphql`
-  query AuthorPage($author: String!, $limit: Int!, $regex: String!, $skip: Int!) {
+  query authorPageQuery($author: String!, $limit: Int!, $regex: String!, $skip: Int!) {
     authorsJson(user: {eq: $author}) {
       user
       name
