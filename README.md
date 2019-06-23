@@ -38,6 +38,10 @@ Adding new author
 
 In order to add a new author, please floowing these steps below.
 
+### Create a branch
+
+All authors in **rayriffy/rayriffy-blog** are required to create their own branch on repository by cloning **rayriffy/rayriffy-blog** and create branch called `author/{USERNAME}` from `master` branch
+
 ### Create your metadata
 
 Create a file `./content/database/authors/{USERNAME}.json` and fill an information like [this example](content/database/authors/rayriffy.json)
