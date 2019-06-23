@@ -359,7 +359,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const authorResult = await graphql(
       `
         {
-          author: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+          banner: file(relativePath: {eq: "author.${author.node.user}.jpg"}) {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 90) {
                 base64
@@ -382,11 +382,11 @@ exports.createPages = async ({ graphql, actions }) => {
       name: author.node.name,
       facebook: author.node.facebook,
       twitter: author.node.twitter,
-      banner: authorResult.data.author,
+      banner: authorResult.data.banner,
     })
   }
 
-  await Promise.all(authors.edges, author => fetchAuthorList(author))
+  await Promise.all(authors.edges.map(author => fetchAuthorList(author)))
 
   createPage({
     path: `/author`,
