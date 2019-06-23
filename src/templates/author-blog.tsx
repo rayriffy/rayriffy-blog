@@ -140,10 +140,8 @@ export const pageQuery = graphql`
       limit: $limit
       skip: $skip
     ) {
-      totalCount
       edges {
         node {
-          excerpt
           fields {
             slug
           }
