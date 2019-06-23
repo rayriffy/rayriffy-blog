@@ -172,6 +172,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const categoryResult = await graphql(`
       {
         blogs: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
           filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
         ) {
           edges {
@@ -289,6 +290,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const authorResult = await graphql(`
       {
         blogs: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
           filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
         ) {
           edges {
