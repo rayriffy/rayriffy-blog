@@ -202,22 +202,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const categoryListingPages = Math.ceil(categoryResult.data.blogs.edges.length / POST_PER_PAGE)
 
-    _.times(categoryListingPages, i => {
-      createPage({
-        path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/category-blog.tsx'),
-        context: {
-          pathPrefix: `/category/${category.node.key}`,
-          banner: _.head(categoryResult.data.banner.edges),
-          category: category.node.key,
-          currentPage: i + 1,
-          numPages: categoryListingPages,
-          regex: `/${category.node.key}/`,
-          limit: POST_PER_PAGE,
-          skip: i * POST_PER_PAGE,
-        },
-      })
-    })
+    _.times(categoryListingPages, async i => createPage({
+      path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
+      component: path.resolve('./src/templates/category-blog.tsx'),
+      context: {
+        pathPrefix: `/category/${category.node.key}`,
+        banner: _.head(categoryResult.data.banner.edges),
+        category: category.node.key,
+        currentPage: i + 1,
+        numPages: categoryListingPages,
+        regex: `/${category.node.key}/`,
+        limit: POST_PER_PAGE,
+        skip: i * POST_PER_PAGE,
+      },
+    }))
   })
 
   // Create author blog listing page
@@ -254,22 +252,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const authorListingPages = Math.ceil(authorResult.data.blogs.edges.length / POST_PER_PAGE)
 
-    _.times(authorListingPages, i => {
-      createPage({
-        path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/author-blog.tsx'),
-        context: {
-          pathPrefix: `/author/${author.node.user}`,
-          banner: authorResult.data.banner,
-          author: author.node.user,
-          currentPage: i + 1,
-          numPages: authorListingPages,
-          regex: `/${author.node.user}/`,
-          limit: POST_PER_PAGE,
-          skip: i * POST_PER_PAGE,
-        },
-      })
-    })
+    _.times(authorListingPages, async i => createPage({
+      path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
+      component: path.resolve('./src/templates/author-blog.tsx'),
+      context: {
+        pathPrefix: `/author/${author.node.user}`,
+        banner: authorResult.data.banner,
+        author: author.node.user,
+        currentPage: i + 1,
+        numPages: authorListingPages,
+        regex: `/${author.node.user}/`,
+        limit: POST_PER_PAGE,
+        skip: i * POST_PER_PAGE,
+      },
+    }))
   })
 
   /*
