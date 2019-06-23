@@ -1,12 +1,11 @@
 const _ = require('lodash')
-const Promise = require('bluebird')
 const fs = require('fs')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 const POST_PER_PAGE = 6
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
   const { createPage } = actions
 
@@ -158,7 +157,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Create category blog listing page
-  _.each(categories.edges, async category => {
+  const categoryBlogRaw = []
+
+  const fetchCategoryBlog = async category => {
     const categoryResult = await graphql(`
       {
         blogs: allMarkdownRemark(
@@ -201,28 +202,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `)
 
-    const categoryListingPages = Math.ceil(categoryResult.data.blogs.edges.length / POST_PER_PAGE)
-
-    _.times(categoryListingPages, i => {
-      createPage({
-        path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/category-blog.tsx'),
-        context: {
-          pathPrefix: `/category/${category.node.key}`,
-          banner: _.head(categoryResult.data.banner.edges),
-          category: category.node.key,
-          currentPage: i + 1,
-          numPages: categoryListingPages,
-          regex: `/${category.node.key}/`,
-          limit: POST_PER_PAGE,
-          skip: i * POST_PER_PAGE,
-        },
-      })
+    return categoryBlogRaw.push({
+      category,
+      raw: categoryResult.data,
     })
+  }
+
+  await Promise.all(categories.edges.map(category => fetchCategoryBlog(category)))
+
+  categoryBlogRaw.map(o => {
+    const categoryListingPages = Math.ceil(o.raw.blogs.edges.length / POST_PER_PAGE)
+
+    _.times(categoryListingPages, i => createPage({
+      path: i === 0 ? `/category/${o.category.node.key}` : `/category/${o.category.node.key}/pages/${i + 1}`,
+      component: path.resolve('./src/templates/category-blog.tsx'),
+      context: {
+        pathPrefix: `/category/${o.category.node.key}`,
+        banner: _.head(o.raw.banner.edges),
+        category: o.category.node.key,
+        currentPage: i + 1,
+        numPages: categoryListingPages,
+        regex: `/${o.category.node.key}/`,
+        limit: POST_PER_PAGE,
+        skip: i * POST_PER_PAGE,
+      },
+    }))
   })
 
   // Create author blog listing page
-  _.each(authors.edges, async author => {
+  const authorBlogRaw = []
+
+  const fetchAuthorBlog = async author => {
     const authorResult = await graphql(`
       {
         blogs: allMarkdownRemark(
@@ -236,7 +246,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        banner: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+        banner: file(relativePath: {eq: "author.${author.node.user}.jpg"}) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 90) {
               base64
@@ -253,24 +263,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `)
 
-    const authorListingPages = Math.ceil(authorResult.data.blogs.edges.length / POST_PER_PAGE)
-
-    _.times(authorListingPages, i => {
-      createPage({
-        path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/author-blog.tsx'),
-        context: {
-          pathPrefix: `/author/${author.node.user}`,
-          banner: authorResult.data.banner,
-          author: author.node.user,
-          currentPage: i + 1,
-          numPages: authorListingPages,
-          regex: `/${author.node.user}/`,
-          limit: POST_PER_PAGE,
-          skip: i * POST_PER_PAGE,
-        },
-      })
+    return authorBlogRaw.push({
+      author,
+      raw: authorResult.data,
     })
+  }
+
+  
+  await Promise.all(authors.edges.map(author => fetchAuthorBlog(author)))
+
+  authorBlogRaw.map(o => {
+    const authorListingPages = Math.ceil(o.raw.blogs.edges.length / POST_PER_PAGE)
+
+    _.times(authorListingPages, i => createPage({
+      path: i === 0 ? `/author/${o.author.node.user}` : `/author/${o.author.node.user}/pages/${i + 1}`,
+      component: path.resolve('./src/templates/author-blog.tsx'),
+      context: {
+        pathPrefix: `/author/${o.author.node.user}`,
+        banner: o.raw.banner,
+        author: o.author.node.user,
+        currentPage: i + 1,
+        numPages: authorListingPages,
+        regex: `/${o.author.node.user}/`,
+        limit: POST_PER_PAGE,
+        skip: i * POST_PER_PAGE,
+      },
+    }))
   })
 
   /*
@@ -279,9 +297,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Create category list page
   const categoryRaw = []
-  const categoryPromise = []
 
-  const fetchCategory = async category => {
+  const fetchCategoryList = async category => {
     const categoryResult = await graphql(
       `
         {
@@ -325,25 +342,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-  _.each(categories.edges, category => {
-    categoryPromise.push(fetchCategory(category))
-  })
-
-  await Promise.all(categoryPromise)
+  await Promise.all(categories.edges.map(category => fetchCategoryList(category)))
 
   createPage({
     path: `/category`,
     component: path.resolve('./src/templates/category-list.tsx'),
     context: {
-      categories: _.sortBy(categoryRaw, o => o.key),
+      categories: _.sortBy(categoryRaw, o => o.name),
     },
   })
 
   // Create author list page
   const authorRaw = []
-  const authorPromise = []
 
-  const fetchAuthor = async author => {
+  const fetchAuthorList = async author => {
     const authorResult = await graphql(
       `
         {
@@ -374,17 +386,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-  _.each(authors.edges, author => {
-    authorPromise.push(fetchAuthor(author))
-  })
-
-  await Promise.all(authorPromise)
+  await Promise.all(authors.edges, author => fetchAuthorList(author))
 
   createPage({
     path: `/author`,
     component: path.resolve('./src/templates/author-list.tsx'),
     context: {
-      authors: authorRaw,
+      authors: _.sortBy(authorRaw, o => o.name),
     },
   })
 
