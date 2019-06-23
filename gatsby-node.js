@@ -1,12 +1,11 @@
 const _ = require('lodash')
-const Promise = require('bluebird')
 const fs = require('fs')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 const POST_PER_PAGE = 6
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
   const { createPage } = actions
 
@@ -236,7 +235,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        banner: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+        banner: file(relativePath: {eq: "author.${author.node.user}.jpg"}) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 90) {
               base64
@@ -279,7 +278,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Create category list page
   const categoryRaw = []
-  const categoryPromise = []
 
   const fetchCategory = async category => {
     const categoryResult = await graphql(
@@ -325,23 +323,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-  _.each(categories.edges, category => {
-    categoryPromise.push(fetchCategory(category))
-  })
-
-  await Promise.all(categoryPromise)
+  await Promise.all(categories.edges.map(category => fetchCategory(category)))
 
   createPage({
     path: `/category`,
     component: path.resolve('./src/templates/category-list.tsx'),
     context: {
-      categories: _.sortBy(categoryRaw, o => o.key),
+      categories: _.sortBy(categoryRaw, o => o.name),
     },
   })
 
   // Create author list page
   const authorRaw = []
-  const authorPromise = []
 
   const fetchAuthor = async author => {
     const authorResult = await graphql(
@@ -374,17 +367,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-  _.each(authors.edges, author => {
-    authorPromise.push(fetchAuthor(author))
-  })
-
-  await Promise.all(authorPromise)
+  await Promise.all(authors.edges, author => fetchAuthor(author))
 
   createPage({
     path: `/author`,
     component: path.resolve('./src/templates/author-list.tsx'),
     context: {
-      authors: authorRaw,
+      authors: _.sortBy(authorRaw, o => o.name),
     },
   })
 
