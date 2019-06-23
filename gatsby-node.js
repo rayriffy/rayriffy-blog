@@ -143,7 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Create feed API
-  const feedBlogs = _.slice(blogs.edges, 0, 5).map(o => ({
+  const feedBlogs = _.slice(blogs.edges, 0, POST_PER_PAGE).map(o => ({
     name: o.node.frontmatter.title,
     desc: o.node.frontmatter.subtitle,
     slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
@@ -172,6 +172,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const categoryResult = await graphql(`
       {
         blogs: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
           filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
         ) {
           edges {
@@ -259,7 +260,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create API feed for each category
   categoryBlogRaw.map(o => {
-    const categoryFeed = _.slice(o.raw.blogs.edges, 0, 5).map(o => ({
+    const categoryFeed = _.slice(o.raw.blogs.edges, 0, POST_PER_PAGE).map(o => ({
       name: o.node.frontmatter.title,
       desc: o.node.frontmatter.subtitle,
       slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
@@ -289,6 +290,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const authorResult = await graphql(`
       {
         blogs: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
           filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
         ) {
           edges {
@@ -364,7 +366,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create API feed for each author
   authorBlogRaw.map(o => {
-    const authorFeed = _.slice(o.raw.blogs.edges, 0, 5).map(o => ({
+    const authorFeed = _.slice(o.raw.blogs.edges, 0, POST_PER_PAGE).map(o => ({
       name: o.node.frontmatter.title,
       desc: o.node.frontmatter.subtitle,
       slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
