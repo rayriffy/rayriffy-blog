@@ -157,7 +157,9 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Create category blog listing page
-  _.each(categories.edges, async category => {
+  const categoryBlogRaw = []
+
+  const fetchCategoryBlog = async category => {
     const categoryResult = await graphql(`
       {
         blogs: allMarkdownRemark(
@@ -200,18 +202,27 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const categoryListingPages = Math.ceil(categoryResult.data.blogs.edges.length / POST_PER_PAGE)
+    return categoryBlogRaw.push({
+      category,
+      raw: categoryResult.data,
+    })
+  }
 
-    _.times(categoryListingPages, async i => createPage({
-      path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
+  await Promise.all(categories.edges.map(category => fetchCategoryBlog(category)))
+
+  categoryBlogRaw.map(o => {
+    const categoryListingPages = Math.ceil(o.raw.blogs.edges.length / POST_PER_PAGE)
+
+    _.times(categoryListingPages, i => createPage({
+      path: i === 0 ? `/category/${o.category.node.key}` : `/category/${o.category.node.key}/pages/${i + 1}`,
       component: path.resolve('./src/templates/category-blog.tsx'),
       context: {
-        pathPrefix: `/category/${category.node.key}`,
-        banner: _.head(categoryResult.data.banner.edges),
-        category: category.node.key,
+        pathPrefix: `/category/${o.category.node.key}`,
+        banner: _.head(o.raw.banner.edges),
+        category: o.category.node.key,
         currentPage: i + 1,
         numPages: categoryListingPages,
-        regex: `/${category.node.key}/`,
+        regex: `/${o.category.node.key}/`,
         limit: POST_PER_PAGE,
         skip: i * POST_PER_PAGE,
       },
@@ -219,7 +230,9 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Create author blog listing page
-  _.each(authors.edges, async author => {
+  const authorBlogRaw = []
+
+  const fetchAuthorBlog = async author => {
     const authorResult = await graphql(`
       {
         blogs: allMarkdownRemark(
@@ -250,18 +263,28 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const authorListingPages = Math.ceil(authorResult.data.blogs.edges.length / POST_PER_PAGE)
+    return authorBlogRaw.push({
+      author,
+      raw: authorResult.data,
+    })
+  }
 
-    _.times(authorListingPages, async i => createPage({
-      path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
+  
+  await Promise.all(authors.edges.map(author => fetchAuthorBlog(author)))
+
+  authorBlogRaw.map(o => {
+    const authorListingPages = Math.ceil(o.raw.blogs.edges.length / POST_PER_PAGE)
+
+    _.times(authorListingPages, i => createPage({
+      path: i === 0 ? `/author/${o.author.node.user}` : `/author/${o.author.node.user}/pages/${i + 1}`,
       component: path.resolve('./src/templates/author-blog.tsx'),
       context: {
-        pathPrefix: `/author/${author.node.user}`,
-        banner: authorResult.data.banner,
-        author: author.node.user,
+        pathPrefix: `/author/${o.author.node.user}`,
+        banner: o.raw.banner,
+        author: o.author.node.user,
         currentPage: i + 1,
         numPages: authorListingPages,
-        regex: `/${author.node.user}/`,
+        regex: `/${o.author.node.user}/`,
         limit: POST_PER_PAGE,
         skip: i * POST_PER_PAGE,
       },
@@ -275,7 +298,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create category list page
   const categoryRaw = []
 
-  const fetchCategory = async category => {
+  const fetchCategoryList = async category => {
     const categoryResult = await graphql(
       `
         {
@@ -319,7 +342,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  await Promise.all(categories.edges.map(category => fetchCategory(category)))
+  await Promise.all(categories.edges.map(category => fetchCategoryList(category)))
 
   createPage({
     path: `/category`,
@@ -332,7 +355,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create author list page
   const authorRaw = []
 
-  const fetchAuthor = async author => {
+  const fetchAuthorList = async author => {
     const authorResult = await graphql(
       `
         {
@@ -363,7 +386,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  await Promise.all(authors.edges, author => fetchAuthor(author))
+  await Promise.all(authors.edges, author => fetchAuthorList(author))
 
   createPage({
     path: `/author`,
