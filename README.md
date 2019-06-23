@@ -33,6 +33,23 @@ Creating Articles
 
 You can create articles by using Markdown language. I provided you an example articles [here](content/blog/review-halozy/index.md). Good Luck
 
+Adding new author
+-----------------
+
+In order to add a new author, please floowing these steps below.
+
+### Create your metadata
+
+Create a file `./content/database/authors/{USERNAME}.json` and fill an information like [this example](content/database/authors/rayriffy.json)
+
+### Add an image
+
+Create you own author image with the dimension of **1500*788 px** and pixel density at **72 ppi** in **.jpg** format and then renaming file to `auhtor.{USERNAME}.jpg` and put it into folder `./content/assets`
+
+### Create a blog
+
+Before starting an development server please create at **least 1 article** for new author in order to prevent server from crashing.
+
 Contributing
 ------------
 
