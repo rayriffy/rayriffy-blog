@@ -150,7 +150,16 @@ exports.createPages = async ({ graphql, actions }) => {
     banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
   }))
 
-  fs.writeFile('public/feed.json', JSON.stringify(feedBlogs), err => {
+  if (!fs.existsSync('public/api')) {
+    fs.mkdirSync('public/api', function(err) {
+      if (err) {
+        console.error(err)
+        throw err
+      }
+    })
+  }
+
+  fs.writeFile('public/api/feed.json', JSON.stringify(feedBlogs), err => {
     if (err) {
       throw err
     }
@@ -167,8 +176,27 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              fields {
+                slug
+              }
               frontmatter {
                 title
+                subtitle
+                author
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
               }
             }
           }
@@ -229,6 +257,31 @@ exports.createPages = async ({ graphql, actions }) => {
     }))
   })
 
+  // Create API feed for each category
+  categoryBlogRaw.map(o => {
+    const categoryFeed = _.slice(o.raw.blogs.edges, 0, 5).map(o => ({
+      name: o.node.frontmatter.title,
+      desc: o.node.frontmatter.subtitle,
+      slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
+      banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
+    }))
+
+    if (!fs.existsSync('public/api/category')) {
+      fs.mkdirSync('public/api/category', function(err) {
+        if (err) {
+          console.error(err)
+          throw err
+        }
+      })
+    }
+
+    fs.writeFile(`public/api/category/${o.category.node.key}.json`, JSON.stringify(categoryFeed), err => {
+      if (err) {
+        throw err
+      }
+    })
+  })
+
   // Create author blog listing page
   const authorBlogRaw = []
 
@@ -240,8 +293,27 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              fields {
+                slug
+              }
               frontmatter {
                 title
+                subtitle
+                author
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
               }
             }
           }
@@ -269,7 +341,6 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  
   await Promise.all(authors.edges.map(author => fetchAuthorBlog(author)))
 
   authorBlogRaw.map(o => {
@@ -289,6 +360,31 @@ exports.createPages = async ({ graphql, actions }) => {
         skip: i * POST_PER_PAGE,
       },
     }))
+  })
+
+  // Create API feed for each author
+  authorBlogRaw.map(o => {
+    const authorFeed = _.slice(o.raw.blogs.edges, 0, 5).map(o => ({
+      name: o.node.frontmatter.title,
+      desc: o.node.frontmatter.subtitle,
+      slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
+      banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
+    }))
+
+    if (!fs.existsSync('public/api/author')) {
+      fs.mkdirSync('public/api/author', function(err) {
+        if (err) {
+          console.error(err)
+          throw err
+        }
+      })
+    }
+
+    fs.writeFile(`public/api/author/${o.author.node.user}.json`, JSON.stringify(authorFeed), err => {
+      if (err) {
+        throw err
+      }
+    })
   })
 
   /*
