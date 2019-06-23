@@ -198,7 +198,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {
-          '/feed.json': ['Access-Control-Allow-Origin: *'],
+          '/api/*': ['Access-Control-Allow-Origin: *'],
         },
       },
     },
