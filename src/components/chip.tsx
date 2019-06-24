@@ -23,7 +23,7 @@ const Title = styled.h3`
 `
 
 const Subtitle = styled.div`
-  color: #6f6f6f;
+  color: rgb(192, 192, 192);
   font-size: 18px;
 `
 
