@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.6",
+    "husky": "^2.5.0",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
     "remark-cli": "^6.0.1",
@@ -72,6 +73,11 @@
     "tslint-react": "^4.0.0"
   },
   "homepage": "https://blog.rayriffy.com",
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test"
+    }
+  },
   "keywords": [
     "gatsby",
     "gatsbyjs",
@@ -100,7 +106,7 @@
     "lh": "lighthousebot",
     "md-lint": "remark .",
     "start": "npm run develop",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "yarn lint && yarn type-check && yarn md-lint",
     "type-check": "tsc"
   }
 }
