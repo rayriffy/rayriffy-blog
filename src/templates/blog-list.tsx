@@ -75,13 +75,7 @@ const MockPage: React.SFC<IProps> = props => {
         type={`page`} />
       {currentPage === 1 ? (
         <>
-          <Box my={2}>
-            <Flex justifyContent={`center`}>
-              <Box width={[22/24, 22/24, 20/24, 10/24]}>
-                <Warning />
-              </Box>
-            </Flex>
-          </Box>
+          <Warning />
           <Box my={4}>
             <Flex justifyContent={`center`}>
               <Box width={[1, 18/24, 16/24, 14/24]}>
