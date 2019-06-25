@@ -7,6 +7,7 @@ import { FluidObject } from 'gatsby-image'
 import AdSense from 'react-adsense'
 
 import { Box, Flex, Link, Text } from 'rebass'
+import styled from 'styled-components'
 
 import App from '../components/app'
 import Card from '../components/card'
@@ -58,6 +59,22 @@ interface IProps {
     }
   }
 }
+
+const NavText = styled(Text)`
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(255, 255, 255);
+    }
+  }
+`
+
+const NavLink = styled(Link)`
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(21, 142, 255);
+    }
+  }
+`
 
 const BlogPost: React.SFC<IProps> = props => {
   const {previous, next} = props.pageContext
@@ -116,16 +133,16 @@ const BlogPost: React.SFC<IProps> = props => {
                 <Box width={1/2} px={2}>
                   {previous ? (
                     <>
-                      <Text color={`rgba(0, 0, 0, 0.8)`}>PREVIOUS</Text>
-                      <Link href={previous.fields.slug} color={`rgb(83,106,144)`}>{previous.frontmatter.title}</Link>
+                      <NavText color={`rgba(0, 0, 0, 0.8)`}>PREVIOUS</NavText>
+                      <NavLink href={previous.fields.slug} color={`rgb(83,106,144)`}>{previous.frontmatter.title}</NavLink>
                     </>
                   ) : null}
                 </Box>
                 <Box width={1/2} px={2}>
                   {next ? (
                     <>
-                      <Text color={`rgba(0, 0, 0, 0.8)`}>NEXT</Text>
-                      <Link href={next.fields.slug} color={`rgb(83,106,144)`}>{next.frontmatter.title}</Link>
+                      <NavText color={`rgba(0, 0, 0, 0.8)`}>NEXT</NavText>
+                      <NavLink href={next.fields.slug} color={`rgb(83,106,144)`}>{next.frontmatter.title}</NavLink>
                     </>
                   ) : null}
                 </Box>

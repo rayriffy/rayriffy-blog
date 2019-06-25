@@ -19,11 +19,20 @@ interface IData {
 
 const GlobalStyle = createGlobalStyle`
   html {
-    background-color: #f5f5f5;
+    background-color: rgb(245, 245, 245);
   }
   a {
     text-decoration: none;
     color: rgb(83, 106, 144);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      background-color: rgb(40, 40, 40);
+    }
+    a {
+      color: rgb(21, 142, 255);
+    }
   }
 `
 
