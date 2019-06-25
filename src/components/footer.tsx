@@ -94,14 +94,14 @@ const Component: React.SFC = () => {
       <Box py={4}>
         <Flex flexWrap={`wrap`} justifyContent={`left`}>
           {tabs.map(tab => (
-            <Box width={[1, 1/2, 1/2, 1/3]} py={3}>
+            <Box width={[1, 1/2, 1/2, 1/3]} py={3} key={`footer-tab-${tab.name}`}>
               <Box pb={3}>
                 <NavTitle fontSize={14}>{tab.name.toUpperCase()}</NavTitle>
               </Box>
               <Box>
                 <Flex flexWrap={`wrap`}>
                   {tab.navs.map(nav => (
-                    <NavLink href={nav.href} color={`rgba(0, 0, 0, 0.6)`} fontSize={16} py={1} width={1}>
+                    <NavLink href={nav.href} key={`nav-${tab.name}-${nav.name}`} color={`rgba(0, 0, 0, 0.6)`} fontSize={16} py={1} width={1}>
                       {nav.name}
                     </NavLink>
                   ))}
