@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
+import styled from 'styled-components'
 
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
@@ -27,6 +28,26 @@ interface IProps {
     }[]
   }
 }
+
+const FacebookIcon = styled(FaFacebook)`
+  color: rgb(0, 0, 0);
+
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(222, 222, 222);
+    }
+  }
+`
+
+const TwitterIcon = styled(FaTwitter)`
+  color: rgb(0, 0, 0);
+
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(222, 222, 222);
+    }
+  }
+`
 
 const AuthorList: React.SFC<IProps> = props => {
   const {authors = []} = props.pageContext
@@ -60,12 +81,12 @@ const AuthorList: React.SFC<IProps> = props => {
                         type={`listing`}
                       >
                         <Box px={4} pb={4}>
-                          <FaFacebook />{' '}
+                          <FacebookIcon />{' '}
                           <a href={author.facebook} rel="noopener noreferrer" target="_blank">
                             {author.facebook.split('/')[3]}
                           </a>
                           <br />
-                          <FaTwitter />{' '}
+                          <TwitterIcon />{' '}
                           <a href={'https://twitter.com/' + author.twitter.split('@')[1]} rel="noopener noreferrer" target="_blank">
                             {author.twitter}
                           </a>
