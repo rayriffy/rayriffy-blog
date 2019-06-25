@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
 
   p,
   ol,
+  li,
   table>tbody>tr>td {
     color: rgba(0, 0, 0, 0.6)
   }
@@ -70,6 +71,48 @@ const GlobalStyle = createGlobalStyle`
     border: 1px solid #eeeeee;
     border-radius: 3px;
   }
+
+  .gatsby-resp-image-image {
+    box-shadow: inset 0px 0px 0px 400px rgb(255, 255, 255) !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    th {
+      color: rgb(255, 255, 255);
+    }
+
+    a {
+      color: rgb(21, 142, 255);
+    }
+
+    p,
+    ol,
+    li,
+    table>tbody>tr>td {
+      color: rgb(192, 192, 192);
+    }
+
+    pre {
+      border: 1px solid #424242;
+      background: #212121;
+      color: #f5f5f5;
+    }
+
+    :not(pre)>code {
+      background: #292d34;
+      color: #ef596f;
+    }
+
+    .gatsby-resp-image-image {
+      box-shadow: inset 0px 0px 0px 400px rgb(60, 60, 60) !important;
+    }
+  }
 `
 
 const Banner = styled(Img)`
@@ -77,6 +120,12 @@ const Banner = styled(Img)`
 `
 
 const BlogCard = styled(Card)`
+  @media (prefers-color-scheme: dark) {
+    & {
+      background-color: rgb(60, 60, 60);
+    }
+  }
+
   ${props => props.type === 'post' ? `
     border-radius: 0 0 6px 6px;
   ` : props.type === 'listing' ? `
@@ -86,12 +135,36 @@ const BlogCard = styled(Card)`
   `}
 `
 
+const BlogTitle = styled(Heading)`
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(222, 222, 222);
+    }
+  }
+`
+
+const BlogText = styled(Text)`
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(192, 192, 192);
+    }
+  }
+`
+
+const BlogLink = styled(Link)`
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: rgb(255, 255, 255);
+    }
+  }
+`
+
 const Component: React.SFC<IProps> = props => {
   const {author, blog, children, slug, type, boxShadow = `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`} = props
   const {title, subtitle, banner, date} = blog
 
   const cardBanner = banner ? <Banner fluid={banner.childImageSharp.fluid} /> : null
-  const cardTitle = <Heading fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`}>{title}</Heading>
+  const cardTitle = <BlogTitle fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`}>{title}</BlogTitle>
 
   return (
     <BlogCard backgroundColor={`rgb(255, 255, 255)`} type={type} boxShadow={boxShadow}>
@@ -104,11 +177,11 @@ const Component: React.SFC<IProps> = props => {
       <Box px={type === 'listing' ? 4 : type === 'post' ? [4, 5] : 4} py={4}>
         {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardTitle}</Link> : cardTitle}
         {date && author ? (
-          <Text fontSize={[14, 16]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>
-            Written by <Link href={'/author/' + author.user} color={`rgba(0, 0, 0, 0.8)`} aria-label={author.name}>{author.name}</Link> on {date}
-          </Text>
+          <BlogText fontSize={[14, 16]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>
+            Written by <BlogLink href={'/author/' + author.user} color={`rgba(0, 0, 0, 0.8)`} aria-label={author.name}>{author.name}</BlogLink> on {date}
+          </BlogText>
         ) : null}
-        {subtitle ? <Text fontSize={[16, 17]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</Text> : null}
+        {subtitle ? <BlogText fontSize={[16, 17]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</BlogText> : null}
       </Box>
       {children}
     </BlogCard>

@@ -13,11 +13,11 @@
     "@types/rebass": "^3.0.4",
     "@types/styled-components": "^4.1.16",
     "@types/typography": "^0.16.2",
-    "babel-plugin-styled-components": "^1.10.1",
+    "babel-plugin-styled-components": "^1.10.2",
     "cross-env": "^5.2.0",
-    "gatsby": "^2.9.2",
-    "gatsby-image": "^2.2.1",
-    "gatsby-plugin-feed": "^2.3.0",
+    "gatsby": "^2.10.4",
+    "gatsby-image": "^2.2.3",
+    "gatsby-plugin-feed": "^2.3.1",
     "gatsby-plugin-google-analytics": "^2.1.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.0",
@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.6",
+    "husky": "^2.5.0",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
     "remark-cli": "^6.0.1",
@@ -72,6 +73,11 @@
     "tslint-react": "^4.0.0"
   },
   "homepage": "https://blog.rayriffy.com",
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test"
+    }
+  },
   "keywords": [
     "gatsby",
     "gatsbyjs",
@@ -92,7 +98,7 @@
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths",
     "dev": "cross-env GATSBY_ENV=development gatsby develop --https",
-    "dev:net": "cross-env GATSBY_ENV=development gatsby develop -p 3000",
+    "dev:net": "cross-env GATSBY_ENV=development gatsby develop -p 3000 -H 0.0.0.0",
     "dev:prod": "cross-env GATSBY_ENV=production gatsby develop --https",
     "dev:staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
     "format": "yarn lint --fix",
@@ -100,7 +106,7 @@
     "lh": "lighthousebot",
     "md-lint": "remark .",
     "start": "npm run develop",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "yarn lint && yarn type-check && yarn md-lint",
     "type-check": "tsc"
   }
 }
