@@ -17,7 +17,7 @@
     "cross-env": "^5.2.0",
     "gatsby": "^2.10.4",
     "gatsby-image": "^2.2.1",
-    "gatsby-plugin-feed": "^2.3.0",
+    "gatsby-plugin-feed": "^2.3.1",
     "gatsby-plugin-google-analytics": "^2.1.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.0",
