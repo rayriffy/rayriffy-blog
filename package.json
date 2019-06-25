@@ -37,7 +37,7 @@
     "gatsby-remark-embed-video": "^1.7.1",
     "gatsby-remark-images": "^3.0.14",
     "gatsby-remark-prismjs": "^3.3.0",
-    "gatsby-remark-responsive-iframe": "^2.2.0",
+    "gatsby-remark-responsive-iframe": "^2.2.1",
     "gatsby-remark-smartypants": "^2.1.0",
     "gatsby-source-filesystem": "^2.0.39",
     "gatsby-transformer-json": "^2.2.0",
