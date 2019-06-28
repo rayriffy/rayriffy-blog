@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.6",
-    "husky": "^2.6.0",
+    "husky": "^2.7.0",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
     "remark-cli": "^6.0.1",
