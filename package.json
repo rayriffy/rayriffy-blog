@@ -13,7 +13,7 @@
     "@types/rebass": "^3.0.4",
     "@types/styled-components": "^4.1.16",
     "@types/typography": "^0.16.2",
-    "babel-plugin-styled-components": "^1.10.3",
+    "babel-plugin-styled-components": "^1.10.5",
     "cross-env": "^5.2.0",
     "gatsby": "^2.11.0",
     "gatsby-image": "^2.2.3",
