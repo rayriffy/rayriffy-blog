@@ -13,7 +13,6 @@ import Card from '../components/card'
 import Featured from '../components/featured'
 import Pagination from '../components/pagination'
 import SEO from '../components/seo'
-import Warning from '../components/warning'
 
 interface IPost {
   node : {
@@ -74,22 +73,19 @@ const MockPage: React.SFC<IProps> = props => {
         }}
         type={`page`} />
       {currentPage === 1 ? (
-        <>
-          <Warning />
-          <Box my={4}>
-            <Flex justifyContent={`center`}>
-              <Box width={[1, 18/24, 16/24, 14/24]}>
-                <Featured
-                  title={featured.node.frontmatter.title}
-                  subtitle={featured.node.frontmatter.subtitle}
-                  slug={featured.node.fields.slug}
-                  banner={featured.node.frontmatter.banner}
-                  featured={true}
-                />
-              </Box>
-            </Flex>
-          </Box>
-        </>
+        <Box my={4}>
+          <Flex justifyContent={`center`}>
+            <Box width={[1, 18/24, 16/24, 14/24]}>
+              <Featured
+                title={featured.node.frontmatter.title}
+                subtitle={featured.node.frontmatter.subtitle}
+                slug={featured.node.fields.slug}
+                banner={featured.node.frontmatter.banner}
+                featured={true}
+              />
+            </Box>
+          </Flex>
+        </Box>
       ) : null}
       <Box>
         <Flex justifyContent={`center`}>
