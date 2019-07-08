@@ -8,7 +8,6 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
 
-import App from '../components/app'
 import Card from '../components/card'
 import Featured from '../components/featured'
 import Pagination from '../components/pagination'
@@ -64,7 +63,7 @@ const MockPage: React.SFC<IProps> = props => {
   const {numPages, currentPage, featured} = props.pageContext
 
   return (
-    <App>
+    <>
       <SEO
         author={{
           facebook: 'https://facebook.com/rayriffy',
@@ -111,7 +110,7 @@ const MockPage: React.SFC<IProps> = props => {
       <Box my={3}>
         <Pagination numPages={numPages} currentPage={currentPage} pathPrefix="/" />
       </Box>
-    </App>
+    </>
   )
 }
 
