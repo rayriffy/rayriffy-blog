@@ -86,7 +86,7 @@ const Component: React.SFC = () => {
 
   return (
     <Box pt={4} px={[5, 5, 6, 7]} pb={4}>
-      <Box pb={2}>
+      <Box pt={2} pb={2}>
         <Box width={32}>
           <Logo />
         </Box>

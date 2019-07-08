@@ -168,7 +168,7 @@ const Component: React.SFC<IProps> = props => {
 
   return (
     <BlogCard backgroundColor={`rgb(255, 255, 255)`} type={type} boxShadow={boxShadow}>
-      <GlobalStyle />
+      {type === 'post' ? <GlobalStyle /> : null}
       {banner ? (
         <Box>
           {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardBanner}</Link> : cardBanner}

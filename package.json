@@ -6,6 +6,27 @@
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
   },
+  "homepage": "https://blog.rayriffy.com",
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test"
+    }
+  },
+  "keywords": [
+    "gatsby",
+    "gatsbyjs",
+    "react",
+    "reactjs",
+    "es6",
+    "blog"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
+  },
+  "private": true,
   "dependencies": {
     "@raae/gatsby-remark-oembed": "^0.0.7",
     "@types/lodash": "^4.14.135",
@@ -71,26 +92,6 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0"
-  },
-  "homepage": "https://blog.rayriffy.com",
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn test"
-    }
-  },
-  "keywords": [
-    "gatsby",
-    "gatsbyjs",
-    "react",
-    "reactjs",
-    "es6",
-    "blog"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
   },
   "scripts": {
     "build": "cross-env GATSBY_ENV=production gatsby build",

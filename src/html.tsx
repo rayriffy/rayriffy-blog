@@ -12,6 +12,8 @@ interface IProps {
 const HTML: React.SFC<IProps> = props => {
   const {htmlAttributes, headComponents, bodyAttributes, preBodyComponents, body, postBodyComponents} = props
 
+  const {GATSBY_ENV = 'development'} = process.env
+
   return (
     <html {...htmlAttributes}>
       <head>
@@ -32,7 +34,9 @@ const HTML: React.SFC<IProps> = props => {
         <div key={`body`} id="___gatsby" dangerouslySetInnerHTML={{__html: body}} />
         {postBodyComponents}
       </body>
-      <script async={true} src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+      {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
+        <script async={true} src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+      ) : null}
     </html>
   )
 }
