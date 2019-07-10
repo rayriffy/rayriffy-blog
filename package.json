@@ -77,7 +77,7 @@
     "styled-components": "^4.3.2",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.43",
-    "typescript": "^3.5.2",
+    "typescript": "^3.5.3",
     "typography": "^0.16.19"
   },
   "devDependencies": {
