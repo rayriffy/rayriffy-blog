@@ -32,7 +32,7 @@
     "@types/lodash": "^4.14.136",
     "@types/react-helmet": "^5.0.8",
     "@types/rebass": "^3.0.4",
-    "@types/styled-components": "^4.1.16",
+    "@types/styled-components": "^4.1.18",
     "@types/typography": "^0.16.2",
     "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "^5.2.0",
