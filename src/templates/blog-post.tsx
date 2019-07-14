@@ -9,7 +9,6 @@ import AdSense from 'react-adsense'
 import { Box, Flex, Link, Text } from 'rebass'
 import styled from 'styled-components'
 
-import App from '../components/app'
 import Card from '../components/card'
 import SEO from '../components/seo'
 
@@ -86,7 +85,7 @@ const BlogPost: React.SFC<IProps> = props => {
   const {GATSBY_ENV = 'development'} = process.env
 
   return (
-    <App>
+    <>
       <Helmet title={title} />
       <SEO
         title={title}
@@ -151,7 +150,7 @@ const BlogPost: React.SFC<IProps> = props => {
           </Card>
         </Box>
       </Flex>
-    </App>
+    </>
   )
 }
 

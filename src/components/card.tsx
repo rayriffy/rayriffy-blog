@@ -72,6 +72,10 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 3px;
   }
 
+  .gatsby-resp-image-image {
+    box-shadow: inset 0px 0px 0px 400px rgb(255, 255, 255) !important;
+  }
+
   @media (prefers-color-scheme: dark) {
     h1,
     h2,
@@ -103,6 +107,10 @@ const GlobalStyle = createGlobalStyle`
     :not(pre)>code {
       background: #292d34;
       color: #ef596f;
+    }
+
+    .gatsby-resp-image-image {
+      box-shadow: inset 0px 0px 0px 400px rgb(60, 60, 60) !important;
     }
   }
 `
@@ -160,7 +168,7 @@ const Component: React.SFC<IProps> = props => {
 
   return (
     <BlogCard backgroundColor={`rgb(255, 255, 255)`} type={type} boxShadow={boxShadow}>
-      <GlobalStyle />
+      {type === 'post' ? <GlobalStyle /> : null}
       {banner ? (
         <Box>
           {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardBanner}</Link> : cardBanner}
