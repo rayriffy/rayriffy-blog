@@ -61,7 +61,7 @@
     "gatsby-remark-responsive-iframe": "^2.2.3",
     "gatsby-remark-smartypants": "^2.1.0",
     "gatsby-source-filesystem": "^2.1.5",
-    "gatsby-transformer-json": "^2.2.0",
+    "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-remark": "^2.6.4",
     "gatsby-transformer-sharp": "^2.2.1",
     "lodash": "^4.17.14",
