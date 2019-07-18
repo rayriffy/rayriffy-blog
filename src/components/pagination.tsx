@@ -17,7 +17,7 @@ const Page = styled(Link)`
   }
 `
 
-const Component: React.SFC<IProps> = props => {
+const Component: React.FC<IProps> = props => {
   const {numPages, currentPage, pathPrefix} = props
 
   const pageLength: number = numPages > 5 ? 5 : numPages

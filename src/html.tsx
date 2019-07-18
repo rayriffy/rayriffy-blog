@@ -9,7 +9,7 @@ interface IProps {
   postBodyComponents: object[]
 }
 
-const HTML: React.SFC<IProps> = props => {
+const HTML: React.FC<IProps> = props => {
   const {htmlAttributes, headComponents, bodyAttributes, preBodyComponents, body, postBodyComponents} = props
 
   const {GATSBY_ENV = 'development'} = process.env

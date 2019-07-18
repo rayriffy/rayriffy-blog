@@ -27,7 +27,7 @@ const Subtitle = styled.div`
   font-size: 18px;
 `
 
-const Component: React.SFC<IProps> = props => {
+const Component: React.FC<IProps> = props => {
   const {name, desc} = props
 
   return (

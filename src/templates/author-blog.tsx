@@ -53,7 +53,7 @@ interface IProps {
   }
 }
 
-const AuthorBlog: React.SFC<IProps> = props => {
+const AuthorBlog: React.FC<IProps> = props => {
   const posts = props.data.allMarkdownRemark.edges
   const author = props.data.authorsJson
   const authorName = author.name

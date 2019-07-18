@@ -24,7 +24,7 @@ interface IProps {
   }
 }
 
-const CategoryList: React.SFC<IProps> = props => {
+const CategoryList: React.FC<IProps> = props => {
   const {categories = []} = props.pageContext
 
   return (
