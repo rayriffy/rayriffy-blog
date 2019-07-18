@@ -20,30 +20,15 @@ const Page = styled(Link)`
 const Component: React.SFC<IProps> = props => {
   const {numPages, currentPage, pathPrefix} = props
 
-  let pagesLen: number
-  let startFrom: number
-
-  if (numPages > 5) {
-    pagesLen = 5
-
-    if (currentPage - 2 < 1) {
-      startFrom = 0
-    } else if (currentPage + 2 > numPages) {
-      startFrom = numPages - pagesLen
-    } else {
-      startFrom = currentPage - (pagesLen - 2)
-    }
-  } else {
-    pagesLen = numPages
-    startFrom = 0
-  }
+  const pageLength: number = numPages > 5 ? 5 : numPages
+  const startPoint: number = numPages > 5 ? currentPage - 2 < 1 ? 0 : currentPage + 2 > numPages ? numPages - pageLength : currentPage - (pageLength - 2) : 0
 
   return (
     <Box my={4}>
       <Flex justifyContent={`center`}>
-        {Array.from({length: pagesLen}, (_, i) => (
-          <Page key={`pagination-${startFrom + i}`} px={3} href={`${startFrom + i === 0 ? `${pathPrefix}` : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startFrom + i + 1}`}`} color={startFrom + i + 1 === currentPage ? `rgba(0, 0, 0, 1)` : `rgba(0, 0, 0, 0.5)`}>
-            {startFrom + i + 1}
+        {Array.from({length: pageLength}, (_, i) => (
+          <Page key={`pagination-${startPoint + i}`} px={3} href={`${startPoint + i === 0 ? `${pathPrefix}` : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startPoint + i + 1}`}`} color={startPoint + i + 1 === currentPage ? `rgba(0, 0, 0, 1)` : `rgba(0, 0, 0, 0.5)`}>
+            {startPoint + i + 1}
           </Page>
         ))}
       </Flex>
