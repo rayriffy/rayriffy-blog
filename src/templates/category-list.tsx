@@ -5,6 +5,7 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
 
+import App from '../components/app'
 import Card from '../components/card'
 import Chip from '../components/chip'
 import SEO from '../components/seo'
@@ -28,7 +29,7 @@ const CategoryList: React.FC<IProps> = props => {
   const {categories = []} = props.pageContext
 
   return (
-    <>
+    <App>
       <Box mb={4}>
         <Helmet title={`Category`} />
         <SEO
@@ -60,7 +61,7 @@ const CategoryList: React.FC<IProps> = props => {
           </Box>
         </Flex>
       </Box>
-    </>
+    </App>
   )
 }
 

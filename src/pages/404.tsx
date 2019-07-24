@@ -6,6 +6,7 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex, Link } from 'rebass'
 
+import App from '../components/app'
 import Card from '../components/card'
 
 interface IProps {
@@ -20,22 +21,24 @@ interface IProps {
 
 const NotFound: React.FC<IProps> = props => {
   return (
-    <Flex justifyContent={`center`}>
-      <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
-        <Helmet title={'Not Found'} />
-        <Card
-          blog={{
-            banner: props.data.banner,
-            subtitle: `Whoops! Looks like you're lost in the woods...with Cirno.`,
-            title: 'Not Found',
-          }}
-          type={`post`}>
-            <Box px={[4, 5]} pb={4}>
-              <Link href="/" color={`rgb(83,106,144)`}>Back to home</Link>
-            </Box>
-        </Card>
-      </Box>
-    </Flex>
+    <App>
+      <Flex justifyContent={`center`}>
+        <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>
+          <Helmet title={'Not Found'} />
+          <Card
+            blog={{
+              banner: props.data.banner,
+              subtitle: `Whoops! Looks like you're lost in the woods...with Cirno.`,
+              title: 'Not Found',
+            }}
+            type={`post`}>
+              <Box px={[4, 5]} pb={4}>
+                <Link href="/" color={`rgb(83,106,144)`}>Back to home</Link>
+              </Box>
+          </Card>
+        </Box>
+      </Flex>
+    </App>
   )
 }
 
