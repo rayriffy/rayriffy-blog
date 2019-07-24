@@ -6,6 +6,7 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex } from 'rebass'
 
+import App from '../components/app'
 import Card from '../components/card'
 import Featured from '../components/featured'
 import Navbar from '../components/navbar'
@@ -61,7 +62,7 @@ const AuthorBlog: React.FC<IProps> = props => {
   const {currentPage, numPages, pathPrefix, banner} = props.pageContext
 
   return (
-    <>
+    <App>
       <Helmet title={authorName} />
       <SEO
         title={authorName}
@@ -119,7 +120,7 @@ const AuthorBlog: React.FC<IProps> = props => {
         </Flex>
       </Box>
       <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
-    </>
+    </App>
   )
 }
 
