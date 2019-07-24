@@ -159,7 +159,7 @@ const BlogLink = styled(Link)`
   }
 `
 
-const Component: React.SFC<IProps> = props => {
+const Component: React.FC<IProps> = props => {
   const {author, blog, children, slug, type, boxShadow = `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`} = props
   const {title, subtitle, banner, date} = blog
 

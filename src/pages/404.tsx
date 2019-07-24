@@ -18,7 +18,7 @@ interface IProps {
   }
 }
 
-const NotFound: React.SFC<IProps> = props => {
+const NotFound: React.FC<IProps> = props => {
   return (
     <Flex justifyContent={`center`}>
       <Box width={[20/24, 18/24, 14/24, 12/24]} mb={4}>

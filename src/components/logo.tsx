@@ -6,7 +6,7 @@ interface IProps {
   width?: number | number[]
 }
 
-const Component: React.SFC<IProps> = props => {
+const Component: React.FC<IProps> = props => {
   const {width = 1} = props
 
   return (

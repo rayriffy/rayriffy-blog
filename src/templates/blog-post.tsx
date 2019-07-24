@@ -75,7 +75,7 @@ const NavLink = styled(Link)`
   }
 `
 
-const BlogPost: React.SFC<IProps> = props => {
+const BlogPost: React.FC<IProps> = props => {
   const {previous, next} = props.pageContext
   const {authorsJson, markdownRemark} = props.data
 

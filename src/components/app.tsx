@@ -43,7 +43,7 @@ const HelmetRenderer = (data: IData) => {
   )
 }
 
-const Component: React.SFC = props => {
+const Component: React.FC = props => {
   const {children} = props
   const {GATSBY_ENV = 'development'} = process.env
 
