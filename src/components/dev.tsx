@@ -12,7 +12,7 @@ const Container = styled.div`
   height: 20px;
 `
 
-const Component: React.SFC = () => {
+const Component: React.FC = () => {
   return <Container />
 }
 

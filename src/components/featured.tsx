@@ -43,7 +43,7 @@ const FeaturedCard = styled(Card)`
   }
 `
 
-const Component: React.SFC<IProps>  = props => {
+const Component: React.FC<IProps>  = props => {
   const {slug, banner, featured, title, subtitle} = props
 
   const RenderedCard = (

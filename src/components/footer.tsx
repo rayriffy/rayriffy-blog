@@ -29,7 +29,7 @@ const NavLink = styled(Link)`
   }
 `
 
-const Component: React.SFC = () => {
+const Component: React.FC = () => {
   const tabs = [
     {
       name: 'general',

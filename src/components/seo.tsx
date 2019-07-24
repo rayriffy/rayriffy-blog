@@ -181,7 +181,7 @@ const SEORenderer = (data: IData, props: IProps) => {
   )
 }
 
-const Component: React.SFC<IProps> = props => {
+const Component: React.FC<IProps> = props => {
   return (
     <StaticQuery
       query={graphql`

@@ -48,7 +48,7 @@ const TwitterIcon = styled(FaTwitter)`
   }
 `
 
-const AuthorList: React.SFC<IProps> = props => {
+const AuthorList: React.FC<IProps> = props => {
   const {authors = []} = props.pageContext
 
   return (

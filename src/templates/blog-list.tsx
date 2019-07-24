@@ -57,7 +57,7 @@ interface IProps {
   }
 }
 
-const MockPage: React.SFC<IProps> = props => {
+const MockPage: React.FC<IProps> = props => {
   const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
   const {numPages, currentPage, featured} = props.pageContext

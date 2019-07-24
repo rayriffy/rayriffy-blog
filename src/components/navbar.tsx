@@ -24,7 +24,7 @@ interface IProps {
   }[]
 }
 
-const Component: React.SFC<IProps> = props => {
+const Component: React.FC<IProps> = props => {
   const { align, tabs } = props
   return (
     <Flex justifyContent={align}>

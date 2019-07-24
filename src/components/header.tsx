@@ -5,7 +5,7 @@ import { Box, Flex, Link } from 'rebass'
 import Logo from './logo'
 import Navbar from './navbar'
 
-const Component: React.SFC = () => {
+const Component: React.FC = () => {
   const navTabs = [
     {
       href: '/',

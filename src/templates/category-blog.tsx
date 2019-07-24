@@ -65,7 +65,7 @@ interface IProps {
   }
 }
 
-const CategoryBlog: React.SFC<IProps> = props => {
+const CategoryBlog: React.FC<IProps> = props => {
   const authors = props.data.allAuthorsJson.edges
   const posts = props.data.allMarkdownRemark.edges
   const categoryName = props.data.categoriesJson.name
