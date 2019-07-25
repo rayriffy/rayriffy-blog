@@ -8,7 +8,6 @@ import styled from 'styled-components'
 
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
-import App  from '../components/app'
 import Card from '../components/card'
 import Chip from '../components/chip'
 import SEO from '../components/seo'
@@ -53,7 +52,7 @@ const AuthorList: React.FC<IProps> = props => {
   const {authors = []} = props.pageContext
 
   return (
-    <App>
+    <>
       <Box mb={4}>
         <Helmet title={`Authors`} />
         <SEO
@@ -100,7 +99,7 @@ const AuthorList: React.FC<IProps> = props => {
           </Flex>
         </Box>
       </Box>
-    </App>
+    </>
   )
 }
 
