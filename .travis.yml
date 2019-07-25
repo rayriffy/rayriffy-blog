@@ -4,6 +4,9 @@ os:
 node_js:
   - "lts/*"
 cache:
+  directories:
+    - .cache
+    - public
   yarn: true
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.16.0
@@ -15,3 +18,14 @@ script:
   - yarn md-lint
 after_success:
   - if [ "$TRAVIS_BRANCH" = "release" ] && [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then yarn lh -- --perf=70 --pwa=70 --seo=70 --bp=70 --a11y=70 https://staging.blog.rayriffy.com/; fi
+
+before_deploy:
+  - yarn global add netlify-cli
+  - yarn build
+
+deploy:
+  provider: script
+  script: netlify deploy -s $NETLIFY_PROD_SITE -t $NETLIFY_TOKEN -p ./public
+  skip_cleanup: true
+  on:
+    branch: release
