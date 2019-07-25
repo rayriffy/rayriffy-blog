@@ -16,12 +16,12 @@ script:
   - yarn lint
   - yarn type-check
   - yarn md-lint
+  - if [ "$TRAVIS_BRANCH" = "release" ] && [ "$TRAVIS_EVENT_TYPE" = "push" ]; then yarn build; fi
 after_success:
-  - if [ "$TRAVIS_BRANCH" = "release" ] && [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then yarn lh -- --perf=70 --pwa=70 --seo=70 --bp=70 --a11y=70 https://staging.blog.rayriffy.com/; fi
+  - if [ "$TRAVIS_BRANCH" = "release" ] && [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then  travis_wait 120 yarn lh -- --perf=70 --pwa=70 --seo=70 --bp=70 --a11y=70 https://staging.blog.rayriffy.com/; fi
 
 before_deploy:
   - yarn global add netlify-cli
-  - yarn build
 
 deploy:
   provider: script
