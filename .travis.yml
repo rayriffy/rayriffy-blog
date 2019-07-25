@@ -25,7 +25,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: netlify deploy -s $NETLIFY_PROD_SITE -t $NETLIFY_TOKEN -p ./public
+  script: netlify deploy --auth $NETLIFY_AUTH_TOKEN --prod --dir ./public
   skip_cleanup: true
   on:
     branch: release
