@@ -63,7 +63,7 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-remark": "^2.6.9",
-    "gatsby-transformer-sharp": "^2.2.4",
+    "gatsby-transformer-sharp": "^2.2.5",
     "lodash": "^4.17.15",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
