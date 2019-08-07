@@ -60,6 +60,8 @@ interface IProps {
 }
 
 const NavText = styled(Text)`
+  color: rgba(0, 0, 0, 0.8);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(255, 255, 255);
@@ -68,6 +70,8 @@ const NavText = styled(Text)`
 `
 
 const NavLink = styled(Link)`
+  rgb(83, 106, 144);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(21, 142, 255);
@@ -132,16 +136,16 @@ const BlogPost: React.FC<IProps> = props => {
                 <Box width={1/2} px={2}>
                   {previous ? (
                     <>
-                      <NavText color={`rgba(0, 0, 0, 0.8)`}>PREVIOUS</NavText>
-                      <NavLink href={previous.fields.slug} color={`rgb(83,106,144)`}>{previous.frontmatter.title}</NavLink>
+                      <NavText>PREVIOUS</NavText>
+                      <NavLink href={previous.fields.slug}>{previous.frontmatter.title}</NavLink>
                     </>
                   ) : null}
                 </Box>
                 <Box width={1/2} px={2}>
                   {next ? (
                     <>
-                      <NavText color={`rgba(0, 0, 0, 0.8)`}>NEXT</NavText>
-                      <NavLink href={next.fields.slug} color={`rgb(83,106,144)`}>{next.frontmatter.title}</NavLink>
+                      <NavText>NEXT</NavText>
+                      <NavLink href={next.fields.slug}>{next.frontmatter.title}</NavLink>
                     </>
                   ) : null}
                 </Box>
