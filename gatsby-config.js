@@ -1,4 +1,4 @@
-const { GATSBY_ENV = 'development' } = process.env
+const { GATSBY_ENV = 'production' } = process.env
 
 module.exports = {
   siteMetadata: {
