@@ -86,7 +86,7 @@ const BlogPost: React.FC<IProps> = props => {
   const {slug} = markdownRemark.fields
   const {title, subtitle, date, banner} = markdownRemark.frontmatter
 
-  const {GATSBY_ENV = 'development'} = process.env
+  const {GATSBY_ENV = 'production'} = process.env
 
   return (
     <>
