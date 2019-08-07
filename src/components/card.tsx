@@ -120,6 +120,8 @@ const Banner = styled(Img)`
 `
 
 const BlogCard = styled(Card)`
+  background-color: rgb(255, 255, 255);
+
   @media (prefers-color-scheme: dark) {
     & {
       background-color: rgb(60, 60, 60);
@@ -136,6 +138,8 @@ const BlogCard = styled(Card)`
 `
 
 const BlogTitle = styled(Heading)`
+  color: rgb(0, 0, 0);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(222, 222, 222);
@@ -144,6 +148,8 @@ const BlogTitle = styled(Heading)`
 `
 
 const BlogText = styled(Text)`
+  color: rgba(0, 0, 0, 0.6);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(192, 192, 192);
@@ -152,6 +158,8 @@ const BlogText = styled(Text)`
 `
 
 const BlogLink = styled(Link)`
+  color: rgba(0, 0, 0, 0.8);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(255, 255, 255);
@@ -164,10 +172,10 @@ const Component: React.FC<IProps> = props => {
   const {title, subtitle, banner, date} = blog
 
   const cardBanner = banner ? <Banner fluid={banner.childImageSharp.fluid} /> : null
-  const cardTitle = <BlogTitle fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`}>{title}</BlogTitle>
+  const cardTitle = <BlogTitle fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} fontFamily={`Kanit, sans-serif`}>{title}</BlogTitle>
 
   return (
-    <BlogCard backgroundColor={`rgb(255, 255, 255)`} type={type} boxShadow={boxShadow}>
+    <BlogCard type={type} boxShadow={boxShadow}>
       {type === 'post' ? <GlobalStyle /> : null}
       {banner ? (
         <Box>
@@ -177,11 +185,11 @@ const Component: React.FC<IProps> = props => {
       <Box px={type === 'listing' ? 4 : type === 'post' ? [4, 5] : 4} py={4}>
         {slug ? <Link href={slug} aria-label={`link-${title}`}>{cardTitle}</Link> : cardTitle}
         {date && author ? (
-          <BlogText fontSize={[14, 16]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>
-            Written by <BlogLink href={'/author/' + author.user} color={`rgba(0, 0, 0, 0.8)`} aria-label={author.name}>{author.name}</BlogLink> on {date}
+          <BlogText fontSize={[14, 16]} mt={3}>
+            Written by <BlogLink href={'/author/' + author.user} aria-label={author.name}>{author.name}</BlogLink> on {date}
           </BlogText>
         ) : null}
-        {subtitle ? <BlogText fontSize={[16, 17]} mt={3} color={`rgba(0, 0, 0, 0.6)`}>{subtitle}</BlogText> : null}
+        {subtitle ? <BlogText fontSize={[16, 17]} mt={3}>{subtitle}</BlogText> : null}
       </Box>
       {children}
     </BlogCard>

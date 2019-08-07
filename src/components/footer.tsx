@@ -14,6 +14,8 @@ const NavTitle = styled(Heading)`
 `
 
 const NavText = styled(Text)`
+  color: rgba(0, 0, 0, 0.25);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(192, 192, 192);
@@ -22,6 +24,8 @@ const NavText = styled(Text)`
 `
 
 const NavLink = styled(Link)`
+  rgba(0, 0, 0, 0.6);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(192, 192, 192);
@@ -96,12 +100,12 @@ const Component: React.FC = () => {
           {tabs.map(tab => (
             <Box width={[1, 1/2, 1/2, 1/3]} py={3} key={`footer-tab-${tab.name}`}>
               <Box pb={3}>
-                <NavTitle fontSize={14}>{tab.name.toUpperCase()}</NavTitle>
+                <NavTitle fontSize={14} fontFamily={`Kanit, sans-serif`}>{tab.name.toUpperCase()}</NavTitle>
               </Box>
               <Box>
                 <Flex flexWrap={`wrap`}>
                   {tab.navs.map(nav => (
-                    <NavLink href={nav.href} key={`nav-${tab.name}-${nav.name}`} color={`rgba(0, 0, 0, 0.6)`} fontSize={16} py={1} width={1}>
+                    <NavLink href={nav.href} key={`nav-${tab.name}-${nav.name}`} fontSize={16} py={1} width={1}>
                       {nav.name}
                     </NavLink>
                   ))}
@@ -112,7 +116,7 @@ const Component: React.FC = () => {
         </Flex>
       </Box>
       <Box pt={2} pb={5}>
-        <NavText color={`rgba(0, 0, 0, 0.25)`}>© {(new Date().getFullYear())} Phumrapee Limpianchop</NavText>
+        <NavText>© {(new Date().getFullYear())} Phumrapee Limpianchop</NavText>
       </Box>
     </Box>
   )

@@ -8,6 +8,8 @@ const NavLink = styled(Link)`
 `
 
 const NavText = styled(Text)`
+  color: rgb(34, 34, 34);
+
   @media (prefers-color-scheme: dark) {
     & {
       color: rgb(255, 255, 255);
@@ -33,7 +35,7 @@ const Component: React.FC<IProps> = props => {
 
         return (
           <NavLink px={3} href={href} key={`navbar-${align}-${name}`}>
-            <NavText color={`rgba(34, 34, 34, 1)`} fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>{name.toUpperCase()}</NavText>
+            <NavText fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>{name.toUpperCase()}</NavText>
           </NavLink>
         )
       })}
