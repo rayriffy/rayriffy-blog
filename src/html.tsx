@@ -12,7 +12,7 @@ interface IProps {
 const HTML: React.FC<IProps> = props => {
   const {htmlAttributes, headComponents, bodyAttributes, preBodyComponents, body, postBodyComponents} = props
 
-  const {GATSBY_ENV = 'development'} = process.env
+  const {GATSBY_ENV = 'production'} = process.env
 
   return (
     <html {...htmlAttributes}>

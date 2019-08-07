@@ -65,6 +65,7 @@
     "gatsby-transformer-remark": "^2.6.11",
     "gatsby-transformer-sharp": "^2.2.5",
     "lodash": "^4.17.15",
+    "preact": "^10.0.0-rc.1",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -81,7 +82,6 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "@hot-loader/react-dom": "^16.8.6",
     "husky": "^3.0.2",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
