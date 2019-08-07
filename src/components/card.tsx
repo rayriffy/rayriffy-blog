@@ -164,7 +164,7 @@ const Component: React.FC<IProps> = props => {
   const {title, subtitle, banner, date} = blog
 
   const cardBanner = banner ? <Banner fluid={banner.childImageSharp.fluid} /> : null
-  const cardTitle = <BlogTitle fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`}>{title}</BlogTitle>
+  const cardTitle = <BlogTitle fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} color={`rgb(0, 0, 0)`} fontFamily={`Kanit, sans-serif`}>{title}</BlogTitle>
 
   return (
     <BlogCard backgroundColor={`rgb(255, 255, 255)`} type={type} boxShadow={boxShadow}>

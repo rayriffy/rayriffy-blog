@@ -96,7 +96,7 @@ const Component: React.FC = () => {
           {tabs.map(tab => (
             <Box width={[1, 1/2, 1/2, 1/3]} py={3} key={`footer-tab-${tab.name}`}>
               <Box pb={3}>
-                <NavTitle fontSize={14}>{tab.name.toUpperCase()}</NavTitle>
+                <NavTitle fontSize={14} fontFamily={`Kanit, sans-serif`}>{tab.name.toUpperCase()}</NavTitle>
               </Box>
               <Box>
                 <Flex flexWrap={`wrap`}>
