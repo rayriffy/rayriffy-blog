@@ -10907,14 +10907,14 @@ readdirp@^3.1.1:
   dependencies:
     picomatch "^2.0.4"
 
-rebass@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/rebass/-/rebass-4.0.1.tgz#fda8d687841fce94d0ff1758ea9fb5c245513440"
-  integrity sha512-RUiGAKmv5POOc89v1kVROco7blQkDkq5yMfx8SIIjXNDVXiSGnXdXHG8TEFTeityuU7GQynDtrcxyJMu7wOEEA==
+rebass@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/rebass/-/rebass-4.0.2.tgz#2bad127ce5b48706517bd78f3e5d335bb1ba8354"
+  integrity sha512-a2mK2p5wA23sPEB7Kr6QXRjdR7ceDxy7Rj4ILfeLyaoXK7mHyNivNjwPd843DIU9loNGrQQV+qgmZsVyXYv3kw==
   dependencies:
     "@theme-ui/preset-base" "^0.2.25"
     deepmerge "^4.0.0"
-    reflexbox "^4.0.1"
+    reflexbox "^4.0.2"
 
 recursive-readdir@2.2.1:
   version "2.2.1"
@@ -10952,10 +10952,10 @@ redux@^4.0.0:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
-reflexbox@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/reflexbox/-/reflexbox-4.0.1.tgz#a34de88839e37186252729c15eaa4f32466b6c07"
-  integrity sha512-6HFEVBDtcUwd0Q8izn8/1bwlrLAMm1JFunV9Kmm7IjGWKthS2LKgQclYqq2v7/XYBRlKBzEqU5kV2e15B8rc7g==
+reflexbox@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/reflexbox/-/reflexbox-4.0.2.tgz#66b35021a97f220270cc49abf994313bc696ccad"
+  integrity sha512-j5vbfB/aLgGbyiioNlXdpSTK97nbR5t7HWeX4w4+rlJVCvqNjZs9SfyLhwE9v4u7C6FookW39m5PhlUCgArPeQ==
   dependencies:
     "@emotion/core" "^10.0.0"
     "@emotion/styled" "^10.0.0"
