@@ -82,7 +82,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "husky": "^3.0.3",
+    "husky": "^3.0.4",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
     "remark-cli": "^7.0.0",
