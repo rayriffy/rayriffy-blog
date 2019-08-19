@@ -74,7 +74,7 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
     "react-typography": "^0.16.19",
-    "rebass": "^4.0.2",
+    "rebass": "^4.0.3",
     "styled-components": "^4.3.2",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
