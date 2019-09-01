@@ -23,8 +23,13 @@ interface IProps {
     user: string
   }
   slug?: string
-  type: string
+  type: 'post' | 'listing'
   boxShadow?: string
+}
+
+interface IBlogCard {
+  type: 'post' | 'listing'
+  boxShadow: string
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -128,12 +133,15 @@ const BlogCard = styled(Card)`
     }
   }
 
-  ${props => props.type === 'post' ? `
+  ${(props: IBlogCard) => props.type === 'post' ? `
     border-radius: 0 0 6px 6px;
+    box-shadow: ${props.boxShadow};
   ` : props.type === 'listing' ? `
     border-radius: 6px;
+    box-shadow: ${props.boxShadow};
   ` : `
     border-radius: 6px
+    box-shadow: ${props.boxShadow};
   `}
 `
 
