@@ -1,0 +1,15 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: Borales/actions-yarn@master
+    - name: Type checking test unit
+      run: yarn test:types
+    - name: Code linting test unit
+      run: yarn test:lint
+    - name: Markdown linting test unit
+      run: yarn test:markdown
