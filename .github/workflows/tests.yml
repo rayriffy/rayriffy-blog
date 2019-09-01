@@ -3,13 +3,27 @@ name: Tests
 on: [push, pull_request]
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
     steps:
-    - uses: Borales/actions-yarn@master
-    - name: Type checking test unit
+    - uses: actions/checkout@v1
+    - name: "Init: Use Node.js ${{ matrix.node-version }}"
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: "Init: Install yarn"
+      run: |
+        curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
+        export PATH=$HOME/.yarn/bin:$PATH
+    - name: "Init: Install dependencies"
+      run: yarn
+    - name: "Test: Type checking"
       run: yarn test:types
-    - name: Code linting test unit
+    - name: "Test: Code linting"
       run: yarn test:lint
-    - name: Markdown linting test unit
+    - name: "Test: Markdown linting"
       run: yarn test:markdown
