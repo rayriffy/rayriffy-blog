@@ -31,7 +31,7 @@ jobs:
     - name: "Test: Markdown linting"
       run: yarn test:markdown
 
-  build_staging:
+  build:
     needs: test
     runs-on: ubuntu-latest
     strategy:
