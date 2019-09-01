@@ -103,11 +103,11 @@
     "dev:prod": "cross-env GATSBY_ENV=production gatsby develop --https",
     "dev:staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
     "format": "yarn lint --fix",
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
-    "lh": "lighthousebot",
-    "md-lint": "remark .",
     "start": "npm run develop",
-    "test": "yarn lint && yarn type-check && yarn md-lint",
-    "type-check": "tsc"
+    "test": "yarn test:lint && yarn test:types && yarn test:markdown",
+    "test:lighthouse": "lighthousebot",
+    "test:lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "test:markdown": "remark .",
+    "test:types": "tsc"
   }
 }
