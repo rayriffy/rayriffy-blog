@@ -31,7 +31,7 @@ jobs:
     - name: "Test: Markdown linting"
       run: yarn test:markdown
 
-  build:
+  deploy:
     needs: test
     runs-on: ubuntu-latest
     strategy:
@@ -51,3 +51,10 @@ jobs:
       run: yarn
     - name: "Build: Trigger build staging site"
       run: yarn build
+    - name: "Deploy: Upload to Netlify"
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_PRODUCTION_SITE_ID: ${{ secrets.NETLIFY_PRODUCTION_SITE_ID }}
+      run: |
+        yarn global add netlify-cli
+        netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_PRODUCTION_SITE_ID --prod --dir ./public
