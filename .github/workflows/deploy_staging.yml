@@ -51,10 +51,10 @@ jobs:
       run: yarn
     - name: "Build: Trigger build staging site"
       run: yarn build:staging
-    - name: "Init: Install netlify-cli"
-      run: yarn global add netlify-cli
     - name: "Deploy: Upload to Netlify"
+      uses: netlify/actions/cli@master
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
-      run: netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_STAGING_SITE_ID --prod --dir ./public
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+      with:
+        args: deploy --dir=./public
