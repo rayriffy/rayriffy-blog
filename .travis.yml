@@ -14,6 +14,7 @@ script:
   - yarn type-check
   - yarn md-lint
   - if [ "$TRAVIS_BRANCH" = "release" ] && [ "$TRAVIS_EVENT_TYPE" = "push" ]; then travis_wait 120 yarn build; fi
+  - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_EVENT_TYPE" = "push" ]; then travis_wait 120 yarn build:staging; fi
 after_success:
   - if [ "$TRAVIS_BRANCH" = "release" ] && [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then yarn lh -- --perf=70 --pwa=70 --seo=70 --bp=70 --a11y=70 https://staging.blog.rayriffy.com/; fi
 
@@ -21,8 +22,13 @@ before_deploy:
   - yarn global add netlify-cli
 
 deploy:
-  provider: script
-  script: netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID --prod --dir ./public
-  skip_cleanup: true
-  on:
-    branch: release
+  - provider: script
+    script: netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_PRODUCTION_SITE_ID --prod --dir ./public
+    skip_cleanup: true
+    on:
+      branch: release
+  - provider: script
+    script: netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_STAGING_SITE_ID --prod --dir ./public
+    skip_cleanup: true
+    on:
+      branch: master
