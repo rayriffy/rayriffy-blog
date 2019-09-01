@@ -10,10 +10,6 @@ jobs:
   build_staging:
     needs: test
     runs-on: ubuntu-latest
-    on:
-      push:
-        branches:
-          - master
     strategy:
       matrix:
         node-version: [12.x]
