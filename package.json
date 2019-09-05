@@ -33,7 +33,7 @@
     "@types/react-helmet": "^5.0.9",
     "@types/rebass": "^4.0.0",
     "@types/styled-components": "^4.1.18",
-    "@types/typography": "^0.16.2",
+    "@types/typography": "^0.16.3",
     "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "^5.2.1",
     "gatsby": "^2.15.7",
