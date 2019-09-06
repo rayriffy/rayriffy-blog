@@ -23,8 +23,13 @@ interface IProps {
     user: string
   }
   slug?: string
-  type: string
+  type: 'post' | 'listing'
   boxShadow?: string
+}
+
+interface IBlogCard {
+  type: 'post' | 'listing'
+  boxShadow: string
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -48,7 +53,8 @@ const GlobalStyle = createGlobalStyle`
   ol,
   li,
   table>tbody>tr>td {
-    color: rgba(0, 0, 0, 0.6)
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0 25px;
   }
 
   pre {
@@ -74,6 +80,20 @@ const GlobalStyle = createGlobalStyle`
 
   .gatsby-resp-image-image {
     box-shadow: inset 0px 0px 0px 400px rgb(255, 255, 255) !important;
+  }
+
+  .gatsby-resp-image-wrapper {
+    margin: 0 -25px !important;
+  }
+
+  @media only screen and (max-width: 40em) {
+    p {
+      padding: 0;
+    }
+
+    .gatsby-resp-image-wrapper {
+      margin: 0 !important;
+    }
   }
 
   @media (prefers-color-scheme: dark) {
@@ -128,12 +148,15 @@ const BlogCard = styled(Card)`
     }
   }
 
-  ${props => props.type === 'post' ? `
+  ${(props: IBlogCard) => props.type === 'post' ? `
     border-radius: 0 0 6px 6px;
+    box-shadow: ${props.boxShadow};
   ` : props.type === 'listing' ? `
     border-radius: 6px;
+    box-shadow: ${props.boxShadow};
   ` : `
     border-radius: 6px
+    box-shadow: ${props.boxShadow};
   `}
 `
 
