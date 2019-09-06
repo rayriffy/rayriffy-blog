@@ -1,0 +1,38 @@
+name: Test units for Pull Request
+
+on:
+  pull_request:
+    branches:
+      - "master"
+      - "author/*"
+      - "dependabot/*"
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: "Init: Summon NodeJS"
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: "Init: Install dependencies"
+      uses: borales/actions-yarn@master
+      with:
+        args: install
+    - name: "Test: Type checking"
+      uses: borales/actions-yarn@master
+      with:
+        args: test:types
+    - name: "Test: Code linting"
+      uses: borales/actions-yarn@master
+      with:
+        args: test:lint
+    - name: "Test: Markdown linting"
+      uses: borales/actions-yarn@master
+      with:
+        args: test:markdown
