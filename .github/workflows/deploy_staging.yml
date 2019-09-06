@@ -14,22 +14,26 @@ jobs:
         node-version: [10.x, 12.x]
     steps:
     - uses: actions/checkout@v1
-    - name: "Init: Use Node.js ${{ matrix.node-version }}"
+    - name: "Init: Summon NodeJS"
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: "Init: Install yarn"
-      run: |
-        curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
-        export PATH=$HOME/.yarn/bin:$PATH
     - name: "Init: Install dependencies"
-      run: yarn
+      uses: borales/actions-yarn@master
+      with:
+        args: install
     - name: "Test: Type checking"
-      run: yarn test:types
+      uses: borales/actions-yarn@master
+      with:
+        args: test:types
     - name: "Test: Code linting"
-      run: yarn test:lint
+      uses: borales/actions-yarn@master
+      with:
+        args: test:lint
     - name: "Test: Markdown linting"
-      run: yarn test:markdown
+      uses: borales/actions-yarn@master
+      with:
+        args: test:markdown
 
   deploy:
     needs: test
@@ -39,22 +43,22 @@ jobs:
         node-version: [12.x]
     steps:
     - uses: actions/checkout@v1
-    - name: "Init: Use Node.js ${{ matrix.node-version }}"
+    - name: "Init: Summon NodeJS"
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: "Init: Install yarn"
-      run: |
-        curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
-        export PATH=$HOME/.yarn/bin:$PATH
     - name: "Init: Install dependencies"
-      run: yarn
+      uses: borales/actions-yarn@master
+      with:
+        args: install
     - name: "Build: Trigger build staging site"
-      run: yarn build:staging
+      uses: borales/actions-yarn@master
+      with:
+        args: build:staging
     - name: "Deploy: Upload to Netlify"
       uses: netlify/actions/cli@master
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
       with:
-        args: deploy --dir=./public
+        args: deploy --dir=./public --prod
