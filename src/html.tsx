@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface IProps {
-  htmlAttributes: object
-  headComponents: object[]
-  bodyAttributes: object
-  preBodyComponents: object[]
   body: string
-  postBodyComponents: object[]
+  bodyAttributes: string
+  headComponents: ReactNode
+  htmlAttributes: string
+  preBodyComponents: ReactNode
+  postBodyComponents: ReactNode
 }
 
-const HTML: React.FC<IProps> = props => {
+const HTMLComponent: React.FC<IProps> = props => {
   const {htmlAttributes, headComponents, bodyAttributes, preBodyComponents, body, postBodyComponents} = props
 
   const {GATSBY_ENV = 'production'} = process.env
@@ -41,4 +41,4 @@ const HTML: React.FC<IProps> = props => {
   )
 }
 
-export default HTML
+export default HTMLComponent
