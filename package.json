@@ -55,7 +55,7 @@
     "gatsby-remark-copy-linked-files": "^2.1.19",
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-embed-spotify": "^2.0.2",
-    "gatsby-remark-embed-video": "^1.7.1",
+    "gatsby-remark-embed-video": "^2.0.0",
     "gatsby-remark-images": "^3.1.22",
     "gatsby-remark-prismjs": "^3.3.14",
     "gatsby-remark-responsive-iframe": "^2.2.18",
