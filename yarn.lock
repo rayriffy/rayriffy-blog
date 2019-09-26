@@ -795,10 +795,10 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.6.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.0":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.0.tgz#4fc1d642a9fd0299754e8b5de62c631cf5568205"
-  integrity sha512-89eSBLJsxNxOERC0Op4vd+0Bqm6wRMqMbFtV3i0/fbaWw/mJ8Q3eBvgX0G4SyrOOLCtbu98HspF8o09MRT+KzQ==
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.0", "@babel/runtime@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.2.tgz#c3d6e41b304ef10dcf13777a33e7694ec4a9a6dd"
+  integrity sha512-EXxN64agfUqqIGeEjI5dL5z0Sw0ZwWo1mLTi4mQowCZ42O59b7DRpZAnTC6OqdF28wMBMFKNb/4uFGrVaigSpg==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -5736,12 +5736,12 @@ gatsby-graphiql-explorer@^0.2.18:
   dependencies:
     "@babel/runtime" "^7.6.0"
 
-gatsby-image@^2.2.20:
-  version "2.2.20"
-  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.2.20.tgz#df156fcc8ee166954e7f56a93729569f05a50624"
-  integrity sha512-bf2YnqJLYmUnXkXjVF20I6x09rOJS3UrFKoWLvmsZUvYSunGjFda0SvE05nTFCc/7PGvlGhua/NZMNtXb5glmA==
+gatsby-image@^2.2.23:
+  version "2.2.23"
+  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.2.23.tgz#8f63fb33cd808ee71dbebc5034d3bcdc4cf59177"
+  integrity sha512-b8N5Wcs/IX+38z2KTOARXYtGKqh+dOynUrjVzrdVOD2Pf4TwqTObMuVDiYbxP19vRPQCYixyMT/wnAV6yfTBbw==
   dependencies:
-    "@babel/runtime" "^7.6.0"
+    "@babel/runtime" "^7.6.2"
     object-fit-images "^3.2.4"
     prop-types "^15.7.2"
 
