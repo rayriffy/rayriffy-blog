@@ -31,7 +31,7 @@
     "@raae/gatsby-remark-oembed": "^0.1.1",
     "@types/lodash": "^4.14.139",
     "@types/react-helmet": "^5.0.10",
-    "@types/rebass": "^4.0.0",
+    "@types/rebass": "^4.0.1",
     "@types/styled-components": "^4.1.19",
     "@types/typography": "^0.16.3",
     "babel-plugin-styled-components": "^1.10.6",
