@@ -68,7 +68,7 @@
     "preact": "^10.0.0-rc.3",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
+    "react": "^16.10.1",
     "react-adsense": "^0.1.0",
     "react-dom": "^16.10.0",
     "react-helmet": "^5.2.1",
