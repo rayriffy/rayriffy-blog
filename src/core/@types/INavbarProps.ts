@@ -3,6 +3,6 @@ export interface INavbarProps {
   tabs: {
     name: string
     href: string
-    internal: boolean
+    internal?: boolean
   }[]
 }

@@ -25,7 +25,7 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
   return (
     <Flex justifyContent={align}>
       {tabs.map(tab => {
-        const {name, href, internal} = tab
+        const {name, href, internal = false} = tab
 
         if (internal) {
           return (
