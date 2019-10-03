@@ -49,10 +49,12 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
           tabs={[
             {
               href: author.facebook,
+              internal: false,
               name: 'Facebook',
             },
             {
               href: 'https://twitter.com/' + author.twitter.split('@')[1],
+              internal: false,
               name: 'Twitter',
             },
           ]}

@@ -1,7 +1,9 @@
 import React from 'react'
 
-import { Flex, Link, Text } from 'rebass'
+import { Box, Flex, Link, Text } from 'rebass'
 import styled from 'styled-components'
+
+import TransparentLink from './transparentLink'
 
 import { INavbarProps } from '../@types/INavbarProps'
 
@@ -23,13 +25,23 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
   return (
     <Flex justifyContent={align}>
       {tabs.map(tab => {
-        const {name, href} = tab
+        const {name, href, internal} = tab
 
-        return (
-          <NavLink px={3} href={href} key={`navbar-${align}-${name}`}>
-            <NavText fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>{name.toUpperCase()}</NavText>
-          </NavLink>
-        )
+        if (internal) {
+          return (
+            <Box px={3} key={`navbar-${align}-int-${name}`}>
+              <TransparentLink to={href}>
+                <NavText fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>{name.toUpperCase()}</NavText>
+              </TransparentLink>
+            </Box>
+          )
+        } else {
+          return (
+            <NavLink px={3} href={href} key={`navbar-${align}-ext-${name}`}>
+              <NavText fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>{name.toUpperCase()}</NavText>
+            </NavLink>
+          )
+        }
       })}
     </Flex>
   )

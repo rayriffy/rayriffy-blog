@@ -10,14 +10,17 @@ const HeaderComponent: React.FC = () => {
   const navTabs = [
     {
       href: '/',
+      internal: true,
       name: 'home',
     },
     {
       href: '/category',
+      internal: true,
       name: 'category',
     },
     {
       href: 'https://l.rayriffy.com/nico',
+      internal: false,
       name: '♪',
     },
   ]

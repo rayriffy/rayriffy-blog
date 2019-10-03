@@ -17,6 +17,12 @@ const Title = styled.h3`
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 6px;
+
+  color: rgba(0, 0, 0, 0.8);
+
+  @media (prefers-color-scheme: dark) {
+    color: rgb(255, 255, 255);
+  }
 `
 
 const Subtitle = styled.div`

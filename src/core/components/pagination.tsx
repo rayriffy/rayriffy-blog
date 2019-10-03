@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { Box, Flex, Link } from 'rebass'
+import { Link } from 'gatsby'
+
+import { Box, Flex } from 'rebass'
 import styled from 'styled-components'
 
 import { IPaginationProps } from '../@types/IPaginationProps'
@@ -37,9 +39,11 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
     <Box my={4}>
       <Flex justifyContent={`center`}>
         {Array.from({length: pageLength}, (_, i) => (
-          <Page key={`pagination-${startPoint + i}`} px={3} href={`${startPoint + i === 0 ? `${pathPrefix}` : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startPoint + i + 1}`}`} start={startPoint} index={i} current={currentPage}>
-            {startPoint + i + 1}
-          </Page>
+          <Box  key={`pagination-${startPoint + i}`} px={3}>
+            <Page to={`${startPoint + i === 0 ? `${pathPrefix}` : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startPoint + i + 1}`}`} start={startPoint} index={i} current={currentPage}>
+              {startPoint + i + 1}
+            </Page>
+          </Box>
         ))}
       </Flex>
     </Box>
