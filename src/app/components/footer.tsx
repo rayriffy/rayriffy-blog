@@ -3,6 +3,8 @@ import React from 'react'
 import { Box, Flex, Heading, Link, Text } from 'rebass'
 import styled from 'styled-components'
 
+import TransparentLink from '../../core/components/transparentLink'
+
 import Logo from './logo'
 
 const NavTitle = styled(Heading)`
@@ -19,7 +21,15 @@ const NavText = styled(Text)`
   }
 `
 
-const NavLink = styled(Link)`
+const NavTextInt = styled(Text)`
+  rgba(0, 0, 0, 0.6);
+
+  @media (prefers-color-scheme: dark) {
+    color: rgb(192, 192, 192);
+  }
+`
+
+const NavLinkExt = styled(Link)`
   rgba(0, 0, 0, 0.6);
 
   @media (prefers-color-scheme: dark) {
@@ -34,14 +44,17 @@ const FooterComponent: React.FC = () => {
       navs: [
         {
           href: '/',
+          internal: true,
           name: 'Home',
         },
         {
           href: '/category',
+          internal: true,
           name: 'Categories',
         },
         {
           href: '/author',
+          internal: true,
           name: 'Authors',
         },
       ]
@@ -98,11 +111,25 @@ const FooterComponent: React.FC = () => {
               </Box>
               <Box>
                 <Flex flexWrap={`wrap`}>
-                  {tab.navs.map(nav => (
-                    <NavLink href={nav.href} key={`nav-${tab.name}-${nav.name}`} fontSize={16} py={1} width={1}>
-                      {nav.name}
-                    </NavLink>
-                  ))}
+                  {tab.navs.map(nav => {
+                    const {href, name, internal = false} = nav
+
+                    if (internal) {
+                      return (
+                        <Box key={`nav-${tab.name}-${name}`} py={1} width={1}>
+                          <TransparentLink to={href}>
+                            <NavTextInt fontSize={16}>{name}</NavTextInt>
+                          </TransparentLink>
+                        </Box>
+                      )
+                    } else {
+                      return (
+                        <NavLinkExt href={href} key={`nav-${tab.name}-${name}`} fontSize={16} py={1} width={1}>
+                          {name}
+                        </NavLinkExt>
+                      )
+                    }
+                  })}
                 </Flex>
               </Box>
             </Box>
