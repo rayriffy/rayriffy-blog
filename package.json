@@ -30,7 +30,7 @@
   "dependencies": {
     "@raae/gatsby-remark-oembed": "^0.1.1",
     "@types/lodash": "^4.14.141",
-    "@types/react-helmet": "^5.0.10",
+    "@types/react-helmet": "^5.0.11",
     "@types/rebass": "^4.0.1",
     "@types/styled-components": "^4.1.19",
     "@types/typography": "^0.16.3",
@@ -67,7 +67,6 @@
     "lodash": "^4.17.15",
     "preact": "^10.0.0-rc.3",
     "prismjs": "^1.17.1",
-    "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-adsense": "^0.1.0",
     "react-dom": "^16.10.1",
@@ -76,14 +75,11 @@
     "react-typography": "^0.16.19",
     "rebass": "^4.0.6",
     "styled-components": "^4.4.0",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75",
     "typescript": "^3.6.3",
     "typography": "^0.16.19"
   },
   "devDependencies": {
     "husky": "^3.0.8",
-    "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^1.18.2",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
