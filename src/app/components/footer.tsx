@@ -7,6 +7,8 @@ import TransparentLink from '../../core/components/transparentLink'
 
 import Logo from './logo'
 
+import { IFooterTab } from '../@types/IFooterTab'
+
 const NavTitle = styled(Heading)`
   @media (prefers-color-scheme: dark) {
     color: rgb(255, 255, 255);
@@ -38,7 +40,7 @@ const NavLinkExt = styled(Link)`
 `
 
 const FooterComponent: React.FC = () => {
-  const tabs = [
+  const tabs: IFooterTab[] = [
     {
       name: 'general',
       navs: [
