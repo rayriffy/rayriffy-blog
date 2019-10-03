@@ -29,13 +29,7 @@
   "private": true,
   "dependencies": {
     "@raae/gatsby-remark-oembed": "^0.1.1",
-    "@types/lodash": "^4.14.141",
-    "@types/react-helmet": "^5.0.11",
-    "@types/rebass": "^4.0.1",
-    "@types/styled-components": "^4.1.19",
-    "@types/typography": "^0.16.3",
     "babel-plugin-styled-components": "^1.10.6",
-    "cross-env": "^6.0.0",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-feed": "^2.3.15",
@@ -75,10 +69,15 @@
     "react-typography": "^0.16.19",
     "rebass": "^4.0.6",
     "styled-components": "^4.4.0",
-    "typescript": "^3.6.3",
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.141",
+    "@types/react-helmet": "^5.0.11",
+    "@types/rebass": "^4.0.1",
+    "@types/styled-components": "^4.1.19",
+    "@types/typography": "^0.16.3",
+    "cross-env": "^6.0.0",
     "husky": "^3.0.8",
     "prettier": "^1.18.2",
     "remark-cli": "^7.0.0",
@@ -87,7 +86,8 @@
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^4.1.0"
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.6.3"
   },
   "scripts": {
     "build": "cross-env GATSBY_ENV=production gatsby build",
