@@ -56,7 +56,7 @@
     "gatsby-remark-smartypants": "^2.1.11",
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-transformer-json": "^2.2.11",
-    "gatsby-transformer-remark": "^2.6.26",
+    "gatsby-transformer-remark": "^2.6.27",
     "gatsby-transformer-sharp": "^2.2.19",
     "lodash": "^4.17.15",
     "preact": "^10.0.0",
