@@ -61,7 +61,7 @@
     "lodash": "^4.17.15",
     "preact": "^10.0.0",
     "prismjs": "^1.17.1",
-    "react": "^16.10.1",
+    "react": "^16.10.2",
     "react-adsense": "^0.1.0",
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
