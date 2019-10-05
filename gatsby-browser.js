@@ -1,6 +1,6 @@
 import React from 'react'
 
-import App from './src/components/app'
+import App from './src/app/components'
 
 export const onServiceWorkerUpdateReady = () => {
   window.location.reload()
