@@ -113,39 +113,3 @@ const BlogViewingComponent: React.FC<IProps> = props => {
 }
 
 export default BlogViewingComponent
-
-export const pageQuery = graphql`
-  query BlogViewingComponentQuery($author: String!, $slug: String!) {
-    markdownRemark(fields: {slug: {eq: $slug}}) {
-      html
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        subtitle
-        date(formatString: "DD MMMM, YYYY")
-        banner {
-          childImageSharp {
-            fluid(maxWidth: 1000, quality: 90) {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
-          }
-        }
-      }
-    }
-    authorsJson(user: {eq: $author}) {
-      user
-      name
-      twitter
-      facebook
-    }
-  }
-`

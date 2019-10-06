@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { graphql } from 'gatsby'
-
 import { Box, Flex } from 'rebass'
 
 import Card from '../../../../core/components/card'
@@ -71,54 +69,3 @@ const BlogListingComponent: React.FC<IProps> = props => {
 }
 
 export default BlogListingComponent
-
-export const pageQuery = graphql`
-  query BlogListingComponentQuery($limit: Int!, $skip: Int!) {
-    allMarkdownRemark(
-      sort: {fields: [frontmatter___date], order: DESC}
-      limit: $limit
-      skip: $skip
-      filter: {frontmatter: {type: {eq: "blog"}}}
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            subtitle
-            status
-            featured
-            author
-            banner {
-              childImageSharp {
-                fluid(maxWidth: 1000, quality: 90) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    allAuthorsJson {
-      edges {
-        node {
-          user
-          name
-          facebook
-        }
-      }
-    }
-  }
-`
