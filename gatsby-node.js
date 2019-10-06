@@ -9,56 +9,54 @@ exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
   const { createPage } = actions
 
-  // Get all blogs, authors and categories
-  const dataResult = await graphql(`
-    {
-      site {
-        siteMetadata {
-          siteUrl
-        }
-      }
-
-      blogs: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+  // Get all blogs
+  const gqlFetch = await graphql(`
+    query NodeGqlFetchQuery {
+      blogs: allContentfulBlogPost(sort: {fields: date, order: DESC}) {
         edges {
           node {
-            fields {
-              slug
+            slug
+            title
+            subtitle
+            date
+            featured
+            content {
+              childMarkdownRemark {
+                html
+              }
             }
-            frontmatter {
-              title
-              subtitle
-              author
-              banner {
-                childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90) {
-                    base64
-                    tracedSVG
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
-                  }
-                }
+            author {
+              user
+              name
+            }
+            banner {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
               }
             }
           }
         }
       }
 
-      authors: allAuthorsJson {
+      authors: allContentfulAuthor {
         edges {
           node {
             user
-            name
-            facebook
             twitter
+            facebook
+            name
           }
         }
       }
 
-      categories: allCategoriesJson {
+      categories: allContentfulCategory {
         edges {
           node {
             key
@@ -70,33 +68,104 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const {site, blogs, authors, categories} = dataResult.data
+  const {blogs, authors, categories} = gqlFetch.data
 
   // Get featured post
-  const featuredResult = await graphql(`
-    {
-      featured: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {featured: {eq: true}}}, limit: 1) {
+  const gqlFeatured = await graphql(`
+    query NodeGqlFeaturedQuery {
+      featured: allContentfulBlogPost(sort: {order: DESC, fields: date}, filter: {featured: {eq: true}}, limit: 1) {
         edges {
           node {
-            fields {
-              slug
+            slug
+            title
+            subtitle
+            date
+            featured
+            content {
+              childMarkdownRemark {
+                html
+              }
             }
-            frontmatter {
-              title
-              subtitle
-              author
+            author {
+              user
+              name
+            }
+            banner {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const featuredPost = _.head(featuredPost.data.featured.edges)
+
+  // Create blog/listing
+  const blogsChunks = _.chunk(blogs, POST_PER_PAGE)
+
+  blogsChunks.map(async (chunk, i) => {
+    createPage({
+      path: i === 0 ? `/` : `/pages/${i + 1}`,
+      component: path.resolve(`./src/templates/blog/listing/components/index.tsx`),
+      context: {
+        featured: i === 0 ? featuredPost : null,
+        blogs: chunk,
+        page: {
+          current: i + 1,
+          max: blogsChunks.length
+        },
+      },
+    })
+  })
+
+  // Create blog/viewing
+  blogs.edges.map(async (blog, i) => {
+    const previosBlog = i === blogs.edges.length - 1 ? null : blogs.edges[i + 1].node
+    const nextBlog = i === 0 ? null : blogs.edges[i - 1].node
+
+    createPage({
+      path: blog.node.slug,
+      component: path.resolve('./src/templates/blog/viewing/components/index.tsx'),
+      context: {
+        node: blog.node,
+        blog: {
+          previous: previosBlog,
+          next: nextBlog,
+        },
+      },
+    })
+  })
+
+  // Create category/listing
+  const gqlCategoryListing = await graphql(`
+    query NodeGqlCategoryListingQuery {
+      categories: allContentfulCategory {
+        edges {
+          node {
+            desc
+            name
+            key
+            blog_post {
               banner {
-                childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90) {
-                    base64
-                    tracedSVG
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
-                  }
+                fluid(maxWidth: 1000, quality: 90) {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
                 }
               }
             }
@@ -106,123 +175,54 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const featuredPost = _.head(featuredResult.data.featured.edges)
-
-  // Create blog listing
-  const blogListingPages = Math.ceil(blogs.edges.length / POST_PER_PAGE)
-
-  _.times(blogListingPages, i => {
-    createPage({
-      path: i === 0 ? `/` : `/pages/${i + 1}`,
-      component: path.resolve('./src/templates/blog/listing/components/index.tsx'),
-      context: {
-        featured: i === 0 ? featuredPost : null,
-        skip: i * POST_PER_PAGE,
-        limit: POST_PER_PAGE,
-        currentPage: i + 1,
-        numPages: blogListingPages,
-      },
-    })
-  })
-
-  // Create blog posts
-  _.each(blogs.edges, (blog, i) => {
-    const previousBlog = i === blogs.edges.length - 1 ? null : blogs.edges[i + 1].node
-    const nextBlog = i === 0 ? null : blogs.edges[i - 1].node
-
-    createPage({
-      path: blog.node.fields.slug,
-      component: path.resolve('./src/templates/blog/viewing/components/index.tsx'),
-      context: {
-        author: blog.node.frontmatter.author,
-        slug: blog.node.fields.slug,
-        previous: previousBlog,
-        next: nextBlog,
-      },
-    })
-  })
-
-  // Create feed API
-  const feedBlogs = _.slice(blogs.edges, 0, POST_PER_PAGE).map(o => ({
-    name: o.node.frontmatter.title,
-    desc: o.node.frontmatter.subtitle,
-    slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
-    banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
-  }))
-
-  if (!fs.existsSync('public/api')) {
-    fs.mkdirSync('public/api', function(err) {
-      if (err) {
-        console.error(err)
-        throw err
-      }
-    })
-  }
-
-  fs.writeFile('public/api/feed.json', JSON.stringify(feedBlogs), err => {
-    if (err) {
-      throw err
+  const transformedCategoryListing = gqlCategoryListing.data.categories.edges.map(category => {
+    return {
+      key: category.node.key,
+      name: category.node.name,
+      desc: category.node.desc,
+      banner: _.head(category.node.blog_post).banner,
     }
   })
 
-  // Create category blog listing page
-  const categoryBlogRaw = []
+  createPage({
+    path: `category`,
+    component: path.resolve('./src/templates/category/listing/components/index.tsx'),
+    context: {
+      categories: transformedCategoryListing,
+    },
+  })
 
-  const fetchCategoryBlog = async category => {
-    const categoryResult = await graphql(`
-      {
-        blogs: allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: DESC}
-          filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
-        ) {
+  // Create category/viewing
+  categories.edges.map(async category => {
+    const gqlCategoryViewing = await graphql(`
+      query NodeGqlCategoryViewingQuery {
+        blogs: allContentfulBlogPost(filter: {category: {elemMatch: {key: {eq: "${category.node.key}"}}}}, sort: {fields: date, order: DESC}) {
           edges {
             node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                subtitle
-                author
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
-                  }
+              slug
+              title
+              subtitle
+              date
+              featured
+              content {
+                childMarkdownRemark {
+                  html
                 }
               }
-            }
-          }
-        }
-        banner: allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: DESC}
-          filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
-          limit: 1
-        ) {
-          edges {
-            node {
-              frontmatter {
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
-                  }
+              author {
+                user
+                name
+              }
+              banner {
+                fluid(maxWidth: 1000, quality: 90) {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
                 }
               }
             }
@@ -231,97 +231,108 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    return categoryBlogRaw.push({
-      category,
-      raw: categoryResult.data,
-    })
-  }
+    const categoryBanner = _.head(gqlCategoryViewing.data.blogs.edges).node.banner
 
-  await Promise.all(categories.edges.map(category => fetchCategoryBlog(category)))
+    const categoryBlogsChunks = _.chunk(gqlCategoryViewing.data.blogs.edges, POST_PER_PAGE)
 
-  categoryBlogRaw.map(o => {
-    const categoryListingPages = Math.ceil(o.raw.blogs.edges.length / POST_PER_PAGE)
-
-    _.times(categoryListingPages, i => createPage({
-      path: i === 0 ? `/category/${o.category.node.key}` : `/category/${o.category.node.key}/pages/${i + 1}`,
-      component: path.resolve('./src/templates/category/viewing/components/index.tsx'),
-      context: {
-        pathPrefix: `/category/${o.category.node.key}`,
-        banner: _.head(o.raw.banner.edges),
-        category: o.category.node.key,
-        currentPage: i + 1,
-        numPages: categoryListingPages,
-        regex: `/${o.category.node.key}/`,
-        limit: POST_PER_PAGE,
-        skip: i * POST_PER_PAGE,
-      },
-    }))
-  })
-
-  // Create API feed for each category
-  categoryBlogRaw.map(o => {
-    const categoryFeed = _.slice(o.raw.blogs.edges, 0, POST_PER_PAGE).map(o => ({
-      name: o.node.frontmatter.title,
-      desc: o.node.frontmatter.subtitle,
-      slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
-      banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
-    }))
-
-    if (!fs.existsSync('public/api/category')) {
-      fs.mkdirSync('public/api/category', function(err) {
-        if (err) {
-          console.error(err)
-          throw err
+    categoryBlogsChunks.map(async (chunk, i) => {
+      createPage({
+        path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
+        component: path.resolve('./src/templates/category/viewing/components/index.tsx'),
+        content: {
+          pathPrefix: `/category/${category.node.key}`,
+          blogs: chunk,
+          banner: categoryBanner,
+          page: {
+            current: i + 1,
+            max: categoryBlogsChunks.length
+          },
         }
       })
-    }
-
-    fs.writeFile(`public/api/category/${o.category.node.key}.json`, JSON.stringify(categoryFeed), err => {
-      if (err) {
-        throw err
-      }
     })
   })
 
-  // Create author blog listing page
-  const authorBlogRaw = []
+  // Create author/listing
+  const gqlAuthorListing = await graphql(`
+    query NodeGqlAuthorListingQuery {
+      authors: allContentfulAuthor {
+        edges {
+          node {
+            name
+            twitter
+            user
+            facebook
+            banner {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  const fetchAuthorBlog = async author => {
-    const authorResult = await graphql(`
-      {
-        blogs: allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: DESC}
-          filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
-        ) {
+  const transformedAuthorListing = gqlAuthorListing.data.authors.edges.map(author => author.node)
+
+  createPage({
+    path: `author`,
+    component: path.resolve('./src/templates/author/listing/components/index.tsx'),
+    context: {
+      authors: transformedAuthorListing,
+    },
+  })
+
+  // Create author/viewing
+  authors.edges.map(author => {
+    const gqlCategoryViewing = await graphql(`
+      query NodeGqlAuthorViewingQuery {
+        blogs: allContentfulBlogPost(filter: {author: {user: {eq: "${author.node.user}"}}}, sort: {fields: date, order: DESC}) {
           edges {
             node {
-              fields {
-                slug
+              slug
+              title
+              subtitle
+              date
+              featured
+              content {
+                childMarkdownRemark {
+                  html
+                }
               }
-              frontmatter {
-                title
-                subtitle
-                author
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
-                  }
+              author {
+                user
+                name
+              }
+              banner {
+                fluid(maxWidth: 1000, quality: 90) {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
                 }
               }
             }
           }
         }
-        banner: file(relativePath: {eq: "author.${author.node.user}.jpg"}) {
-          childImageSharp {
+
+        author: contentfulAuthor(user: {eq: "${author.node.user}"}) {
+          facebook
+          twitter
+          user
+          name
+          banner {
             fluid(maxWidth: 1000, quality: 90) {
               base64
               tracedSVG
@@ -337,178 +348,40 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    return authorBlogRaw.push({
-      author,
-      raw: authorResult.data,
-    })
-  }
+    const authorBlogChunks = _.chunks(gqlCategoryViewing.data.blogs, POST_PER_PAGE)
 
-  await Promise.all(authors.edges.map(author => fetchAuthorBlog(author)))
-
-  authorBlogRaw.map(o => {
-    const authorListingPages = Math.ceil(o.raw.blogs.edges.length / POST_PER_PAGE)
-
-    _.times(authorListingPages, i => createPage({
-      path: i === 0 ? `/author/${o.author.node.user}` : `/author/${o.author.node.user}/pages/${i + 1}`,
-      component: path.resolve('./src/templates/author/viewing/components/index.tsx'),
-      context: {
-        pathPrefix: `/author/${o.author.node.user}`,
-        banner: o.raw.banner,
-        author: o.author.node.user,
-        currentPage: i + 1,
-        numPages: authorListingPages,
-        regex: `/${o.author.node.user}/`,
-        limit: POST_PER_PAGE,
-        skip: i * POST_PER_PAGE,
-      },
-    }))
-  })
-
-  // Create API feed for each author
-  authorBlogRaw.map(o => {
-    const authorFeed = _.slice(o.raw.blogs.edges, 0, POST_PER_PAGE).map(o => ({
-      name: o.node.frontmatter.title,
-      desc: o.node.frontmatter.subtitle,
-      slug: `${site.siteMetadata.siteUrl}${o.node.fields.slug}`,
-      banner: `${site.siteMetadata.siteUrl}${o.node.frontmatter.banner.childImageSharp.fluid.src}`,
-    }))
-
-    if (!fs.existsSync('public/api/author')) {
-      fs.mkdirSync('public/api/author', function(err) {
-        if (err) {
-          console.error(err)
-          throw err
+    authorBlogChunks.map((chunk, i) => {
+      createPage({
+        path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
+        component: path.resolve('./src/templates/author/viewing/components/index.tsx'),
+        content: {
+          pathPrefix: `/author/${author.node.user}`,
+          blogs: chunk,
+          author: gqlCategoryViewing.data.author,
+          page: {
+            current: i + 1,
+            max: authorBlogChunks.length
+          },
         }
       })
-    }
-
-    fs.writeFile(`public/api/author/${o.author.node.user}.json`, JSON.stringify(authorFeed), err => {
-      if (err) {
-        throw err
-      }
     })
-  })
-
-  /*
-   * NOTE: PageContext cannot pass variable that return from async function!
-   */
-
-  // Create category list page
-  const categoryRaw = []
-
-  const fetchCategoryList = async category => {
-    const categoryResult = await graphql(
-      `
-        {
-          blogs: allMarkdownRemark(
-            sort: {fields: [frontmatter___date], order: DESC}
-            filter: {frontmatter: {category: {regex: "/${category.node.key}/"}}}
-            limit: 1
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  banner {
-                    childImageSharp {
-                      fluid(maxWidth: 1000, quality: 90) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `
-    )
-
-    const categoryTopBlog = _.head(categoryResult.data.blogs.edges)
-
-    return categoryRaw.push({
-      key: category.node.key,
-      name: category.node.name,
-      desc: category.node.desc,
-      banner: categoryTopBlog.node.frontmatter.banner,
-    })
-  }
-
-  await Promise.all(categories.edges.map(category => fetchCategoryList(category)))
-
-  createPage({
-    path: `/category`,
-    component: path.resolve('./src/templates/category/listing/components/index.tsx'),
-    context: {
-      categories: _.sortBy(categoryRaw, o => o.name),
-    },
-  })
-
-  // Create author list page
-  const authorRaw = []
-
-  const fetchAuthorList = async author => {
-    const authorResult = await graphql(
-      `
-        {
-          banner: file(relativePath: {eq: "author.${author.node.user}.jpg"}) {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 90) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
-              }
-            }
-          }
-        }
-      `
-    )
-
-    return authorRaw.push({
-      user: author.node.user,
-      name: author.node.name,
-      facebook: author.node.facebook,
-      twitter: author.node.twitter,
-      banner: authorResult.data.banner,
-    })
-  }
-
-  await Promise.all(authors.edges.map(author => fetchAuthorList(author)))
-
-  createPage({
-    path: `/author`,
-    component: path.resolve('./src/templates/author/listing/components/index.tsx'),
-    context: {
-      authors: _.sortBy(authorRaw, o => o.name),
-    },
   })
 
   return true
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
+//   if (node.internal.type === `MarkdownRemark`) {
+//     const value = createFilePath({ node, getNode })
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value,
+//     })
+//   }
+// }
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
   if (!stage.startsWith('develop')) {
