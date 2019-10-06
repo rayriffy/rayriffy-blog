@@ -379,13 +379,13 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const authorBlogChunks = _.chunk(gqlAuthorViewing.data.blogs, POST_PER_PAGE)
+    const authorBlogChunks = _.chunk(gqlAuthorViewing.data.blogs.edges, POST_PER_PAGE)
 
     authorBlogChunks.map((chunk, i) => {
       createPage({
         path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
         component: path.resolve('./src/templates/author/viewing/components/index.tsx'),
-        content: {
+        context: {
           pathPrefix: `/author/${author.node.user}`,
           blogs: chunk,
           author: gqlAuthorViewing.data.author,
