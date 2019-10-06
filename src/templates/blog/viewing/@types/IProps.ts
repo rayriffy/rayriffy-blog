@@ -1,27 +1,11 @@
-import { IAuthor } from '../../../../core/@types/IAuthor'
 import { IBlog } from '../../../../core/@types/IBlog'
 
 export interface IProps {
   pageContext: {
-    next: {
-      fields: {
-        slug: string
-      }
-      frontmatter: {
-        title: string
-      }
+    node: IBlog
+    blog: {
+      next: IBlog
+      previous: IBlog
     }
-    previous: {
-      fields: {
-        slug: string
-      }
-      frontmatter: {
-        title: string
-      }
-    }
-  }
-  data: {
-    markdownRemark: IBlog
-    authorsJson: IAuthor
   }
 }

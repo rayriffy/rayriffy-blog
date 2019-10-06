@@ -1,4 +1,4 @@
-const { GATSBY_ENV = 'production' } = process.env
+const { GATSBY_ENV = 'production', CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID } = process.env
 
 module.exports = {
   siteMetadata: {
@@ -17,11 +17,11 @@ module.exports = {
   pathPrefix: '/',
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-contentful`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-        ignore: [`**/.*`],
+        spaceId: CONTENTFUL_SPACE_ID,
+        accessToken: CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
     {
@@ -143,7 +143,7 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-contentful`,
             options: {
               maxWidth: 1000,
               linkImagesToOriginal: false,
@@ -174,7 +174,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

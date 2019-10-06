@@ -4,6 +4,8 @@ export interface IFeaturedProps {
   title: string
   subtitle?: string
   slug?: string
-  banner: IChildImageSharp
+  banner: {
+    localFile: IChildImageSharp
+  }
   featured?: boolean
 }

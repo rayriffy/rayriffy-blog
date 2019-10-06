@@ -36,13 +36,15 @@ const NotFoundComponent: React.FC = () => {
         <Helmet title={'Not Found'} />
         <Card
           blog={{
-            banner: data.banner,
+            banner: {
+              localFile: data.banner
+            },
             subtitle: `Whoops! Looks like you're lost in the woods...with Cirno.`,
             title: 'Not Found',
           }}
           type={`post`}>
             <Box px={[4, 5]} pb={4}>
-              <TransparentLink to={`/`}><Text color={`rgb(83,106,144)`}>Back to home</Text></TransparentLink>
+              <TransparentLink to={`/`}><Text color={`rgb(21,142,255)`}>Back to home</Text></TransparentLink>
             </Box>
         </Card>
       </Box>

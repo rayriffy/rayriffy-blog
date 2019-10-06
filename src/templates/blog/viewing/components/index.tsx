@@ -1,15 +1,16 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { graphql } from 'gatsby'
+import { startsWith } from 'lodash'
 
 import AdSense from 'react-adsense'
 
-import { Box, Flex, Link, Text } from 'rebass'
+import { Box, Flex, Text } from 'rebass'
 import styled from 'styled-components'
 
 import Card from '../../../../core/components/card'
 import SEO from '../../../../core/components/seo'
+import TransparentLink from '../../../../core/components/transparentLink'
 
 import { IProps } from '../@types/IProps'
 
@@ -23,7 +24,7 @@ const NavText = styled(Text)`
   }
 `
 
-const NavLink = styled(Link)`
+const NavLink = styled(TransparentLink)`
   rgb(83, 106, 144);
 
   @media (prefers-color-scheme: dark) {
@@ -34,11 +35,10 @@ const NavLink = styled(Link)`
 `
 
 const BlogViewingComponent: React.FC<IProps> = props => {
-  const {previous, next} = props.pageContext
-  const {authorsJson, markdownRemark} = props.data
+  const {blog, node} = props.pageContext
+  const {next, previous} = blog
 
-  const {slug} = markdownRemark.fields
-  const {title, subtitle, date, banner} = markdownRemark.frontmatter
+  const {title, subtitle, banner, author, slug, date, content} = node
 
   const {GATSBY_ENV = 'production'} = process.env
 
@@ -48,8 +48,8 @@ const BlogViewingComponent: React.FC<IProps> = props => {
       <SEO
         title={title}
         subtitle={subtitle}
-        banner={banner.childImageSharp.fluid.src}
-        author={authorsJson}
+        banner={banner.localFile.childImageSharp.fluid.src}
+        author={author}
         slug={slug}
         date={date}
         type={`article`}
@@ -57,7 +57,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
       <Flex justifyContent={`center`}>
         <Box width={[20/24, 18/24, 15/24, 13/24]} mb={4}>
           <Card 
-            author={authorsJson}
+            author={author}
             blog={{
               banner,
               date,
@@ -65,7 +65,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
             }}
             type={`post`}>
             <Box px={[4, 5, 5]}>
-              <div dangerouslySetInnerHTML={{__html: markdownRemark.html}} />
+              <div dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}} />
             </Box>
             {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
               <>
@@ -89,18 +89,18 @@ const BlogViewingComponent: React.FC<IProps> = props => {
               <Flex flexWrap={`wrap`}>
                 <Box width={1/2} px={2}>
                   {previous ? (
-                    <>
+                    <Box>
                       <NavText>PREVIOUS</NavText>
-                      <NavLink href={previous.fields.slug}>{previous.frontmatter.title}</NavLink>
-                    </>
+                      <NavLink to={startsWith(previous.slug, '/') ? previous.slug : `/${previous.slug}`}>{previous.title}</NavLink>
+                    </Box>
                   ) : null}
                 </Box>
                 <Box width={1/2} px={2}>
                   {next ? (
-                    <>
+                    <Box>
                       <NavText>NEXT</NavText>
-                      <NavLink href={next.fields.slug}>{next.frontmatter.title}</NavLink>
-                    </>
+                      <NavLink to={startsWith(next.slug, '/') ? next.slug : `/${next.slug}`}>{next.title}</NavLink>
+                    </Box>
                   ) : null}
                 </Box>
               </Flex>
@@ -113,39 +113,3 @@ const BlogViewingComponent: React.FC<IProps> = props => {
 }
 
 export default BlogViewingComponent
-
-export const pageQuery = graphql`
-  query BlogViewingComponentQuery($author: String!, $slug: String!) {
-    markdownRemark(fields: {slug: {eq: $slug}}) {
-      html
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        subtitle
-        date(formatString: "DD MMMM, YYYY")
-        banner {
-          childImageSharp {
-            fluid(maxWidth: 1000, quality: 90) {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
-          }
-        }
-      }
-    }
-    authorsJson(user: {eq: $author}) {
-      user
-      name
-      twitter
-      facebook
-    }
-  }
-`
