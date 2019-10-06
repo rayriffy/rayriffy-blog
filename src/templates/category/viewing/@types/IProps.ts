@@ -1,29 +1,20 @@
-import { IAuthor } from '../../../../core/@types/IAuthor'
 import { IBlog } from '../../../../core/@types/IBlog'
+import { ICategory } from '../../../../core/@types/ICategory'
+import { IChildImageSharp } from '../../../../core/@types/IChildImageSharp'
 
 export interface IProps {
   pageContext: {
-    currentPage: number
-    numPages: number
     pathPrefix: string
     banner: {
+      localFile: IChildImageSharp
+    }
+    category: ICategory
+    blogs: {
       node: IBlog
-    }
-  }
-  data: {
-    allMarkdownRemark: {
-      edges: {
-        node: IBlog
-      }[]
-    }
-    allAuthorsJson: {
-      edges: {
-        node: IAuthor
-      }[]
-    }
-    categoriesJson: {
-      name: string
-      desc: string
+    }[]
+    page: {
+      current: number
+      max: number
     }
   }
 }

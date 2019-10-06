@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { graphql } from 'gatsby'
+import { startsWith } from 'lodash'
 
 import { Box, Flex } from 'rebass'
 
@@ -10,23 +10,16 @@ import Featured from '../../../../core/components/featured'
 import Pagination from '../../../../core/components/pagination'
 import SEO from '../../../../core/components/seo'
 
-import { getAuthor } from '../../../../core/services/getAuthor'
-
 import { IProps } from '../@types/IProps'
 
 const CategoryViewingComponent: React.FC<IProps> = props => {
-  const authors = props.data.allAuthorsJson.edges
-  const posts = props.data.allMarkdownRemark.edges
-  const categoryName = props.data.categoriesJson.name
-  const categoryDescription = props.data.categoriesJson.desc
-
-  const {currentPage, numPages, pathPrefix, banner} = props.pageContext
+  const {pathPrefix, blogs, category, page} = props.pageContext
 
   return (
     <Box>
-      <Helmet title={categoryName} />
+      <Helmet title={category.name} />
       <SEO
-        title={categoryName}
+        title={category.name}
         author={{
           facebook: 'https://facebook.com/rayriffy',
           name: 'Phumrapee Limpianchop',
@@ -37,9 +30,9 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
         <Flex justifyContent={`center`}>
           <Box width={[1, 18/24, 16/24, 14/24]}>
             <Featured
-              title={categoryName}
-              subtitle={categoryDescription}
-              banner={banner.node.frontmatter.banner}
+              title={category.name}
+              subtitle={category.desc}
+              banner={props.pageContext.banner}
               featured={false}
             />
           </Box>
@@ -49,16 +42,19 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
         <Flex justifyContent={`center`}>
           <Box width={[22/24, 22/24, 20/24, 18/24]}>
             <Flex flexWrap={`wrap`}>
-              {posts.map(post => {
-                const {fields, frontmatter} = post.node
-                const {slug} = fields
-                const {author} = frontmatter
+              {blogs.map(blog => {
+                const {author, title, subtitle, date, banner, slug} = blog.node
 
-                const fetchedAuthor = getAuthor(authors, author)
+                const meta = {
+                  banner,
+                  date,
+                  subtitle,
+                  title,
+                }
 
                 return (
-                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${currentPage}-${slug}`}>
-                    <Card key={slug} slug={slug} author={fetchedAuthor.node} blog={frontmatter} type={`listing`} />
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${page.current}-${slug}`}>
+                    <Card key={slug} slug={startsWith(slug, '/') ? slug : `/${slug}`} author={author} blog={meta} type={`listing`} />
                   </Box>
                 )
               })}
@@ -66,7 +62,7 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
           </Box>
         </Flex>
       </Box>
-      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
+      <Pagination numPages={page.max} currentPage={page.current} pathPrefix={pathPrefix} />
     </Box>
   )
 }
