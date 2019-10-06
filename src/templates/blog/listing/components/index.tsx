@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { startsWith } from 'lodash'
+
 import { Box, Flex } from 'rebass'
 
 import Card from '../../../../core/components/card'
@@ -7,14 +9,10 @@ import Featured from '../../../../core/components/featured'
 import Pagination from '../../../../core/components/pagination'
 import SEO from '../../../../core/components/seo'
 
-import { getAuthor } from '../../../../core/services/getAuthor'
-
 import { IProps } from '../@types/IProps'
 
 const BlogListingComponent: React.FC<IProps> = props => {
-  const authors = props.data.allAuthorsJson.edges
-  const posts = props.data.allMarkdownRemark.edges
-  const {numPages, currentPage, featured} = props.pageContext
+  const {blogs, featured, page} = props.pageContext
 
   return (
     <Box>
@@ -25,15 +23,15 @@ const BlogListingComponent: React.FC<IProps> = props => {
           twitter: '@rayriffy',
         }}
         type={`page`} />
-      {currentPage === 1 ? (
+      {page.current === 1 ? (
         <Box my={4}>
           <Flex justifyContent={`center`}>
             <Box width={[1, 18/24, 16/24, 14/24]}>
               <Featured
-                title={featured.node.frontmatter.title}
-                subtitle={featured.node.frontmatter.subtitle}
-                slug={featured.node.fields.slug}
-                banner={featured.node.frontmatter.banner}
+                title={featured.node.title}
+                subtitle={featured.node.subtitle}
+                slug={startsWith(featured.node.slug, '/') ? featured.node.slug : `/${featured.node.slug}`}
+                banner={featured.node.banner}
                 featured={true}
               />
             </Box>
@@ -44,16 +42,19 @@ const BlogListingComponent: React.FC<IProps> = props => {
         <Flex justifyContent={`center`}>
           <Box width={[22/24, 22/24, 20/24, 18/24]}>
             <Flex flexWrap={`wrap`}>
-              {posts.map(post => {
-                const {fields, frontmatter} = post.node
-                const {slug} = fields
-                const {author} = frontmatter
+              {blogs.map(blog => {
+                const {author, title, subtitle, date, banner, slug} = blog.node
 
-                const fetchedAuthor = getAuthor(authors, author)
+                const meta = {
+                  banner,
+                  date,
+                  subtitle,
+                  title,
+                }
 
                 return (
-                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${currentPage}-${slug}`}>
-                    <Card author={fetchedAuthor.node} blog={frontmatter} slug={slug} type={`listing`} />
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${page.current}-${slug}`}>
+                    <Card author={author} blog={meta} slug={startsWith(slug, '/') ? slug : `/${slug}`} type={`listing`} />
                   </Box>
                 )
               })}
@@ -62,7 +63,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
         </Flex>
       </Box>
       <Box my={3}>
-        <Pagination numPages={numPages} currentPage={currentPage} pathPrefix="/" />
+        <Pagination numPages={page.max} currentPage={page.current} pathPrefix="/" />
       </Box>
     </Box>
   )

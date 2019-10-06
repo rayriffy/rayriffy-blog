@@ -1,24 +1,16 @@
-import { IAuthor } from '../../../../core/@types/IAuthor'
 import { IBlog } from '../../../../core/@types/IBlog'
 
 export interface IProps {
   pageContext: {
-    currentPage: number
-    numPages: number
+    blogs: {
+      node: IBlog
+    }[]
     featured: {
       node: IBlog
     }
-  }
-  data: {
-    allMarkdownRemark: {
-      edges: {
-        node: IBlog
-      }[]
-    }
-    allAuthorsJson: {
-      edges: {
-        node: IAuthor
-      }[]
+    page: {
+      current: number
+      max: number
     }
   }
 }

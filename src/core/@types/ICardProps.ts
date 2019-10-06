@@ -1,4 +1,4 @@
-import { FluidObject } from 'gatsby-image'
+import { IChildImageSharp } from './IChildImageSharp'
 
 export interface ICardProps {
   blog: {
@@ -6,9 +6,7 @@ export interface ICardProps {
     subtitle?: string
     date?: string
     banner?: {
-      childImageSharp: {
-        fluid: FluidObject
-      }
+      localFile: IChildImageSharp
     }
   }
   author?: {
