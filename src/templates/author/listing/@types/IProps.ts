@@ -1,12 +1,9 @@
-import { FluidObject } from 'gatsby-image'
-
 import { IAuthor } from '../../../../core/@types/IAuthor'
+import { IChildImageSharp } from '../../../../core/@types/IChildImageSharp'
 
 interface IAuthorWithBanner extends IAuthor {
   banner: {
-    childImageSharp: {
-      fluid: FluidObject
-    }
+    localFile: IChildImageSharp
   }
 }
 

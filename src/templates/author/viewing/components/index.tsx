@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { graphql } from 'gatsby'
+import { startsWith } from 'lodash'
 
 import { Box, Flex } from 'rebass'
 
@@ -14,18 +14,14 @@ import SEO from '../../../../core/components/seo'
 import { IProps } from '../@types/IProps'
 
 const AuthorViewingComponent: React.FC<IProps> = props => {
-  const posts = props.data.allMarkdownRemark.edges
-  const author = props.data.authorsJson
-  const authorName = author.name
-
-  const {currentPage, numPages, pathPrefix, banner} = props.pageContext
+  const {page, pathPrefix, author, blogs} = props.pageContext
 
   return (
     <Box>
-      <Helmet title={authorName} />
+      <Helmet title={author.name} />
       <SEO
-        title={authorName}
-        banner={banner.childImageSharp.fluid.src}
+        title={author.name}
+        banner={author.banner.localFile.childImageSharp.fluid.src}
         author={{
           facebook: 'https://facebook.com/rayriffy',
           name: 'Phumrapee Limpianchop',
@@ -36,8 +32,8 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
         <Flex justifyContent={`center`}>
           <Box width={[1, 18/24, 16/24, 14/24]}>
             <Featured
-              title={authorName}
-              banner={banner}
+              title={author.name}
+              banner={author.banner}
               featured={false}
             />
           </Box>
@@ -64,15 +60,19 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
         <Flex justifyContent={`center`}>
           <Box width={[22/24, 22/24, 20/24, 18/24]}>
             <Flex flexWrap={`wrap`}>
-              {posts.map(({node}) => {
+              {blogs.map(blog => {
+                const {title, subtitle, date, banner, slug} = blog.node
+
+                const meta = {
+                  banner,
+                  date,
+                  subtitle,
+                  title,
+                }
+
                 return (
-                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={node.fields.slug}>
-                    <Card
-                      slug={node.fields.slug}
-                      author={props.data.authorsJson}
-                      blog={node.frontmatter}
-                      type={`listing`}
-                    />
+                  <Box width={[1, 1, 1/2, 1/2]} p={3} key={`listing-${page.current}-${slug}`}>
+                    <Card key={slug} slug={startsWith(slug, '/') ? slug : `/${slug}`} author={author} blog={meta} type={`listing`} />
                   </Box>
                 )
               })}
@@ -80,7 +80,7 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
           </Box>
         </Flex>
       </Box>
-      <Pagination numPages={numPages} currentPage={currentPage} pathPrefix={pathPrefix} />
+      <Pagination numPages={page.max} currentPage={page.current} pathPrefix={pathPrefix} />
     </Box>
   )
 }

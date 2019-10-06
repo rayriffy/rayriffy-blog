@@ -178,7 +178,7 @@ const CardComponent: React.FC<ICardProps> = props => {
       {type === 'post' ? <GlobalStyle /> : null}
       {banner ? (
         <Box>
-          {slug ? <TransparentLink to={_.startsWith(slug, '/') ? slug : `/${slug}`} aria-label={`link-${title}`}>{cardBanner}</TransparentLink> : cardBanner}
+          {slug ? <TransparentLink to={slug} aria-label={`link-${title}`}>{cardBanner}</TransparentLink> : cardBanner}
         </Box>
       ) : null}
       <Box px={type === 'listing' ? 4 : type === 'post' ? [4, 5] : 4} py={4}>
