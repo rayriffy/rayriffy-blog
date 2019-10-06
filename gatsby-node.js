@@ -30,15 +30,19 @@ exports.createPages = async ({ graphql, actions }) => {
               name
             }
             banner {
-              fluid(maxWidth: 1000, quality: 90) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90) {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                }
               }
             }
           }
@@ -91,15 +95,19 @@ exports.createPages = async ({ graphql, actions }) => {
               name
             }
             banner {
-              fluid(maxWidth: 1000, quality: 90) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90) {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                }
               }
             }
           }
@@ -108,12 +116,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const featuredPost = _.head(featuredPost.data.featured.edges)
+  const featuredPost = _.head(gqlFeatured.data.featured.edges)
+
+  console.log(featuredPost.node.banner.fluid)
 
   // Create blog/listing
-  const blogsChunks = _.chunk(blogs, POST_PER_PAGE)
+  const blogsChunks = _.chunk(blogs.edges, POST_PER_PAGE)
 
-  blogsChunks.map(async (chunk, i) => {
+  blogsChunks.map((chunk, i) => {
     createPage({
       path: i === 0 ? `/` : `/pages/${i + 1}`,
       component: path.resolve(`./src/templates/blog/listing/components/index.tsx`),
@@ -157,15 +167,19 @@ exports.createPages = async ({ graphql, actions }) => {
             key
             blog_post {
               banner {
-                fluid(maxWidth: 1000, quality: 90) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
                 }
               }
             }
@@ -214,15 +228,19 @@ exports.createPages = async ({ graphql, actions }) => {
                 name
               }
               banner {
-                fluid(maxWidth: 1000, quality: 90) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
                 }
               }
             }
@@ -235,7 +253,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const categoryBlogsChunks = _.chunk(gqlCategoryViewing.data.blogs.edges, POST_PER_PAGE)
 
-    categoryBlogsChunks.map(async (chunk, i) => {
+    categoryBlogsChunks.map((chunk, i) => {
       createPage({
         path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
         component: path.resolve('./src/templates/category/viewing/components/index.tsx'),
@@ -255,7 +273,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create author/listing
   const gqlAuthorListing = await graphql(`
     query NodeGqlAuthorListingQuery {
-      authors: allContentfulAuthor {
+      authors: allContentfulAuthor(sort: {fields: name, order: ASC}) {
         edges {
           node {
             name
@@ -263,15 +281,19 @@ exports.createPages = async ({ graphql, actions }) => {
             user
             facebook
             banner {
-              fluid(maxWidth: 1000, quality: 90) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90) {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                }
               }
             }
           }
@@ -291,8 +313,8 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Create author/viewing
-  authors.edges.map(author => {
-    const gqlCategoryViewing = await graphql(`
+  authors.edges.map(async author => {
+    const gqlAuthorViewing = await graphql(`
       query NodeGqlAuthorViewingQuery {
         blogs: allContentfulBlogPost(filter: {author: {user: {eq: "${author.node.user}"}}}, sort: {fields: date, order: DESC}) {
           edges {
@@ -312,6 +334,33 @@ exports.createPages = async ({ graphql, actions }) => {
                 name
               }
               banner {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        author: contentfulAuthor(user: {eq: "${author.node.user}"}) {
+          facebook
+          twitter
+          user
+          name
+          banner {
+            localFile {
+              childImageSharp {
                 fluid(maxWidth: 1000, quality: 90) {
                   base64
                   tracedSVG
@@ -326,29 +375,10 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-
-        author: contentfulAuthor(user: {eq: "${author.node.user}"}) {
-          facebook
-          twitter
-          user
-          name
-          banner {
-            fluid(maxWidth: 1000, quality: 90) {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
-          }
-        }
       }
     `)
 
-    const authorBlogChunks = _.chunks(gqlCategoryViewing.data.blogs, POST_PER_PAGE)
+    const authorBlogChunks = _.chunk(gqlAuthorViewing.data.blogs, POST_PER_PAGE)
 
     authorBlogChunks.map((chunk, i) => {
       createPage({
@@ -357,7 +387,7 @@ exports.createPages = async ({ graphql, actions }) => {
         content: {
           pathPrefix: `/author/${author.node.user}`,
           blogs: chunk,
-          author: gqlCategoryViewing.data.author,
+          author: gqlAuthorViewing.data.author,
           page: {
             current: i + 1,
             max: authorBlogChunks.length
