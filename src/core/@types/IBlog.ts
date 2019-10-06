@@ -1,20 +1,19 @@
-import { FluidObject } from 'gatsby-image'
+import { IAuthor } from './IAuthor'
+import { IChildImageSharp } from './IChildImageSharp'
 
 export interface IBlog {
-  fields: {
-    slug: string
+  slug: string
+  title: string
+  subtitle: string
+  author: IAuthor
+  date: string
+  featured: boolean
+  banner: {
+    localFile: IChildImageSharp
   }
-  frontmatter: {
-    title: string
-    subtitle: string
-    author: string
-    date: string
-    featured: boolean
-    banner: {
-      childImageSharp: {
-        fluid: FluidObject
-      }
+  content: {
+    childMarkdownRemark: {
+      html: string
     }
   }
-  html: string
 }

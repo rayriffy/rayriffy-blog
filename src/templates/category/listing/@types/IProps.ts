@@ -1,11 +1,9 @@
-import { FluidObject } from 'gatsby-image'
 import { ICategory } from '../../../../core/@types/ICategory';
+import { IChildImageSharp } from '../../../../core/@types/IChildImageSharp'
 
 interface ICategoryWithBanner extends ICategory {
   banner: {
-    childImageSharp: {
-      fluid: FluidObject
-    }
+    localFile: IChildImageSharp
   }
 }
 

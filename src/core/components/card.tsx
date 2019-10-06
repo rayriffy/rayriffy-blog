@@ -1,5 +1,6 @@
 import React from 'react'
 
+import dayjs from 'dayjs'
 import Img from 'gatsby-image'
 
 import { Box, Card, Heading, Text } from 'rebass'
@@ -169,7 +170,7 @@ const CardComponent: React.FC<ICardProps> = props => {
   const {author, blog, children, slug, type, boxShadow = `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`} = props
   const {title, subtitle, banner, date} = blog
 
-  const cardBanner = banner ? <Banner fluid={banner.childImageSharp.fluid} /> : null
+  const cardBanner = banner ? <Banner fluid={banner.localFile.childImageSharp.fluid} /> : null
   const cardTitle = <BlogTitle fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38} fontWeight={400} fontFamily={`Kanit, sans-serif`}>{title}</BlogTitle>
 
   return (
@@ -184,7 +185,7 @@ const CardComponent: React.FC<ICardProps> = props => {
         {slug ? <TransparentLink to={slug} aria-label={`link-${title}`}>{cardTitle}</TransparentLink> : cardTitle}
         {date && author ? (
           <BlogText fontSize={[14, 16]} mt={3}>
-            Written by <BlogLink to={'/author/' + author.user} aria-label={author.name}>{author.name}</BlogLink> on {date}
+            Written by <BlogLink to={'/author/' + author.user} aria-label={author.name}>{author.name}</BlogLink> on {dayjs(date).format('DD MMMM YYYY')}
           </BlogText>
         ) : null}
         {subtitle ? <BlogText fontSize={[16, 17]} mt={3}>{subtitle}</BlogText> : null}

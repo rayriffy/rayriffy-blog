@@ -1,25 +1,16 @@
-import { FluidObject } from 'gatsby-image'
-
 import { IAuthor } from '../../../../core/@types/IAuthor'
 import { IBlog } from '../../../../core/@types/IBlog'
 
 export interface IProps {
   pageContext: {
-    currentPage: number
-    numPages: number
+    author: IAuthor
+    blogs: {
+      node: IBlog
+    }[]
     pathPrefix: string
-    banner: {
-      childImageSharp: {
-        fluid: FluidObject
-      }
+    page: {
+      current: number
+      max: number
     }
   }
-  data: {
-    allMarkdownRemark: {
-      edges: {
-        node: IBlog
-      }[]
-    }
-    authorsJson: IAuthor
-  } 
 }
