@@ -143,7 +143,7 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-images-contentfufl`,
+            resolve: `gatsby-remark-images-contentful`,
             options: {
               maxWidth: 1000,
               linkImagesToOriginal: false,
