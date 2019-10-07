@@ -9,7 +9,7 @@ module.exports = {
       GATSBY_ENV === 'production'
         ? `https://blog.rayriffy.com`
         : GATSBY_ENV === 'staging'
-        ? `https://blog-staging.rayriffy.com`
+        ? `https://staging.blog.rayriffy.com`
         : `https://localhost:8000`
     }`,
     fbApp: '342680353046527',
@@ -42,12 +42,6 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/database`,
-      },
-    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -154,7 +148,6 @@ module.exports = {
           },
           'gatsby-remark-responsive-iframe',
           'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
       },
@@ -173,7 +166,6 @@ module.exports = {
         }`,
       },
     },
-    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
