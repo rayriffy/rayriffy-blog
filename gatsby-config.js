@@ -154,7 +154,6 @@ module.exports = {
           },
           'gatsby-remark-responsive-iframe',
           'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
       },
@@ -173,7 +172,6 @@ module.exports = {
         }`,
       },
     },
-    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
