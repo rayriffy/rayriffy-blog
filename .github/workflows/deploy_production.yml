@@ -18,6 +18,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: "Artifacts: Upload node-modules-prod"
+      uses: actions/upload-artifact@master
+      with:
+        name: node-modules-prod
+        path: node_modules
     - name: "Init: Install dependencies"
       uses: borales/actions-yarn@master
       with:
@@ -34,6 +39,11 @@ jobs:
       uses: borales/actions-yarn@master
       with:
         args: test:markdown
+    - name: "Artifacts: Upload node-modules-prod"
+      uses: actions/upload-artifact@master
+      with:
+        name: node-modules-prod
+        path: node_modules
 
   deploy:
     needs: test
