@@ -18,10 +18,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: "Artifacts: Download node-modules-staging"
-      uses: actions/download-artifact@master
-      with:
-        name: node-modules-staging
     - name: "Init: Install dependencies"
       uses: borales/actions-yarn@master
       with:
