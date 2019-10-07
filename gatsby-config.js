@@ -43,12 +43,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-json`,
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/database`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         resolveEnv: () => GATSBY_ENV,
