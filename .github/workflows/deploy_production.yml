@@ -34,11 +34,6 @@ jobs:
       uses: borales/actions-yarn@master
       with:
         args: test:markdown
-    - name: "Artifacts: Upload node-modules-prod"
-      uses: actions/upload-artifact@master
-      with:
-        name: node-modules-prod
-        path: node_modules
 
   deploy:
     needs: test
