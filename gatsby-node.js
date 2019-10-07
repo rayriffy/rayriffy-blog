@@ -5,8 +5,6 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 const POST_PER_PAGE = 6
 
-const { GATSBY_ENV = 'production' } = process.env
-
 exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
   const { createPage } = actions
@@ -425,7 +423,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   authors.map(async author => {
     const authorBlogs = await graphql(`
-      query MyQuery {
+      query NodeGqlAPIAuthorQuery {
+        site {
+          siteMetadata {
+            siteUrl
+          }
+        }
+  
         blogs: allContentfulBlogPost(sort: {fields: date, order: DESC}, filter: {author: {user: {eq: "${author.node.user}"}}}) {
           edges {
             node {
@@ -465,7 +469,7 @@ exports.createPages = async ({ graphql, actions }) => {
         status: 'success',
         code: 201,
         data: chunk.map(blog => ({
-          url: `https://${GATSBY_ENV === 'production' ? `blog.rayriffy.com` : `staging.blog.rayriffy.com`}/${blog.node.slug}`,
+          url: `https://${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
           title: blog.node.title,
           subtitle: blog.node.subtitle,
           banner: blog.node.banner.localFile.childImageSharp.fluid.src,
