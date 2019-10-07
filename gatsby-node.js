@@ -421,7 +421,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  authors.map(async author => {
+  authors.edges.map(async author => {
     const authorBlogs = await graphql(`
       query NodeGqlAPIAuthorQuery {
         site {
