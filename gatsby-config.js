@@ -9,7 +9,7 @@ module.exports = {
       GATSBY_ENV === 'production'
         ? `https://blog.rayriffy.com`
         : GATSBY_ENV === 'staging'
-        ? `https://blog-staging.rayriffy.com`
+        ? `https://staging.blog.rayriffy.com`
         : `https://localhost:8000`
     }`,
     fbApp: '342680353046527',

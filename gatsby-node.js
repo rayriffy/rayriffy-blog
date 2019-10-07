@@ -5,6 +5,8 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 const POST_PER_PAGE = 6
 
+const { GATSBY_ENV = 'production' } = process.env
+
 exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
   const { createPage } = actions
@@ -393,6 +395,86 @@ exports.createPages = async ({ graphql, actions }) => {
             current: i + 1,
             max: authorBlogChunks.length
           },
+        }
+      })
+    })
+  })
+
+  /**
+   * API Section
+   */
+  if (!fs.existsSync('public/api')) {
+    fs.mkdirSync('public/api', function(err) {
+      if (err) {
+        console.error(err)
+        throw err
+      }
+    })
+  }
+
+
+  // Create API for each author
+  if (!fs.existsSync('public/api/author')) {
+    fs.mkdirSync('public/api/author', function(err) {
+      if (err) {
+        console.error(err)
+        throw err
+      }
+    })
+  }
+
+  authors.map(async author => {
+    const authorBlogs = await graphql(`
+      query MyQuery {
+        blogs: allContentfulBlogPost(sort: {fields: date, order: DESC}, filter: {author: {user: {eq: "${author.node.user}"}}}) {
+          edges {
+            node {
+              slug
+              title
+              subtitle
+              banner {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }    
+    `)
+
+    const blogsChunks = _.chunk(authorBlogs.data.blogs.edges, POST_PER_PAGE)
+
+    if (blogsChunks.length > 0) {
+      if (!fs.existsSync(`public/api/author/${author.node.user}`)) {
+        fs.mkdirSync(`public/api/author/${author.node.user}`, function(err) {
+          if (err) {
+            console.error(err)
+            throw err
+          }
+        })
+      }
+    }
+
+    blogsChunks.map((chunk, i) => {
+      const res = {
+        status: 'success',
+        code: 201,
+        data: chunk.map(blog => ({
+          url: `https://${GATSBY_ENV === 'production' ? `blog.rayriffy.com` : `staging.blog.rayriffy.com`}/${blog.node.slug}`,
+          title: blog.node.title,
+          subtitle: blog.node.subtitle,
+          banner: blog.node.banner.localFile.childImageSharp.fluid.src,
+        }))
+      }
+
+      fs.writeFile(`public/api/author/${author.node.user}/${i + 1}.json`, JSON.stringify(res), err => {
+        if (err) {
+          throw err
         }
       })
     })
