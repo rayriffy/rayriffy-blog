@@ -469,7 +469,7 @@ exports.createPages = async ({ graphql, actions }) => {
         status: 'success',
         code: 201,
         data: chunk.map(blog => ({
-          url: `https://${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
+          url: `${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
           title: blog.node.title,
           subtitle: blog.node.subtitle,
           banner: blog.node.banner.localFile.childImageSharp.fluid.src,
