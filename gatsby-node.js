@@ -472,7 +472,7 @@ exports.createPages = async ({ graphql, actions }) => {
           url: `${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
           title: blog.node.title,
           subtitle: blog.node.subtitle,
-          banner: blog.node.banner.localFile.childImageSharp.fluid.src,
+          banner: `${authorBlogs.data.site.siteMetadata.siteUrl}${blog.node.banner.localFile.childImageSharp.fluid.src}`,
         }))
       }
 
