@@ -186,14 +186,7 @@ module.exports = {
         omitGoogleFont: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          '/api/**/*': ['Access-Control-Allow-Origin: *'],
-        },
-      },
-    },
+    `gatsby-plugin-netlify`,
     {
       resolve: "gatsby-plugin-netlify-cache",
       options: {
