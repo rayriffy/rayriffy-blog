@@ -9,6 +9,7 @@ import { Box, Flex, Text } from 'rebass'
 import styled from 'styled-components'
 
 import Card from '../../../../core/components/card'
+import OneDarkPrism from '../../../../core/components/onedark'
 import SEO from '../../../../core/components/seo'
 import TransparentLink from '../../../../core/components/transparentLink'
 
@@ -54,6 +55,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
         date={date}
         type={`article`}
       />
+      <OneDarkPrism />
       <Flex justifyContent={`center`}>
         <Box width={[20/24, 18/24, 15/24, 13/24]} mb={4}>
           <Card 
