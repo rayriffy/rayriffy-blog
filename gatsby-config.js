@@ -1,4 +1,4 @@
-const { GATSBY_ENV = 'production', CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID, CONTENTFUL_HOST = 'cdn.contentful.com' } = process.env
+const { GATSBY_ENV = 'production', CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID } = process.env
 
 module.exports = {
   siteMetadata: {
@@ -23,7 +23,7 @@ module.exports = {
       options: {
         spaceId: CONTENTFUL_SPACE_ID,
         accessToken: CONTENTFUL_ACCESS_TOKEN,
-        host: CONTENTFUL_HOST,
+        host: GATSBY_ENV === 'preview' ? 'preview.contentful.com' : 'cdn.contentful.com',
         downloadLocal: true,
       },
     },
@@ -67,6 +67,14 @@ module.exports = {
             ],
           },
           development: {
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
+          },
+          preview: {
             policy: [
               {
                 userAgent: '*',
