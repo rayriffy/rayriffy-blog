@@ -1,11 +1,6 @@
-name: Test units for Pull Request
+name: Test units
 
-on:
-  pull_request:
-    branches:
-      - "master"
-      - "author/*"
-      - "dependabot/*"
+on: [push, pull_request]
 
 jobs:
 
