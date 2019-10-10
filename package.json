@@ -1,7 +1,7 @@
 {
   "name": "rayriffy-blog",
   "description": "The Nerdy Blogger",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
@@ -49,13 +49,13 @@
     "gatsby-remark-embed-spotify": "^2.0.2",
     "gatsby-remark-embed-video": "^2.0.0",
     "gatsby-remark-images-contentful": "^2.1.17",
-    "gatsby-remark-prismjs": "^3.3.16",
+    "gatsby-remark-prismjs": "^3.3.18",
     "gatsby-remark-responsive-iframe": "^2.2.18",
     "gatsby-remark-smartypants": "^2.1.11",
     "gatsby-source-contentful": "^2.1.45",
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-transformer-json": "^2.2.11",
-    "gatsby-transformer-remark": "^2.6.26",
+    "gatsby-transformer-remark": "^2.6.28",
     "gatsby-transformer-sharp": "^2.2.19",
     "lodash": "^4.17.15",
     "preact": "^10.0.0",
@@ -89,14 +89,11 @@
     "typescript": "^3.6.3"
   },
   "scripts": {
-    "build": "cross-env GATSBY_ENV=production gatsby build",
-    "build:staging": "cross-env GATSBY_ENV=staging gatsby build",
+    "build": "gatsby build",
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths",
     "dev": "cross-env GATSBY_ENV=development NODE_TLS_REJECT_UNAUTHORIZED=0 gatsby develop --https",
     "dev:net": "cross-env GATSBY_ENV=development gatsby develop -p 3000 -H 0.0.0.0",
-    "dev:prod": "cross-env GATSBY_ENV=production gatsby develop --https",
-    "dev:staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
     "format": "yarn lint --fix",
     "start": "npm run develop",
     "test": "yarn test:lint && yarn test:types && yarn test:markdown",

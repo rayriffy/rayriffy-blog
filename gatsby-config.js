@@ -10,6 +10,8 @@ module.exports = {
         ? `https://blog.rayriffy.com`
         : GATSBY_ENV === 'staging'
         ? `https://staging.blog.rayriffy.com`
+        : GATSBY_ENV === 'preview'
+        ? `https://preview.blog.rayriffy.com`
         : `https://localhost:8000`
     }`,
     fbApp: '342680353046527',
@@ -21,6 +23,7 @@ module.exports = {
       options: {
         spaceId: CONTENTFUL_SPACE_ID,
         accessToken: CONTENTFUL_ACCESS_TOKEN,
+        host: GATSBY_ENV === 'preview' ? 'preview.contentful.com' : 'cdn.contentful.com',
         downloadLocal: true,
       },
     },
@@ -64,6 +67,14 @@ module.exports = {
             ],
           },
           development: {
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
+          },
+          preview: {
             policy: [
               {
                 userAgent: '*',
@@ -147,7 +158,16 @@ module.exports = {
             },
           },
           'gatsby-remark-responsive-iframe',
-          'gatsby-remark-prismjs',
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            }
+          },
           'gatsby-remark-smartypants',
         ],
       },
