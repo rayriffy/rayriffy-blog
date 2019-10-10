@@ -54,10 +54,11 @@ jobs:
     - name: "Build: Trigger build staging site"
       uses: borales/actions-yarn@master
       env:
+        GATSBY_ENV: staging
         CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
       with:
-        args: build:staging
+        args: build
     - name: "Deploy: Upload to Netlify"
       uses: netlify/actions/cli@master
       env:

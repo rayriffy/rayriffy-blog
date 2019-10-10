@@ -89,14 +89,11 @@
     "typescript": "^3.6.3"
   },
   "scripts": {
-    "build": "cross-env GATSBY_ENV=production gatsby build",
-    "build:staging": "cross-env GATSBY_ENV=staging gatsby build",
+    "build": "gatsby build",
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths",
     "dev": "cross-env GATSBY_ENV=development NODE_TLS_REJECT_UNAUTHORIZED=0 gatsby develop --https",
     "dev:net": "cross-env GATSBY_ENV=development gatsby develop -p 3000 -H 0.0.0.0",
-    "dev:prod": "cross-env GATSBY_ENV=production gatsby develop --https",
-    "dev:staging": "cross-env GATSBY_ENV=staging gatsby develop --https",
     "format": "yarn lint --fix",
     "start": "npm run develop",
     "test": "yarn test:lint && yarn test:types && yarn test:markdown",
