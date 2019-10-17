@@ -48,7 +48,7 @@
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-embed-spotify": "^2.0.2",
     "gatsby-remark-embed-video": "^2.0.0",
-    "gatsby-remark-images-contentful": "^2.1.17",
+    "gatsby-remark-images-contentful": "^2.1.20",
     "gatsby-remark-prismjs": "^3.3.20",
     "gatsby-remark-responsive-iframe": "^2.2.18",
     "gatsby-remark-smartypants": "^2.1.11",
