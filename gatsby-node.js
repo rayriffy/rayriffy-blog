@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             title
             subtitle
-            date
+            date(formatString: "DD MMMM YYYY")
             featured
             content {
               childMarkdownRemark {
@@ -83,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             title
             subtitle
-            date
+            date(formatString: "DD MMMM YYYY")
             featured
             content {
               childMarkdownRemark {
