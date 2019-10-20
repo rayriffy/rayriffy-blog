@@ -91,7 +91,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths",
-    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 gatsby develop --https",
+    "dev": "gatsby develop --https",
     "dev:net": "gatsby develop -p 3000 -H 0.0.0.0",
     "format": "yarn lint --fix",
     "start": "npm run develop",
