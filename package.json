@@ -94,6 +94,7 @@
     "dev": "gatsby develop --https",
     "dev:net": "gatsby develop -p 3000 -H 0.0.0.0",
     "format": "yarn lint --fix",
+    "info": "gatsby info --clipboard",
     "start": "npm run develop",
     "test": "yarn test:lint && yarn test:types && yarn test:markdown",
     "test:lighthouse": "lighthousebot",
