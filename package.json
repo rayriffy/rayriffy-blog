@@ -58,7 +58,7 @@
     "gatsby-transformer-remark": "^2.6.28",
     "gatsby-transformer-sharp": "^2.3.1",
     "lodash": "^4.17.15",
-    "preact": "^10.0.0",
+    "preact": "^10.0.4",
     "prismjs": "^1.17.1",
     "react": "^16.11.0",
     "react-adsense": "^0.1.0",
