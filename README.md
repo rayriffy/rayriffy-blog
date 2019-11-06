@@ -11,48 +11,57 @@ Demo
 Requirements
 ------------
 
--   Node LTS
+-   [Node LTS](https://nodejs.org)
+-   [yarn](https://yarnpkg.org)
 
-Installation
-------------
+Installation & Usage
+--------------------
+
+### 1. Configure Contentful
+
+Create a workspace and **import content model** with [this](content/model/contentful.json) provided JSON files.
+
+Then, create **at least** one entitly of each content model and **create an API Key** in order to get Access Token and Space ID.
+
+### 2. Configure app
+
+Pull a source first
 
 ```sh
-$ npm install
-$ npm run dev
+$ git clone https://github.com/rayriffy/rayriffy-blog
 ```
 
-or just use yarn
+Then install its dependencies
 
 ```sh
 $ yarn
+```
+
+Finally customize your own favicon [here](static/favicon.ico) and [here](content/assets/logo.png), [logo](src/app/components/logo.tsx) and [site metadata](gatsby-config.js)
+
+### 2. Developing
+
+For development environment, we can use **Content Preview API - access token** to fetch contents
+
+```sh
+$ export CONTENTFUL_SPACE_ID=<SPACE ID HERE>
+$ export CONTENTFUL_ACCESS_TOKEN=<PREVIEW TOKEN HERE>
 $ yarn dev
 ```
 
-Creating Articles
------------------
+Then develop it as you wish cause it is MIT license!
 
-You can create articles by using Markdown language. I provided you an example articles [here](content/blog/review-halozy/index.md). Good Luck
+### 3. Deploying
 
-Adding new author
------------------
+In order to deploy them to production, we use `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` as same as developing but in this case access token will be **Content Delivery API - access token**
 
-In order to add a new author, please floowing these steps below.
+```sh
+$ export CONTENTFUL_SPACE_ID=<SPACE ID HERE>
+$ export CONTENTFUL_ACCESS_TOKEN=<DEPLOY TOKEN HERE>
+$ yarn build
+```
 
-### Create a branch
-
-All authors in **rayriffy/rayriffy-blog** are required to create their own branch on repository by cloning **rayriffy/rayriffy-blog** and create branch called `author/{USERNAME}` from `master` branch
-
-### Create your metadata
-
-Create a file `./content/database/authors/{USERNAME}.json` and fill an information like [this example](content/database/authors/rayriffy.json)
-
-### Add an image
-
-Create you own author image with the dimension of **1500*788 px** and pixel density at **72 ppi** in **.jpg** format and then renaming file to `auhtor.{USERNAME}.jpg` and put it into folder `./content/assets`
-
-### Create a blog
-
-Before starting an development server please create at **least 1 article** for new author in order to prevent server from crashing.
+After build process is completed, you can use `public/` directory for publishing deployment.
 
 Contributing
 ------------
