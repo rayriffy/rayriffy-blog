@@ -6079,10 +6079,10 @@ gatsby-remark-embed-gist@^1.1.9:
     request "^2.88.0"
     request-promise "^4.2.4"
 
-gatsby-remark-embed-spotify@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-embed-spotify/-/gatsby-remark-embed-spotify-2.0.2.tgz#51ab03093ab335f9793f6372988742da9c82da7e"
-  integrity sha512-T01LwHmG3AnX20pu0ZMdFnyaBzbgZqpzyQogT1obfs7DZGSTcjXT1RxkKwChI1+qRUw/kpgrBZxBPYyY+oFXXg==
+gatsby-remark-embed-spotify@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-embed-spotify/-/gatsby-remark-embed-spotify-2.1.1.tgz#666e77e3ef5cfeb98f460041dab25768f3de149a"
+  integrity sha512-q+mRkAHs/p5jois8VWzxEtf8kbUXqe9T2QOMNwngcEgOEhzEGHTLwo7fg5N+kr1IUHlVN+m6MO+Bwo3I2uPAmA==
   dependencies:
     babel-runtime "^6.26.0"
     unist-util-visit "^1.1.3"
