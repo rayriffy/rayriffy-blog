@@ -1,0 +1,16 @@
+{
+  "name": "website",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build"
+  },
+  "dependencies": {
+    "gatsby": "^2.17.11",
+    "gatsby-theme-rayriffy-blog": "1.0.0"
+  }
+}
