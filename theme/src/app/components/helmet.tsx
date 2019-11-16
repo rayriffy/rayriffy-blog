@@ -11,11 +11,15 @@ const HelmetCompoent: React.FC = () => {
           title
         }
       }
-    }        
+    }
   `)
 
   return (
-    <Helmet htmlAttributes={{lang: 'en'}} titleTemplate={`${data.site.siteMetadata.title} · %s`} defaultTitle={data.site.siteMetadata.title} />
+    <Helmet
+      htmlAttributes={{ lang: 'en' }}
+      titleTemplate={`${data.site.siteMetadata.title} · %s`}
+      defaultTitle={data.site.siteMetadata.title}
+    />
   )
 }
 

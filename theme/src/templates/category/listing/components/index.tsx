@@ -10,7 +10,7 @@ import SEO from '../../../../core/components/seo'
 import { IProps } from '../@types/IProps'
 
 const CategoryListingComponent: React.FC<IProps> = props => {
-  const {categories = []} = props.pageContext
+  const { categories = [] } = props.pageContext
 
   return (
     <Box>
@@ -23,13 +23,14 @@ const CategoryListingComponent: React.FC<IProps> = props => {
             name: 'Phumrapee Limpianchop',
             twitter: '@rayriffy',
           }}
-          type={`page`} />
-        <Chip name="Category" desc="รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง" />
+          type={`page`}
+        />
+        <Chip name='Category' desc='รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง' />
         <Flex justifyContent={`center`}>
-          <Box width={[22/24, 22/24, 20/24, 18/24]}>
+          <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
             <Flex flexWrap={`wrap`}>
               {categories.map(category => (
-                <Box width={[1, 1, 1/2, 1/2]} p={3} key={`category-${category.key}`}>
+                <Box width={[1, 1, 1 / 2, 1 / 2]} p={3} key={`category-${category.key}`}>
                   <Card
                     slug={`/category/${category.key}`}
                     blog={{

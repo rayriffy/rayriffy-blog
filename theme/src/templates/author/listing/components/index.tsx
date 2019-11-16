@@ -29,7 +29,7 @@ const TwitterIcon = styled(FaTwitter)`
 `
 
 const AuthorListingComponent: React.FC<IProps> = props => {
-  const {authors = []} = props.pageContext
+  const { authors = [] } = props.pageContext
 
   return (
     <Box>
@@ -42,31 +42,34 @@ const AuthorListingComponent: React.FC<IProps> = props => {
             name: 'Phumrapee Limpianchop',
             twitter: '@rayriffy',
           }}
-          type={`page`} />
+          type={`page`}
+        />
         <Chip name={`Authors`} />
         <Box>
           <Flex justifyContent={`center`}>
-            <Box width={[22/24, 22/24, 20/24, 18/24]}>
+            <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
               <Flex flexWrap={`wrap`}>
                 {authors.map(author => {
                   return (
-                    <Box width={[1, 1, 1/2, 1/2]} p={3} key={`author-${author.user}`}>
+                    <Box width={[1, 1, 1 / 2, 1 / 2]} p={3} key={`author-${author.user}`}>
                       <Card
                         slug={`/author/${author.user}`}
                         blog={{
                           banner: author.banner,
                           title: author.name,
                         }}
-                        type={`listing`}
-                      >
+                        type={`listing`}>
                         <Box px={4} pb={4}>
                           <FacebookIcon />{' '}
-                          <a href={author.facebook} rel="noopener noreferrer" target="_blank">
+                          <a href={author.facebook} rel='noopener noreferrer' target='_blank'>
                             {author.facebook.split('/')[3]}
                           </a>
                           <br />
                           <TwitterIcon />{' '}
-                          <a href={'https://twitter.com/' + author.twitter.split('@')[1]} rel="noopener noreferrer" target="_blank">
+                          <a
+                            href={'https://twitter.com/' + author.twitter.split('@')[1]}
+                            rel='noopener noreferrer'
+                            target='_blank'>
                             {author.twitter}
                           </a>
                         </Box>

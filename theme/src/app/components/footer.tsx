@@ -59,7 +59,7 @@ const FooterComponent: React.FC = () => {
           internal: true,
           name: 'Authors',
         },
-      ]
+      ],
     },
     {
       name: 'open source',
@@ -76,7 +76,7 @@ const FooterComponent: React.FC = () => {
           href: 'https://gatsbyjs.org',
           name: 'Gatsby',
         },
-      ]
+      ],
     },
     {
       name: 'contact',
@@ -93,7 +93,7 @@ const FooterComponent: React.FC = () => {
           href: 'https://twitter.com/rayriffy',
           name: 'Twitter',
         },
-      ]
+      ],
     },
   ]
 
@@ -107,14 +107,16 @@ const FooterComponent: React.FC = () => {
       <Box py={4}>
         <Flex flexWrap={`wrap`} justifyContent={`left`}>
           {tabs.map(tab => (
-            <Box width={[1, 1/2, 1/2, 1/3]} py={3} key={`footer-tab-${tab.name}`}>
+            <Box width={[1, 1 / 2, 1 / 2, 1 / 3]} py={3} key={`footer-tab-${tab.name}`}>
               <Box pb={3}>
-                <NavTitle fontSize={14} fontFamily={`Kanit, sans-serif`}>{tab.name.toUpperCase()}</NavTitle>
+                <NavTitle fontSize={14} fontFamily={`Kanit, sans-serif`}>
+                  {tab.name.toUpperCase()}
+                </NavTitle>
               </Box>
               <Box>
                 <Flex flexWrap={`wrap`}>
                   {tab.navs.map(nav => {
-                    const {href, name, internal = false} = nav
+                    const { href, name, internal = false } = nav
 
                     if (internal) {
                       return (
@@ -139,7 +141,7 @@ const FooterComponent: React.FC = () => {
         </Flex>
       </Box>
       <Box pt={2} pb={5}>
-        <NavText>© {(new Date().getFullYear())} Phumrapee Limpianchop</NavText>
+        <NavText>© {new Date().getFullYear()} Phumrapee Limpianchop</NavText>
       </Box>
     </Box>
   )

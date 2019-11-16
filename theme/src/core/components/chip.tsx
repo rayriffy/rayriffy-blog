@@ -31,7 +31,7 @@ const Subtitle = styled.div`
 `
 
 const ChipComponent: React.FC<IChipProp> = props => {
-  const {name, desc} = props
+  const { name, desc } = props
 
   return (
     <Container>

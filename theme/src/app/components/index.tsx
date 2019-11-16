@@ -30,8 +30,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Component: React.FC = props => {
-  const {children} = props
-  const {GATSBY_ENV = 'production'} = process.env
+  const { children } = props
+  const { GATSBY_ENV = 'production' } = process.env
 
   return (
     <Box>

@@ -1,6 +1,6 @@
 export interface IFooterTab {
   name: string
-  navs:  {
+  navs: {
     href: string
     internal?: boolean
     name: string

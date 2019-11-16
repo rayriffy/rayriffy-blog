@@ -6,7 +6,7 @@ export interface ISEOProps {
     name?: string
     facebook?: string
     twitter?: string
-  },
+  }
   slug?: string
   date?: string
   type: string

@@ -21,9 +21,9 @@ const SEOComponent: React.FC<ISEOProps> = props => {
     }
   `)
 
-  const {siteMetadata} = data.site
-  const {title, subtitle = siteMetadata.description, banner = '/default.jpg', author, slug = '', date, type} = props
-  const {name = siteMetadata.author, facebook = 'https://facebook.com/rayriffy', twitter = '@rayriffy'} = author
+  const { siteMetadata } = data.site
+  const { title, subtitle = siteMetadata.description, banner = '/default.jpg', author, slug = '', date, type } = props
+  const { name = siteMetadata.author, facebook = 'https://facebook.com/rayriffy', twitter = '@rayriffy' } = author
 
   const metas = [
     {
@@ -130,8 +130,9 @@ const SEOComponent: React.FC<ISEOProps> = props => {
 
   return (
     <Helmet meta={metas}>
-      <script type="application/ld+json" data-react-helmet="true">
-        {type === 'article' ? `
+      <script type='application/ld+json' data-react-helmet='true'>
+        {type === 'article'
+          ? `
           {
             "@context": "http://schema.org/",
             "@type" : "Article",
@@ -160,13 +161,16 @@ const SEOComponent: React.FC<ISEOProps> = props => {
               }
             }
           }
-        ` : type === 'page' ? `
+        `
+          : type === 'page'
+          ? `
           {
             "@context": "http://schema.org/",
             "@type" : "Website",
             "url" : "${siteMetadata.siteUrl}"
           }
-        ` : null}
+        `
+          : null}
       </script>
     </Helmet>
   )

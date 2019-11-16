@@ -1,4 +1,4 @@
-import { ICategory } from '../../../../core/@types/ICategory';
+import { ICategory } from '../../../../core/@types/ICategory'
 import { IChildImageSharp } from '../../../../core/@types/IChildImageSharp'
 
 interface ICategoryWithBanner extends ICategory {

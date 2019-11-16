@@ -36,12 +36,12 @@ const NavLink = styled(TransparentLink)`
 `
 
 const BlogViewingComponent: React.FC<IProps> = props => {
-  const {blog, node} = props.pageContext
-  const {next, previous} = blog
+  const { blog, node } = props.pageContext
+  const { next, previous } = blog
 
-  const {title, subtitle, banner, author, slug, date, content} = node
+  const { title, subtitle, banner, author, slug, date, content } = node
 
-  const {GATSBY_ENV = 'production'} = process.env
+  const { GATSBY_ENV = 'production' } = process.env
 
   return (
     <Box>
@@ -57,8 +57,8 @@ const BlogViewingComponent: React.FC<IProps> = props => {
       />
       <OneDarkPrism />
       <Flex justifyContent={`center`}>
-        <Box width={[20/24, 18/24, 15/24, 13/24]} mb={4}>
-          <Card 
+        <Box width={[20 / 24, 18 / 24, 15 / 24, 13 / 24]} mb={4}>
+          <Card
             author={author}
             blog={{
               banner,
@@ -67,7 +67,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
             }}
             type={`post`}>
             <Box px={[4, 5, 5]}>
-              <div dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}} />
+              <div dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
             </Box>
             {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
               <>
@@ -75,12 +75,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                   <hr />
                 </Box>
                 <Box>
-                  <AdSense.Google
-                    client="ca-pub-2837414306121160"
-                    slot="7015425171"
-                    format="auto"
-                    responsive="true"
-                  />
+                  <AdSense.Google client='ca-pub-2837414306121160' slot='7015425171' format='auto' responsive='true' />
                 </Box>
               </>
             ) : null}
@@ -89,15 +84,17 @@ const BlogViewingComponent: React.FC<IProps> = props => {
             </Box>
             <Box px={[4, 5]} pb={5}>
               <Flex flexWrap={`wrap`}>
-                <Box width={1/2} px={2}>
+                <Box width={1 / 2} px={2}>
                   {previous ? (
                     <Box>
                       <NavText>PREVIOUS</NavText>
-                      <NavLink to={startsWith(previous.slug, '/') ? previous.slug : `/${previous.slug}`}>{previous.title}</NavLink>
+                      <NavLink to={startsWith(previous.slug, '/') ? previous.slug : `/${previous.slug}`}>
+                        {previous.title}
+                      </NavLink>
                     </Box>
                   ) : null}
                 </Box>
-                <Box width={1/2} px={2}>
+                <Box width={1 / 2} px={2}>
                   {next ? (
                     <Box>
                       <NavText>NEXT</NavText>
