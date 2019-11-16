@@ -31,7 +31,9 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
           return (
             <Box px={3} key={`navbar-${align}-int-${name}`}>
               <TransparentLink to={href}>
-                <NavText fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>
+                <NavText
+                  fontFamily={`Lato, Helvetica, Arial, sans-serif`}
+                  fontSize={13}>
                   {name.toUpperCase()}
                 </NavText>
               </TransparentLink>
@@ -40,7 +42,9 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
         } else {
           return (
             <NavLink px={3} href={href} key={`navbar-${align}-ext-${name}`}>
-              <NavText fontFamily={`Lato, Helvetica, Arial, sans-serif`} fontSize={13}>
+              <NavText
+                fontFamily={`Lato, Helvetica, Arial, sans-serif`}
+                fontSize={13}>
                 {name.toUpperCase()}
               </NavText>
             </NavLink>

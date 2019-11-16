@@ -31,7 +31,11 @@ const BlogListingComponent: React.FC<IProps> = props => {
               <Featured
                 title={featured.node.title}
                 subtitle={featured.node.subtitle}
-                slug={startsWith(featured.node.slug, '/') ? featured.node.slug : `/${featured.node.slug}`}
+                slug={
+                  startsWith(featured.node.slug, '/')
+                    ? featured.node.slug
+                    : `/${featured.node.slug}`
+                }
                 banner={featured.node.banner}
                 featured={true}
               />
@@ -44,7 +48,14 @@ const BlogListingComponent: React.FC<IProps> = props => {
           <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
             <Flex flexWrap={`wrap`}>
               {blogs.map(blog => {
-                const { author, title, subtitle, date, banner, slug } = blog.node
+                const {
+                  author,
+                  title,
+                  subtitle,
+                  date,
+                  banner,
+                  slug,
+                } = blog.node
 
                 const meta = {
                   banner,
@@ -54,8 +65,16 @@ const BlogListingComponent: React.FC<IProps> = props => {
                 }
 
                 return (
-                  <Box width={[1, 1, 1 / 2, 1 / 2]} p={3} key={`listing-${page.current}-${slug}`}>
-                    <Card author={author} blog={meta} slug={startsWith(slug, '/') ? slug : `/${slug}`} type={`listing`} />
+                  <Box
+                    width={[1, 1, 1 / 2, 1 / 2]}
+                    p={3}
+                    key={`listing-${page.current}-${slug}`}>
+                    <Card
+                      author={author}
+                      blog={meta}
+                      slug={startsWith(slug, '/') ? slug : `/${slug}`}
+                      type={`listing`}
+                    />
                   </Box>
                 )
               })}
@@ -64,7 +83,11 @@ const BlogListingComponent: React.FC<IProps> = props => {
         </Flex>
       </Box>
       <Box my={3}>
-        <Pagination numPages={page.max} currentPage={page.current} pathPrefix='/' />
+        <Pagination
+          numPages={page.max}
+          currentPage={page.current}
+          pathPrefix='/'
+        />
       </Box>
     </Box>
   )

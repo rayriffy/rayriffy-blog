@@ -30,7 +30,10 @@ const CategoryListingComponent: React.FC<IProps> = props => {
           <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
             <Flex flexWrap={`wrap`}>
               {categories.map(category => (
-                <Box width={[1, 1, 1 / 2, 1 / 2]} p={3} key={`category-${category.key}`}>
+                <Box
+                  width={[1, 1, 1 / 2, 1 / 2]}
+                  p={3}
+                  key={`category-${category.key}`}>
                   <Card
                     slug={`/category/${category.key}`}
                     blog={{

@@ -67,7 +67,11 @@ const BlogViewingComponent: React.FC<IProps> = props => {
             }}
             type={`post`}>
             <Box px={[4, 5, 5]}>
-              <div dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: content.childMarkdownRemark.html,
+                }}
+              />
             </Box>
             {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
               <>
@@ -75,7 +79,12 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                   <hr />
                 </Box>
                 <Box>
-                  <AdSense.Google client='ca-pub-2837414306121160' slot='7015425171' format='auto' responsive='true' />
+                  <AdSense.Google
+                    client='ca-pub-2837414306121160'
+                    slot='7015425171'
+                    format='auto'
+                    responsive='true'
+                  />
                 </Box>
               </>
             ) : null}
@@ -88,7 +97,12 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                   {previous ? (
                     <Box>
                       <NavText>PREVIOUS</NavText>
-                      <NavLink to={startsWith(previous.slug, '/') ? previous.slug : `/${previous.slug}`}>
+                      <NavLink
+                        to={
+                          startsWith(previous.slug, '/')
+                            ? previous.slug
+                            : `/${previous.slug}`
+                        }>
                         {previous.title}
                       </NavLink>
                     </Box>
@@ -98,7 +112,14 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                   {next ? (
                     <Box>
                       <NavText>NEXT</NavText>
-                      <NavLink to={startsWith(next.slug, '/') ? next.slug : `/${next.slug}`}>{next.title}</NavLink>
+                      <NavLink
+                        to={
+                          startsWith(next.slug, '/')
+                            ? next.slug
+                            : `/${next.slug}`
+                        }>
+                        {next.title}
+                      </NavLink>
                     </Box>
                   ) : null}
                 </Box>

@@ -43,7 +43,10 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
   const RenderedCard = (
     <FeaturedCard color='white' bg='rgba(0,0,0,0.3)'>
       <GatsbyImage fluid={banner.localFile.childImageSharp.fluid} />
-      <Box px={[3, 3, 4, 4]} pb={[3, 3, 4, 4]} style={{ position: 'absolute', left: '0', bottom: '0' }}>
+      <Box
+        px={[3, 3, 4, 4]}
+        pb={[3, 3, 4, 4]}
+        style={{ position: 'absolute', left: '0', bottom: '0' }}>
         {featured ? (
           <Text fontSize={[14, 16, 18, 20]} mb={2}>
             FEATURED
@@ -57,7 +60,15 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
     </FeaturedCard>
   )
 
-  return <Box>{slug ? <TransparentLink to={`${slug}`}>{RenderedCard}</TransparentLink> : RenderedCard}</Box>
+  return (
+    <Box>
+      {slug ? (
+        <TransparentLink to={`${slug}`}>{RenderedCard}</TransparentLink>
+      ) : (
+        RenderedCard
+      )}
+    </Box>
+  )
 }
 
 export default FeaturedComponent

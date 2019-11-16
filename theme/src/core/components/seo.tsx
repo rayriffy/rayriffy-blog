@@ -22,12 +22,26 @@ const SEOComponent: React.FC<ISEOProps> = props => {
   `)
 
   const { siteMetadata } = data.site
-  const { title, subtitle = siteMetadata.description, banner = '/default.jpg', author, slug = '', date, type } = props
-  const { name = siteMetadata.author, facebook = 'https://facebook.com/rayriffy', twitter = '@rayriffy' } = author
+  const {
+    title,
+    subtitle = siteMetadata.description,
+    banner = '/default.jpg',
+    author,
+    slug = '',
+    date,
+    type,
+  } = props
+  const {
+    name = siteMetadata.author,
+    facebook = 'https://facebook.com/rayriffy',
+    twitter = '@rayriffy',
+  } = author
 
   const metas = [
     {
-      content: title ? `${siteMetadata.title} · ${title}` : `${siteMetadata.title}`,
+      content: title
+        ? `${siteMetadata.title} · ${title}`
+        : `${siteMetadata.title}`,
       name: 'name',
     },
     {
@@ -59,7 +73,9 @@ const SEOComponent: React.FC<ISEOProps> = props => {
       property: 'og:locale:alternate',
     },
     {
-      content: title ? `${siteMetadata.title} · ${title}` : `${siteMetadata.title}`,
+      content: title
+        ? `${siteMetadata.title} · ${title}`
+        : `${siteMetadata.title}`,
       property: 'og:title',
     },
     {
@@ -111,7 +127,9 @@ const SEOComponent: React.FC<ISEOProps> = props => {
       name: 'twitter:creator',
     },
     {
-      content: title ? `${siteMetadata.title} · ${title}` : `${siteMetadata.title}`,
+      content: title
+        ? `${siteMetadata.title} · ${title}`
+        : `${siteMetadata.title}`,
       name: 'twitter:title',
     },
     {

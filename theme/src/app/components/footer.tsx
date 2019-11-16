@@ -107,7 +107,10 @@ const FooterComponent: React.FC = () => {
       <Box py={4}>
         <Flex flexWrap={`wrap`} justifyContent={`left`}>
           {tabs.map(tab => (
-            <Box width={[1, 1 / 2, 1 / 2, 1 / 3]} py={3} key={`footer-tab-${tab.name}`}>
+            <Box
+              width={[1, 1 / 2, 1 / 2, 1 / 3]}
+              py={3}
+              key={`footer-tab-${tab.name}`}>
               <Box pb={3}>
                 <NavTitle fontSize={14} fontFamily={`Kanit, sans-serif`}>
                   {tab.name.toUpperCase()}
@@ -128,7 +131,12 @@ const FooterComponent: React.FC = () => {
                       )
                     } else {
                       return (
-                        <NavLinkExt href={href} key={`nav-${tab.name}-${name}`} fontSize={16} py={1} width={1}>
+                        <NavLinkExt
+                          href={href}
+                          key={`nav-${tab.name}-${name}`}
+                          fontSize={16}
+                          py={1}
+                          width={1}>
                           {name}
                         </NavLinkExt>
                       )

@@ -32,7 +32,11 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
       <Box my={4}>
         <Flex justifyContent={`center`}>
           <Box width={[1, 18 / 24, 16 / 24, 14 / 24]}>
-            <Featured title={author.name} banner={author.banner} featured={false} />
+            <Featured
+              title={author.name}
+              banner={author.banner}
+              featured={false}
+            />
           </Box>
         </Flex>
       </Box>
@@ -68,7 +72,10 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
                 }
 
                 return (
-                  <Box width={[1, 1, 1 / 2, 1 / 2]} p={3} key={`listing-${page.current}-${slug}`}>
+                  <Box
+                    width={[1, 1, 1 / 2, 1 / 2]}
+                    p={3}
+                    key={`listing-${page.current}-${slug}`}>
                     <Card
                       key={slug}
                       slug={startsWith(slug, '/') ? slug : `/${slug}`}
@@ -83,7 +90,11 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
           </Box>
         </Flex>
       </Box>
-      <Pagination numPages={page.max} currentPage={page.current} pathPrefix={pathPrefix} />
+      <Pagination
+        numPages={page.max}
+        currentPage={page.current}
+        pathPrefix={pathPrefix}
+      />
     </Box>
   )
 }

@@ -182,10 +182,18 @@ const CardComponent: React.FC<ICardProps> = props => {
   } = props
   const { title, subtitle, banner, date } = blog
 
-  const cardBanner = banner ? <Banner fluid={banner.localFile.childImageSharp.fluid} /> : null
+  const cardBanner = banner ? (
+    <Banner fluid={banner.localFile.childImageSharp.fluid} />
+  ) : null
   const cardTitle = (
     <BlogTitle
-      fontSize={type === 'listing' ? [24, 26, 28, 30] : type === 'post' ? [30, 32, 34, 36] : 38}
+      fontSize={
+        type === 'listing'
+          ? [24, 26, 28, 30]
+          : type === 'post'
+          ? [30, 32, 34, 36]
+          : 38
+      }
       fontWeight={400}
       fontFamily={`Kanit, sans-serif`}>
       {title}

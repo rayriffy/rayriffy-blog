@@ -30,7 +30,12 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
       <Box my={4}>
         <Flex justifyContent={`center`}>
           <Box width={[1, 18 / 24, 16 / 24, 14 / 24]}>
-            <Featured title={category.name} subtitle={category.desc} banner={props.pageContext.banner} featured={false} />
+            <Featured
+              title={category.name}
+              subtitle={category.desc}
+              banner={props.pageContext.banner}
+              featured={false}
+            />
           </Box>
         </Flex>
       </Box>
@@ -39,7 +44,14 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
           <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
             <Flex flexWrap={`wrap`}>
               {blogs.map(blog => {
-                const { author, title, subtitle, date, banner, slug } = blog.node
+                const {
+                  author,
+                  title,
+                  subtitle,
+                  date,
+                  banner,
+                  slug,
+                } = blog.node
 
                 const meta = {
                   banner,
@@ -49,7 +61,10 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
                 }
 
                 return (
-                  <Box width={[1, 1, 1 / 2, 1 / 2]} p={3} key={`listing-${page.current}-${slug}`}>
+                  <Box
+                    width={[1, 1, 1 / 2, 1 / 2]}
+                    p={3}
+                    key={`listing-${page.current}-${slug}`}>
                     <Card
                       key={slug}
                       slug={startsWith(slug, '/') ? slug : `/${slug}`}
@@ -64,7 +79,11 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
           </Box>
         </Flex>
       </Box>
-      <Pagination numPages={page.max} currentPage={page.current} pathPrefix={pathPrefix} />
+      <Pagination
+        numPages={page.max}
+        currentPage={page.current}
+        pathPrefix={pathPrefix}
+      />
     </Box>
   )
 }

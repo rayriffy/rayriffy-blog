@@ -51,7 +51,9 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
               to={`${
                 startPoint + i === 0
                   ? `${pathPrefix}`
-                  : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startPoint + i + 1}`
+                  : `${
+                      pathPrefix === '/' ? '' : pathPrefix
+                    }/pages/${startPoint + i + 1}`
               }`}
               start={startPoint}
               index={i}
