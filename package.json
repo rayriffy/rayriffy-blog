@@ -71,7 +71,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.142",
+    "@types/lodash": "^4.14.149",
     "@types/react-helmet": "^5.0.14",
     "@types/rebass": "^4.0.2",
     "@types/styled-components": "^4.1.19",
