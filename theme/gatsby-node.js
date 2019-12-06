@@ -531,8 +531,8 @@ exports.createPages = async ({ graphql, actions }) => {
   return true
 }
 
-exports.onCreateWebpackConfig = ({ actions, stage }) => {
-  if (!stage.startsWith('develop')) {
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  if (stage !== `develop`) {
     actions.setWebpackConfig({
       resolve: {
         alias: {
