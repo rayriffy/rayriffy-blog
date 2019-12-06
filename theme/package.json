@@ -77,7 +77,8 @@
     "husky": "^3.0.9",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
-    "remark-preset-lint-recommended": "^3.0.3"
+    "remark-preset-lint-recommended": "^3.0.3",
+    "typescript": "^3.7.2"
   },
   "peerDependencies": {
     "gatsby": "^2.17.11",
