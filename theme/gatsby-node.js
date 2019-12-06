@@ -530,17 +530,3 @@ exports.createPages = async ({ graphql, actions }) => {
 
   return true
 }
-
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  if (stage !== `develop`) {
-    actions.setWebpackConfig({
-      resolve: {
-        alias: {
-          react: `preact/compat`,
-          'react-dom': `preact/compat`,
-          'react-dom/server': `preact/compat`,
-        },
-      },
-    })
-  }
-}
