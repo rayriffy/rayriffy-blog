@@ -129,7 +129,7 @@ const Banner = styled(Img)`
   border-radius: 6px 6px 0 0;
 `
 
-const BlogCard = styled(Card)`
+const BlogCard = styled(Card)<IBlogCard>`
   background-color: rgb(255, 255, 255);
 
   @media (prefers-color-scheme: dark) {

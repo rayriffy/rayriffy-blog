@@ -13,7 +13,7 @@ interface IPage {
   current: number
 }
 
-const Page = styled(Link)`
+const Page = styled(Link)<IPage>`
   ${(props: IPage) => {
     const { start, index, current } = props
 

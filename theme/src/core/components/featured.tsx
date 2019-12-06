@@ -13,7 +13,7 @@ interface IGatsbyImage {
   height?: number
 }
 
-const GatsbyImage = styled(Img)`
+const GatsbyImage = styled(Img)<IGatsbyImage>`
   position: absolute;
   top: 0;
   left: 0;
