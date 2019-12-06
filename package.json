@@ -9,6 +9,7 @@
     "build": "yarn workspace website build",
     "dev": "yarn workspace website dev",
     "start": "yarn workspace website start",
+    "test:lint": "yarn workspace gatsby-theme-rayriffy-blog test:lint",
     "test:types": "tsc"
   },
   "workspaces": [
