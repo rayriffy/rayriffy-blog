@@ -123,8 +123,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const featuredPost = _.head(gqlFeatured.data.featured.edges)
 
-  console.log(featuredPost.node.banner.fluid)
-
   // Create blog/listing
   const blogsChunks = _.chunk(blogs.edges, POST_PER_PAGE)
 
