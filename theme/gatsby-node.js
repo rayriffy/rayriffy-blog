@@ -4,6 +4,8 @@ const path = require('path')
 
 const POST_PER_PAGE = 6
 
+const templatesDirectory = path.resolve(__dirname, './src/templates')
+
 exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
   const { createPage } = actions
@@ -130,7 +132,8 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: i === 0 ? `/` : `/pages/${i + 1}`,
       component: path.resolve(
-        `./src/templates/blog/listing/components/index.tsx`
+        templatesDirectory,
+        'blog/listing/components/index.tsx'
       ),
       context: {
         featured: i === 0 ? featuredPost : null,
@@ -152,7 +155,8 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: blog.node.slug,
       component: path.resolve(
-        './src/templates/blog/viewing/components/index.tsx'
+        templatesDirectory,
+        'blog/viewing/components/index.tsx'
       ),
       context: {
         node: blog.node,
@@ -211,7 +215,8 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `category`,
     component: path.resolve(
-      './src/templates/category/listing/components/index.tsx'
+      templatesDirectory,
+      'category/listing/components/index.tsx'
     ),
     context: {
       categories: transformedCategoryListing,
@@ -276,7 +281,8 @@ exports.createPages = async ({ graphql, actions }) => {
             ? `/category/${category.node.key}`
             : `/category/${category.node.key}/pages/${i + 1}`,
         component: path.resolve(
-          './src/templates/category/viewing/components/index.tsx'
+          templatesDirectory,
+          'category/viewing/components/index.tsx'
         ),
         context: {
           pathPrefix: `/category/${category.node.key}`,
@@ -331,7 +337,8 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `author`,
     component: path.resolve(
-      './src/templates/author/listing/components/index.tsx'
+      templatesDirectory,
+      'author/listing/components/index.tsx'
     ),
     context: {
       authors: transformedAuthorListing,
@@ -416,7 +423,8 @@ exports.createPages = async ({ graphql, actions }) => {
             ? `/author/${author.node.user}`
             : `/author/${author.node.user}/pages/${i + 1}`,
         component: path.resolve(
-          './src/templates/author/viewing/components/index.tsx'
+          templatesDirectory,
+          'author/viewing/components/index.tsx'
         ),
         context: {
           pathPrefix: `/author/${author.node.user}`,
