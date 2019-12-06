@@ -1,0 +1,3 @@
+[build]
+  publish = "website/public/"
+  command = "yarn workspace website build"
