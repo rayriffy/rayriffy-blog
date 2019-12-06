@@ -2,8 +2,8 @@ import React from 'react'
 
 import Img from 'gatsby-image'
 
+import styled from '@emotion/styled'
 import { Box, Card, Heading, Text } from 'rebass'
-import styled from 'styled-components'
 
 import TransparentLink from './transparentLink'
 

@@ -1,7 +1,6 @@
 const _ = require('lodash')
 const fs = require('fs')
 const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
 
 const POST_PER_PAGE = 6
 
@@ -12,7 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Get all blogs
   const gqlFetch = await graphql(`
     query NodeGqlFetchQuery {
-      blogs: allContentfulBlogPost(sort: {fields: date, order: DESC}) {
+      blogs: allContentfulBlogPost(sort: { fields: date, order: DESC }) {
         edges {
           node {
             slug
@@ -72,12 +71,16 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const {blogs, authors, categories} = gqlFetch.data
+  const { blogs, authors, categories } = gqlFetch.data
 
   // Get featured post
   const gqlFeatured = await graphql(`
     query NodeGqlFeaturedQuery {
-      featured: allContentfulBlogPost(sort: {order: DESC, fields: date}, filter: {featured: {eq: true}}, limit: 1) {
+      featured: allContentfulBlogPost(
+        sort: { order: DESC, fields: date }
+        filter: { featured: { eq: true } }
+        limit: 1
+      ) {
         edges {
           node {
             slug
@@ -126,13 +129,15 @@ exports.createPages = async ({ graphql, actions }) => {
   blogsChunks.map((chunk, i) => {
     createPage({
       path: i === 0 ? `/` : `/pages/${i + 1}`,
-      component: path.resolve(`./src/templates/blog/listing/components/index.tsx`),
+      component: path.resolve(
+        `./src/templates/blog/listing/components/index.tsx`
+      ),
       context: {
         featured: i === 0 ? featuredPost : null,
         blogs: chunk,
         page: {
           current: i + 1,
-          max: blogsChunks.length
+          max: blogsChunks.length,
         },
       },
     })
@@ -140,12 +145,15 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog/viewing
   blogs.edges.map(async (blog, i) => {
-    const previosBlog = i === blogs.edges.length - 1 ? null : blogs.edges[i + 1].node
+    const previosBlog =
+      i === blogs.edges.length - 1 ? null : blogs.edges[i + 1].node
     const nextBlog = i === 0 ? null : blogs.edges[i - 1].node
 
     createPage({
       path: blog.node.slug,
-      component: path.resolve('./src/templates/blog/viewing/components/index.tsx'),
+      component: path.resolve(
+        './src/templates/blog/viewing/components/index.tsx'
+      ),
       context: {
         node: blog.node,
         blog: {
@@ -189,18 +197,22 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const transformedCategoryListing = gqlCategoryListing.data.categories.edges.map(category => {
-    return {
-      key: category.node.key,
-      name: category.node.name,
-      desc: category.node.desc,
-      banner: _.head(category.node.blog_post).banner,
+  const transformedCategoryListing = gqlCategoryListing.data.categories.edges.map(
+    category => {
+      return {
+        key: category.node.key,
+        name: category.node.name,
+        desc: category.node.desc,
+        banner: _.head(category.node.blog_post).banner,
+      }
     }
-  })
+  )
 
   createPage({
     path: `category`,
-    component: path.resolve('./src/templates/category/listing/components/index.tsx'),
+    component: path.resolve(
+      './src/templates/category/listing/components/index.tsx'
+    ),
     context: {
       categories: transformedCategoryListing,
     },
@@ -249,14 +261,23 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const categoryBanner = _.head(gqlCategoryViewing.data.blogs.edges).node.banner
+    const categoryBanner = _.head(gqlCategoryViewing.data.blogs.edges).node
+      .banner
 
-    const categoryBlogsChunks = _.chunk(gqlCategoryViewing.data.blogs.edges, POST_PER_PAGE)
+    const categoryBlogsChunks = _.chunk(
+      gqlCategoryViewing.data.blogs.edges,
+      POST_PER_PAGE
+    )
 
     categoryBlogsChunks.map((chunk, i) => {
       createPage({
-        path: i === 0 ? `/category/${category.node.key}` : `/category/${category.node.key}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/category/viewing/components/index.tsx'),
+        path:
+          i === 0
+            ? `/category/${category.node.key}`
+            : `/category/${category.node.key}/pages/${i + 1}`,
+        component: path.resolve(
+          './src/templates/category/viewing/components/index.tsx'
+        ),
         context: {
           pathPrefix: `/category/${category.node.key}`,
           blogs: chunk,
@@ -264,9 +285,9 @@ exports.createPages = async ({ graphql, actions }) => {
           category: category.node,
           page: {
             current: i + 1,
-            max: categoryBlogsChunks.length
+            max: categoryBlogsChunks.length,
           },
-        }
+        },
       })
     })
   })
@@ -274,7 +295,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create author/listing
   const gqlAuthorListing = await graphql(`
     query NodeGqlAuthorListingQuery {
-      authors: allContentfulAuthor(sort: {fields: name, order: ASC}) {
+      authors: allContentfulAuthor(sort: { fields: name, order: ASC }) {
         edges {
           node {
             name
@@ -303,11 +324,15 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const transformedAuthorListing = gqlAuthorListing.data.authors.edges.map(author => author.node)
+  const transformedAuthorListing = gqlAuthorListing.data.authors.edges.map(
+    author => author.node
+  )
 
   createPage({
     path: `author`,
-    component: path.resolve('./src/templates/author/listing/components/index.tsx'),
+    component: path.resolve(
+      './src/templates/author/listing/components/index.tsx'
+    ),
     context: {
       authors: transformedAuthorListing,
     },
@@ -379,21 +404,29 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const authorBlogChunks = _.chunk(gqlAuthorViewing.data.blogs.edges, POST_PER_PAGE)
+    const authorBlogChunks = _.chunk(
+      gqlAuthorViewing.data.blogs.edges,
+      POST_PER_PAGE
+    )
 
     authorBlogChunks.map((chunk, i) => {
       createPage({
-        path: i === 0 ? `/author/${author.node.user}` : `/author/${author.node.user}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/author/viewing/components/index.tsx'),
+        path:
+          i === 0
+            ? `/author/${author.node.user}`
+            : `/author/${author.node.user}/pages/${i + 1}`,
+        component: path.resolve(
+          './src/templates/author/viewing/components/index.tsx'
+        ),
         context: {
           pathPrefix: `/author/${author.node.user}`,
           blogs: chunk,
           author: gqlAuthorViewing.data.author,
           page: {
             current: i + 1,
-            max: authorBlogChunks.length
+            max: authorBlogChunks.length,
           },
-        }
+        },
       })
     })
   })
@@ -409,7 +442,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     })
   }
-
 
   // Create API for each author
   if (!fs.existsSync('public/api/author')) {
@@ -473,14 +505,18 @@ exports.createPages = async ({ graphql, actions }) => {
           title: blog.node.title,
           subtitle: blog.node.subtitle,
           banner: `${authorBlogs.data.site.siteMetadata.siteUrl}${blog.node.banner.localFile.childImageSharp.fluid.src}`,
-        }))
+        })),
       }
 
-      fs.writeFile(`public/api/author/${author.node.user}/${i + 1}.json`, JSON.stringify(res), err => {
-        if (err) {
-          throw err
+      fs.writeFile(
+        `public/api/author/${author.node.user}/${i + 1}.json`,
+        JSON.stringify(res),
+        err => {
+          if (err) {
+            throw err
+          }
         }
-      })
+      )
     })
   })
 
@@ -493,8 +529,8 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
       resolve: {
         alias: {
           react: `preact/compat`,
-          "react-dom": `preact/compat`,
-          "react-dom/server": `preact/compat`,
+          'react-dom': `preact/compat`,
+          'react-dom/server': `preact/compat`,
         },
       },
     })

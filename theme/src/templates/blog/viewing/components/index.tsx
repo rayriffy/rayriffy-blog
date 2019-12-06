@@ -5,8 +5,8 @@ import { startsWith } from 'lodash'
 
 import AdSense from 'react-adsense'
 
+import styled from '@emotion/styled'
 import { Box, Flex, Text } from 'rebass'
-import styled from 'styled-components'
 
 import Card from '../../../../core/components/card'
 import OneDarkPrism from '../../../../core/components/onedark'

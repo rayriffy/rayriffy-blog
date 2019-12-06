@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Link } from 'gatsby'
 
+import styled from '@emotion/styled'
 import { Box, Flex } from 'rebass'
-import styled from 'styled-components'
 
 import { IPaginationProps } from '../@types/IPaginationProps'
 

@@ -1,6 +1,6 @@
 const { NODE_ENV = 'production' } = process.env
 
-module.exports = ({contentful, seo}) => ({
+module.exports = ({ contentful, seo }) => ({
   pathPrefix: '/',
   siteMetadata: {
     title: seo.meta.siteName,
@@ -15,7 +15,10 @@ module.exports = ({contentful, seo}) => ({
       options: {
         spaceId: contentful.space,
         accessToken: contentful.token,
-        host: NODE_ENV === 'production' ? 'cdn.contentful.com' : 'preview.contentful.com',
+        host:
+          NODE_ENV === 'production'
+            ? 'cdn.contentful.com'
+            : 'preview.contentful.com',
         downloadLocal: true,
       },
     },
@@ -35,23 +38,37 @@ module.exports = ({contentful, seo}) => ({
         ignore: [`**/.*`],
       },
     },
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-emotion`,
+      opions: {
+        sourceMap: true,
+        cssPropOptimization: true,
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        // config
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+          },
+          production: {
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/author/*', '/category/*', '/pages/*'],
+              },
+            ],
+          },
+        },
       },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        exclude: [
-          '/**/pages/*',
-          '/category/**/*',
-          '/author/**/*',
-        ],
+        exclude: ['/**/pages/*', '/category/**/*', '/author/**/*'],
       },
     },
     {
@@ -114,7 +131,7 @@ module.exports = ({contentful, seo}) => ({
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: false,
-            }
+            },
           },
           'gatsby-remark-smartypants',
         ],
@@ -157,7 +174,7 @@ module.exports = ({contentful, seo}) => ({
       },
     },
     {
-      resolve: "gatsby-plugin-netlify-cache",
+      resolve: 'gatsby-plugin-netlify-cache',
       options: {
         cachePublic: true,
       },

@@ -1,17 +1,17 @@
 import React from 'react'
 
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import { IChipProp } from '../@types/IChipComponent'
 
-const Container = styled.div`
+const Container = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 `
 
-const Title = styled.h3`
+const Title = styled('h3')`
   display: flex;
   justify-content: flex-start;
   font-size: 32px;
@@ -25,7 +25,7 @@ const Title = styled.h3`
   }
 `
 
-const Subtitle = styled.div`
+const Subtitle = styled('div')`
   color: rgb(192, 192, 192);
   font-size: 18px;
 `

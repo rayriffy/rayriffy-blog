@@ -1,7 +1,7 @@
 import React from 'react'
 
+import styled from '@emotion/styled'
 import { Box, Flex, Heading, Link, Text } from 'rebass'
-import styled from 'styled-components'
 
 import TransparentLink from '../../core/components/transparentLink'
 

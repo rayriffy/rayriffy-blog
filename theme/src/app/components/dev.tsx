@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
-const DevComponent = styled.div`
+const DevComponent = styled('div')`
   background: repeating-linear-gradient(
     45deg,
     #fdd835,
