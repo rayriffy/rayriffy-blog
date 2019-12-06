@@ -1,5 +1,4 @@
-import filter from 'lodash/filter'
-import head from 'lodash/head'
+import { filter, head } from 'lodash'
 
 import { IAuthor } from '../@types/IAuthor'
 
