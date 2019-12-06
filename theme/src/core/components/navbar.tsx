@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import styled from '@emotion/styled'
 import { Box, Flex, Link, Text } from 'rebass'
@@ -55,4 +55,4 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
   )
 }
 
-export default NavbarComponent
+export default memo(NavbarComponent)

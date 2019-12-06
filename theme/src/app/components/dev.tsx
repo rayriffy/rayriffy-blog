@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from '@emotion/styled'
 
 const DevComponent = styled('div')`
@@ -12,4 +13,4 @@ const DevComponent = styled('div')`
   height: 20px;
 `
 
-export default DevComponent
+export default memo(DevComponent)

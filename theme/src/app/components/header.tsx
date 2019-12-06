@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Box, Flex } from 'rebass'
 
@@ -39,4 +39,4 @@ const HeaderComponent: React.FC = () => {
   )
 }
 
-export default HeaderComponent
+export default memo(HeaderComponent)

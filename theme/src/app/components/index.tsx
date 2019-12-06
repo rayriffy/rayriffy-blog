@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { css, Global } from '@emotion/core'
-import { Box } from 'rebass'
 
 import Dev from './dev'
 import Footer from './footer'
@@ -13,7 +12,7 @@ const Component: React.FC = props => {
   const { GATSBY_ENV = 'production' } = process.env
 
   return (
-    <Box>
+    <React.Fragment>
       <Helmet />
       <Global
         styles={css`
@@ -41,7 +40,7 @@ const Component: React.FC = props => {
       <Header />
       {children}
       <Footer />
-    </Box>
+    </React.Fragment>
   )
 }
 

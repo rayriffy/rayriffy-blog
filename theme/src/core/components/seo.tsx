@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Helmet } from 'react-helmet'
 
 import { graphql, useStaticQuery } from 'gatsby'
@@ -194,4 +194,4 @@ const SEOComponent: React.FC<ISEOProps> = props => {
   )
 }
 
-export default SEOComponent
+export default memo(SEOComponent)

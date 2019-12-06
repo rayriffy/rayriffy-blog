@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Link } from 'gatsby'
 
@@ -67,4 +67,4 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
   )
 }
 
-export default PaginationComponent
+export default memo(PaginationComponent)

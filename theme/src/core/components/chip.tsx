@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import styled from '@emotion/styled'
 
@@ -41,4 +41,4 @@ const ChipComponent: React.FC<IChipProp> = props => {
   )
 }
 
-export default ChipComponent
+export default memo(ChipComponent)

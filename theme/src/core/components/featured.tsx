@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import Img from 'gatsby-image'
 
@@ -71,4 +71,4 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
   )
 }
 
-export default FeaturedComponent
+export default memo(FeaturedComponent)

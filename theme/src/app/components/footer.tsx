@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import styled from '@emotion/styled'
 import { Box, Flex, Heading, Link, Text } from 'rebass'
@@ -155,4 +155,4 @@ const FooterComponent: React.FC = () => {
   )
 }
 
-export default FooterComponent
+export default memo(FooterComponent)
