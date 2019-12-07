@@ -13,8 +13,7 @@
     "test:types": "tsc"
   },
   "workspaces": [
-    "theme",
-    "website"
+    "packages/*"
   ],
   "devDependencies": {
     "prettier": "^1.19.1",
