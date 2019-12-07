@@ -3,31 +3,26 @@ name: Test units
 on: [push, pull_request]
 
 jobs:
-
   test:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
     steps:
-    - uses: actions/checkout@v1
-    - name: "Init: Summon NodeJS"
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: "Init: Install dependencies"
-      uses: borales/actions-yarn@master
-      with:
-        args: install
-    - name: "Test: Type checking"
-      uses: borales/actions-yarn@master
-      with:
-        args: test:types
-    - name: "Test: Code linting"
-      uses: borales/actions-yarn@master
-      with:
-        args: test:lint
-    - name: "Test: Markdown linting"
-      uses: borales/actions-yarn@master
-      with:
-        args: test:markdown
+      - uses: actions/checkout@v1
+      - name: 'Init: Summon NodeJS'
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: 'Init: Install yarn'
+        run: |
+          curl -o- -L https://yarnpkg.com/install.sh | bash
+      - name: 'Init: Install dependencies'
+        run: |
+          yarn install
+      - name: 'Test: Type checking'
+        run: |
+          yarn test:types
+      - name: 'Test: Code linting'
+        run: |
+          yarn test:lint
