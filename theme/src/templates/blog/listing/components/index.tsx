@@ -25,7 +25,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
         type={`page`}
       />
       {page.current === 1 ? (
-        <Box my={4}>
+        <Box mb={4}>
           <Flex justifyContent={`center`}>
             <Box width={[1, 18 / 24, 16 / 24, 14 / 24]}>
               <Featured

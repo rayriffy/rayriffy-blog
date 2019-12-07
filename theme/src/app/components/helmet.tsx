@@ -19,6 +19,13 @@ const HelmetCompoent: React.FC = () => {
       htmlAttributes={{ lang: 'en' }}
       titleTemplate={`${data.site.siteMetadata.title} · %s`}
       defaultTitle={data.site.siteMetadata.title}
+      link={[
+        {
+          rel: 'stylesheet',
+          href:
+            'https://fonts.googleapis.com/css?family=Athiti|Niramit|Kanit&display=swap',
+        },
+      ]}
     />
   )
 }

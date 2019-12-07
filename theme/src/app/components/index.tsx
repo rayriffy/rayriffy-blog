@@ -1,6 +1,9 @@
 import React from 'react'
 
 import { css, Global } from '@emotion/core'
+import { ThemeProvider } from 'emotion-theming'
+
+import { theme } from '../../utils/theme'
 
 import Dev from './dev'
 import Footer from './footer'
@@ -12,7 +15,7 @@ const Component: React.FC = props => {
   const { GATSBY_ENV = 'production' } = process.env
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <Helmet />
       <Global
         styles={css`
@@ -40,7 +43,7 @@ const Component: React.FC = props => {
       <Header />
       {children}
       <Footer />
-    </React.Fragment>
+    </ThemeProvider>
   )
 }
 

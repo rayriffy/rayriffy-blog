@@ -28,7 +28,7 @@ const OneDarkPrism: React.FC = () => {
 
         /* Code blocks */
         pre[class*='language-'] {
-          padding: 1em;
+          padding: 20px;
           margin: 0.5em 0;
           overflow: auto;
           border-radius: 0.3em;

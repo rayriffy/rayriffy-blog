@@ -159,13 +159,6 @@ module.exports = ({ contentful, seo }) => ({
     },
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: `${__dirname}/src/utils/typography`,
-        omitGoogleFont: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {

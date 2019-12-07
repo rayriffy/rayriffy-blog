@@ -23,7 +23,7 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
   const { align, tabs } = props
 
   return (
-    <Flex justifyContent={align}>
+    <Flex justifyContent={align} py={3}>
       {tabs.map(tab => {
         const { name, href, internal = false } = tab
 
