@@ -195,13 +195,12 @@ const CardComponent: React.FC<ICardProps> = props => {
     <BlogTitle
       fontSize={
         type === 'listing'
-          ? [24, 26, 28, 30]
+          ? [26, 28, 28, 30]
           : type === 'post'
           ? [30, 32, 34, 36]
           : 38
       }
-      fontWeight={400}
-      fontFamily={`Kanit, sans-serif`}>
+      fontWeight={400}>
       {title}
     </BlogTitle>
   )

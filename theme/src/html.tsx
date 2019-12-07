@@ -32,10 +32,6 @@ const HTMLComponent: React.FC<IProps> = props => {
         />
         <link href='/icon.png' rel='shortcut icon' type='image/png' />
         <link href='/icon.png' rel='apple-touch-icon-precomposed' />
-        <link
-          href='https://fonts.googleapis.com/css?family=Kanit&font-display=swap'
-          rel='stylesheet'
-        />
         {headComponents}
       </head>
       <body {...bodyAttributes}>

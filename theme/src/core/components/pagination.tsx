@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import { Link } from 'gatsby'
 
 import styled from '@emotion/styled'
-import { Box, Flex } from 'rebass'
+import { Box, Flex, Text } from 'rebass'
 
 import { IPaginationProps } from '../@types/IPaginationProps'
 
@@ -46,7 +46,10 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
     <Box my={4}>
       <Flex justifyContent={`center`}>
         {Array.from({ length: pageLength }, (_, i) => (
-          <Box key={`pagination-${startPoint + i}`} px={3}>
+          <Text
+            fontFamily='heading'
+            key={`pagination-${startPoint + i}`}
+            px={3}>
             <Page
               to={`${
                 startPoint + i === 0
@@ -60,7 +63,7 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
               current={currentPage}>
               {startPoint + i + 1}
             </Page>
-          </Box>
+          </Text>
         ))}
       </Flex>
     </Box>

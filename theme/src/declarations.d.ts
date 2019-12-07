@@ -13,3 +13,5 @@ declare module '*.module.css' {
 }
 
 declare module 'react-adsense'
+
+declare module '@rebass/preset'

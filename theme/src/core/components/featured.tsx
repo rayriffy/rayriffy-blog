@@ -52,9 +52,7 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
             FEATURED
           </Text>
         ) : null}
-        <Heading fontSize={[24, 28, 32, 36]} fontFamily={`Kanit, sans-serif`}>
-          {title}
-        </Heading>
+        <Heading fontSize={[24, 28, 32, 36]}>{title}</Heading>
         {subtitle ? <Text fontSize={[16, 18, 20, 22]}>{subtitle}</Text> : null}
       </Box>
     </FeaturedCard>

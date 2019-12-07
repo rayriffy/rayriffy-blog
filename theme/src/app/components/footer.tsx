@@ -112,9 +112,7 @@ const FooterComponent: React.FC = () => {
               py={3}
               key={`footer-tab-${tab.name}`}>
               <Box pb={3}>
-                <NavTitle fontSize={14} fontFamily={`Kanit, sans-serif`}>
-                  {tab.name.toUpperCase()}
-                </NavTitle>
+                <NavTitle fontSize={14}>{tab.name.toUpperCase()}</NavTitle>
               </Box>
               <Box>
                 <Flex flexWrap={`wrap`}>
@@ -125,7 +123,11 @@ const FooterComponent: React.FC = () => {
                       return (
                         <Box key={`nav-${tab.name}-${name}`} py={1} width={1}>
                           <TransparentLink to={href}>
-                            <NavTextInt fontSize={16}>{name}</NavTextInt>
+                            <NavTextInt
+                              fontFamily={`Lato, Helvetica, Arial, sans-serif`}
+                              fontSize={16}>
+                              {name}
+                            </NavTextInt>
                           </TransparentLink>
                         </Box>
                       )
@@ -149,7 +151,9 @@ const FooterComponent: React.FC = () => {
         </Flex>
       </Box>
       <Box pt={2} pb={5}>
-        <NavText>© {new Date().getFullYear()} Phumrapee Limpianchop</NavText>
+        <NavText fontFamily='body'>
+          © {new Date().getFullYear()} Phumrapee Limpianchop
+        </NavText>
       </Box>
     </Box>
   )

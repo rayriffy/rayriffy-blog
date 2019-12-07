@@ -26,7 +26,7 @@ const HeaderComponent: React.FC = () => {
   ]
 
   return (
-    <Box mt={[4, 4, 5, 5]} mb={4}>
+    <Box mt={[4, 4, 5, 5]}>
       <Flex justifyContent={`center`}>
         <Box width={[1 / 6, 1 / 8, 1 / 10, 1 / 15]} mb={3}>
           <TransparentLinkComponent to={`/`} aria-label={`logo`}>
