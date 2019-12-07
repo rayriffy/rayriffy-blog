@@ -16,7 +16,7 @@ const NavTitle = styled(Heading)`
 `
 
 const NavText = styled(Text)`
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.6);
 
   @media (prefers-color-scheme: dark) {
     color: rgb(192, 192, 192);
@@ -121,11 +121,9 @@ const FooterComponent: React.FC = () => {
 
                     if (internal) {
                       return (
-                        <Box key={`nav-${tab.name}-${name}`} py={1} width={1}>
+                        <Box key={`nav-${tab.name}-${name}`} py={2} width={1}>
                           <TransparentLink to={href}>
-                            <NavTextInt
-                              fontFamily={`Lato, Helvetica, Arial, sans-serif`}
-                              fontSize={16}>
+                            <NavTextInt fontFamily='body' fontSize={16}>
                               {name}
                             </NavTextInt>
                           </TransparentLink>
@@ -137,7 +135,7 @@ const FooterComponent: React.FC = () => {
                           href={href}
                           key={`nav-${tab.name}-${name}`}
                           fontSize={16}
-                          py={1}
+                          py={2}
                           width={1}>
                           {name}
                         </NavLinkExt>
