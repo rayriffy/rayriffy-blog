@@ -42,7 +42,7 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
       <Box>
         <Flex justifyContent={`center`}>
           <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-            <Flex flexWrap={`wrap`}>
+            <Flex flexWrap={`wrap`} alignItems={`center`}>
               {blogs.map(blog => {
                 const {
                   author,
