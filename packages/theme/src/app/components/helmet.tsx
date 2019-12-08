@@ -22,6 +22,7 @@ const HelmetCompoent: React.FC = () => {
       link={[
         {
           rel: 'stylesheet',
+          media: 'print,screen',
           href:
             'https://fonts.googleapis.com/css?family=Athiti|Niramit|Kanit&display=swap',
         },
