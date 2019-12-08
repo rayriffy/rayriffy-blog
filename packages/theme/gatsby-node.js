@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 const POST_PER_PAGE = 6
+const IMAGE_QUALITY = 80
 
 const templatesDirectory = path.resolve(__dirname, './src/templates')
 
@@ -33,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
             banner {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90) {
+                  fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                     base64
                     tracedSVG
                     aspectRatio
@@ -102,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
             banner {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90) {
+                  fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                     base64
                     tracedSVG
                     aspectRatio
@@ -179,7 +180,7 @@ exports.createPages = async ({ graphql, actions }) => {
               banner {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
+                    fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                       base64
                       tracedSVG
                       aspectRatio
@@ -245,7 +246,7 @@ exports.createPages = async ({ graphql, actions }) => {
               banner {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
+                    fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                       base64
                       tracedSVG
                       aspectRatio
@@ -309,7 +310,7 @@ exports.createPages = async ({ graphql, actions }) => {
             banner {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90) {
+                  fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                     base64
                     tracedSVG
                     aspectRatio
@@ -367,7 +368,7 @@ exports.createPages = async ({ graphql, actions }) => {
               banner {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1000, quality: 90) {
+                    fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                       base64
                       tracedSVG
                       aspectRatio
@@ -392,7 +393,7 @@ exports.createPages = async ({ graphql, actions }) => {
           banner {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 90) {
+                fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
                   base64
                   tracedSVG
                   aspectRatio
