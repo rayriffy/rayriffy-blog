@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'ReactDOM'
 
 import App from './src/app/components'
 
