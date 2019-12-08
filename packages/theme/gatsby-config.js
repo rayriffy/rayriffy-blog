@@ -1,5 +1,3 @@
-const { NODE_ENV = 'production' } = process.env
-
 module.exports = ({ contentful, seo }) => ({
   pathPrefix: '/',
   siteMetadata: {
@@ -16,9 +14,9 @@ module.exports = ({ contentful, seo }) => ({
         spaceId: contentful.space,
         accessToken: contentful.token,
         host:
-          NODE_ENV === 'production'
-            ? 'cdn.contentful.com'
-            : 'preview.contentful.com',
+        contentful.preview
+            ? 'preview.contentful.com'
+            : 'cdn.contentful.com',
         downloadLocal: true,
       },
     },
