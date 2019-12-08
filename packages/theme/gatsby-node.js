@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 const POST_PER_PAGE = 6
-const IMAGE_QUALITY = 80
+const IMAGE_QUALITY = 70
 
 const templatesDirectory = path.resolve(__dirname, './src/templates')
 
