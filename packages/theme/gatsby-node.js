@@ -546,3 +546,12 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     })
   }
 }
+
+exports.replaceHydrateFunction = () => {
+  return (element, container, callback) => {
+    ReactDOM.createRoot(container, {
+      hydrate: true,
+      hydrationOptions: { onHydrated: callback },
+    }).render(element)
+  }
+}
