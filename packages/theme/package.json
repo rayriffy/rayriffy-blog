@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-rayriffy-blog",
   "description": "Theme of the Nerdy Blogger",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "bugs": {
     "url": "https://github.com/rayriffy/rayriffy-blog/issues"
@@ -28,7 +28,7 @@
     "type": "git",
     "url": "git+https://github.com/rayriffy/rayriffy-blog.git"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
