@@ -99,7 +99,6 @@
     "info": "gatsby info --clipboard",
     "format": "yarn test:lint --fix",
     "test": "yarn test:lint && yarn test:types && yarn test:markdown",
-    "test:lighthouse": "lighthousebot",
     "test:lint": "tslint 'src/**/*.{ts,tsx}'",
     "test:markdown": "remark .",
     "test:types": "tsc"
