@@ -273,8 +273,8 @@ exports.createPages = async ({ graphql, actions }) => {
       POST_PER_PAGE
     )
 
-    categoryBlogsChunks.map((chunk, i) => {
-      createPage({
+    const categoryBlogPromises = categoryBlogsChunks.map((chunk, i) => {
+      return createPage({
         path:
           i === 0
             ? `/category/${category.node.key}`
@@ -295,6 +295,8 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     })
+
+    await Promise.all(categoryBlogPromises)
   })
 
   // Create author/listing
@@ -415,8 +417,8 @@ exports.createPages = async ({ graphql, actions }) => {
       POST_PER_PAGE
     )
 
-    authorBlogChunks.map((chunk, i) => {
-      createPage({
+    const authorBlogPromises = authorBlogChunks.map((chunk, i) => {
+      return createPage({
         path:
           i === 0
             ? `/author/${author.node.user}`
@@ -436,6 +438,8 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     })
+
+    await Promise.all(authorBlogPromises)
   })
 
   /**
@@ -528,21 +532,4 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   return true
-}
-
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  // Requiring the server version of React-dom is hardcoded right now
-  // in the development server. So we'll just avoid loading Preact there
-  // for now.
-  if (stage !== `develop`) {
-    actions.setWebpackConfig({
-      resolve: {
-        alias: {
-          react: `preact/compat`,
-          'react-dom': `preact/compat`,
-          'react-dom/server': `preact/compat`,
-        },
-      },
-    })
-  }
 }

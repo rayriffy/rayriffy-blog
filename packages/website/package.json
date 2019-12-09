@@ -6,12 +6,15 @@
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "license": "MIT",
   "scripts": {
+    "deploy": "netlify deploy --dir=./public --prod",
     "dev": "gatsby develop",
     "build": "gatsby build",
     "format": "yarn test:lint --fix",
     "test": "yarn test:lint && yarn test:types",
     "test:lint": "tslint 'src/**/*.{ts,tsx}'",
-    "test:types": "tsc"
+    "test:types": "tsc",
+    "serve": "gatsby serve",
+    "start": "yarn build && yarn serve"
   },
   "dependencies": {
     "gatsby": "^2.17.11",

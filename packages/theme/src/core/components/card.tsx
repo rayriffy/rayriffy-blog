@@ -65,11 +65,11 @@ const GlobalStyle = () => {
           border-radius: 3px;
         }
 
-        .gatsby-resp-image-image {
+        .gria-image {
           box-shadow: inset 0px 0px 0px 400px rgb(255, 255, 255) !important;
         }
 
-        .gatsby-resp-image-wrapper {
+        .gria-image-wrapper {
           margin: 0 -25px !important;
         }
 
@@ -78,7 +78,7 @@ const GlobalStyle = () => {
             padding: 0;
           }
 
-          .gatsby-resp-image-wrapper {
+          .gria-image-wrapper {
             margin: 0 !important;
           }
         }
@@ -116,7 +116,7 @@ const GlobalStyle = () => {
             color: #ef596f;
           }
 
-          .gatsby-resp-image-image {
+          .gria-image {
             box-shadow: inset 0px 0px 0px 400px rgb(60, 60, 60) !important;
           }
         }
