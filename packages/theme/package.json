@@ -52,7 +52,7 @@
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-embed-spotify": "^2.1.1",
     "gatsby-remark-embed-video": "^2.0.1",
-    "gatsby-remark-images-anywhere": "^1.2.0",
+    "gatsby-remark-images-anywhere": "^1.2.1",
     "gatsby-remark-images-contentful": "^2.1.20",
     "gatsby-remark-prismjs": "^3.3.21",
     "gatsby-remark-responsive-iframe": "^2.2.25",

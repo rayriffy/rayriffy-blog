@@ -7078,10 +7078,10 @@ gatsby-remark-embed-video@^2.0.1:
     remark-burger "^1.0.1"
     unist-util-visit "^2.0.0"
 
-gatsby-remark-images-anywhere@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images-anywhere/-/gatsby-remark-images-anywhere-1.2.0.tgz#121731c98758456edb7d50af7c18662cb08967b2"
-  integrity sha512-ipmGNqVgl2EMizP4QrwflGf5meE/+aBnQoyty8LX6sogRh54fpjqdNNc28JVXMiXpUGLThaHz7r7Ibj0bjSo+A==
+gatsby-remark-images-anywhere@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-anywhere/-/gatsby-remark-images-anywhere-1.2.1.tgz#6add79cd67c0b55dbeb9091e049b0522df864316"
+  integrity sha512-eMMUele8RbGZbouU1HPdiOoiWO7KebhyIUZgHS1A8cHCmtLbF0iWDXYF20EpVe2k3Zlu99+D4Exm1bzQ256EIg==
   dependencies:
     parse5 "^5.1.0"
     unist-util-select "^2.0.2"
