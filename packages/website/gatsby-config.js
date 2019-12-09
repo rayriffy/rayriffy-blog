@@ -1,4 +1,4 @@
-const { GATSBY_ENV = 'production', CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID } = process.env
+const { GATSBY_ENV = 'production', CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID, CONTENTFUL_PREVIEW = false } = process.env
 
 module.exports = {
   plugins: [
@@ -7,7 +7,8 @@ module.exports = {
       options: {
         contentful: {
           space: CONTENTFUL_SPACE_ID,
-          token: CONTENTFUL_ACCESS_TOKEN
+          token: CONTENTFUL_ACCESS_TOKEN,
+          preview: CONTENTFUL_PREVIEW,
         },
         seo: {
           meta: {

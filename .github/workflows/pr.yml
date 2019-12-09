@@ -1,6 +1,6 @@
-name: Test units
+name: Pull Request Checks
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   test:
@@ -14,6 +14,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: "Cache: node_modules"
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-${{ env.cache-name }}-
+            ${{ runner.OS }}-node-
       - name: 'Init: Install yarn'
         run: |
           curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -22,7 +30,7 @@ jobs:
           yarn install
       - name: 'Test: Type checking'
         run: |
-          yarn test:types
+          yarn workspace gatsby-theme-rayriffy-blog test:types
       - name: 'Test: Code linting'
         run: |
-          yarn test:lint
+          yarn workspace gatsby-theme-rayriffy-blog test:lint

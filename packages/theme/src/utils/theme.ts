@@ -1,4 +1,4 @@
-import preset from '@rebass/preset'
+import { preset } from '@rebass/preset'
 
 export const theme = {
   ...preset,

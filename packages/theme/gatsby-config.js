@@ -1,5 +1,3 @@
-const { NODE_ENV = 'production' } = process.env
-
 module.exports = ({ contentful, seo }) => ({
   pathPrefix: '/',
   siteMetadata: {
@@ -16,9 +14,9 @@ module.exports = ({ contentful, seo }) => ({
         spaceId: contentful.space,
         accessToken: contentful.token,
         host:
-          NODE_ENV === 'production'
-            ? 'cdn.contentful.com'
-            : 'preview.contentful.com',
+        contentful.preview
+            ? 'preview.contentful.com'
+            : 'cdn.contentful.com',
         downloadLocal: true,
       },
     },
@@ -113,13 +111,17 @@ module.exports = ({ contentful, seo }) => ({
             },
           },
           {
-            resolve: `gatsby-remark-images-contentful`,
+            resolve: `gatsby-remark-images-anywhere`,
             options: {
-              maxWidth: 1000,
+              staticDir: 'static',
+              loading: 'lazy',
+              backgroundColor: 'rgb(60, 60, 60)',
               linkImagesToOriginal: false,
-              backgroundColor: `rgb(60, 60, 60)`,
+              sharpMethod: 'fluid',
               withWebp: true,
+              maxWidth: 1000,
               quality: 80,
+              tracedSVG: true,
             },
           },
           'gatsby-remark-responsive-iframe',
