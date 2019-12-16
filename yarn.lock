@@ -802,10 +802,10 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4":
-  version "7.7.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.5.tgz#4b087f183f5d83647744d4157f66199081d17a00"
-  integrity sha512-UXhClKWTL7/vlYX49kETXti6VbpPJK/pdsIOqUMhUUES/lqThpNTsmC/0aU/IW4uozDUx17axjeqel7SCYF6EQ==
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
+  version "7.7.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.6.tgz#d18c511121aff1b4f2cd1d452f1bac9601dd830f"
+  integrity sha512-BWAJxpNVa0QlE5gZdWjSxXtemZyZ9RmrmVozxt3NUXeZhVIJ5ANyqmMc0JDrivBZyxUuQvFxlvH4OWWOogGfUw==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -7089,12 +7089,12 @@ gatsby-remark-images-contentful@^2.1.20:
     sharp "^0.23.3"
     unist-util-select "^1.5.0"
 
-gatsby-remark-prismjs@^3.3.21:
-  version "3.3.25"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.3.25.tgz#022444dac936bda6a015859fbe170561b92fa5cd"
-  integrity sha512-5iyToxbK6uYKTS6jRd1tqj1oNzHIIpUUdmXD3eAHhxzWxLPFKIrO6h6pNqIiaQ98x8sxedqsa9nzMXfNeMZIEw==
+gatsby-remark-prismjs@^3.3.27:
+  version "3.3.27"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.3.27.tgz#dbd316c6ad91c48ada9459eee63cf9dfa2f34a7a"
+  integrity sha512-xuTUK1dYxU64RfVO1zpP8nLSQssVz6xn306vEJ3kDPikRGYrv0hx5zyK3j3k9OR7P1jUyC7YUsrObUsvrv+FHA==
   dependencies:
-    "@babel/runtime" "^7.7.4"
+    "@babel/runtime" "^7.7.6"
     parse-numeric-range "^0.0.2"
     unist-util-visit "^1.4.1"
 
