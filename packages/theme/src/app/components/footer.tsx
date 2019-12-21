@@ -114,36 +114,34 @@ const FooterComponent: React.FC = () => {
               <Box pb={3}>
                 <NavTitle fontSize={14}>{tab.name.toUpperCase()}</NavTitle>
               </Box>
-              <Box>
-                <Flex flexWrap={`wrap`}>
-                  {tab.navs.map(nav => {
-                    const { href, name, internal = false } = nav
+              <Flex flexWrap={`wrap`}>
+                {tab.navs.map(nav => {
+                  const { href, name, internal = false } = nav
 
-                    if (internal) {
-                      return (
-                        <Box key={`nav-${tab.name}-${name}`} py={2} width={1}>
-                          <TransparentLink to={href}>
-                            <NavTextInt fontFamily='body' fontSize={16}>
-                              {name}
-                            </NavTextInt>
-                          </TransparentLink>
-                        </Box>
-                      )
-                    } else {
-                      return (
-                        <NavLinkExt
-                          href={href}
-                          key={`nav-${tab.name}-${name}`}
-                          fontSize={16}
-                          py={2}
-                          width={1}>
-                          {name}
-                        </NavLinkExt>
-                      )
-                    }
-                  })}
-                </Flex>
-              </Box>
+                  if (internal) {
+                    return (
+                      <Box key={`nav-${tab.name}-${name}`} py={2} width={1}>
+                        <TransparentLink to={href}>
+                          <NavTextInt fontFamily='body' fontSize={16}>
+                            {name}
+                          </NavTextInt>
+                        </TransparentLink>
+                      </Box>
+                    )
+                  } else {
+                    return (
+                      <NavLinkExt
+                        href={href}
+                        key={`nav-${tab.name}-${name}`}
+                        fontSize={16}
+                        py={2}
+                        width={1}>
+                        {name}
+                      </NavLinkExt>
+                    )
+                  }
+                })}
+              </Flex>
             </Box>
           ))}
         </Flex>

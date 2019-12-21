@@ -209,7 +209,7 @@ const CardComponent: React.FC<ICardProps> = props => {
     <BlogCard type={type} boxShadow={boxShadow}>
       {type === 'post' ? <GlobalStyle /> : null}
       {banner ? (
-        <Box>
+        <React.Fragment>
           {slug ? (
             <TransparentLink to={slug} aria-label={`link-${title}`}>
               {cardBanner}
@@ -217,7 +217,7 @@ const CardComponent: React.FC<ICardProps> = props => {
           ) : (
             cardBanner
           )}
-        </Box>
+        </React.Fragment>
       ) : null}
       <Box px={type === 'listing' ? 4 : type === 'post' ? [4, 5] : 4} py={4}>
         {slug ? (

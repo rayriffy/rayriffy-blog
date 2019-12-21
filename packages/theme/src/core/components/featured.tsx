@@ -59,13 +59,13 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
   )
 
   return (
-    <Box>
+    <React.Fragment>
       {slug ? (
         <TransparentLink to={`${slug}`}>{RenderedCard}</TransparentLink>
       ) : (
         RenderedCard
       )}
-    </Box>
+    </React.Fragment>
   )
 }
 
