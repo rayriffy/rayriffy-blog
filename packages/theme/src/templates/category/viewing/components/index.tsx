@@ -16,7 +16,7 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
   const { pathPrefix, blogs, category, page } = props.pageContext
 
   return (
-    <Box>
+    <React.Fragment>
       <Helmet title={category.name} />
       <SEO
         title={category.name}
@@ -39,52 +39,43 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
           </Box>
         </Flex>
       </Box>
-      <Box>
-        <Flex justifyContent={`center`}>
-          <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-            <Flex flexWrap={`wrap`} alignItems={`center`}>
-              {blogs.map(blog => {
-                const {
-                  author,
-                  title,
-                  subtitle,
-                  date,
-                  banner,
-                  slug,
-                } = blog.node
+      <Flex justifyContent={`center`}>
+        <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
+          <Flex flexWrap={`wrap`} alignItems={`center`}>
+            {blogs.map(blog => {
+              const { author, title, subtitle, date, banner, slug } = blog.node
 
-                const meta = {
-                  banner,
-                  date,
-                  subtitle,
-                  title,
-                }
+              const meta = {
+                banner,
+                date,
+                subtitle,
+                title,
+              }
 
-                return (
-                  <Box
-                    width={[1, 1, 1 / 2, 1 / 2]}
-                    p={3}
-                    key={`listing-${page.current}-${slug}`}>
-                    <Card
-                      key={slug}
-                      slug={startsWith(slug, '/') ? slug : `/${slug}`}
-                      author={author}
-                      blog={meta}
-                      type={`listing`}
-                    />
-                  </Box>
-                )
-              })}
-            </Flex>
-          </Box>
-        </Flex>
-      </Box>
+              return (
+                <Box
+                  width={[1, 1, 1 / 2, 1 / 2]}
+                  p={3}
+                  key={`listing-${page.current}-${slug}`}>
+                  <Card
+                    key={slug}
+                    slug={startsWith(slug, '/') ? slug : `/${slug}`}
+                    author={author}
+                    blog={meta}
+                    type={`listing`}
+                  />
+                </Box>
+              )
+            })}
+          </Flex>
+        </Box>
+      </Flex>
       <Pagination
         numPages={page.max}
         currentPage={page.current}
         pathPrefix={pathPrefix}
       />
-    </Box>
+    </React.Fragment>
   )
 }
 

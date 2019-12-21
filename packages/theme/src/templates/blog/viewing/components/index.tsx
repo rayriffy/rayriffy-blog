@@ -44,7 +44,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
   const { GATSBY_ENV = 'production' } = process.env
 
   return (
-    <Box>
+    <React.Fragment>
       <Helmet title={title} />
       <SEO
         title={title}
@@ -74,7 +74,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
               />
             </Box>
             {GATSBY_ENV === 'production' || GATSBY_ENV === 'staging' ? (
-              <>
+              <React.Fragment>
                 <Box px={[4, 5]} py={2}>
                   <hr />
                 </Box>
@@ -86,7 +86,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                     responsive='true'
                   />
                 </Box>
-              </>
+              </React.Fragment>
             ) : null}
             <Box px={[4, 5]} py={2}>
               <hr />
@@ -95,7 +95,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
               <Flex flexWrap={`wrap`}>
                 <Box width={1 / 2} px={2}>
                   {previous ? (
-                    <Box>
+                    <React.Fragment>
                       <NavText>PREVIOUS</NavText>
                       <NavLink
                         to={
@@ -105,12 +105,12 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                         }>
                         {previous.title}
                       </NavLink>
-                    </Box>
+                    </React.Fragment>
                   ) : null}
                 </Box>
                 <Box width={1 / 2} px={2}>
                   {next ? (
-                    <Box>
+                    <React.Fragment>
                       <NavText>NEXT</NavText>
                       <NavLink
                         to={
@@ -120,7 +120,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                         }>
                         {next.title}
                       </NavLink>
-                    </Box>
+                    </React.Fragment>
                   ) : null}
                 </Box>
               </Flex>
@@ -128,7 +128,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
           </Card>
         </Box>
       </Flex>
-    </Box>
+    </React.Fragment>
   )
 }
 

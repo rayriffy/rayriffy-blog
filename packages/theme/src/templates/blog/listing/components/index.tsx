@@ -15,7 +15,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
   const { blogs, featured, page } = props.pageContext
 
   return (
-    <Box>
+    <React.Fragment>
       <SEO
         author={{
           facebook: 'https://facebook.com/rayriffy',
@@ -43,45 +43,36 @@ const BlogListingComponent: React.FC<IProps> = props => {
           </Flex>
         </Box>
       ) : null}
-      <Box>
-        <Flex justifyContent={`center`}>
-          <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-            <Flex flexWrap={`wrap`} alignItems={`center`}>
-              {blogs.map(blog => {
-                const {
-                  author,
-                  title,
-                  subtitle,
-                  date,
-                  banner,
-                  slug,
-                } = blog.node
+      <Flex justifyContent={`center`}>
+        <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
+          <Flex flexWrap={`wrap`} alignItems={`center`}>
+            {blogs.map(blog => {
+              const { author, title, subtitle, date, banner, slug } = blog.node
 
-                const meta = {
-                  banner,
-                  date,
-                  subtitle,
-                  title,
-                }
+              const meta = {
+                banner,
+                date,
+                subtitle,
+                title,
+              }
 
-                return (
-                  <Box
-                    width={[1, 1, 1 / 2, 1 / 2]}
-                    p={3}
-                    key={`listing-${page.current}-${slug}`}>
-                    <Card
-                      author={author}
-                      blog={meta}
-                      slug={startsWith(slug, '/') ? slug : `/${slug}`}
-                      type={`listing`}
-                    />
-                  </Box>
-                )
-              })}
-            </Flex>
-          </Box>
-        </Flex>
-      </Box>
+              return (
+                <Box
+                  width={[1, 1, 1 / 2, 1 / 2]}
+                  p={3}
+                  key={`listing-${page.current}-${slug}`}>
+                  <Card
+                    author={author}
+                    blog={meta}
+                    slug={startsWith(slug, '/') ? slug : `/${slug}`}
+                    type={`listing`}
+                  />
+                </Box>
+              )
+            })}
+          </Flex>
+        </Box>
+      </Flex>
       <Box my={3}>
         <Pagination
           numPages={page.max}
@@ -89,7 +80,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
           pathPrefix='/'
         />
       </Box>
-    </Box>
+    </React.Fragment>
   )
 }
 

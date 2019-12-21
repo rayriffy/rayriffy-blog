@@ -17,7 +17,7 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
   const { page, pathPrefix, author, blogs } = props.pageContext
 
   return (
-    <Box>
+    <React.Fragment>
       <Helmet title={author.name} />
       <SEO
         title={author.name}
@@ -57,45 +57,43 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
           ]}
         />
       </Box>
-      <Box>
-        <Flex justifyContent={`center`}>
-          <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-            <Flex flexWrap={`wrap`} alignItems={`center`}>
-              {blogs.map(blog => {
-                const { title, subtitle, date, banner, slug } = blog.node
+      <Flex justifyContent={`center`}>
+        <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
+          <Flex flexWrap={`wrap`} alignItems={`center`}>
+            {blogs.map(blog => {
+              const { title, subtitle, date, banner, slug } = blog.node
 
-                const meta = {
-                  banner,
-                  date,
-                  subtitle,
-                  title,
-                }
+              const meta = {
+                banner,
+                date,
+                subtitle,
+                title,
+              }
 
-                return (
-                  <Box
-                    width={[1, 1, 1 / 2, 1 / 2]}
-                    p={3}
-                    key={`listing-${page.current}-${slug}`}>
-                    <Card
-                      key={slug}
-                      slug={startsWith(slug, '/') ? slug : `/${slug}`}
-                      author={author}
-                      blog={meta}
-                      type={`listing`}
-                    />
-                  </Box>
-                )
-              })}
-            </Flex>
-          </Box>
-        </Flex>
-      </Box>
+              return (
+                <Box
+                  width={[1, 1, 1 / 2, 1 / 2]}
+                  p={3}
+                  key={`listing-${page.current}-${slug}`}>
+                  <Card
+                    key={slug}
+                    slug={startsWith(slug, '/') ? slug : `/${slug}`}
+                    author={author}
+                    blog={meta}
+                    type={`listing`}
+                  />
+                </Box>
+              )
+            })}
+          </Flex>
+        </Box>
+      </Flex>
       <Pagination
         numPages={page.max}
         currentPage={page.current}
         pathPrefix={pathPrefix}
       />
-    </Box>
+    </React.Fragment>
   )
 }
 
