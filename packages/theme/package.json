@@ -56,7 +56,7 @@
     "gatsby-remark-images-contentful": "^2.1.20",
     "gatsby-remark-prismjs": "^3.3.27",
     "gatsby-remark-responsive-iframe": "^2.2.25",
-    "gatsby-remark-smartypants": "^2.1.14",
+    "gatsby-remark-smartypants": "^2.1.19",
     "gatsby-source-contentful": "^2.1.72",
     "gatsby-source-filesystem": "^2.1.35",
     "gatsby-transformer-json": "^2.2.22",
