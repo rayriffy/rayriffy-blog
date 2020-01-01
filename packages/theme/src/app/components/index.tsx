@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { css, Global } from '@emotion/core'
-
 import Dev from './dev'
 import Footer from './footer'
+import Global from './global'
 import Header from './header'
 import Helmet from './helmet'
 
@@ -14,28 +13,7 @@ const Component: React.FC = props => {
   return (
     <React.Fragment>
       <Helmet />
-      <Global
-        styles={css`
-          html {
-            background-color: rgb(245, 245, 245);
-          }
-
-          a {
-            text-decoration: none;
-            color: rgb(83, 106, 144);
-          }
-
-          @media (prefers-color-scheme: dark) {
-            html {
-              background-color: rgb(40, 40, 40);
-            }
-
-            a {
-              color: rgb(21, 142, 255);
-            }
-          }
-        `}
-      />
+      <Global />
       {GATSBY_ENV !== 'production' ? <Dev /> : null}
       <Header />
       {children}
