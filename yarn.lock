@@ -7129,19 +7129,19 @@ gatsby-remark-images-anywhere@^1.2.1:
     parse5 "^5.1.0"
     unist-util-select "^2.0.2"
 
-gatsby-remark-images-contentful@^2.1.20:
-  version "2.1.25"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.1.25.tgz#44e8e2d5dc87b80ab5bbcdea9e294acac3306fd1"
-  integrity sha512-br0zXCx/iUE2Y+jU7Jh20d9Yv2Ur3BwAKRkUMNH8iI34KT4YBeu6Dra5oFLlJYnGeMKo5TkOFRG3FlOX9pm69w==
+gatsby-remark-images-contentful@^2.1.27:
+  version "2.1.27"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.1.27.tgz#a6d631de0383e9d5237a18a758c73e81e09fcc38"
+  integrity sha512-Xp0y9nquHBCoTSCDfR1DqDC3kn+x1gVZloIWJBy4kY9lq8Exd1qHYIyxbL9blnp8pklMDoRhIJREK/n5SCcxVQ==
   dependencies:
-    "@babel/runtime" "^7.7.4"
+    "@babel/runtime" "^7.7.6"
     axios "^0.19.0"
     chalk "^2.4.2"
     cheerio "^1.0.0-rc.3"
     is-relative-url "^3.0.0"
     lodash "^4.17.15"
     semver "^5.7.1"
-    sharp "^0.23.3"
+    sharp "^0.23.4"
     unist-util-select "^1.5.0"
 
 gatsby-remark-prismjs@^3.3.28:
@@ -14403,7 +14403,7 @@ shallowequal@^1.0.1, shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@^0.23.3, sharp@^0.23.4:
+sharp@^0.23.4:
   version "0.23.4"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.23.4.tgz#ca36067cb6ff7067fa6c77b01651cb9a890f8eb3"
   integrity sha512-fJMagt6cT0UDy9XCsgyLi0eiwWWhQRxbwGmqQT6sY8Av4s0SVsT/deg8fobBQCTDU5iXRgz0rAeXoE2LBZ8g+Q==
