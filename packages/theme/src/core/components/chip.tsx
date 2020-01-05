@@ -17,6 +17,7 @@ const Title = styled('h3')`
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 6px;
+  font-family: Kanit, sans-serif;
 
   color: rgba(0, 0, 0, 0.8);
 
@@ -27,6 +28,7 @@ const Title = styled('h3')`
 
 const Subtitle = styled('div')`
   color: rgb(192, 192, 192);
+  font-family: Kanit, sans-serif;
   font-size: 18px;
 `
 
