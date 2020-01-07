@@ -34,7 +34,7 @@
     "@emotion/styled": "^10.0.27",
     "@raae/gatsby-remark-oembed": "^0.1.1",
     "@rebass/preset": "^4.0.5",
-    "dayjs": "^1.8.18",
+    "dayjs": "^1.8.19",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.37",
