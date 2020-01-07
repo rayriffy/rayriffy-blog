@@ -54,7 +54,7 @@
     "gatsby-remark-embed-video": "^2.0.1",
     "gatsby-remark-images-anywhere": "^1.2.1",
     "gatsby-remark-images-contentful": "^2.1.27",
-    "gatsby-remark-prismjs": "^3.3.28",
+    "gatsby-remark-prismjs": "^3.3.29",
     "gatsby-remark-responsive-iframe": "^2.2.30",
     "gatsby-remark-smartypants": "^2.1.19",
     "gatsby-source-contentful": "^2.1.73",
