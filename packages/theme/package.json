@@ -77,7 +77,7 @@
     "@types/react-helmet": "^5.0.14",
     "@types/rebass": "^4.0.4",
     "@types/typography": "^0.16.3",
-    "husky": "^3.0.9",
+    "husky": "^4.2.1",
     "prettier": "^1.19.1",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
