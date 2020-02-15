@@ -1,4 +1,4 @@
-const _ = require('lodash-es')
+const { chunk } = require('lodash-es')
 const fs = require('fs')
 const path = require('path')
 
@@ -122,10 +122,10 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const featuredPost = _.head(gqlFeatured.data.featured.edges)
+  const [featuredPost] = gqlFeatured.data.featured.edges
 
   // Create blog/listing
-  const blogsChunks = _.chunk(blogs.edges, POST_PER_PAGE)
+  const blogsChunks = chunk(blogs.edges, POST_PER_PAGE)
 
   blogsChunks.map((chunk, i) => {
     createPage({
@@ -206,7 +206,7 @@ exports.createPages = async ({ graphql, actions }) => {
         key: category.node.key,
         name: category.node.name,
         desc: category.node.desc,
-        banner: _.head(category.node.blog_post).banner,
+        banner: category.node.blog_post[0].banner,
       }
     }
   )
@@ -265,10 +265,9 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const categoryBanner = _.head(gqlCategoryViewing.data.blogs.edges).node
-      .banner
+    const categoryBanner = gqlCategoryViewing.data.blogs.edges[0].node.banner
 
-    const categoryBlogsChunks = _.chunk(
+    const categoryBlogsChunks = chunk(
       gqlCategoryViewing.data.blogs.edges,
       POST_PER_PAGE
     )
@@ -412,7 +411,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const authorBlogChunks = _.chunk(
+    const authorBlogChunks = chunk(
       gqlAuthorViewing.data.blogs.edges,
       POST_PER_PAGE
     )
@@ -494,7 +493,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }    
     `)
 
-    const blogsChunks = _.chunk(authorBlogs.data.blogs.edges, POST_PER_PAGE)
+    const blogsChunks = chunk(authorBlogs.data.blogs.edges, POST_PER_PAGE)
 
     if (blogsChunks.length > 0) {
       if (!fs.existsSync(`public/api/author/${author.node.user}`)) {
@@ -540,8 +539,8 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
       resolve: {
         alias: {
           react: `preact/compat`,
-          "react-dom": `preact/compat`,
-          "react-dom/server": `preact/compat`,
+          'react-dom': `preact/compat`,
+          'react-dom/server': `preact/compat`,
         },
       },
     })
