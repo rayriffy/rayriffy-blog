@@ -62,7 +62,7 @@
     "gatsby-transformer-json": "^2.2.22",
     "gatsby-transformer-remark": "^2.6.48",
     "gatsby-transformer-sharp": "^2.3.9",
-    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
     "preact": "^10.2.1",
     "prismjs": "^1.17.1",
     "react-adsense": "^0.1.0",
@@ -73,7 +73,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.142",
+    "@types/lodash-es": "^4.17.3",
     "@types/react-helmet": "^5.0.14",
     "@types/rebass": "^4.0.4",
     "@types/typography": "^0.16.3",
