@@ -1,4 +1,3 @@
-const { chunk } = require('lodash-es')
 const fs = require('fs')
 const path = require('path')
 
@@ -6,6 +5,14 @@ const POST_PER_PAGE = 6
 const IMAGE_QUALITY = 70
 
 const templatesDirectory = path.resolve(__dirname, './src/templates')
+
+const chunk = (input, size) => {
+  return input.reduce((arr, item, idx) => {
+    return idx % size === 0
+      ? [...arr, [item]]
+      : [...arr.slice(0, -1), [...arr.slice(-1)[0], item]]
+  }, [])
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   // Define createPage functions
