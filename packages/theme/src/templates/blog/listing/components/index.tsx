@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { startsWith } from 'lodash'
-
 import { Box, Flex } from 'rebass'
 
 import Card from '../../../../core/components/card'
@@ -32,7 +30,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
                 title={featured.node.title}
                 subtitle={featured.node.subtitle}
                 slug={
-                  startsWith(featured.node.slug, '/')
+                  featured.node.slug.startsWith('/')
                     ? featured.node.slug
                     : `/${featured.node.slug}`
                 }
@@ -64,7 +62,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
                   <Card
                     author={author}
                     blog={meta}
-                    slug={startsWith(slug, '/') ? slug : `/${slug}`}
+                    slug={slug.startsWith('/') ? slug : `/${slug}`}
                     type={`listing`}
                   />
                 </Box>
