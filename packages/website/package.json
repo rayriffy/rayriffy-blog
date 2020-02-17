@@ -20,7 +20,7 @@
     "gatsby": "^2.18.18",
     "gatsby-theme-rayriffy-blog": "3.0.0",
     "netlify-cli": "^2.32.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "0.0.0-experimental-241c4467e",
+    "react-dom": "0.0.0-experimental-241c4467e"
   }
 }
