@@ -63,7 +63,7 @@
     "gatsby-transformer-remark": "^2.6.48",
     "gatsby-transformer-sharp": "^2.3.14",
     "prismjs": "^1.19.0",
-    "react": "0.0.0-experimental-241c4467e",
+    "react": "16.12.0",
     "react-dom": "0.0.0-experimental-241c4467e",
     "react-adsense": "^0.1.0",
     "react-helmet": "^5.2.1",
