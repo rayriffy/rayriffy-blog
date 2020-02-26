@@ -7123,10 +7123,10 @@ gatsby-remark-images-anywhere@^1.2.1:
     parse5 "^5.1.0"
     unist-util-select "^2.0.2"
 
-gatsby-remark-images-contentful@^2.1.27:
-  version "2.1.27"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.1.27.tgz#a6d631de0383e9d5237a18a758c73e81e09fcc38"
-  integrity sha512-Xp0y9nquHBCoTSCDfR1DqDC3kn+x1gVZloIWJBy4kY9lq8Exd1qHYIyxbL9blnp8pklMDoRhIJREK/n5SCcxVQ==
+gatsby-remark-images-contentful@^2.1.31:
+  version "2.1.31"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.1.31.tgz#e30be68a605cc344cfdcdae0709d6b0113484dee"
+  integrity sha512-FnOZfkdLI1RfFamUmC67tx5hw/iM4QkcQv1wHD1SBvmT5QmM/RcTuid0yD7c1YFdKSl3bBPpmoh9QaYJv9XpEA==
   dependencies:
     "@babel/runtime" "^7.7.6"
     axios "^0.19.0"
