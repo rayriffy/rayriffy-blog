@@ -14,7 +14,7 @@ const chunk = (input, size) => {
   }, [])
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define createPage functions
   const { createPage } = actions
 
@@ -280,26 +280,31 @@ exports.createPages = async ({ graphql, actions }) => {
     )
 
     const categoryBlogPromises = categoryBlogsChunks.map((chunk, i) => {
-      return createPage({
-        path:
-          i === 0
-            ? `/category/${category.node.key}`
-            : `/category/${category.node.key}/pages/${i + 1}`,
-        component: path.resolve(
-          templatesDirectory,
-          'category/viewing/components/index.tsx'
-        ),
-        context: {
-          pathPrefix: `/category/${category.node.key}`,
-          blogs: chunk,
-          banner: categoryBanner,
-          category: category.node,
-          page: {
-            current: i + 1,
-            max: categoryBlogsChunks.length,
+      try {
+        return createPage({
+          path:
+            i === 0
+              ? `/category/${category.node.key}`
+              : `/category/${category.node.key}/pages/${i + 1}`,
+          component: path.resolve(
+            templatesDirectory,
+            'category/viewing/components/index.tsx'
+          ),
+          context: {
+            pathPrefix: `/category/${category.node.key}`,
+            blogs: chunk,
+            banner: categoryBanner,
+            category: category.node,
+            page: {
+              current: i + 1,
+              max: categoryBlogsChunks.length,
+            },
           },
-        },
-      })
+        })
+      } catch(e) {
+        reporter.error(`Failed to create /category/${category.node.key}`)
+        throw e
+      }
     })
 
     await Promise.all(categoryBlogPromises)
