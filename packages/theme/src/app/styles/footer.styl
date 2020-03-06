@@ -1,0 +1,40 @@
+@import '../../core/styles/commons.styl'
+
+.shell-footer
+  padding-top getSpace(4)
+  padding-bottom getSpace(4)
+  padding-left getSpace(5)
+  padding-right getSpace(5)
+    @media (max-width 52em)
+      padding-left getSpace(6)
+      padding-right getSpace(6)
+    @media (max-width 64em)
+      padding-left getSpace(7)
+      padding-right getSpace(7)
+  & > .logo-container
+    padding getSpace(2)
+    & > .logo
+      width 32px
+      height auto
+  & > .tabstack-container
+    display flex
+    justify-content left
+    padding getSpace(4) 0
+    & > .tab-container
+      padding getSpace(3) 0
+      widthCalculator(1)
+        @media (max-width 40em)
+          widthCalculator(1 / 2)
+        @media (max-width 64em)
+          widthCalculator(1 / 3)
+      & > .tabtitle
+        padding-bottom getSpace(3)
+        font-size 14px
+        getFontFamily('heading')
+        getFontColor(lightColor: false)
+        & > .link-container
+          display flex
+          flex-wrap wrap
+  & > .copyright
+    padding getSpace(2) 0 getSpace(5) 0
+    getFontColor(lightColor: true)

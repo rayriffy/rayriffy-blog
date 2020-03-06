@@ -35,13 +35,7 @@ module.exports = ({ contentful, seo }) => ({
         ignore: [`**/.*`],
       },
     },
-    {
-      resolve: `gatsby-plugin-emotion`,
-      opions: {
-        sourceMap: true,
-        cssPropOptimization: true,
-      },
-    },
+    `gatsby-plugin-stylus`
     `gatsby-transformer-json`,
     {
       resolve: 'gatsby-plugin-robots-txt',
