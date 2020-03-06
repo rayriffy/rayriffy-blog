@@ -76,3 +76,8 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
         run: |
           yarn workspace website deploy --message "Automatic deployment from GitHub Actions"
+      - name: "Artifacts: Upload artifacts for debug"
+        uses: actions/upload-artifact@v1
+        with:
+          name: rayriffy-blog-staging
+          path: packages/website/public/
