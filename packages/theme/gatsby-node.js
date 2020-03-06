@@ -280,31 +280,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     )
 
     const categoryBlogPromises = categoryBlogsChunks.map((chunk, i) => {
-      try {
-        return createPage({
-          path:
-            i === 0
-              ? `/category/${category.node.key}`
-              : `/category/${category.node.key}/pages/${i + 1}`,
-          component: path.resolve(
-            templatesDirectory,
-            'category/viewing/components/index.tsx'
-          ),
-          context: {
-            pathPrefix: `/category/${category.node.key}`,
-            blogs: chunk,
-            banner: categoryBanner,
-            category: category.node,
-            page: {
-              current: i + 1,
-              max: categoryBlogsChunks.length,
-            },
+      return createPage({
+        path:
+          i === 0
+            ? `/category/${category.node.key}`
+            : `/category/${category.node.key}/pages/${i + 1}`,
+        component: path.resolve(
+          templatesDirectory,
+          'category/viewing/components/index.tsx'
+        ),
+        context: {
+          pathPrefix: `/category/${category.node.key}`,
+          blogs: chunk,
+          banner: categoryBanner,
+          category: category.node,
+          page: {
+            current: i + 1,
+            max: categoryBlogsChunks.length,
           },
-        })
-      } catch(e) {
-        reporter.error(`Failed to create /category/${category.node.key}`)
-        throw e
-      }
+        },
+      })
     })
 
     await Promise.all(categoryBlogPromises)
