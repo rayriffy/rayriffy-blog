@@ -1,8 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { startsWith } from 'lodash'
-
 import AdSense from 'react-adsense'
 
 import styled from '@emotion/styled'
@@ -99,7 +97,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                       <NavText>PREVIOUS</NavText>
                       <NavLink
                         to={
-                          startsWith(previous.slug, '/')
+                          previous.slug.startsWith('/')
                             ? previous.slug
                             : `/${previous.slug}`
                         }>
@@ -114,7 +112,7 @@ const BlogViewingComponent: React.FC<IProps> = props => {
                       <NavText>NEXT</NavText>
                       <NavLink
                         to={
-                          startsWith(next.slug, '/')
+                          next.slug.startsWith('/')
                             ? next.slug
                             : `/${next.slug}`
                         }>

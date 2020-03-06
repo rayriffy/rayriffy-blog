@@ -13,10 +13,9 @@ module.exports = ({ contentful, seo }) => ({
       options: {
         spaceId: contentful.space,
         accessToken: contentful.token,
-        host:
-        contentful.preview
-            ? 'preview.contentful.com'
-            : 'cdn.contentful.com',
+        host: contentful.preview
+          ? 'preview.contentful.com'
+          : 'cdn.contentful.com',
         downloadLocal: true,
       },
     },

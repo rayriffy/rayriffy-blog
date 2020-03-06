@@ -1,8 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { startsWith } from 'lodash'
-
 import { Box, Flex } from 'rebass'
 
 import Card from '../../../../core/components/card'
@@ -77,7 +75,7 @@ const AuthorViewingComponent: React.FC<IProps> = props => {
                   key={`listing-${page.current}-${slug}`}>
                   <Card
                     key={slug}
-                    slug={startsWith(slug, '/') ? slug : `/${slug}`}
+                    slug={slug.startsWith('/') ? slug : `/${slug}`}
                     author={author}
                     blog={meta}
                     type={`listing`}
