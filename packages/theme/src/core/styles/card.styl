@@ -2,19 +2,23 @@
 
 /* Global Styles */
 a
-  color #536a90
   text-decoration none
   cursor pointer
+  color #536a90
   @media (prefers-color-scheme: dark)
     color rgb(21, 142, 255)
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6
   font-weight 400
   margin 35px 0 25px 0
 
 p, ol, li, table > tbody > tr > td
   padding 0 25px
   getFontColor(lightColor = true)
+  
+p
+  @media (min-width: 40em)
+    padding 0
 
 pre
   padding 30px
@@ -48,11 +52,7 @@ pre
   
 .gria-image-wrapper
   margin: 0 -25px !important
-
-@media (min-width: 40em)
-  p
-    padding 0
-  .gria-image-wrapper
+  @media (min-width: 40em)
     margin 0 !important
 
 /* Component style */

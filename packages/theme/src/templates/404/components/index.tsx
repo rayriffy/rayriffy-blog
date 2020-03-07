@@ -11,7 +11,7 @@ import TransparentLink from '../../../core/components/transparentLink'
 import { IData } from '../@types/IData'
 
 const NotFoundComponent: React.FC = () => {
-  const data: IData = useStaticQuery(graphql`
+  const data = useStaticQuery<IData>(graphql`
     query NotFoundComponentQuery {
       banner: file(relativePath: { eq: "404.jpg" }) {
         childImageSharp {
