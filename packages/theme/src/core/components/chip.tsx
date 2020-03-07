@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import '../styles/chip.styl'
 
@@ -15,4 +15,4 @@ const ChipComponent: React.FC<IChipProp> = props => {
   )
 }
 
-export default memo(ChipComponent)
+export default React.memo(ChipComponent)

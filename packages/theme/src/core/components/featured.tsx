@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import Img from 'gatsby-image'
 
@@ -20,7 +20,7 @@ const GatsbyImage = styled(Img)<IGatsbyImage>`
   width: 100%;
   z-index: -1;
   border-radius: 0px;
-  height: ${(props: IGatsbyImage) => props.height || 'auto'};
+  height: auto;
 
   @media screen and (min-width: 40em) {
     border-radius: 6px;
@@ -69,4 +69,4 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
   )
 }
 
-export default memo(FeaturedComponent)
+export default React.memo(FeaturedComponent)
