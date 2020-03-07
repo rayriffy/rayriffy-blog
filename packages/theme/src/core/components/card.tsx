@@ -58,4 +58,4 @@ const CardComponent: React.FC<ICardProps> = props => {
   )
 }
 
-export default React.memo(CardComponent)
+export default CardComponent
