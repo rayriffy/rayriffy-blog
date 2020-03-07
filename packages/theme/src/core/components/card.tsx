@@ -5,6 +5,8 @@ import Img from 'gatsby-image'
 
 import TransparentLink from './transparentLink'
 
+import '../styles/card.styl'
+
 import { ICardProps } from '../@types/ICardProps'
 
 const CardComponent: React.FC<ICardProps> = props => {
