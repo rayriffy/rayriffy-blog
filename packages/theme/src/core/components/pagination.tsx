@@ -2,32 +2,9 @@ import React from 'react'
 
 import { Link } from 'gatsby'
 
-import styled from '@emotion/styled'
-import { Box, Flex, Text } from 'rebass'
+import '../styles/pagination.styl'
 
 import { IPaginationProps } from '../@types/IPaginationProps'
-
-interface IPage {
-  start: number
-  index: number
-  current: number
-}
-
-const Page = styled(Link)<IPage>`
-  ${(props: IPage) => {
-    const { start, index, current } = props
-
-    if (start + index + 1 === current) {
-      return `color: rgba(0, 0, 0, 1);`
-    } else {
-      return `color: rgba(0, 0, 0, 0.5);`
-    }
-  }}
-
-  @media (prefers-color-scheme: dark) {
-    color: rgb(255, 255, 255);
-  }
-`
 
 const PaginationComponent: React.FC<IPaginationProps> = props => {
   const { numPages, currentPage, pathPrefix } = props
@@ -43,30 +20,25 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
       : 0
 
   return (
-    <Box my={4}>
-      <Flex justifyContent={`center`}>
-        {Array.from({ length: pageLength }, (_, i) => (
-          <Text
-            fontFamily='heading'
-            key={`pagination-${startPoint + i}`}
-            px={3}>
-            <Page
-              to={`${
-                startPoint + i === 0
-                  ? `${pathPrefix}`
-                  : `${
-                      pathPrefix === '/' ? '' : pathPrefix
-                    }/pages/${startPoint + i + 1}`
-              }`}
-              start={startPoint}
-              index={i}
-              current={currentPage}>
-              {startPoint + i + 1}
-            </Page>
-          </Text>
-        ))}
-      </Flex>
-    </Box>
+    <div className='core-pagination'>
+      {Array.from({ length: pageLength }, (_, i) => (
+        <div
+          className={`page-item ${
+            startPoint + i + 1 === currentPage ? 'active' : ''
+          }`}>
+          <Link
+            to={`${
+              startPoint + i === 0
+                ? `${pathPrefix}`
+                : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startPoint +
+                    i +
+                    1}`
+            }`}>
+            {startPoint + i + 1}
+          </Link>
+        </div>
+      ))}
+    </div>
   )
 }
 

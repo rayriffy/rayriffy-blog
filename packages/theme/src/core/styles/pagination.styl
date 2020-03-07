@@ -1,0 +1,11 @@
+@import './commons.styl'
+
+.core-pagination
+  margin getSpace(4)
+  display flex
+  justify-content center
+  & > .page-item
+    padding 0 getSpace(3)
+    getFontColor(lightColor: true)
+    .active
+      getFontColor(lightColor: false)
