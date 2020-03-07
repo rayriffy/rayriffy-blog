@@ -1,5 +1,5 @@
-widthCalculator(ratio = 1, padding = 0px)
-  width calc((ratio * 100)% - padding)
+widthCalculator(ratio = 1)
+  width percentage(ratio)
 
 getSpace(number = 0)
   spaces = 0px 4px 8px 16px 32px 64px 128px 256px 512px
@@ -41,13 +41,13 @@ getFontColor(lightColor = false)
   lightWhite = rgb(192, 192, 192)
   lightBlack = rgba(0, 0, 0, 0.6)
   if lightColor == true
-    font-color lightBlack
+    color lightBlack
     @media (prefers-color-scheme: dark)
-      font-color lightWhite
+      color lightWhite
   else
-    font-color normalBlack
+    color normalBlack
     @media (prefers-color-scheme: dark)
-      font-color normalWhite
+      color normalWhite
 
 getFontFamily(style = 'body')
   if style == 'heading'

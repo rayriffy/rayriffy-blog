@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { GatsbyLinkProps, Link } from 'gatsby'
 
 const TransparentLinkComponent: React.FC<Omit<

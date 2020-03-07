@@ -10,6 +10,7 @@ import Card from '../../../../core/components/card'
 import SEO from '../../../../core/components/seo'
 import TransparentLink from '../../../../core/components/transparentLink'
 
+import '../styles/global.styl'
 import '../styles/onedark.styl'
 
 import { IProps } from '../@types/IProps'

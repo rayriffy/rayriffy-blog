@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 
+import Logo from '../../core/components/logo'
 import Navbar from '../../core/components/navbar'
 import TransparentLink from '../../core/components/transparentLink'
 
@@ -29,7 +30,7 @@ const HeaderComponent: React.FC = () => {
       <div className='flex'>
         <div className='container'>
           <TransparentLink to={`/`} aria-label={`logo`}>
-            <img className='header-logo' src='/icon.svg' />
+            <Logo className='header-logo' />
           </TransparentLink>
         </div>
       </div>
