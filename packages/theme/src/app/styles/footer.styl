@@ -1,16 +1,11 @@
 @import '../../core/styles/commons.styl'
 
 .shell-footer
-  padding-top getSpace(4)
-  padding-bottom getSpace(4)
-  padding-left getSpace(5)
-  padding-right getSpace(5)
-    @media (min-width: 52em)
-      padding-left getSpace(6)
-      padding-right getSpace(6)
-    @media (min-width: 64em)
-      padding-left getSpace(7)
-      padding-right getSpace(7)
+  padding getSpace(4) getSpace(5) getSpace(4) getSpace(5)
+  @media (min-width: 52em)
+    padding getSpace(4) getSpace(6) getSpace(4) getSpace(6)
+  @media (min-width: 64em)
+    padding getSpace(4) getSpace(7) getSpace(4) getSpace(7)
   & > .logo-container
     padding getSpace(2)
     & > .logo
@@ -23,10 +18,10 @@
     & > .tab-container
       padding getSpace(3) 0
       widthCalculator(1)
-        @media (min-width: 40em)
-          widthCalculator(1 / 2)
-        @media (min-width: 64em)
-          widthCalculator(1 / 3)
+      @media (min-width: 40em)
+        widthCalculator(1 / 2)
+      @media (min-width: 64em)
+        widthCalculator(1 / 3)
       & > .tabtitle
         padding-bottom getSpace(3)
         font-size 14px
