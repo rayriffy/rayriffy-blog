@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 
 import Navbar from '../../core/components/navbar'
-import TransparentLinkComponent from '../../core/components/transparentLink'
+import TransparentLink from '../../core/components/transparentLink'
 
 import '../styles/header.styl'
 
@@ -28,9 +28,9 @@ const HeaderComponent: React.FC = () => {
     <div className='shell-header'>
       <div className='flex'>
         <div className='container'>
-          <TransparentLinkComponent to={`/`} aria-label={`logo`}>
+          <TransparentLink to={`/`} aria-label={`logo`}>
             <img className='header-logo' src='/icon.svg' />
-          </TransparentLinkComponent>
+          </TransparentLink>
         </div>
       </div>
       <Navbar align={`center`} tabs={navTabs} />

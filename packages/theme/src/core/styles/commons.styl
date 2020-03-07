@@ -5,13 +5,43 @@ getSpace(number = 0)
   spaces = 0px 4px 8px 16px 32px 64px 128px 256px 512px
   (spaces[number])
 
+getShadow(weight = '')
+  if weight == 'xs'
+    box-shadow 0 0 0 1px rgba(0, 0, 0, 0.05)
+  else if weight == 'sm'
+    box-shadow 0 1px 2px 0 rgba(0, 0, 0, 0.05)
+  else if weight == 'md'
+    box-shadow 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)
+  else if weight == 'lg'
+    box-shadow 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)
+  else if weight == 'xl'
+    box-shadow 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)
+  else if weight == '2xl'
+    box-shadow 0 25px 50px -12px rgba(0, 0, 0, 0.25)
+  else
+    box-shadow 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)
+  
+getBackground(lightColor = false)
+  normalWhite = rgb(245, 245, 245)
+  normalBlack = rgb(40, 40, 40)
+  lightWhite = rgb(255, 255, 255)
+  lightBlack = rgb(60, 60, 60)
+  if lightColor == true
+    background-color lightWhite
+    @media (prefers-color-scheme: dark)
+      background-color lightBlack
+  else
+    background-color normalWhite
+    @media (prefers-color-scheme: dark)
+      background-color normalBlack
+
 getFontColor(lightColor = false)
   normalWhite = rgb(222, 222, 222)
   normalBlack = rgb(0, 0, 0)
   lightWhite = rgb(192, 192, 192)
   lightBlack = rgba(0, 0, 0, 0.6)
   if lightColor == true
-    font-color lightBlack=
+    font-color lightBlack
     @media (prefers-color-scheme: dark)
       font-color lightWhite
   else
