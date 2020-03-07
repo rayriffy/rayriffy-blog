@@ -49,7 +49,7 @@ pre
 .gria-image-wrapper
   margin: 0 -25px !important
 
-@media only screen and (max-width: 40em)
+@media only screen and (min-width: 40em)
   p
     padding 0
 
@@ -66,7 +66,7 @@ pre
     padding getSpace(4)
     .post
       padding getSpace(4) getSpace(4)
-      @media (max-width: 40em)
+      @media (min-width: 40em)
         padding getSpace(4) getSpace(5)
     & > .blog-title, & > * > .blog-title
       getFontFamily('heading')
@@ -74,22 +74,22 @@ pre
       font-size 38px
       .listing
         font-size 26px
-          @media (max-width: 40em)
+          @media (min-width: 40em)
             font-size 28px
-          @media (max-width: 64em)
+          @media (min-width: 64em)
             font-size 30px
       .post
         font-size 30px
-          @media (max-width: 40em)
+          @media (min-width: 40em)
             font-size 32px
-          @media (max-width: 52em)
+          @media (min-width: 52em)
             font-size 34px
-          @media (max-width: 64em)
+          @media (min-width: 64em)
             font-size 36px
     & > .date-author
       margin-top getSpace(3)
       font-size 14px
-      @media (max-width: 40em)
+      @media (min-width: 40em)
         font-size 16px
       & > a
         color rgba(0, 0, 0, 0.8)
@@ -98,5 +98,5 @@ pre
     & > .subtitle
       margin-top getSpace(3)
       font-size 16px
-      @media (max-width: 40em)
+      @media (min-width: 40em)
         font-size 17px
