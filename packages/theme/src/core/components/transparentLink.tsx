@@ -1,9 +1,10 @@
-import { Link } from 'gatsby'
+import { GatsbyLinkProps, Link } from 'gatsby'
 
-import styled from '@emotion/styled'
-
-const TransparentLinkComponent = styled(Link)`
-  text-decoration: none;
-`
+const TransparentLinkComponent: React.FC<Omit<
+  GatsbyLinkProps<{}>,
+  'ref'
+>> = props => {
+  return <Link className='core-transparentLink' {...props} />
+}
 
 export default TransparentLinkComponent
