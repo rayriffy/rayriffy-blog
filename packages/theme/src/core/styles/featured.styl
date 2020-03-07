@@ -1,0 +1,53 @@
+@import './commons.styl'
+
+.core-featured
+  background rgba(0, 0, 0, 0.3)
+  color white
+  position: relative
+  getShadow('2xl')
+  border-radius: 0px
+  @media (min-width: 40em)
+    border-radius 6px
+  & > .img
+    position absolute
+    top 0
+    left 0
+    width 100%
+    z-index -1
+    border-radius 0px
+    height auto
+    @media (min-width: 40em)
+      border-radius 6px
+
+  & > .container
+    position absolute
+    left 0
+    bottom 0
+    padding 0 getSpacing(3) getSpacing(3) getSpacing(3)
+    @media (min-width: 52em)
+      padding 0 getSpacing(4) getSpacing(4) getSpacing(4)
+    & > .feat
+      margin-bottom getSpacing(2)
+      font-size 14px
+      @media (min-width: 40em)
+        font-size 16px
+      @media (min-width: 52em)
+        font-size 18px
+      @media (min-width: 64em)
+        font-size 20px
+    & > .title
+      font-size 24px
+      @media (min-width: 40em)
+        font-size 28px
+      @media (min-width: 52em)
+        font-size 32px
+      @media (min-width: 64em)
+        font-size 36px
+    & > .subtitle
+      font-size 16px
+      @media (min-width: 40em)
+        font-size 18px
+      @media (min-width: 52em)
+        font-size 20px
+      @media (min-width: 64em)
+        font-size 22px
