@@ -9,9 +9,6 @@ export const wrapPageElement = ({ element, props }) => {
 
 export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
-    ReactDOM.createRoot(container, {
-      hydrate: true,
-      hydrationOptions: { onHydrated: callback },
-    }).render(element)
+    ReactDOM.render(element, container, callback)
   }
 }
