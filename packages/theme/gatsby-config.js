@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = ({ contentful, seo }) => ({
   pathPrefix: '/',
   siteMetadata: {

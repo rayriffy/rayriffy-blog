@@ -42,4 +42,4 @@ const FooterComponent: React.FC = () => {
   )
 }
 
-export default React.memo(FooterComponent)
+export default FooterComponent

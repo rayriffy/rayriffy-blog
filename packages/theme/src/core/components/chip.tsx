@@ -15,4 +15,4 @@ const ChipComponent: React.FC<IChipProp> = props => {
   )
 }
 
-export default React.memo(ChipComponent)
+export default ChipComponent

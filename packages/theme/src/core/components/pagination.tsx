@@ -42,4 +42,4 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
   )
 }
 
-export default React.memo(PaginationComponent)
+export default PaginationComponent

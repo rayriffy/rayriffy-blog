@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import Logo from '../../core/components/logo'
 import Navbar from '../../core/components/navbar'
@@ -39,4 +39,4 @@ const HeaderComponent: React.FC = () => {
   )
 }
 
-export default memo(HeaderComponent)
+export default HeaderComponent

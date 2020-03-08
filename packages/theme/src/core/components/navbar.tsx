@@ -30,4 +30,4 @@ const NavbarComponent: React.FC<INavbarProps> = props => {
   )
 }
 
-export default React.memo(NavbarComponent)
+export default NavbarComponent
