@@ -33,4 +33,4 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
   )
 }
 
-export default React.memo(FeaturedComponent)
+export default FeaturedComponent

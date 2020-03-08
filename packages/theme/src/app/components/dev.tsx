@@ -6,4 +6,4 @@ const DevComponent: React.FC = () => {
   return <div className='shell-dev' />
 }
 
-export default React.memo(DevComponent)
+export default DevComponent
