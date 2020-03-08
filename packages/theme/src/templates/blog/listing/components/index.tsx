@@ -23,21 +23,23 @@ const BlogListingComponent: React.FC<IProps> = props => {
         type='page'
       />
       <div className='template-blog-listing'>
-        <div className='feat'>
-          <div className='container'>
-            <Featured
-              title={featured.node.title}
-              subtitle={featured.node.subtitle}
-              slug={
-                featured.node.slug.startsWith('/')
-                  ? featured.node.slug
-                  : `/${featured.node.slug}`
-              }
-              banner={featured.node.banner}
-              featured={true}
-            />
+        {featured !== null ? (
+          <div className='feat'>
+            <div className='container'>
+              <Featured
+                title={featured.node.title}
+                subtitle={featured.node.subtitle}
+                slug={
+                  featured.node.slug.startsWith('/')
+                    ? featured.node.slug
+                    : `/${featured.node.slug}`
+                }
+                banner={featured.node.banner}
+                featured={true}
+              />
+            </div>
           </div>
-        </div>
+        ) : null}
         <div className='list'>
           <div className='container'>
             {blogs.map(blog => {
