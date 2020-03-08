@@ -1,0 +1,46 @@
+@import './commons.styl'
+
+.core-card
+  getBackground(lightColor: true)
+  getShadow('xl')
+  border-radius 6px
+  overflow hidden
+  & > .meta
+    padding getSpace(4)
+    &.post
+      padding getSpace(4) getSpace(4)
+      @media (min-width: 40em)
+        padding getSpace(4) getSpace(5)
+    & > .blog-title, & > * > .blog-title
+      getFontFamily('heading')
+      getFontColor(lightColor: false)
+      font-weight 400
+      font-size 38px
+      &.listing
+        font-size 26px
+        @media (min-width: 40em)
+          font-size 28px
+        @media (min-width: 64em)
+          font-size 30px
+      &.post
+        font-size 30px
+        @media (min-width: 40em)
+          font-size 32px
+        @media (min-width: 52em)
+          font-size 34px
+        @media (min-width: 64em)
+          font-size 36px
+    & > .date-author
+      margin-top getSpace(3)
+      font-size 14px
+      @media (min-width: 40em)
+        font-size 16px
+      & > a
+        color rgba(0, 0, 0, 0.8)
+        @media (prefers-color-scheme: dark)
+          color rgb(255, 255, 255)
+    & > .subtitle
+      margin-top getSpace(3)
+      font-size 16px
+      @media (min-width: 40em)
+        font-size 17px

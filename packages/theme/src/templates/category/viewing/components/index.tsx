@@ -1,12 +1,13 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 
-import { Box, Flex } from 'rebass'
+import { Helmet } from 'react-helmet'
 
 import Card from '../../../../core/components/card'
 import Featured from '../../../../core/components/featured'
 import Pagination from '../../../../core/components/pagination'
 import SEO from '../../../../core/components/seo'
+
+import '../styles/index.styl'
 
 import { IProps } from '../@types/IProps'
 
@@ -23,23 +24,21 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
           name: 'Phumrapee Limpianchop',
           twitter: '@rayriffy',
         }}
-        type={`page`}
+        type='page'
       />
-      <Box my={4}>
-        <Flex justifyContent={`center`}>
-          <Box width={[1, 18 / 24, 16 / 24, 14 / 24]}>
+      <div className='template-category-viewing'>
+        <div className='feat'>
+          <div className='container'>
             <Featured
               title={category.name}
               subtitle={category.desc}
               banner={props.pageContext.banner}
               featured={false}
             />
-          </Box>
-        </Flex>
-      </Box>
-      <Flex justifyContent={`center`}>
-        <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-          <Flex flexWrap={`wrap`} alignItems={`center`}>
+          </div>
+        </div>
+        <div className='list'>
+          <div className='container'>
             {blogs.map(blog => {
               const { author, title, subtitle, date, banner, slug } = blog.node
 
@@ -51,28 +50,24 @@ const CategoryViewingComponent: React.FC<IProps> = props => {
               }
 
               return (
-                <Box
-                  width={[1, 1, 1 / 2, 1 / 2]}
-                  p={3}
-                  key={`listing-${page.current}-${slug}`}>
+                <div className='item' key={`listing-${page.current}-${slug}`}>
                   <Card
-                    key={slug}
                     slug={slug.startsWith('/') ? slug : `/${slug}`}
                     author={author}
                     blog={meta}
-                    type={`listing`}
+                    type='listing'
                   />
-                </Box>
+                </div>
               )
             })}
-          </Flex>
-        </Box>
-      </Flex>
-      <Pagination
-        numPages={page.max}
-        currentPage={page.current}
-        pathPrefix={pathPrefix}
-      />
+          </div>
+        </div>
+        <Pagination
+          numPages={page.max}
+          currentPage={page.current}
+          pathPrefix={pathPrefix}
+        />
+      </div>
     </React.Fragment>
   )
 }

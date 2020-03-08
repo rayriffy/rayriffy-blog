@@ -1,0 +1,16 @@
+@import './commons.styl'
+
+.core-navbar
+  display flex
+  padding getSpace(3) 0
+  &.justify-center
+    justify-content center
+  & > .nav-slug
+    padding 0 getSpace(3)
+    & > *
+      font-family Lato, Helvetica, Arial, sans-serif
+      font-size 13px
+      color rgb(34, 34, 34)
+      text-decoration none
+      @media (prefers-color-scheme: dark)
+        color rgb(255, 255, 255)

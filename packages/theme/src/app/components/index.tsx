@@ -2,9 +2,10 @@ import React from 'react'
 
 import Dev from './dev'
 import Footer from './footer'
-import Global from './global'
 import Header from './header'
 import Helmet from './helmet'
+
+import '../styles/index.styl'
 
 const Component: React.FC = props => {
   const { children } = props
@@ -13,7 +14,6 @@ const Component: React.FC = props => {
   return (
     <React.Fragment>
       <Helmet />
-      <Global />
       {GATSBY_ENV !== 'production' ? <Dev /> : null}
       <Header />
       {children}

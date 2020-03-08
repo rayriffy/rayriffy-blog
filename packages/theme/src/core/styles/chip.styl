@@ -1,0 +1,19 @@
+@import './commons.styl'
+
+.core-ship
+  margin-bottom 20px
+  & > *
+    display flex
+    justify-content center
+    getFontFamily('heading')
+  & > .title
+    color rgba(0, 0, 0, 0.8)
+    margin-bottom 6px
+    font-size 32px
+    display flex
+    @media (prefers-color-scheme: dark)
+      color rgb(255, 255, 255)
+  & > .subtitle
+    getFontColor(lightColor: true)
+    font-weight 400
+    font-size 18px
