@@ -1,0 +1,31 @@
+@import '../../../../core/styles/commons.styl'
+
+.template-blog-viewing
+  margin-bottom getSpace(4)
+  display flex
+  justify-content center
+  & > .container
+    widthCalculator(20 / 24)
+    @media (min-width: 40em)
+      widthCalculator(18 / 24)
+    @media (min-width: 52em)
+      widthCalculator(15 / 24)
+    @media (min-width: 64em)
+      widthCalculator(13 / 24)
+    & > .core-card > .card-children
+      padding 0 getSpace(4)
+      @media (min-width: 40em)
+        padding 0 getSpace(5)
+      & > .divider
+        padding getSpace(2) 0
+      & > .nav
+        padding-bottom getSpace(5)
+        display flex
+        & > .item
+          widthCalculator(1 / 2)
+          padding 0 getSpace(2)
+          & > .text
+            padding-bottom getSpace(2)
+            color rgba(0, 0, 0, 0.8)
+            @media (prefers-color-scheme: dark)
+              color rgb(255, 255, 255)
