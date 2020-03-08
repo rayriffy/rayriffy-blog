@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 
-import { Box, Flex } from 'rebass'
-
+import Logo from '../../core/components/logo'
 import Navbar from '../../core/components/navbar'
-import TransparentLinkComponent from '../../core/components/transparentLink'
-import Logo from './logo'
+import TransparentLink from '../../core/components/transparentLink'
+
+import '../styles/header.styl'
 
 const HeaderComponent: React.FC = () => {
   const navTabs = [
@@ -26,16 +26,16 @@ const HeaderComponent: React.FC = () => {
   ]
 
   return (
-    <Box mt={[4, 4, 5, 5]}>
-      <Flex justifyContent={`center`}>
-        <Box width={[1 / 6, 1 / 8, 1 / 10, 1 / 15]} mb={3}>
-          <TransparentLinkComponent to={`/`} aria-label={`logo`}>
-            <Logo />
-          </TransparentLinkComponent>
-        </Box>
-      </Flex>
+    <div className='shell-header'>
+      <div className='flex'>
+        <div className='container'>
+          <TransparentLink to={`/`} aria-label={`logo`}>
+            <Logo className='header-logo' />
+          </TransparentLink>
+        </div>
+      </div>
       <Navbar align={`center`} tabs={navTabs} />
-    </Box>
+    </div>
   )
 }
 

@@ -1,0 +1,56 @@
+@import '../../../../core/styles/commons.styl'
+
+a
+  text-decoration none
+  cursor pointer
+  color #536a90
+  @media (prefers-color-scheme: dark)
+    color rgb(21, 142, 255)
+
+h1, h2, h3, h4, h5, h6
+  font-weight 400
+  margin 35px 0 25px 0
+  getFontColor(lightColor: false)
+
+p, ol, li, table > tbody > tr > td
+  padding 0 25px
+  getFontColor(lightColor = true)
+
+p
+  @media (max-width: 40em)
+    padding 0
+
+pre
+  padding 30px
+  background #fff
+  font 12px / 18px Consolas, monospace, serif
+  color #6f6f6f
+  tab-size 4
+  overflow auto
+  border 1px solid #eeeeee
+  border-radius 3px
+  @media (prefers-color-scheme: dark)
+    border 1px solid #424242
+    background #212121
+    color #f5f5f5
+
+:not(pre) > code
+  font-size 12px
+  color #f0615c
+  white-space pre-wrap
+  padding 1px 6px 3px 6px
+  border 1px solid #eeeeee
+  border-radius 3px
+  @media (prefers-color-scheme: dark)
+    background #292d34
+    color #ef596f
+
+.gria-image
+  box-shadow inset 0px 0px 0px 400px rgb(255, 255, 255) !important
+  @media (prefers-color-scheme: dark)
+    box-shadow inset 0px 0px 0px 400px rgb(60, 60, 60) !important
+
+.gria-image-wrapper
+  margin: 30px -25px !important
+  @media (max-width: 40em)
+    margin 30px 0 !important

@@ -1,16 +1,9 @@
-import styled from '@emotion/styled'
-import { memo } from 'react'
+import React from 'react'
 
-const DevComponent = styled('div')`
-  background: repeating-linear-gradient(
-    45deg,
-    #fdd835,
-    #fdd835 20px,
-    #212121 20px,
-    #212121 40px
-  );
-  display: block;
-  height: 20px;
-`
+import '../styles/dev.styl'
 
-export default memo(DevComponent)
+const DevComponent: React.FC = () => {
+  return <div className='shell-dev' />
+}
+
+export default React.memo(DevComponent)

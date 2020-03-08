@@ -1,3 +1,3 @@
 export interface ILogoProps {
-  width?: number | number[]
+  className?: string
 }

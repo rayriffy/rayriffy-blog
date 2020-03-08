@@ -7,7 +7,7 @@ import { ISEOData } from '../@types/ISEOData'
 import { ISEOProps } from '../@types/ISEOProps'
 
 const SEOComponent: React.FC<ISEOProps> = props => {
-  const data: ISEOData = useStaticQuery(graphql`
+  const data = useStaticQuery<ISEOData>(graphql`
     query SEOComponentQuery {
       site {
         siteMetadata {

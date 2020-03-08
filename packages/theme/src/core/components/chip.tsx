@@ -1,46 +1,18 @@
-import React, { memo } from 'react'
+import React from 'react'
 
-import styled from '@emotion/styled'
+import '../styles/chip.styl'
 
 import { IChipProp } from '../@types/IChipComponent'
-
-const Container = styled('div')`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-`
-
-const Title = styled('h3')`
-  display: flex;
-  justify-content: flex-start;
-  font-size: 32px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  font-family: Kanit, sans-serif;
-
-  color: rgba(0, 0, 0, 0.8);
-
-  @media (prefers-color-scheme: dark) {
-    color: rgb(255, 255, 255);
-  }
-`
-
-const Subtitle = styled('div')`
-  color: rgb(192, 192, 192);
-  font-family: Kanit, sans-serif;
-  font-size: 18px;
-`
 
 const ChipComponent: React.FC<IChipProp> = props => {
   const { name, desc } = props
 
   return (
-    <Container>
-      <Title>{name}</Title>
-      {desc && <Subtitle>{desc}</Subtitle>}
-    </Container>
+    <div className='core-ship'>
+      <div className='title'>{name}</div>
+      {desc && <div className='subtitle'>{desc}</div>}
+    </div>
   )
 }
 
-export default memo(ChipComponent)
+export default React.memo(ChipComponent)

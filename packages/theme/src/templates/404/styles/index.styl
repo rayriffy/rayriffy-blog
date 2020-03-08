@@ -1,0 +1,18 @@
+@import '../../../core/styles/commons.styl'
+
+.template-404
+  margin-bottom getSpace(4)
+  display flex
+  justify-content center
+  & > .container
+    widthCalculator(20 / 24)
+    @media (min-width: 40em)
+      widthCalculator(18 / 24)
+    @media (min-width: 52em)
+      widthCalculator(14 / 24)
+    @media (min-width: 64em)
+      widthCalculator(12 / 24)
+    & > .core-card > .card-children > .container
+      padding 0 getSpace(4) getSpace(4) getSpace(4)
+      @media (min-width: 40em)
+        padding 0 getSpace(5) getSpace(4) getSpace(5)

@@ -1,0 +1,30 @@
+& > .feat
+  margin getSpace(4) 0
+  display flex
+  justify-content center
+  & > .container
+    widthCalculator(1)
+    @media (min-width: 40em)
+      widthCalculator(18 / 24)
+    @media (min-width: 52em)
+      widthCalculator(16 / 24)
+    @media (min-width: 64em)
+      widthCalculator(14 / 24)
+& > .list
+  display flex
+  justify-content center
+  & > .container
+    display flex
+    flex-wrap wrap
+    align-items center
+    widthCalculator(22 / 24)
+    @media (min-width: 52em)
+      widthCalculator(20 / 24)
+    @media (min-width: 64em)
+      widthCalculator(18 / 24)
+    & > .item
+      box-sizing border-box
+      padding getSpace(3)
+      widthCalculator(1)
+      @media (min-width: 52em)
+        widthCalculator(1 / 2)
