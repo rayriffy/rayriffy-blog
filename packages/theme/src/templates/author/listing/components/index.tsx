@@ -1,38 +1,21 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import styled from '@emotion/styled'
-import { Box, Flex } from 'rebass'
-
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
 import Card from '../../../../core/components/card'
 import Chip from '../../../../core/components/chip'
 import SEO from '../../../../core/components/seo'
 
+import '../styles/index.styl'
+
 import { IProps } from '../@types/IProps'
-
-const FacebookIcon = styled(FaFacebook)`
-  color: rgb(0, 0, 0);
-
-  @media (prefers-color-scheme: dark) {
-    color: rgb(222, 222, 222);
-  }
-`
-
-const TwitterIcon = styled(FaTwitter)`
-  color: rgb(0, 0, 0);
-
-  @media (prefers-color-scheme: dark) {
-    color: rgb(222, 222, 222);
-  }
-`
 
 const AuthorListingComponent: React.FC<IProps> = props => {
   const { authors = [] } = props.pageContext
 
   return (
-    <Box mb={4}>
+    <React.Fragment>
       <Helmet title={`Authors`} />
       <SEO
         title='Authors'
@@ -41,52 +24,41 @@ const AuthorListingComponent: React.FC<IProps> = props => {
           name: 'Phumrapee Limpianchop',
           twitter: '@rayriffy',
         }}
-        type={`page`}
+        type='page'
       />
-      <Chip name={`Authors`} />
-      <Flex justifyContent={`center`}>
-        <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-          <Flex flexWrap={`wrap`}>
-            {authors.map(author => {
-              return (
-                <Box
-                  width={[1, 1, 1 / 2, 1 / 2]}
-                  p={3}
-                  key={`author-${author.user}`}>
-                  <Card
-                    slug={`/author/${author.user}`}
-                    blog={{
-                      banner: author.banner,
-                      title: author.name,
-                    }}
-                    type={`listing`}>
-                    <Box px={4} pb={4}>
-                      <FacebookIcon />{' '}
-                      <a
-                        href={author.facebook}
-                        rel='noopener noreferrer'
-                        target='_blank'>
-                        {author.facebook.split('/')[3]}
-                      </a>
-                      <br />
-                      <TwitterIcon />{' '}
-                      <a
-                        href={
-                          'https://twitter.com/' + author.twitter.split('@')[1]
-                        }
-                        rel='noopener noreferrer'
-                        target='_blank'>
-                        {author.twitter}
-                      </a>
-                    </Box>
-                  </Card>
-                </Box>
-              )
-            })}
-          </Flex>
-        </Box>
-      </Flex>
-    </Box>
+      <Chip name='Authors' />
+      <div className='template-author-listing'>
+        <div className='container'>
+          {authors.map(author => (
+            <div className='author' key={`author-${author.user}`}>
+              <Card
+                slug={`/author/${author.user}`}
+                blog={{
+                  banner: author.banner,
+                  title: author.name,
+                }}
+                type={`listing`}>
+                <FaFacebook />{' '}
+                <a
+                  href={author.facebook}
+                  rel='noopener noreferrer'
+                  target='_blank'>
+                  {author.facebook.split('/')[3]}
+                </a>
+                <br />
+                <FaTwitter />{' '}
+                <a
+                  href={'https://twitter.com/' + author.twitter.split('@')[1]}
+                  rel='noopener noreferrer'
+                  target='_blank'>
+                  {author.twitter}
+                </a>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </div>
+    </React.Fragment>
   )
 }
 
