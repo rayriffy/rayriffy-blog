@@ -16,7 +16,7 @@ const AuthorListingComponent: React.FC<IProps> = props => {
 
   return (
     <React.Fragment>
-      <Helmet title={`Authors`} />
+      <Helmet title='Authors' />
       <SEO
         title='Authors'
         author={{
@@ -30,14 +30,14 @@ const AuthorListingComponent: React.FC<IProps> = props => {
       <div className='template-author-listing'>
         <div className='container'>
           {authors.map(author => (
-            <div className='author' key={`author-${author.user}`}>
+            <div className='item' key={`author-${author.user}`}>
               <Card
                 slug={`/author/${author.user}`}
                 blog={{
                   banner: author.banner,
                   title: author.name,
                 }}
-                type={`listing`}>
+                type='listing'>
                 <FaFacebook />{' '}
                 <a
                   href={author.facebook}
