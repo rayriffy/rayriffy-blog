@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { Box, Flex, Text } from 'rebass'
+import '../styles/index.styl'
 
 import Card from '../../../core/components/card'
 import TransparentLink from '../../../core/components/transparentLink'
@@ -31,26 +31,26 @@ const NotFoundComponent: React.FC = () => {
   `)
 
   return (
-    <Flex justifyContent={`center`}>
-      <Box width={[20 / 24, 18 / 24, 14 / 24, 12 / 24]} mb={4}>
-        <Helmet title={'Not Found'} />
-        <Card
-          blog={{
-            banner: {
-              localFile: data.banner,
-            },
-            subtitle: `Whoops! Looks like you're lost in the woods...with Cirno.`,
-            title: 'Not Found',
-          }}
-          type={`post`}>
-          <Box px={[4, 5]} pb={4}>
-            <TransparentLink to={`/`}>
-              <Text color={`rgb(21,142,255)`}>Back to home</Text>
-            </TransparentLink>
-          </Box>
-        </Card>
-      </Box>
-    </Flex>
+    <React.Fragment>
+      <Helmet title='Not Found' />
+      <div className='template-404'>
+        <div className='container'>
+          <Card
+            blog={{
+              banner: {
+                localFile: data.banner,
+              },
+              subtitle: `Whoops! Looks like you're lost in the woods...with Cirno.`,
+              title: 'Not Found',
+            }}
+            type={`post`}>
+            <div className='container'>
+              <TransparentLink to={`/`}>Back to home</TransparentLink>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </React.Fragment>
   )
 }
 
