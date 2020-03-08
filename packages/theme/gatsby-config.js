@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = ({ contentful, seo }) => ({
   pathPrefix: '/',
   siteMetadata: {
@@ -8,6 +10,15 @@ module.exports = ({ contentful, seo }) => ({
     fbApp: seo.apps.facebook,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: path.resolve(
+          __dirname,
+          'src/app/components/index.tsx'
+        ),
+      },
+    },
     {
       resolve: `gatsby-source-contentful`,
       options: {
