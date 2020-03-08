@@ -1,11 +1,12 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 
-import { Box, Flex } from 'rebass'
+import { Helmet } from 'react-helmet'
 
 import Card from '../../../../core/components/card'
 import Chip from '../../../../core/components/chip'
 import SEO from '../../../../core/components/seo'
+
+import '../styles/index.styl'
 
 import { IProps } from '../@types/IProps'
 
@@ -13,8 +14,8 @@ const CategoryListingComponent: React.FC<IProps> = props => {
   const { categories = [] } = props.pageContext
 
   return (
-    <Box mb={4}>
-      <Helmet title={`Category`} />
+    <React.Fragment>
+      <Helmet title='Category' />
       <SEO
         title='Category'
         author={{
@@ -22,32 +23,27 @@ const CategoryListingComponent: React.FC<IProps> = props => {
           name: 'Phumrapee Limpianchop',
           twitter: '@rayriffy',
         }}
-        type={`page`}
+        type='page'
       />
       <Chip name='Category' desc='รวมประเภท Blog ไว้ให้ง่ายต่อการเข้าถึง' />
-      <Flex justifyContent={`center`}>
-        <Box width={[22 / 24, 22 / 24, 20 / 24, 18 / 24]}>
-          <Flex flexWrap={`wrap`}>
-            {categories.map(category => (
-              <Box
-                width={[1, 1, 1 / 2, 1 / 2]}
-                p={3}
-                key={`category-${category.key}`}>
-                <Card
-                  slug={`/category/${category.key}`}
-                  blog={{
-                    banner: category.banner,
-                    subtitle: category.desc,
-                    title: category.name,
-                  }}
-                  type={`post`}
-                />
-              </Box>
-            ))}
-          </Flex>
-        </Box>
-      </Flex>
-    </Box>
+      <div className='template-category-listing'>
+        <div className='container'>
+          {categories.map(category => (
+            <div className='item' key={`category-${category.key}`}>
+              <Card
+                slug={`/category/${category.key}`}
+                blog={{
+                  banner: category.banner,
+                  subtitle: category.desc,
+                  title: category.name,
+                }}
+                type='post'
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </React.Fragment>
   )
 }
 
