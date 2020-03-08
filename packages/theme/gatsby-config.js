@@ -11,15 +11,6 @@ module.exports = ({ contentful, seo }) => ({
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: path.resolve(
-          __dirname,
-          'src/app/components/index.tsx'
-        ),
-      },
-    },
-    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: contentful.space,
