@@ -18,16 +18,15 @@
     height auto
     @media (min-width: 40em)
       border-radius 6px
-
   & > .container
     position absolute
     left 0
     bottom 0
-    padding 0 getSpacing(3) getSpacing(3) getSpacing(3)
+    padding 0 getSpace(3) getSpace(3) getSpace(3)
     @media (min-width: 52em)
-      padding 0 getSpacing(4) getSpacing(4) getSpacing(4)
+      padding 0 getSpace(4) getSpace(4) getSpace(4)
     & > .feat
-      margin-bottom getSpacing(2)
+      margin-bottom getSpace(1)
       font-size 14px
       @media (min-width: 40em)
         font-size 16px
@@ -36,6 +35,7 @@
       @media (min-width: 64em)
         font-size 20px
     & > .title
+      getFontFamily('heading')
       font-size 24px
       @media (min-width: 40em)
         font-size 28px

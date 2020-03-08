@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Logo from '../../core/components/logo'
 import TransparentLink from '../../core/components/transparentLink'
 
 import '../styles/footer.styl'
@@ -10,7 +11,7 @@ const FooterComponent: React.FC = () => {
   return (
     <div className='shell-footer'>
       <div className='logo-container'>
-        <img className='logo' src='/icon.svg' />
+        <Logo className='logo' />
       </div>
       <div className='tabstack-container'>
         {footerTabs.map(tab => (

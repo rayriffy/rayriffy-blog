@@ -7,21 +7,22 @@
   overflow hidden
   & > .meta
     padding getSpace(4)
-    .post
+    &.post
       padding getSpace(4) getSpace(4)
       @media (min-width: 40em)
         padding getSpace(4) getSpace(5)
     & > .blog-title, & > * > .blog-title
       getFontFamily('heading')
+      getFontColor(lightColor: false)
       font-weight 400
       font-size 38px
-      .listing
+      &.listing
         font-size 26px
         @media (min-width: 40em)
           font-size 28px
         @media (min-width: 64em)
           font-size 30px
-      .post
+      &.post
         font-size 30px
         @media (min-width: 40em)
           font-size 32px

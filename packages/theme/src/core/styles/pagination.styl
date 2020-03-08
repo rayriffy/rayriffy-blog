@@ -6,6 +6,7 @@
   justify-content center
   & > .page-item
     padding 0 getSpace(3)
-    getFontColor(lightColor: true)
-    .active
+    & > *
+      getFontColor(lightColor: true)
+    &.active > *
       getFontColor(lightColor: false)

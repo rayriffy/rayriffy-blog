@@ -4,6 +4,8 @@ import Img from 'gatsby-image'
 
 import TransparentLink from './transparentLink'
 
+import '../styles/featured.styl'
+
 import { IFeaturedProps } from '../@types/IFeaturedProps'
 
 const FeaturedComponent: React.FC<IFeaturedProps> = props => {

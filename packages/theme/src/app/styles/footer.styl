@@ -26,16 +26,17 @@
         padding-bottom getSpace(3)
         font-size 14px
         getFontFamily('heading')
-        getFontColor(lightColor: false)
-        & > .link-container
-          display flex
-          flex-wrap wrap
-          & > .link
-            widthCalculator(1)
-            padding getSpace(2) 0
-            & > *, a
-              getFontColor(lightColor: true)
-              font-size 16px
+        @media (prefers-color-scheme: dark)
+          color rgb(255, 255, 255)
+      & > .link-container
+        display flex
+        flex-wrap wrap
+        & > .link
+          widthCalculator(1)
+          padding getSpace(2)
+          & > a
+            getFontColor(lightColor: true)
+            font-size 16px
   & > .copyright
     padding getSpace(2) 0 getSpace(5) 0
     getFontColor(lightColor: true)
