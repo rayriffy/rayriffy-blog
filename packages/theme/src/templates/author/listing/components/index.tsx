@@ -1,6 +1,6 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 
+import { Helmet } from 'react-helmet'
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
 import Card from '../../../../core/components/card'
