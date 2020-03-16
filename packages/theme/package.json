@@ -57,7 +57,7 @@
     "gatsby-source-contentful": "^2.1.87",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-json": "^2.2.26",
-    "gatsby-transformer-remark": "^2.6.53",
+    "gatsby-transformer-remark": "^2.6.59",
     "gatsby-transformer-sharp": "^2.3.14",
     "postcss-easings": "^2.0.0",
     "prismjs": "^1.19.0",
