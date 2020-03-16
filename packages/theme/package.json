@@ -33,7 +33,7 @@
     "@raae/gatsby-remark-oembed": "^0.1.1",
     "autoprefixer": "^9.7.4",
     "dayjs": "^1.8.21",
-    "gatsby": "^2.18.18",
+    "gatsby": "^2.19.45",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-emotion": "^4.1.22",
     "gatsby-plugin-feed": "^2.3.27",
