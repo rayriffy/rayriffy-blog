@@ -44,7 +44,7 @@
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sharp": "^2.4.5",
-    "gatsby-plugin-sitemap": "^2.2.27",
+    "gatsby-plugin-sitemap": "^2.2.30",
     "gatsby-plugin-stylus": "^2.1.22",
     "gatsby-plugin-typescript": "^2.2.0",
     "gatsby-remark-embed-spotify": "^2.1.1",
