@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = ({ contentful, seo }) => ({
   pathPrefix: '/',
   siteMetadata: {
@@ -106,13 +104,6 @@ module.exports = ({ contentful, seo }) => ({
             },
           },
           'gatsby-remark-embed-video',
-          {
-            resolve: 'gatsby-remark-embed-gist',
-            options: {
-              username: 'rayriffy',
-              includeDefaultCss: true,
-            },
-          },
           {
             resolve: `gatsby-remark-images-anywhere`,
             options: {
