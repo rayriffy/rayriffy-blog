@@ -8,6 +8,7 @@ module.exports = ({ contentful, seo }) => ({
     fbApp: seo.apps.facebook,
   },
   plugins: [
+    `gatsby-plugin-react-helmet-async`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -153,7 +154,6 @@ module.exports = ({ contentful, seo }) => ({
         icon: `${__dirname}/content/assets/logo.png`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {

@@ -22,7 +22,7 @@ getShadow(weight = '')
     box-shadow 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)
 
 getBackground(lightColor = false)
-  normalWhite = rgb(245, 245, 245)
+  normalWhite = rgb(249, 249, 249)
   normalBlack = rgb(40, 40, 40)
   lightWhite = rgb(255, 255, 255)
   lightBlack = rgb(60, 60, 60)
@@ -36,10 +36,10 @@ getBackground(lightColor = false)
       background-color normalBlack
 
 getFontColor(lightColor = false)
-  normalWhite = rgb(222, 222, 222)
-  normalBlack = rgb(0, 0, 0)
-  lightWhite = rgb(192, 192, 192)
-  lightBlack = rgba(0, 0, 0, 0.6)
+  normalWhite = rgb(255, 255, 255)
+  normalBlack = rgb(28, 28, 39)
+  lightWhite = rgba(255, 255, 255, 0.7)
+  lightBlack = rgb(85, 88, 112)
   if lightColor == true
     color lightBlack
     @media (prefers-color-scheme: dark)
@@ -53,8 +53,9 @@ getFontFamily(style = 'body')
   if style == 'heading'
     font-family Kanit, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif
     font-weight 700
-    line-height 1.5
+    line-height 1.25
   else
     font-family Niramit, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif
     font-weight 400
-    line-height 1.25
+    line-height 1.75
+    letter-spacing 0.4px

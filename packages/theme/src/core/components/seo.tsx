@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { graphql, useStaticQuery } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import { ISEOData } from '../@types/ISEOData'
 import { ISEOProps } from '../@types/ISEOProps'
@@ -57,7 +57,7 @@ const SEOComponent: React.FC<ISEOProps> = props => {
       name: 'image',
     },
     {
-      content: `${siteMetadata.siteUrl}${slug}`,
+      content: `${siteMetadata.siteUrl}/${slug}`,
       property: 'og:url',
     },
     {
@@ -148,7 +148,7 @@ const SEOComponent: React.FC<ISEOProps> = props => {
 
   return (
     <Helmet meta={metas}>
-      <script type='application/ld+json' data-react-helmet='true'>
+      <script type='application/ld+json'>
         {type === 'article'
           ? `
           {
