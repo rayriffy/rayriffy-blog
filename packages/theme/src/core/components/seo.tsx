@@ -57,7 +57,7 @@ const SEOComponent: React.FC<ISEOProps> = props => {
       name: 'image',
     },
     {
-      content: `${siteMetadata.siteUrl}${slug}`,
+      content: `${siteMetadata.siteUrl}/${slug}`,
       property: 'og:url',
     },
     {
