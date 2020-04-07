@@ -11,7 +11,9 @@ const FooterComponent: React.FC = () => {
   return (
     <div className='shell-footer'>
       <div className='logo-container'>
-        <Logo className='logo' />
+        <TransparentLink to='/'>
+          <Logo className='logo' />
+        </TransparentLink>
       </div>
       <div className='tabstack-container'>
         {footerTabs.map(tab => (
