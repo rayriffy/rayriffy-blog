@@ -30,6 +30,7 @@ jobs:
           curl -o- -L https://yarnpkg.com/install.sh | bash
       - name: 'Init: Install dependencies'
         run: |
+          rm -rf node_modules/sharp/vendor
           yarn install
       - name: 'Test: Type checking'
         run: |

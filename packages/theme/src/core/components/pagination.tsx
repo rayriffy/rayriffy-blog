@@ -21,23 +21,26 @@ const PaginationComponent: React.FC<IPaginationProps> = props => {
 
   return (
     <div className='core-pagination'>
-      {Array.from({ length: pageLength }, (_, i) => (
-        <div
-          className={`page-item ${
-            startPoint + i + 1 === currentPage ? 'active' : ''
-          }`}>
-          <Link
-            to={`${
-              startPoint + i === 0
-                ? `${pathPrefix}`
-                : `${pathPrefix === '/' ? '' : pathPrefix}/pages/${startPoint +
-                    i +
-                    1}`
-            }`}>
-            {startPoint + i + 1}
-          </Link>
-        </div>
-      ))}
+      {Array.from({ length: pageLength }, (_, i) => {
+        const page = startPoint + i + 1
+
+        return (
+          <div
+            key={`page-item-${page}`}
+            className={`page-item ${page === currentPage ? 'active' : ''}`}>
+            <Link
+              to={`${
+                page === 1
+                  ? `${pathPrefix}`
+                  : `${
+                      pathPrefix === '/' ? '' : pathPrefix
+                    }/pages/${startPoint + i + 1}`
+              }`}>
+              {page}
+            </Link>
+          </div>
+        )
+      })}
     </div>
   )
 }

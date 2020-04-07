@@ -40,8 +40,10 @@ module.exports = ({ contentful, seo }) => ({
       resolve: `gatsby-plugin-stylus`,
       options: {
         postCssPlugins: [
-          require('autoprefixer'),
-          require('postcss-easings')
+          require('postcss-easings'),
+          require('cssnano')({
+            preset: 'advanced',
+          })
         ],
       },
     },
