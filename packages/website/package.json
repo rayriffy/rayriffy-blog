@@ -6,6 +6,7 @@
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
   "license": "MIT",
   "scripts": {
+    "clean": "gatsby clean",
     "deploy": "netlify deploy --dir=./public --prod",
     "dev": "gatsby develop",
     "build": "gatsby build",
