@@ -20,6 +20,6 @@
   "dependencies": {
     "gatsby": "^2.20.9",
     "gatsby-theme-rayriffy-blog": "3.0.0",
-    "netlify-cli": "^2.36.0"
+    "netlify-cli": "^2.48.0"
   }
 }
