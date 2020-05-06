@@ -11,7 +11,7 @@ const FooterComponent: React.FC = () => {
   return (
     <div className='shell-footer'>
       <div className='logo-container'>
-        <TransparentLink to='/'>
+        <TransparentLink to='/' aria-label='logo'>
           <Logo className='logo' />
         </TransparentLink>
       </div>

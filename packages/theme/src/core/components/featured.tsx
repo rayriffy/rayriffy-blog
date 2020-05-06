@@ -25,7 +25,7 @@ const FeaturedComponent: React.FC<IFeaturedProps> = props => {
   return (
     <React.Fragment>
       {slug ? (
-        <TransparentLink to={`${slug}`}>{renderedCard}</TransparentLink>
+        <TransparentLink to={slug}>{renderedCard}</TransparentLink>
       ) : (
         renderedCard
       )}
