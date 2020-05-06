@@ -18,7 +18,7 @@
     "start": "yarn build && yarn serve"
   },
   "dependencies": {
-    "gatsby": "^2.20.9",
+    "gatsby": "^2.21.15",
     "gatsby-theme-rayriffy-blog": "3.0.0",
     "netlify-cli": "^2.48.0"
   }
