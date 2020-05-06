@@ -72,7 +72,7 @@
     "@types/react-dom": "^16.9.6",
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "prettier": "^1.19.1",
     "remark-cli": "^8.0.0",
     "remark-lint": "^7.0.0",
