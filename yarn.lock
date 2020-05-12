@@ -7338,12 +7338,12 @@ gatsby-plugin-sitemap@^2.4.1:
     pify "^3.0.0"
     sitemap "^1.13.0"
 
-gatsby-plugin-stylus@^2.1.22:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-stylus/-/gatsby-plugin-stylus-2.2.1.tgz#e0628ff4ae17d56e3626ab2369117d5fb6aa17d5"
-  integrity sha512-JMQIATHlyNZr0t0GPRG++js6nWcp7zItDSbtXxJMOVYe++VKN0FkEBkx4Owz2kU0y9j8wGrjSGVKVfmr8RCXeQ==
+gatsby-plugin-stylus@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-stylus/-/gatsby-plugin-stylus-2.3.1.tgz#f1f388c578b1f766627b1863f358e18b4c193c7c"
+  integrity sha512-YFrVERxoWF5pbbCgIHHaITuA1AaUpQEY8RWMyRrJ3p1MK017WOVr1YyZ+U4D53VDOUBKG+SHEXwiui8ssOzSLA==
   dependencies:
-    "@babel/runtime" "^7.8.7"
+    "@babel/runtime" "^7.9.6"
     stylus "^0.54.7"
     stylus-loader "^3.0.2"
 
