@@ -51,7 +51,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                      base64
                       tracedSVG
                       aspectRatio
                       src
@@ -123,7 +122,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                      base64
                       tracedSVG
                       aspectRatio
                       src
@@ -200,7 +198,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
                   localFile {
                     childImageSharp {
                       fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                        base64
                         tracedSVG
                         aspectRatio
                         src
@@ -266,7 +263,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
                   localFile {
                     childImageSharp {
                       fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                        base64
                         tracedSVG
                         aspectRatio
                         src
@@ -331,7 +327,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                      base64
                       tracedSVG
                       aspectRatio
                       src
@@ -389,7 +384,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
                   localFile {
                     childImageSharp {
                       fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                        base64
                         tracedSVG
                         aspectRatio
                         src
@@ -414,7 +408,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
               localFile {
                 childImageSharp {
                   fluid(maxWidth: 1000, quality: ${IMAGE_QUALITY}) {
-                    base64
                     tracedSVG
                     aspectRatio
                     src
