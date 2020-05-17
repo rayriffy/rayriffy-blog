@@ -24,7 +24,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
       />
       <div className='template-blog-listing'>
         {featured !== null ? (
-          <div className='feat'>
+          <section className='feat'>
             <div className='container'>
               <Featured
                 title={featured.node.title}
@@ -38,9 +38,9 @@ const BlogListingComponent: React.FC<IProps> = props => {
                 featured={true}
               />
             </div>
-          </div>
+          </section>
         ) : null}
-        <div className='list'>
+        <section className='list'>
           <div className='container'>
             {blogs.map(blog => {
               const { author, title, subtitle, date, banner, slug } = blog.node
@@ -64,7 +64,7 @@ const BlogListingComponent: React.FC<IProps> = props => {
               )
             })}
           </div>
-        </div>
+        </section>
         <Pagination
           numPages={page.max}
           currentPage={page.current}

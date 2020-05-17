@@ -16,7 +16,7 @@ const Component: React.FC = props => {
       <Helmet />
       {GATSBY_ENV !== 'production' ? <Dev /> : null}
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
     </React.Fragment>
   )
