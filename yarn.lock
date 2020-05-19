@@ -7124,10 +7124,10 @@ gatsby-cli@^2.12.17:
     ink "^2.7.1"
     ink-spinner "^3.0.1"
 
-gatsby-core-utils@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.2.1.tgz#9d5e89d0cf7b9e5d7d77a9dcb47071684f68ffd5"
-  integrity sha512-uyXgjvKdzfJ0yB8oTYmBjMUqM0AACx7aA8Ioubn6k/51C4tE5+LzrG/iG42di2UaTIbcBj6vcwrvRosNKWeeBQ==
+gatsby-core-utils@^1.2.1, gatsby-core-utils@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.2.3.tgz#24d6fd7ebb607e08aa8356f77d6990cb4563e387"
+  integrity sha512-NjCPNpGqOuaNAJqU4m9z2pXVmv0DdifnRiFvJiVnz2pi/0qaVHGMErmOnkOJfaxD76LOcWEjPm9HOsB+GHgN7g==
   dependencies:
     ci-info "2.0.0"
     configstore "^5.0.1"
@@ -7525,14 +7525,14 @@ gatsby-transformer-json@^2.3.1:
     "@babel/runtime" "^7.9.6"
     bluebird "^3.7.2"
 
-gatsby-transformer-remark@^2.8.7:
-  version "2.8.7"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.8.7.tgz#2b81d8a9672f91673ba890896459a0515cae5925"
-  integrity sha512-AaBJyQipTWFt28cmZEcrTctGBw86gbCidhyamTXpOfPQago3nX2NjmSfdEhUr5HAZwflfy/GIQhGTzo5BZ556w==
+gatsby-transformer-remark@^2.8.9:
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.8.9.tgz#e2146c31e06731c9f4cf13fefcb769888cdeaab3"
+  integrity sha512-KITPRogTAU8iPt1uJ2+XNOAL5K9LGsVe0+ujFRMt2M0IYY3KQ5krFjKCwTsiWJqdswAqQxjqPs+dOtf2cDnMhA==
   dependencies:
     "@babel/runtime" "^7.9.6"
     bluebird "^3.7.2"
-    gatsby-core-utils "^1.2.1"
+    gatsby-core-utils "^1.2.3"
     gray-matter "^4.0.2"
     hast-util-raw "^4.0.0"
     hast-util-to-html "^4.0.1"
