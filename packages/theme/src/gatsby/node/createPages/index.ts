@@ -480,6 +480,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
                 slug
                 title
                 subtitle
+                category {
+                  name
+                }
                 banner {
                   localFile {
                     childImageSharp {
@@ -511,6 +514,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           url: `${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
           title: blog.node.title,
           subtitle: blog.node.subtitle,
+          category: blog.node.category.map((o: { name: string }) => o.name),
           banner: `${authorBlogs.data.site.siteMetadata.siteUrl}${blog.node.banner.localFile.childImageSharp.fluid.src}`,
         })),
       }
