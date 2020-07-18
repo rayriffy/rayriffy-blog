@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frayriffy%2Frayriffy-blog.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Frayriffy%2Frayriffy-blog?ref=badge_shield)
+
 rayriffy-blog
 =============
 
@@ -76,3 +78,7 @@ If you need help with anything, here're following methods:
 #### Create an Issue
 
 If you have something you want to discuss in detail, or have hit an issue which you believe others will also have in deployment or development of the system, [opening an issue](https://github.com/rayriffy/rayriffy-blog/issues) is the best way to get help. It creates a permanent resource for others wishing to contribute to conversation.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frayriffy%2Frayriffy-blog.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frayriffy%2Frayriffy-blog?ref=badge_large)

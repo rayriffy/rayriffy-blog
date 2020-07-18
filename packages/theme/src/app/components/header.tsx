@@ -26,16 +26,16 @@ const HeaderComponent: React.FC = () => {
   ]
 
   return (
-    <div className='shell-header'>
+    <nav className='shell-header'>
       <div className='flex'>
         <div className='container'>
-          <TransparentLink to={`/`} aria-label={`logo`}>
+          <TransparentLink to='/' aria-label='logo'>
             <Logo className='header-logo' />
           </TransparentLink>
         </div>
       </div>
       <Navbar align={`center`} tabs={navTabs} />
-    </div>
+    </nav>
   )
 }
 

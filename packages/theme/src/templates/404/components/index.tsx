@@ -16,7 +16,6 @@ const NotFoundComponent: React.FC = () => {
       banner: file(relativePath: { eq: "404.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1000, quality: 90) {
-            base64
             tracedSVG
             aspectRatio
             src
