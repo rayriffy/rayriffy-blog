@@ -58,7 +58,7 @@
     "gatsby-transformer-json": "^2.4.11",
     "gatsby-transformer-remark": "^2.8.15",
     "gatsby-transformer-sharp": "^2.5.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "postcss-easings": "^2.0.0",
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
