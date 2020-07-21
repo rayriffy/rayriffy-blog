@@ -56,7 +56,7 @@
     "gatsby-source-contentful": "^2.1.87",
     "gatsby-source-filesystem": "^2.3.11",
     "gatsby-transformer-json": "^2.4.11",
-    "gatsby-transformer-remark": "^2.8.15",
+    "gatsby-transformer-remark": "^2.8.25",
     "gatsby-transformer-sharp": "^2.5.2",
     "lodash": "^4.17.19",
     "postcss-easings": "^2.0.0",
