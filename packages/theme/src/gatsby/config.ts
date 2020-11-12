@@ -142,18 +142,18 @@ const config: GatsbyThemeConfig = ({ contentful, seo }): GatsbyConfig => ({
             },
           },
           'gatsby-remark-embed-video',
-          {
-            resolve: `gatsby-remark-images-contentful`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 1000,
-              linkImagesToOriginal: false,
-              backgroundColor: 'rgb(60, 60, 60)',
-              withWebp: true,
-            },
-          },
+          // {
+          //   resolve: `gatsby-remark-images-contentful`,
+          //   options: {
+          //     // It's important to specify the maxWidth (in pixels) of
+          //     // the content container as this plugin uses this as the
+          //     // base for generating different widths of each image.
+          //     maxWidth: 1000,
+          //     linkImagesToOriginal: false,
+          //     backgroundColor: 'rgb(60, 60, 60)',
+          //     withWebp: true,
+          //   },
+          // },
           'gatsby-remark-responsive-iframe',
           {
             resolve: `gatsby-remark-prismjs`,
