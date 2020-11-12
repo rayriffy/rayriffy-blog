@@ -8,7 +8,7 @@ module.exports = {
         contentful: {
           space: CONTENTFUL_SPACE_ID,
           token: CONTENTFUL_ACCESS_TOKEN,
-          preview: CONTENTFUL_PREVIEW,
+          preview: CONTENTFUL_PREVIEW === 'true',
         },
         seo: {
           meta: {
