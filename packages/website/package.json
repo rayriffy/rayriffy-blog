@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "gatsby": "^2.23.3",
-    "gatsby-theme-rayriffy-blog": "3.0.0",
-    "netlify-cli": "^2.48.0"
+    "gatsby-theme-rayriffy-blog": "3.0.0"
   }
 }

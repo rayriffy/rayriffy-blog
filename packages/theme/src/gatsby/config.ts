@@ -176,20 +176,6 @@ const config: GatsbyThemeConfig = ({ contentful, seo }): GatsbyConfig => ({
       },
     },
     {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          '/api/*': ['Access-Control-Allow-Origin: *'],
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-netlify-cache',
-      options: {
-        cachePublic: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-typescript`,
       options: {
         isTSX: true,
