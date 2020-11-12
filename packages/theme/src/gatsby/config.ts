@@ -23,6 +23,7 @@ export interface IThemeConfig {
       }[]
     }
     sitemap: {
+      sitemap: string
       exclude: string[]
     }
     analytics: {
@@ -86,27 +87,12 @@ const config: GatsbyThemeConfig = ({ contentful, seo }): GatsbyConfig => ({
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        env: {
-          development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
-          },
-          production: {
-            policy: [
-              {
-                userAgent: '*',
-                disallow: ['/author/*', '/category/*', '/pages/*'],
-              },
-            ],
-          },
-        },
+        policy: seo.robots.policy,
       },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
-      options: {
-        output: `/sitemap.xml`,
-        exclude: ['/**/pages/*', '/category/**/*', '/author/**/*'],
-      },
+      options: seo.sitemap,
     },
     {
       resolve: `gatsby-transformer-remark`,

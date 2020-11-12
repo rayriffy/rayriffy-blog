@@ -32,11 +32,12 @@ module.exports = {
             policy: [
               {
                 userAgent: '*',
-                disallow: ['/pages', '/category', '/author'],
+                disallow: GATSBY_ENV === 'production' ? ['/pages', '/category', '/author'] : ['/'],
               },
             ],
           },
           sitemap: {
+            output: `/sitemap.xml`,
             exclude: [
               '/**/pages/*',
               '/category/**/*',
