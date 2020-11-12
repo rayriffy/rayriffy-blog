@@ -511,15 +511,14 @@ export const createPages: GatsbyNode['createPages'] = async ({
         status: 'success',
         code: 201,
         data: chunk.map((blog: any) => {
-          console.log(blog.node.title, blog.node.banner)
-
           return {
-          url: `${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
-          title: blog.node.title,
-          subtitle: blog.node.subtitle,
-          category: blog.node.category.map((o: { name: string }) => o.name),
-          banner: `${authorBlogs.data.site.siteMetadata.siteUrl}${blog.node.banner.localFile.childImageSharp.fluid.src}`,
-        }}),
+            url: `${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
+            title: blog.node.title,
+            subtitle: blog.node.subtitle,
+            category: blog.node.category.map((o: { name: string }) => o.name),
+            banner: `${authorBlogs.data.site.siteMetadata.siteUrl}${blog.node.banner.localFile.childImageSharp.fluid.src}`,
+          }
+        }),
       }
 
       fs.writeFile(
