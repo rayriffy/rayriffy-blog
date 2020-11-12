@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ILogoProps } from '../@types/ILogoProps'
 
-const LogoComponent: React.FC<ILogoProps> = props => {
+const LogoComponent: React.FC<ILogoProps> = React.memo(props => {
   const { className } = props
 
   return (
@@ -16,6 +16,6 @@ const LogoComponent: React.FC<ILogoProps> = props => {
       />
     </svg>
   )
-}
+})
 
 export default LogoComponent
