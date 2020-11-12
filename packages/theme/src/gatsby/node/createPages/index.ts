@@ -511,7 +511,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
         status: 'success',
         code: 201,
         data: chunk.map((blog: any) => {
-          console.log(blog.node.banner)
+          console.log(blog.node.title, blog.node.banner)
 
           return {
           url: `${authorBlogs.data.site.siteMetadata.siteUrl}/${blog.node.slug}`,
