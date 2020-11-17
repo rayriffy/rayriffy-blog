@@ -46,7 +46,7 @@
     "gatsby-plugin-typescript": "^2.3.1",
     "gatsby-remark-embed-spotify": "^2.1.1",
     "gatsby-remark-embed-video": "^3.0.10",
-    "gatsby-remark-images-contentful": "^2.4.0",
+    "gatsby-remark-images-contentful": "^2.5.0-next.0",
     "gatsby-remark-prismjs": "^3.5.5",
     "gatsby-remark-responsive-iframe": "^2.2.32",
     "gatsby-remark-smartypants": "^2.3.10",
