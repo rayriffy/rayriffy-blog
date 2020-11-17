@@ -94,6 +94,8 @@ const config: GatsbyThemeConfig = ({ contentful, seo }): GatsbyConfig => ({
       resolve: `gatsby-plugin-sitemap`,
       options: seo.sitemap,
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -155,8 +157,6 @@ const config: GatsbyThemeConfig = ({ contentful, seo }): GatsbyConfig => ({
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
