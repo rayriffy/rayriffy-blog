@@ -3,6 +3,8 @@
 rayriffy-blog
 =============
 
+## DEPRECATED: Project has been rewritten in [this repository](https://github.com/rayriffy/rayriffy-blog-next)
+
 All *new* Riffy Blog based on GatsbyJS generator.
 
 Demo
