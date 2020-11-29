@@ -6533,10 +6533,10 @@ gatsby-remark-embed-video@^3.0.10:
     remark-burger "^1.0.1"
     unist-util-visit "^2.0.2"
 
-gatsby-remark-images-contentful@^2.5.0-next.0:
-  version "2.5.0-next.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.5.0-next.0.tgz#ccb5dc889ed72d3457b6cf625f230a6b8b3acb83"
-  integrity sha512-y5XQF9oCt0ooABaxUqotTWC11RGnvwbVW4zYz3ZXIInw/2fYPkGq0/m+M0ZLcd99kKYFRwp6HzxZPMFxCa+OHw==
+gatsby-remark-images-contentful@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.4.0.tgz#6f349f6beb3211a8b0bc8aa999a449ce33247896"
+  integrity sha512-yiTu4zUUjFRn5zmMsCuHhjkc/drOofo8vR102wKyGgTpyoiQXFZonKLpgg3hBt9Uprxxjmy8RMFcOxdequXjzg==
   dependencies:
     "@babel/runtime" "^7.11.2"
     axios "^0.20.0"
